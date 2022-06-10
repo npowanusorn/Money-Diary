@@ -17,13 +17,13 @@ class AddTransactionVC: UIViewController {
     @IBOutlet private var contentViewBottomConstraint: NSLayoutConstraint!
     
     private var amountIsZero = true
-    private let defaultHeight: CGFloat = 350
-    private let maxDimAlpha: CGFloat = 0.6
+    private var currentHeight = Constants.defaultViewHeight
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        setupPanGesture()
 
         dimView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,8 +44,6 @@ class AddTransactionVC: UIViewController {
         noteTextView.delegate = self
         noteTextView.text = ""
         noteTextView.layer.cornerRadius = 8.0
-        noteTextView.layer.borderColor = CGColor(red: 237, green: 237, blue: 241, alpha: 1)
-        noteTextView.layer.borderWidth = 1
         
         title = "Add Transaction"
         
@@ -89,37 +87,84 @@ class AddTransactionVC: UIViewController {
     }
     
     func animateContentView() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Constants.duration) {
             self.contentViewBottomConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
     }
     
+    func animateContentViewHeight(_ height: CGFloat) {
+        UIView.animate(withDuration: Constants.duration) {
+            self.contentViewHeightConstraint.constant = height
+            self.view.layoutIfNeeded()
+        }
+        currentHeight = height
+    }
+    
     func setupConstraints() {
         contentViewBottomConstraint.constant = -Constants.defaultViewHeight
+        contentViewHeightConstraint.constant = Constants.dismissHeight
         self.view.layoutIfNeeded()
     }
     
     func animateDimmedView() {
         dimView.alpha = 0
-        dimView.fadeIn(withDuration: 0.4, alpha: Constants.maxDimAlpha)
+        dimView.fadeIn(withDuration: Constants.duration, alpha: Constants.maxDimAlpha)
     }
     
     func animateDismiss() {
         UIView.animate(withDuration: Constants.duration) {
-            self.contentViewBottomConstraint.constant = -self.defaultHeight
+            if self.currentHeight == Constants.defaultViewHeight {
+                self.contentViewBottomConstraint.constant = -Constants.defaultViewHeight
+            } else {
+                self.contentViewBottomConstraint.constant = -Constants.maxHeight
+            }
             self.view.layoutIfNeeded()
         }
         
-        dimView.alpha = maxDimAlpha
+        dimView.alpha = Constants.maxDimAlpha
         dimView.fadeOut(withDuration: Constants.duration) {
             self.dismiss(animated: false)
         }
-//        UIView.animate(withDuration: Constants.duration) {
-//            self.dimView.alpha = 0
-//        } completion: { _ in
-//            self.dismiss(animated: false)
-//        }
+    }
+    
+    func setupPanGesture() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        (pan.delaysTouchesBegan, pan.delaysTouchesEnded) = (false, false)
+        view.addGestureRecognizer(pan)
+    }
+    
+    @objc
+    func handlePanGesture(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        print("y offset: \(translation.y)")
+        
+        let isDraggingDown = translation.y > 0
+        print("drag dir: \(isDraggingDown ? "down" : "up")")
+        
+        let newHeight = currentHeight - translation.y
+        print(newHeight)
+        switch gesture.state {
+        case .changed:
+            if newHeight < Constants.maxHeight {
+                contentViewHeightConstraint.constant = newHeight
+                view.layoutIfNeeded()
+            }
+            
+        case .ended:
+            if newHeight < Constants.dismissHeight {
+                self.animateDismiss()
+            } else if newHeight < Constants.defaultViewHeight {
+                animateContentViewHeight(Constants.defaultViewHeight)
+            } else if newHeight < Constants.maxHeight && isDraggingDown {
+                animateContentViewHeight(Constants.defaultViewHeight)
+            } else if newHeight > Constants.defaultViewHeight && !isDraggingDown {
+                animateContentViewHeight(Constants.maxHeight)
+            }
+            
+        default:
+            break
+        }
     }
 }
 
@@ -142,5 +187,7 @@ extension AddTransactionVC {
         static let duration = 0.4
         static let defaultViewHeight: CGFloat = 350
         static let maxDimAlpha = 0.6
+        static let dismissHeight: CGFloat = 300
+        static let maxHeight: CGFloat = UIScreen.main.bounds.height - 64
     }
 }

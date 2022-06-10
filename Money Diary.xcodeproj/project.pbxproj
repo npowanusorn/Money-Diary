@@ -17,6 +17,8 @@
 		5038E6672852D6D800756D60 /* AddTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E6652852D6D800756D60 /* AddTransactionVC.xib */; };
 		5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6682852D90A00756D60 /* RoundedButton.swift */; };
 		5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E68C2853052500756D60 /* UIView+Fade.swift */; };
+		5038E69228530FDA00756D60 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E69028530FDA00756D60 /* AddVC.swift */; };
+		5038E69328530FDA00756D60 /* AddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E69128530FDA00756D60 /* AddVC.xib */; };
 		505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */; };
 		505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */; };
 		505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11E284F1473007AFBE0 /* RoundedView.swift */; };
@@ -35,6 +37,8 @@
 		5038E6652852D6D800756D60 /* AddTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionVC.xib; sourceTree = "<group>"; };
 		5038E6682852D90A00756D60 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		5038E68C2853052500756D60 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
+		5038E69028530FDA00756D60 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		5038E69128530FDA00756D60 /* AddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVC.xib; sourceTree = "<group>"; };
 		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
 		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 			children = (
 				5038E6642852D6D800756D60 /* AddTransactionVC.swift */,
 				5038E6652852D6D800756D60 /* AddTransactionVC.xib */,
+				5038E69028530FDA00756D60 /* AddVC.swift */,
+				5038E69128530FDA00756D60 /* AddVC.xib */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -178,6 +184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5038E69328530FDA00756D60 /* AddVC.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddTransactionVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
@@ -197,6 +204,7 @@
 				505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */,
 				5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
+				5038E69228530FDA00756D60 /* AddVC.swift in Sources */,
 				5038E6662852D6D800756D60 /* AddTransactionVC.swift in Sources */,
 				5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */,
 				505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */,

@@ -37,9 +37,18 @@ class DashboardViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: Any) {
         let addTransactionVC = AddTransactionVC()
         addTransactionVC.modalPresentationStyle = .overCurrentContext
-//        let navigation = UINavigationController(rootViewController: addTransactionVC)
-//        navigation.modalPresentationStyle = .overCurrentContext
         present(addTransactionVC, animated: false)
+        
+        
+//        let addVC = AddVC()
+//        let navigation = UINavigationController(rootViewController: addVC)
+//        if let sheet = navigation.sheetPresentationController {
+//            sheet.detents = [.medium(), .large()]
+//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//            sheet.prefersEdgeAttachedInCompactHeight = true
+//            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+//        }
+//        present(navigation, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardViewController: UIViewController {
     
     @IBOutlet var walletsTableView: UITableView!
     @IBOutlet var topSpendingTableView: UITableView!
@@ -34,6 +34,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         return Constants.numberOfCells
     }
     
+    @IBAction func addButtonTapped(_ sender: Any) {
+        // TODO: handle add
+        print("add tapped")
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == walletsTableView {
             return configureWalletsTableView(for: indexPath)
@@ -45,7 +50,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 }
 
-extension DashboardViewController {
+// MARK: - UITableViewDelegate, UITableViewDatasource
+extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func configureWalletsTableView(for indexPath: IndexPath) -> UITableViewCell {
         guard let cell = walletsTableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.walletCellIdentifier) as? WalletsCell else { return UITableViewCell() }
         cell.walletName = "test wallet \(indexPath.row)"
@@ -72,6 +78,7 @@ extension DashboardViewController {
     }
 }
 
+// MARK: - Constants
 extension DashboardViewController {
     enum Constants {
         enum CellIdentifier {

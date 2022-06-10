@@ -3,7 +3,6 @@
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,15 +34,29 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spending report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YE-ML-c6a">
-                                                <rect key="frame" x="19.999999999999993" y="235" width="115.33333333333331" height="20"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="iAO-mf-H20">
+                                                <rect key="frame" x="20" y="235" width="388" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spending report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YE-ML-c6a">
+                                                        <rect key="frame" x="0.0" y="0.0" width="225.66666666666666" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="BiH-Na-448"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydf-uT-n6t">
+                                                        <rect key="frame" x="225.66666666666663" y="0.0" width="162.33333333333337" height="20"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="See reports"/>
+                                                    </button>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="BiH-Na-448"/>
+                                                    <constraint firstItem="ydf-uT-n6t" firstAttribute="height" secondItem="3YE-ML-c6a" secondAttribute="height" id="nRH-7d-nIb"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9i-Yy-7DE" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="275" width="388" height="510.33333333333326"/>
                                                 <subviews>
@@ -95,7 +108,7 @@
                                                         </constraints>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Cat-VV-MCH" secondAttribute="trailing" constant="20" id="6ox-gk-Abp"/>
                                                     <constraint firstItem="5QU-9R-7co" firstAttribute="top" secondItem="Cat-VV-MCH" secondAttribute="bottom" constant="20" id="8E2-WU-VnW"/>
@@ -118,24 +131,26 @@
                                                     <constraint firstAttribute="trailing" secondItem="8Cc-zG-915" secondAttribute="trailing" constant="20" id="ztu-P6-HNj"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-TR-X2d">
-                                                <rect key="frame" x="20" y="805.33333333333337" width="144.33333333333334" height="30"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-1C-dVM">
-                                                <rect key="frame" x="360" y="805.33333333333337" width="48" height="30"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="See all"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydf-uT-n6t">
-                                                <rect key="frame" x="325" y="235" width="83" height="20"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="See reports"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-ay-Tmz">
+                                                <rect key="frame" x="20" y="805.33333333333337" width="388" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-TR-X2d">
+                                                        <rect key="frame" x="0.0" y="0.0" width="291.33333333333331" height="30"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-1C-dVM">
+                                                        <rect key="frame" x="291.33333333333331" y="0.0" width="96.666666666666686" height="30"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="See all"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="3Le-1C-dVM" firstAttribute="height" secondItem="Kch-TR-X2d" secondAttribute="height" id="eAZ-Qo-gl9"/>
+                                                </constraints>
+                                            </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncp-SI-w1O" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="855.33333333333337" width="388" height="150"/>
                                                 <subviews>
@@ -147,7 +162,7 @@
                                                         </constraints>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="BBr-40-sV7" secondAttribute="bottom" id="C1R-5L-GgG"/>
                                                     <constraint firstItem="BBr-40-sV7" firstAttribute="leading" secondItem="ncp-SI-w1O" secondAttribute="leading" id="Fby-g3-GfD"/>
@@ -162,6 +177,9 @@
                                                     <constraint firstAttribute="width" constant="40" id="lmv-Ko-baL"/>
                                                 </constraints>
                                                 <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bye-j4-hAU"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWU-ri-LZo" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="65" width="388" height="150"/>
@@ -174,7 +192,7 @@
                                                         </constraints>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="Accent"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="rvP-jV-55Z" firstAttribute="leading" secondItem="DWU-ri-LZo" secondAttribute="leading" id="L3P-fE-pLS"/>
                                                     <constraint firstAttribute="trailing" secondItem="rvP-jV-55Z" secondAttribute="trailing" id="Pfb-fz-f2k"/>
@@ -185,33 +203,29 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="1j6-iA-Dbf" firstAttribute="top" secondItem="7ed-YK-VoM" secondAttribute="bottom" id="5Db-ty-X8s"/>
-                                            <constraint firstItem="s9i-Yy-7DE" firstAttribute="top" secondItem="3YE-ML-c6a" secondAttribute="bottom" constant="20" id="5i8-PL-vi2"/>
+                                            <constraint firstItem="iAO-mf-H20" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="5q8-Fn-mga"/>
                                             <constraint firstItem="deE-PY-e1J" firstAttribute="top" secondItem="CGz-7f-PRI" secondAttribute="top" constant="10" id="78c-PA-0gG"/>
-                                            <constraint firstItem="3YE-ML-c6a" firstAttribute="centerY" secondItem="ydf-uT-n6t" secondAttribute="centerY" id="Cwg-lg-VSK"/>
+                                            <constraint firstItem="ncp-SI-w1O" firstAttribute="top" secondItem="eL9-ay-Tmz" secondAttribute="bottom" constant="20" id="7TR-wV-G89"/>
                                             <constraint firstAttribute="bottom" secondItem="ncp-SI-w1O" secondAttribute="bottom" constant="20" id="HtN-z7-zAO"/>
                                             <constraint firstAttribute="trailing" secondItem="s9i-Yy-7DE" secondAttribute="trailing" constant="20" id="UKo-Sr-2z6"/>
+                                            <constraint firstItem="s9i-Yy-7DE" firstAttribute="top" secondItem="iAO-mf-H20" secondAttribute="bottom" constant="20" id="W1u-TC-xiZ"/>
                                             <constraint firstAttribute="trailing" secondItem="DWU-ri-LZo" secondAttribute="trailing" constant="20" id="Wjg-5i-tmT"/>
-                                            <constraint firstItem="ydf-uT-n6t" firstAttribute="height" secondItem="3YE-ML-c6a" secondAttribute="height" id="ayp-Kk-XjI"/>
                                             <constraint firstAttribute="trailing" secondItem="ncp-SI-w1O" secondAttribute="trailing" constant="20" id="bZY-nM-9ID"/>
                                             <constraint firstItem="7ed-YK-VoM" firstAttribute="top" secondItem="CGz-7f-PRI" secondAttribute="top" constant="10" id="bfJ-mh-JpW"/>
                                             <constraint firstAttribute="trailing" secondItem="7ed-YK-VoM" secondAttribute="trailing" constant="20" id="e1Q-WV-VSw"/>
-                                            <constraint firstAttribute="trailing" secondItem="ydf-uT-n6t" secondAttribute="trailing" constant="20" id="eYj-xz-q0C"/>
-                                            <constraint firstItem="3YE-ML-c6a" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="gpf-Bt-iub"/>
                                             <constraint firstItem="s9i-Yy-7DE" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="he0-gI-VZs"/>
                                             <constraint firstItem="1j6-iA-Dbf" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="hga-m2-alW"/>
                                             <constraint firstAttribute="trailing" secondItem="1j6-iA-Dbf" secondAttribute="trailing" constant="20" id="jmk-3W-YLQ"/>
-                                            <constraint firstItem="3Le-1C-dVM" firstAttribute="height" secondItem="Kch-TR-X2d" secondAttribute="height" id="mVC-OY-jgm"/>
-                                            <constraint firstItem="ncp-SI-w1O" firstAttribute="top" secondItem="Kch-TR-X2d" secondAttribute="bottom" constant="20" id="mwA-Fz-Sef"/>
-                                            <constraint firstItem="Kch-TR-X2d" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="nkr-yI-qek"/>
-                                            <constraint firstItem="Kch-TR-X2d" firstAttribute="top" secondItem="s9i-Yy-7DE" secondAttribute="bottom" constant="20" id="noO-Mx-Hr9"/>
+                                            <constraint firstItem="iAO-mf-H20" firstAttribute="top" secondItem="DWU-ri-LZo" secondAttribute="bottom" constant="20" id="m0p-A2-bja"/>
+                                            <constraint firstItem="eL9-ay-Tmz" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="n6W-ft-9k0"/>
+                                            <constraint firstAttribute="trailing" secondItem="eL9-ay-Tmz" secondAttribute="trailing" constant="20" id="nHX-dV-WKi"/>
                                             <constraint firstItem="DWU-ri-LZo" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="qxe-Vk-L9V"/>
                                             <constraint firstItem="ncp-SI-w1O" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="qyn-AG-DPD"/>
+                                            <constraint firstItem="eL9-ay-Tmz" firstAttribute="top" secondItem="s9i-Yy-7DE" secondAttribute="bottom" constant="20" id="rT8-5c-8qf"/>
                                             <constraint firstItem="7ed-YK-VoM" firstAttribute="leading" secondItem="CGz-7f-PRI" secondAttribute="leading" constant="20" id="rhn-w2-rlR"/>
                                             <constraint firstItem="DWU-ri-LZo" firstAttribute="top" secondItem="1j6-iA-Dbf" secondAttribute="bottom" constant="10" id="rv5-Gq-PME"/>
-                                            <constraint firstAttribute="trailing" secondItem="3Le-1C-dVM" secondAttribute="trailing" constant="20" id="uwB-0G-4hL"/>
-                                            <constraint firstItem="3Le-1C-dVM" firstAttribute="centerY" secondItem="Kch-TR-X2d" secondAttribute="centerY" id="vHw-KB-ht3"/>
                                             <constraint firstAttribute="trailing" secondItem="deE-PY-e1J" secondAttribute="trailing" constant="20" id="xzr-Od-UXF"/>
-                                            <constraint firstItem="3YE-ML-c6a" firstAttribute="top" secondItem="DWU-ri-LZo" secondAttribute="bottom" constant="20" id="ycD-RI-MHS"/>
+                                            <constraint firstAttribute="trailing" secondItem="iAO-mf-H20" secondAttribute="trailing" constant="20" id="yA9-Hk-Vcj"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -224,7 +238,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B2d-OE-Ckk"/>
-                        <color key="backgroundColor" name="Background"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CGz-7f-PRI" firstAttribute="width" secondItem="R01-VY-QfK" secondAttribute="width" id="2nO-NR-fTG"/>
                             <constraint firstItem="z8L-Vu-QZS" firstAttribute="trailing" secondItem="B2d-OE-Ckk" secondAttribute="trailing" id="OFc-u9-I1L"/>
@@ -247,14 +261,11 @@
     </scenes>
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
-        <namedColor name="Accent">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Background">
-            <color red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
+        <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

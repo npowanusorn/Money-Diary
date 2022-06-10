@@ -27,9 +27,9 @@
 		5024EE5B284DB344000B295A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5024EE5E284DB344000B295A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5024EE60284DB344000B295A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletsCell.swift; path = "../../../../../../Macintosh HD/Users/nuchapowanusorn/Desktop/Money Diary/Money Diary/WalletsCell.swift"; sourceTree = "<group>"; };
-		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WalletsCell.xib; path = "../../../../../../Macintosh HD/Users/nuchapowanusorn/Desktop/Money Diary/Money Diary/WalletsCell.xib"; sourceTree = "<group>"; };
-		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoundedView.swift; path = "../../../../../../Macintosh HD/Users/nuchapowanusorn/Desktop/Money Diary/Money Diary/RoundedView.swift"; sourceTree = "<group>"; };
+		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
+		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
+		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -54,8 +54,14 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func configureWalletsTableView(for indexPath: IndexPath) -> UITableViewCell {
         guard let cell = walletsTableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.walletCellIdentifier) as? WalletsCell else { return UITableViewCell() }
-        cell.walletName = "test wallet \(indexPath.row)"
-        cell.walletBalance = "$\(indexPath.row)"
+        if indexPath.row == 0 {
+            cell.walletName = "My Wallets"
+            cell.makeNameLabelBold()
+            cell.isBalanceHidden = true
+        } else {
+            cell.walletName = "test wallet \(indexPath.row)"
+            cell.walletBalance = "$\(indexPath.row)"
+        }
         return cell
     }
     

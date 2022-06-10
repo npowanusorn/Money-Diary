@@ -22,6 +22,11 @@ class WalletsCell: UITableViewCell {
         set { walletBalanceLabel.text = newValue }
     }
     
+    var isBalanceHidden: Bool {
+        get { walletBalanceLabel.isHidden }
+        set { walletBalanceLabel.isHidden = newValue }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
@@ -32,4 +37,7 @@ class WalletsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func makeNameLabelBold() {
+        walletNameLabel.font = UIFont(name: "Avenir Next Bold", size: 17)
+    }
 }

@@ -9,7 +9,9 @@ import UIKit
 
 class RoundedView: UIView {
     
-    let cornerRadius = 12.0
+    var cornerRadius: CGFloat = 12 {
+        didSet { self.layer.cornerRadius = cornerRadius }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,5 @@ class RoundedView: UIView {
     
     private func setupView() {
         layer.cornerRadius = cornerRadius
-        backgroundColor = UIColor(named: "Accent")
     }
 }

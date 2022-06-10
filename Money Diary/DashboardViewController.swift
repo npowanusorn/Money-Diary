@@ -35,8 +35,11 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        // TODO: handle add
-        print("add tapped")
+        let addTransactionVC = AddTransactionVC()
+        addTransactionVC.modalPresentationStyle = .overCurrentContext
+//        let navigation = UINavigationController(rootViewController: addTransactionVC)
+//        navigation.modalPresentationStyle = .overCurrentContext
+        present(addTransactionVC, animated: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

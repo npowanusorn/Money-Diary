@@ -6,6 +6,6 @@ target 'Money Diary' do
   use_frameworks!
 
   # Pods for Money Diary
-  pod "CalendarView"
+  pod 'SPIndicator'
 
 end

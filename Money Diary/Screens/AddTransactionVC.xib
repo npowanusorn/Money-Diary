@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,8 +16,8 @@
                 <outlet property="contentViewBottomConstraint" destination="BVl-7R-nTD" id="BzU-gH-glk"/>
                 <outlet property="contentViewHeightConstraint" destination="tsM-Or-pav" id="fcT-vQ-jOk"/>
                 <outlet property="dateLabel" destination="YjY-gb-8cU" id="c0r-aI-CMF"/>
-                <outlet property="datePicker" destination="UM6-e5-cVi" id="d4A-ai-elL"/>
-                <outlet property="datePickerView" destination="jbp-nE-8ka" id="mC8-He-taa"/>
+                <outlet property="datePicker" destination="mlF-BG-gzc" id="jxH-aJ-2pH"/>
+                <outlet property="datePickerView" destination="ohh-a0-Md1" id="xLJ-Cp-1zM"/>
                 <outlet property="dateView" destination="4O8-FA-S5K" id="I5z-9I-Jhz"/>
                 <outlet property="dimView" destination="12M-jn-sTD" id="FVK-Ho-5qA"/>
                 <outlet property="noteTextView" destination="I75-tJ-dv9" id="GWD-qy-9BS"/>
@@ -115,6 +115,22 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-a0-Md1">
+                            <rect key="frame" x="78" y="308" width="234" height="234"/>
+                            <subviews>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="mlF-BG-gzc">
+                                    <rect key="frame" x="0.0" y="0.0" width="234" height="234"/>
+                                </datePicker>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ohh-a0-Md1" secondAttribute="height" multiplier="1:1" id="NjX-tn-phe"/>
+                                <constraint firstItem="mlF-BG-gzc" firstAttribute="leading" secondItem="ohh-a0-Md1" secondAttribute="leading" id="PFM-mn-AYU"/>
+                                <constraint firstItem="mlF-BG-gzc" firstAttribute="top" secondItem="ohh-a0-Md1" secondAttribute="top" id="VAS-KY-DtB"/>
+                                <constraint firstAttribute="trailing" secondItem="mlF-BG-gzc" secondAttribute="trailing" id="pkD-DD-rYq"/>
+                                <constraint firstAttribute="bottom" secondItem="mlF-BG-gzc" secondAttribute="bottom" id="uGn-Zu-90B"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxr-lQ-irg">
                             <rect key="frame" x="350" y="20" width="20" height="20"/>
                             <constraints>
@@ -126,45 +142,16 @@
                                 <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="9p3-t3-fgq"/>
                             </connections>
                         </button>
-                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-KW-uGF">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="850"/>
-                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jbp-nE-8ka">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="850"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="UM6-e5-cVi">
-                                        <rect key="frame" x="78" y="308" width="234" height="234"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="UM6-e5-cVi" secondAttribute="height" multiplier="1:1" id="q2Y-oX-Cm0"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="datePickerChanged:" destination="-1" eventType="valueChanged" id="tfJ-Fg-JsO"/>
-                                        </connections>
-                                    </datePicker>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="UM6-e5-cVi" firstAttribute="centerX" secondItem="jbp-nE-8ka" secondAttribute="centerX" id="F2d-yk-8or"/>
-                                    <constraint firstItem="UM6-e5-cVi" firstAttribute="centerY" secondItem="jbp-nE-8ka" secondAttribute="centerY" id="tcB-DW-noS"/>
-                                </constraints>
-                            </view>
-                            <blurEffect style="regular"/>
-                        </visualEffectView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="qeH-KW-uGF" secondAttribute="trailing" id="0ZF-Sg-3SX"/>
                         <constraint firstItem="I75-tJ-dv9" firstAttribute="trailing" secondItem="7g8-ri-XiO" secondAttribute="trailing" id="0hR-lk-HFj"/>
                         <constraint firstItem="I75-tJ-dv9" firstAttribute="leading" secondItem="7g8-ri-XiO" secondAttribute="leading" id="4xD-WC-1Fp"/>
                         <constraint firstAttribute="trailing" secondItem="Rxr-lQ-irg" secondAttribute="trailing" constant="20" id="5v5-sx-13D"/>
-                        <constraint firstItem="qeH-KW-uGF" firstAttribute="leading" secondItem="Ct3-82-Gkk" secondAttribute="leading" id="9Kc-wh-INs"/>
                         <constraint firstItem="4O8-FA-S5K" firstAttribute="leading" secondItem="I75-tJ-dv9" secondAttribute="leading" id="9P7-Vv-smN"/>
-                        <constraint firstItem="qeH-KW-uGF" firstAttribute="centerX" secondItem="Ct3-82-Gkk" secondAttribute="centerX" id="Bm0-kT-ViN"/>
                         <constraint firstAttribute="trailing" secondItem="4Uu-3r-NLF" secondAttribute="trailing" constant="100" id="Cpo-PM-oei"/>
                         <constraint firstItem="Ddh-Yf-vpn" firstAttribute="leading" secondItem="Edb-KC-Scw" secondAttribute="leading" id="Dic-3v-Rg1"/>
-                        <constraint firstItem="qeH-KW-uGF" firstAttribute="centerY" secondItem="Ct3-82-Gkk" secondAttribute="centerY" id="FHz-9J-ZzI"/>
                         <constraint firstItem="Edb-KC-Scw" firstAttribute="top" secondItem="aNC-Wd-HDn" secondAttribute="bottom" constant="10" id="Lqa-0s-RWY"/>
-                        <constraint firstAttribute="bottom" secondItem="qeH-KW-uGF" secondAttribute="bottom" id="Sae-bF-ahI"/>
                         <constraint firstItem="4O8-FA-S5K" firstAttribute="top" secondItem="74F-mf-W2f" secondAttribute="bottom" constant="5" id="UGT-S5-CCL"/>
                         <constraint firstItem="aNC-Wd-HDn" firstAttribute="leading" secondItem="Ct3-82-Gkk" secondAttribute="leading" constant="100" id="WGr-Xo-TSJ"/>
                         <constraint firstItem="7g8-ri-XiO" firstAttribute="leading" secondItem="Ct3-82-Gkk" secondAttribute="leading" constant="20" id="X9O-5A-qWb"/>
@@ -172,10 +159,11 @@
                         <constraint firstItem="74F-mf-W2f" firstAttribute="leading" secondItem="Ddh-Yf-vpn" secondAttribute="leading" id="Z6K-7v-Nva"/>
                         <constraint firstItem="4O8-FA-S5K" firstAttribute="trailing" secondItem="I75-tJ-dv9" secondAttribute="trailing" id="aNS-uI-b2W"/>
                         <constraint firstItem="Ddh-Yf-vpn" firstAttribute="top" secondItem="7g8-ri-XiO" secondAttribute="bottom" constant="20" id="bna-br-uXO"/>
+                        <constraint firstItem="ohh-a0-Md1" firstAttribute="centerY" secondItem="Ct3-82-Gkk" secondAttribute="centerY" id="ejh-CE-sQb"/>
+                        <constraint firstItem="ohh-a0-Md1" firstAttribute="centerX" secondItem="Ct3-82-Gkk" secondAttribute="centerX" id="jr6-zb-ej7"/>
                         <constraint firstItem="I75-tJ-dv9" firstAttribute="top" secondItem="Ddh-Yf-vpn" secondAttribute="bottom" constant="5" id="lWS-6c-pHe"/>
                         <constraint firstItem="Edb-KC-Scw" firstAttribute="leading" secondItem="Ct3-82-Gkk" secondAttribute="leading" constant="25" id="nw3-yX-2it"/>
                         <constraint firstAttribute="bottom" secondItem="4Uu-3r-NLF" secondAttribute="bottom" constant="40" id="oLv-jq-MhC"/>
-                        <constraint firstItem="qeH-KW-uGF" firstAttribute="top" secondItem="Ct3-82-Gkk" secondAttribute="top" id="sBt-j1-ZCa"/>
                         <constraint firstItem="aNC-Wd-HDn" firstAttribute="centerX" secondItem="Ct3-82-Gkk" secondAttribute="centerX" id="st8-Zm-aHz"/>
                         <constraint firstItem="7g8-ri-XiO" firstAttribute="top" secondItem="Edb-KC-Scw" secondAttribute="bottom" constant="5" id="tej-vZ-LOE"/>
                         <constraint firstAttribute="height" constant="850" id="tsM-Or-pav"/>
@@ -193,7 +181,7 @@
                 <constraint firstAttribute="bottom" secondItem="Ct3-82-Gkk" secondAttribute="bottom" id="BVl-7R-nTD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ct3-82-Gkk" secondAttribute="trailing" id="HqM-5X-zIH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="12M-jn-sTD" secondAttribute="trailing" id="LmN-Wh-gVK"/>
-                <constraint firstItem="UM6-e5-cVi" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="bvq-VC-DRr"/>
+                <constraint firstItem="ohh-a0-Md1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="R4r-nO-msR"/>
                 <constraint firstItem="Ct3-82-Gkk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hPx-Qb-ncz"/>
                 <constraint firstAttribute="bottom" secondItem="12M-jn-sTD" secondAttribute="bottom" id="hUE-WS-lhR"/>
                 <constraint firstItem="12M-jn-sTD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lXa-lM-f4U"/>
@@ -202,12 +190,12 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow.forward" catalog="system" width="128" height="95"/>
+        <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

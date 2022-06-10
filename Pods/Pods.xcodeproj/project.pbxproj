@@ -1,0 +1,656 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0FFBD3C89974BEF014D8BE770AF0B7AA /* SPIndicator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 98909DD7A4276A2E90572BCBE22EA19D /* SPIndicator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EC0AD2B1FF6869C03F5C8A6F11CC8DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		3034B20E696E78FD1E76391EBA213AA1 /* SPAlertIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E7E2D28BF3012C872189BB2445F7F /* SPAlertIconErrorView.swift */; };
+		37F9267E3A9442148BA6EF2B535A420C /* SPIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C58BB0B66AB388CE0B9D359895AA814 /* SPIndicatorView.swift */; };
+		53229803820876363D4F24F86E1F242A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5EDEBAA7A68EAD70F36244676D3428CC /* SPIndicatorIconPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD582F84D4A8C843196BA05562728 /* SPIndicatorIconPreset.swift */; };
+		6F07A8E82C2FDE592486A4638A7D4C1B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062CB18F2BC3F2157D0CF200FA035C03 /* UILabelExtension.swift */; };
+		807A51D5C854FD06C370F3C83C437708 /* SPIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5C975F40B35F627666708D7CBA5493 /* SPIndicator-dummy.m */; };
+		856B58EB6752F94302A24DBE8C0879EF /* SPIndicatorPresentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4740A9778ADD66843A85D6C21A6DE82 /* SPIndicatorPresentSide.swift */; };
+		9175615672207D2E5D2E8255584FD733 /* SPIndicatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F641B15E4D0B1EB9D9450C535EB04C /* SPIndicatorLayout.swift */; };
+		9207A437F7CEFB27A97D4A6E7732C855 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9517413FD1E680747C0EEFE5A90D02A /* UIFontExtension.swift */; };
+		9E7B6980FF13AD16D567006A179BC89F /* SPIndicatorHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64475D12EE8DF83786C8166C20A2A89F /* SPIndicatorHaptic.swift */; };
+		A75DB7E26F3889C78AF564BB86AB2847 /* SPIndicatorIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73561757E26769E55C0E7C0BD69B3E84 /* SPIndicatorIconAnimatable.swift */; };
+		A8882A4A0D6093C37905C4DFE57A327B /* SPIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DADC4BD2E246F064F7FF23E4AFCCE5 /* SPIndicator.swift */; };
+		AAD50DB9C8082B8EF422ECEDECAB1724 /* SPIndicatorIconDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0645E7DDBE59D270FD7334718F143A30 /* SPIndicatorIconDoneView.swift */; };
+		CDA1FA40C9C58BC7432EA4A28B4B02B6 /* Pods-Money Diary-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */; };
+		D45E52ECF4BB7E24BA80E9A170E1F07F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D46139FCADF36CA897675DA189D2DB /* UIColorExtension.swift */; };
+		D708A6F5FC29D9E08F2D369082011A6B /* Pods-Money Diary-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F833872D80D115F5869D30024650886A /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8D067AC4664DB9C0C1F4FCC36C40F /* SwiftUIExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7DE8D0400C86E0622A4861F145C13DAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 765CC6276452C8332186E7325B6370CD;
+			remoteInfo = SPIndicator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		062CB18F2BC3F2157D0CF200FA035C03 /* UILabelExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = Sources/SPIndicator/Extensions/UILabelExtension.swift; sourceTree = "<group>"; };
+		0645E7DDBE59D270FD7334718F143A30 /* SPIndicatorIconDoneView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconDoneView.swift; path = Sources/SPIndicator/Icons/SPIndicatorIconDoneView.swift; sourceTree = "<group>"; };
+		0C5C975F40B35F627666708D7CBA5493 /* SPIndicator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SPIndicator-dummy.m"; sourceTree = "<group>"; };
+		140E7E2D28BF3012C872189BB2445F7F /* SPAlertIconErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPAlertIconErrorView.swift; path = Sources/SPIndicator/Icons/SPAlertIconErrorView.swift; sourceTree = "<group>"; };
+		1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SPIndicator; path = SPIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C58BB0B66AB388CE0B9D359895AA814 /* SPIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorView.swift; path = Sources/SPIndicator/SPIndicatorView.swift; sourceTree = "<group>"; };
+		2DC97C6A3FD03422B9DE89C565CAFF38 /* Pods-Money Diary-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Money Diary-acknowledgements.plist"; sourceTree = "<group>"; };
+		37C46866D8536287410D8674DD58D51C /* Pods-Money Diary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Money Diary.modulemap"; sourceTree = "<group>"; };
+		5AADD582F84D4A8C843196BA05562728 /* SPIndicatorIconPreset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconPreset.swift; path = Sources/SPIndicator/SPIndicatorIconPreset.swift; sourceTree = "<group>"; };
+		64475D12EE8DF83786C8166C20A2A89F /* SPIndicatorHaptic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorHaptic.swift; path = Sources/SPIndicator/Services/SPIndicatorHaptic.swift; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		73561757E26769E55C0E7C0BD69B3E84 /* SPIndicatorIconAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconAnimatable.swift; path = Sources/SPIndicator/Protocols/SPIndicatorIconAnimatable.swift; sourceTree = "<group>"; };
+		77E27BFDC5A5A48780DC938FF39D2156 /* Pods-Money Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Money Diary.debug.xcconfig"; sourceTree = "<group>"; };
+		8F528381FDD1A6746BA79CCB9DEEA1E0 /* Pods-Money Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Money Diary.release.xcconfig"; sourceTree = "<group>"; };
+		97D46139FCADF36CA897675DA189D2DB /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/SPIndicator/Extensions/UIColorExtension.swift; sourceTree = "<group>"; };
+		98909DD7A4276A2E90572BCBE22EA19D /* SPIndicator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AA502ACF766A3E7D37B4E36C33433CB6 /* Pods-Money Diary-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Money Diary-Info.plist"; sourceTree = "<group>"; };
+		B0DADC4BD2E246F064F7FF23E4AFCCE5 /* SPIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicator.swift; path = Sources/SPIndicator/SPIndicator.swift; sourceTree = "<group>"; };
+		B16CA76F75F713618EC16A6ACDAB0FE1 /* Pods-Money Diary-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Money Diary-frameworks.sh"; sourceTree = "<group>"; };
+		B40B217B8108902DAE1DDE7FBA04B837 /* SPIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.release.xcconfig; sourceTree = "<group>"; };
+		B4740A9778ADD66843A85D6C21A6DE82 /* SPIndicatorPresentSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorPresentSide.swift; path = Sources/SPIndicator/Models/SPIndicatorPresentSide.swift; sourceTree = "<group>"; };
+		C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Money Diary"; path = Pods_Money_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Money Diary-umbrella.h"; sourceTree = "<group>"; };
+		D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Money Diary-dummy.m"; sourceTree = "<group>"; };
+		D9F641B15E4D0B1EB9D9450C535EB04C /* SPIndicatorLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorLayout.swift; path = Sources/SPIndicator/Models/SPIndicatorLayout.swift; sourceTree = "<group>"; };
+		E18F49EC11197CD23B60662250C2B141 /* SPIndicator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.debug.xcconfig; sourceTree = "<group>"; };
+		E6D54451D72D1E1F48BA17AD3B50CBB9 /* SPIndicator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SPIndicator-Info.plist"; sourceTree = "<group>"; };
+		E9517413FD1E680747C0EEFE5A90D02A /* UIFontExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIFontExtension.swift; path = Sources/SPIndicator/Extensions/UIFontExtension.swift; sourceTree = "<group>"; };
+		EF2FC4647217DFDAFEA4BFEBED1A920A /* SPIndicator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-prefix.pch"; sourceTree = "<group>"; };
+		F007B677889D56985D683E915AAF59F3 /* Pods-Money Diary-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Money Diary-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F2C8CCA68CADEB22894DA0AE60DFE50A /* SPIndicator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SPIndicator.modulemap; sourceTree = "<group>"; };
+		F9C8D067AC4664DB9C0C1F4FCC36C40F /* SwiftUIExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftUIExtension.swift; path = Sources/SPIndicator/Extensions/SwiftUIExtension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47FC21F7E3F3949F92C3CE8C8B3226F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EC0AD2B1FF6869C03F5C8A6F11CC8DD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9F5F5573E156F50DB96E347C80482A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53229803820876363D4F24F86E1F242A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0AB776EF047F0F5BB256A1AC7FF60A4F /* SPIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				140E7E2D28BF3012C872189BB2445F7F /* SPAlertIconErrorView.swift */,
+				B0DADC4BD2E246F064F7FF23E4AFCCE5 /* SPIndicator.swift */,
+				64475D12EE8DF83786C8166C20A2A89F /* SPIndicatorHaptic.swift */,
+				73561757E26769E55C0E7C0BD69B3E84 /* SPIndicatorIconAnimatable.swift */,
+				0645E7DDBE59D270FD7334718F143A30 /* SPIndicatorIconDoneView.swift */,
+				5AADD582F84D4A8C843196BA05562728 /* SPIndicatorIconPreset.swift */,
+				D9F641B15E4D0B1EB9D9450C535EB04C /* SPIndicatorLayout.swift */,
+				B4740A9778ADD66843A85D6C21A6DE82 /* SPIndicatorPresentSide.swift */,
+				2C58BB0B66AB388CE0B9D359895AA814 /* SPIndicatorView.swift */,
+				F9C8D067AC4664DB9C0C1F4FCC36C40F /* SwiftUIExtension.swift */,
+				97D46139FCADF36CA897675DA189D2DB /* UIColorExtension.swift */,
+				E9517413FD1E680747C0EEFE5A90D02A /* UIFontExtension.swift */,
+				062CB18F2BC3F2157D0CF200FA035C03 /* UILabelExtension.swift */,
+				5D0EAF93FCAA7358899B7B730D3DF4EE /* Support Files */,
+			);
+			name = SPIndicator;
+			path = SPIndicator;
+			sourceTree = "<group>";
+		};
+		225843D4C81E9F8113F6EDCBE39D7779 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */,
+				1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		429D6C4348885CA38AAF93148E3CBF17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0AB776EF047F0F5BB256A1AC7FF60A4F /* SPIndicator */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B0BE3B9CF3E471E77EAA9F31EB0F94B /* Pods-Money Diary */ = {
+			isa = PBXGroup;
+			children = (
+				37C46866D8536287410D8674DD58D51C /* Pods-Money Diary.modulemap */,
+				F007B677889D56985D683E915AAF59F3 /* Pods-Money Diary-acknowledgements.markdown */,
+				2DC97C6A3FD03422B9DE89C565CAFF38 /* Pods-Money Diary-acknowledgements.plist */,
+				D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */,
+				B16CA76F75F713618EC16A6ACDAB0FE1 /* Pods-Money Diary-frameworks.sh */,
+				AA502ACF766A3E7D37B4E36C33433CB6 /* Pods-Money Diary-Info.plist */,
+				CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */,
+				77E27BFDC5A5A48780DC938FF39D2156 /* Pods-Money Diary.debug.xcconfig */,
+				8F528381FDD1A6746BA79CCB9DEEA1E0 /* Pods-Money Diary.release.xcconfig */,
+			);
+			name = "Pods-Money Diary";
+			path = "Target Support Files/Pods-Money Diary";
+			sourceTree = "<group>";
+		};
+		51332BD1F5E3BA53FEC250A701BD30FF /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4B0BE3B9CF3E471E77EAA9F31EB0F94B /* Pods-Money Diary */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5D0EAF93FCAA7358899B7B730D3DF4EE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2C8CCA68CADEB22894DA0AE60DFE50A /* SPIndicator.modulemap */,
+				0C5C975F40B35F627666708D7CBA5493 /* SPIndicator-dummy.m */,
+				E6D54451D72D1E1F48BA17AD3B50CBB9 /* SPIndicator-Info.plist */,
+				EF2FC4647217DFDAFEA4BFEBED1A920A /* SPIndicator-prefix.pch */,
+				98909DD7A4276A2E90572BCBE22EA19D /* SPIndicator-umbrella.h */,
+				E18F49EC11197CD23B60662250C2B141 /* SPIndicator.debug.xcconfig */,
+				B40B217B8108902DAE1DDE7FBA04B837 /* SPIndicator.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SPIndicator";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				429D6C4348885CA38AAF93148E3CBF17 /* Pods */,
+				225843D4C81E9F8113F6EDCBE39D7779 /* Products */,
+				51332BD1F5E3BA53FEC250A701BD30FF /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		652DC128A0047EF069526B8D461A039B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FFBD3C89974BEF014D8BE770AF0B7AA /* SPIndicator-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF856C9F732346AEF639632F669678DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D708A6F5FC29D9E08F2D369082011A6B /* Pods-Money Diary-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		765CC6276452C8332186E7325B6370CD /* SPIndicator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F019417284406165C36CB2DAEB54093 /* Build configuration list for PBXNativeTarget "SPIndicator" */;
+			buildPhases = (
+				652DC128A0047EF069526B8D461A039B /* Headers */,
+				7F475696201DF8FAAC8282AB0E92BA48 /* Sources */,
+				47FC21F7E3F3949F92C3CE8C8B3226F5 /* Frameworks */,
+				03D52995A060A9A8DB9FF3B57D0C76C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SPIndicator;
+			productName = SPIndicator;
+			productReference = 1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */;
+			productType = "com.apple.product-type.framework";
+		};
+		D482B98384C8808BA434602B348E93C1 /* Pods-Money Diary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A3859779B5A2AAA06B031870CAD70AC /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */;
+			buildPhases = (
+				FF856C9F732346AEF639632F669678DE /* Headers */,
+				0D63E14D7A244561E636594499068EF0 /* Sources */,
+				F9F5F5573E156F50DB96E347C80482A7 /* Frameworks */,
+				268F0639E2DBAB76FC239A2D298830E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3A0AE49EFFE42155889036AFDCCFA1E /* PBXTargetDependency */,
+			);
+			name = "Pods-Money Diary";
+			productName = Pods_Money_Diary;
+			productReference = C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 225843D4C81E9F8113F6EDCBE39D7779 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D482B98384C8808BA434602B348E93C1 /* Pods-Money Diary */,
+				765CC6276452C8332186E7325B6370CD /* SPIndicator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03D52995A060A9A8DB9FF3B57D0C76C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268F0639E2DBAB76FC239A2D298830E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D63E14D7A244561E636594499068EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA1FA40C9C58BC7432EA4A28B4B02B6 /* Pods-Money Diary-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F475696201DF8FAAC8282AB0E92BA48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3034B20E696E78FD1E76391EBA213AA1 /* SPAlertIconErrorView.swift in Sources */,
+				A8882A4A0D6093C37905C4DFE57A327B /* SPIndicator.swift in Sources */,
+				807A51D5C854FD06C370F3C83C437708 /* SPIndicator-dummy.m in Sources */,
+				9E7B6980FF13AD16D567006A179BC89F /* SPIndicatorHaptic.swift in Sources */,
+				A75DB7E26F3889C78AF564BB86AB2847 /* SPIndicatorIconAnimatable.swift in Sources */,
+				AAD50DB9C8082B8EF422ECEDECAB1724 /* SPIndicatorIconDoneView.swift in Sources */,
+				5EDEBAA7A68EAD70F36244676D3428CC /* SPIndicatorIconPreset.swift in Sources */,
+				9175615672207D2E5D2E8255584FD733 /* SPIndicatorLayout.swift in Sources */,
+				856B58EB6752F94302A24DBE8C0879EF /* SPIndicatorPresentSide.swift in Sources */,
+				37F9267E3A9442148BA6EF2B535A420C /* SPIndicatorView.swift in Sources */,
+				F833872D80D115F5869D30024650886A /* SwiftUIExtension.swift in Sources */,
+				D45E52ECF4BB7E24BA80E9A170E1F07F /* UIColorExtension.swift in Sources */,
+				9207A437F7CEFB27A97D4A6E7732C855 /* UIFontExtension.swift in Sources */,
+				6F07A8E82C2FDE592486A4638A7D4C1B /* UILabelExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E3A0AE49EFFE42155889036AFDCCFA1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SPIndicator;
+			target = 765CC6276452C8332186E7325B6370CD /* SPIndicator */;
+			targetProxy = 7DE8D0400C86E0622A4861F145C13DAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		09909ECBA13E8F70A928465E7F7A9A92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		142C5E1003EA4F79A0B7025099B6EA4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F528381FDD1A6746BA79CCB9DEEA1E0 /* Pods-Money Diary.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		29B076DBC8687227A16D861D56241230 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E18F49EC11197CD23B60662250C2B141 /* SPIndicator.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SPIndicator/SPIndicator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SPIndicator/SPIndicator-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SPIndicator/SPIndicator.modulemap";
+				PRODUCT_MODULE_NAME = SPIndicator;
+				PRODUCT_NAME = SPIndicator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2DE0D8898245310716431F92FA4989FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9A472E8654E76B8CD567F8810509F64C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77E27BFDC5A5A48780DC938FF39D2156 /* Pods-Money Diary.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BA91620C7E737DF83907048359F517ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40B217B8108902DAE1DDE7FBA04B837 /* SPIndicator.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SPIndicator/SPIndicator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SPIndicator/SPIndicator-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SPIndicator/SPIndicator.modulemap";
+				PRODUCT_MODULE_NAME = SPIndicator;
+				PRODUCT_NAME = SPIndicator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F019417284406165C36CB2DAEB54093 /* Build configuration list for PBXNativeTarget "SPIndicator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29B076DBC8687227A16D861D56241230 /* Debug */,
+				BA91620C7E737DF83907048359F517ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09909ECBA13E8F70A928465E7F7A9A92 /* Debug */,
+				2DE0D8898245310716431F92FA4989FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A3859779B5A2AAA06B031870CAD70AC /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A472E8654E76B8CD567F8810509F64C /* Debug */,
+				142C5E1003EA4F79A0B7025099B6EA4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

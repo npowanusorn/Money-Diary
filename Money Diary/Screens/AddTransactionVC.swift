@@ -8,23 +8,28 @@
 import UIKit
 
 class AddTransactionVC: UIViewController {
-
+    
     @IBOutlet private var amountTextField: UITextField!
     @IBOutlet private var noteTextView: UITextView!
     @IBOutlet private var contentView: RoundedView!
     @IBOutlet private var dimView: UIView!
     @IBOutlet private var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var contentViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private var dateLabel: UILabel!
+    @IBOutlet private var dateView: RoundedView!
+    @IBOutlet private var datePicker: UIDatePicker!
+    @IBOutlet private var datePickerView: UIView!
     
     private var amountIsZero = true
     private var currentHeight = Constants.defaultViewHeight
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         setupPanGesture()
-
+        setupDateTapGesture()
+        
         dimView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -45,13 +50,18 @@ class AddTransactionVC: UIViewController {
         noteTextView.text = ""
         noteTextView.layer.cornerRadius = 8.0
         
-        title = "Add Transaction"
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? .systemFont(ofSize: 17)]
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(dismissVC))
         amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        dateLabel.text = getDateString()
+        dateView.cornerRadius = 8
+        datePickerView.isHidden = true
     }
-
+    
+    @IBAction func datePickerChanged(_ sender: Any) {
+        dateLabel.text = getDateString(from: datePicker.date)
+        datePickerView.fadeOut()
+    }
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         print(amountTextField.text ?? "nil")
         print(noteTextView.text ?? "nil")
@@ -80,7 +90,7 @@ class AddTransactionVC: UIViewController {
             textField.text?.removeFirst()
         }
     }
-        
+    
     @objc
     func dismissVC() {
         animateDismiss()
@@ -166,6 +176,35 @@ class AddTransactionVC: UIViewController {
             break
         }
     }
+    
+    func getDateString(from date: Date? = nil) -> String {
+        let currentDate = date ?? Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE MMMM dd yyyy"
+        return formatter.string(from: currentDate)
+    }
+    
+    func setupDateTapGesture() {
+        dateView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDateTapAction))
+        dateView.addGestureRecognizer(tap)
+    }
+    
+    @objc
+    func handleDateTapAction(_ gesture: UITapGestureRecognizer) {
+        datePickerView.fadeIn()
+    }
+    
+    func setupDatePickerViewTapGesture() {
+        datePickerView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDatePickerViewTap))
+        datePickerView.addGestureRecognizer(tap)
+    }
+    
+    @objc
+    func handleDatePickerViewTap(_ gesture: UITapGestureRecognizer) {
+        datePickerView.fadeOut()
+    }
 }
 
 extension AddTransactionVC: UITextViewDelegate {
@@ -189,5 +228,10 @@ extension AddTransactionVC {
         static let maxDimAlpha = 0.6
         static let dismissHeight: CGFloat = 300
         static let maxHeight: CGFloat = UIScreen.main.bounds.height - 64
+        static let calendarViewSize: CGFloat = 200
+        static let calendarViewX: CGFloat = (screenWidth - calendarViewSize) / 2
+        static let calendarViewY: CGFloat = (screenHeight - calendarViewSize) / 2
+        static let screenWidth: CGFloat = UIScreen.main.bounds.width
+        static let screenHeight: CGFloat = UIScreen.main.bounds.height
     }
 }

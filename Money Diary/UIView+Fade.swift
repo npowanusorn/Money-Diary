@@ -8,20 +8,22 @@
 import UIKit
 
 extension UIView {
-    func fadeIn(withDuration duration: TimeInterval?, alpha: CGFloat? = 1, completion: (() -> Void)? = nil) {
+    func fadeIn(withDuration duration: TimeInterval = 0.4, alpha: CGFloat = 1, completion: (() -> Void)? = nil) {
         self.alpha = 0
-        UIView.animate(withDuration: duration ?? 0.4) {
-            self.alpha = alpha ?? 1
+        self.isHidden = false
+        UIView.animate(withDuration: duration) {
+            self.alpha = alpha
         } completion: { _ in
             completion?()
         }
     }
     
-    func fadeOut(withDuration duration: TimeInterval?, alpha: CGFloat? = 0, completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: duration ?? 0.4) {
-            self.alpha = alpha ?? 0
+    func fadeOut(withDuration duration: TimeInterval = 0.4, alpha: CGFloat = 0, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = alpha
         } completion: { _ in
             completion?()
         }
+        if alpha == 0 { self.isHidden = true }
     }
 }

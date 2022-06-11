@@ -22,6 +22,10 @@
 		505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */; };
 		505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */; };
 		505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11E284F1473007AFBE0 /* RoundedView.swift */; };
+		50DAC2DC28545B7100EB7962 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAC2DA28545B7100EB7962 /* TextFieldCell.swift */; };
+		50DAC2DD28545B7100EB7962 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50DAC2DB28545B7100EB7962 /* TextFieldCell.xib */; };
+		50DAC2E028545CA400EB7962 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAC2DE28545CA400EB7962 /* TextViewCell.swift */; };
+		50DAC2E128545CA400EB7962 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50DAC2DF28545CA400EB7962 /* TextViewCell.xib */; };
 		5CA4355C7B574D9881B08FB7 /* Pods_Money_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D93D4F7A47BF3739049B14A /* Pods_Money_Diary.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,10 @@
 		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
 		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		50DAC2DA28545B7100EB7962 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		50DAC2DB28545B7100EB7962 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		50DAC2DE28545CA400EB7962 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		50DAC2DF28545CA400EB7962 /* TextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		B548C300A79398AF82ABEA67 /* Pods-Money Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Diary.debug.xcconfig"; path = "Target Support Files/Pods-Money Diary/Pods-Money Diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +108,10 @@
 				505BA11E284F1473007AFBE0 /* RoundedView.swift */,
 				5038E6612852D64E00756D60 /* WalletsCell */,
 				5038E6682852D90A00756D60 /* RoundedButton.swift */,
+				50DAC2DA28545B7100EB7962 /* TextFieldCell.swift */,
+				50DAC2DB28545B7100EB7962 /* TextFieldCell.xib */,
+				50DAC2DE28545CA400EB7962 /* TextViewCell.swift */,
+				50DAC2DF28545CA400EB7962 /* TextViewCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -211,11 +223,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5038E69328530FDA00756D60 /* AddTransactionsVC.xib in Resources */,
+				50DAC2E128545CA400EB7962 /* TextViewCell.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
 				5024EE5C284DB344000B295A /* Assets.xcassets in Resources */,
 				5024EE5A284DB342000B295A /* Main.storyboard in Resources */,
+				50DAC2DD28545B7100EB7962 /* TextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DAC2E028545CA400EB7962 /* TextViewCell.swift in Sources */,
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,
 				505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */,
 				5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */,
@@ -277,6 +292,7 @@
 				5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */,
 				505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */,
 				5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */,
+				50DAC2DC28545B7100EB7962 /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +448,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +478,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

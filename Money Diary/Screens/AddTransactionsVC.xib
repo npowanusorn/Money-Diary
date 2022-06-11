@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,8 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddTransactionsVC" customModule="Money_Diary" customModuleProvider="target">
             <connections>
-                <outlet property="amountTextField" destination="eU1-E7-Q7N" id="Yok-6d-8NL"/>
-                <outlet property="noteTextView" destination="pLf-dl-SjB" id="nn4-Q3-7lB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,75 +18,24 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYA-g9-pok" userLabel="Amount Label">
-                    <rect key="frame" x="20" y="64" width="37" height="14"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eU1-E7-Q7N" userLabel="Amount Text Field">
-                    <rect key="frame" x="20" y="83" width="350" height="34"/>
-                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                </textField>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pLf-dl-SjB" userLabel="Note Text View">
-                    <rect key="frame" x="20" y="156" width="350" height="100"/>
-                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="TQ2-FP-fb4"/>
-                    </constraints>
-                    <color key="textColor" systemColor="labelColor"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpA-Pa-0gE" userLabel="Add Button" customClass="RoundedButton" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="100" y="748" width="190" height="42"/>
-                    <color key="backgroundColor" name="AccentColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="42" id="d8y-tG-mxU"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Add"/>
-                    <connections>
-                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="HMe-J9-jfP"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itG-q5-0du" userLabel="Note Label">
-                    <rect key="frame" x="20" y="137" width="23" height="14"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H5I-HG-FII">
+                    <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eU1-E7-Q7N" secondAttribute="trailing" constant="20" id="6VG-UB-2jv"/>
-                <constraint firstItem="cYA-g9-pok" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6YF-rV-V1J"/>
-                <constraint firstItem="pLf-dl-SjB" firstAttribute="top" secondItem="itG-q5-0du" secondAttribute="bottom" constant="5" id="9mC-E3-peS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lpA-Pa-0gE" secondAttribute="trailing" constant="100" id="IEf-GA-PEK"/>
-                <constraint firstItem="cYA-g9-pok" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="NMD-RI-IkX"/>
-                <constraint firstItem="eU1-E7-Q7N" firstAttribute="top" secondItem="cYA-g9-pok" secondAttribute="bottom" constant="5" id="NSb-cw-upP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lpA-Pa-0gE" secondAttribute="bottom" constant="20" id="R2T-tC-gO6"/>
-                <constraint firstItem="lpA-Pa-0gE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="dmy-5A-mmW"/>
-                <constraint firstItem="itG-q5-0du" firstAttribute="top" secondItem="eU1-E7-Q7N" secondAttribute="bottom" constant="20" id="iW4-d5-OaV"/>
-                <constraint firstItem="eU1-E7-Q7N" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="mTq-Lx-UYq"/>
-                <constraint firstItem="pLf-dl-SjB" firstAttribute="leading" secondItem="eU1-E7-Q7N" secondAttribute="leading" id="oGK-97-ETX"/>
-                <constraint firstItem="pLf-dl-SjB" firstAttribute="trailing" secondItem="eU1-E7-Q7N" secondAttribute="trailing" id="xnf-QI-5xB"/>
-                <constraint firstItem="itG-q5-0du" firstAttribute="leading" secondItem="cYA-g9-pok" secondAttribute="leading" id="yWc-sj-7tc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="H5I-HG-FII" secondAttribute="bottom" id="LxM-Hk-pSI"/>
+                <constraint firstItem="H5I-HG-FII" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ovn-ZP-nzX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H5I-HG-FII" secondAttribute="trailing" id="Qwy-34-1mj"/>
+                <constraint firstItem="H5I-HG-FII" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="wf1-DD-ayw"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="21"/>
+            <point key="canvasLocation" x="140" y="20.616113744075829"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
+        <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">

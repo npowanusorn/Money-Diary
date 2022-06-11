@@ -14,10 +14,18 @@ class AddTransactionsVC: UIViewController {
     @IBOutlet private var amountTextField: UITextField!
 
     private var amountIsZero = true
-
+    private var amountText: String {
+        amountTextField.text ?? ""
+    }
+    private var noteText: String {
+        noteTextView.text ?? ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.presentationController?.delegate = self
+        
         title = "Add Transaction"
         let rightNavBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightNavBarButtonItem
@@ -48,18 +56,33 @@ class AddTransactionsVC: UIViewController {
     @IBAction func addButtonTapped(_ sender: Any) {
         print(noteTextView.text ?? "nil")
         print(amountTextField.text ?? "nil")
-        let checkmarkImage = UIImage(systemName: "checkmark.circle.fill") ?? UIImage()
-//        SPIndicator.present(title: "Saved", message: nil, preset: .custom(checkmarkImage), haptic: .success, from: .top) {
-//            self.dismissView()
-//        }
-        let indicator = SPIndicatorView(title: "Saved", message: nil, preset: .done)
-        indicator.titleLabel?.font = UIFont(name: "Avenir Next Bold", size: 17)
         SPIndicator.present(title: "Saved", preset: .done, haptic: .success)
         dismissView()
     }
 
     @objc
     func dismissView() {
-        self.dismiss(animated: true)
+        if amountText != "0" || !noteText.isEmpty {
+            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+                self.dismiss(animated: true)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alertVC.addAction(primaryAction)
+            alertVC.addAction(cancelAction)
+            present(alertVC, animated: true)
+        } else {
+            self.dismiss(animated: true)
+        }
+    }
+}
+
+extension AddTransactionsVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        if amountText != "0" || !noteText.isEmpty {
+            return false
+        } else {
+            return true
+        }
     }
 }

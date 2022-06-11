@@ -48,6 +48,7 @@ class DashboardViewController: UIViewController {
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }
+        
         present(navigation, animated: true)
     }
     

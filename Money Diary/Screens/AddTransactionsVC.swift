@@ -10,16 +10,17 @@ import SPIndicator
 
 class AddTransactionsVC: UIViewController {
 
-    @IBOutlet private var noteTextView: UITextView!
-    @IBOutlet private var amountTextField: UITextField!
-
+    @IBOutlet var tableView: UITableView!
+    
     private var amountIsZero = true
     private var amountText: String {
-        amountTextField.text ?? ""
+        ""
     }
     private var noteText: String {
-        noteTextView.text ?? ""
+        ""
     }
+    
+    private var cellHeight: CGFloat = 100.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,13 @@ class AddTransactionsVC: UIViewController {
         title = "Add Transaction"
         let rightNavBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightNavBarButtonItem
-        noteTextView.layer.cornerRadius = 12.0
-
-        amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        tableView.register(UINib(nibName: "TextFieldCell", bundle: nil), forCellReuseIdentifier: "textFieldCell")
+        tableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "textViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCellHeight(_:)), name: Notification.Name(rawValue: "textViewDidChange"), object: nil)
     }
 
     @objc
@@ -54,8 +59,8 @@ class AddTransactionsVC: UIViewController {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
-        print(noteTextView.text ?? "nil")
-        print(amountTextField.text ?? "nil")
+//        print(noteTextView.text ?? "nil")
+//        print(amountTextField.text ?? "nil")
         SPIndicator.present(title: "Saved", preset: .done, haptic: .success)
         dismissView()
     }
@@ -75,6 +80,15 @@ class AddTransactionsVC: UIViewController {
             self.dismiss(animated: true)
         }
     }
+    
+    @objc
+    func updateCellHeight(_ notification: Notification) {
+        if let height = notification.userInfo?["height"] as? CGFloat {
+            cellHeight = height > 100 ? height : 100
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
 }
 
 extension AddTransactionsVC: UIAdaptivePresentationControllerDelegate {
@@ -85,4 +99,32 @@ extension AddTransactionsVC: UIAdaptivePresentationControllerDelegate {
             return true
         }
     }
+}
+
+extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "textFieldCell", for: indexPath) as? TextFieldCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "textViewCell", for: indexPath) as? TextViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 40.0
+        } else {
+            return cellHeight
+        }
+    }
+    
 }

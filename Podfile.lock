@@ -1,16 +1,20 @@
 PODS:
   - SPIndicator (1.6.4)
+  - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
   - SPIndicator
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   trunk:
     - SPIndicator
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   SPIndicator: 93e0a4fb23de51294ac48e874c0f081a5e293e4f
+  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 26872cfe1a33d5d7a407bd021ad39f9c6ec4bfaf
+PODFILE CHECKSUM: d4bb42cc6c124d30cebcf208641344ccb5e01260
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

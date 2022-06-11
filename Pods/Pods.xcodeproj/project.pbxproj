@@ -61,7 +61,7 @@
 		B16CA76F75F713618EC16A6ACDAB0FE1 /* Pods-Money Diary-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Money Diary-frameworks.sh"; sourceTree = "<group>"; };
 		B40B217B8108902DAE1DDE7FBA04B837 /* SPIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.release.xcconfig; sourceTree = "<group>"; };
 		B4740A9778ADD66843A85D6C21A6DE82 /* SPIndicatorPresentSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorPresentSide.swift; path = Sources/SPIndicator/Models/SPIndicatorPresentSide.swift; sourceTree = "<group>"; };
-		C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Money Diary"; path = Pods_Money_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods_Money_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Money Diary-umbrella.h"; sourceTree = "<group>"; };
 		D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Money Diary-dummy.m"; sourceTree = "<group>"; };
 		D9F641B15E4D0B1EB9D9450C535EB04C /* SPIndicatorLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorLayout.swift; path = Sources/SPIndicator/Models/SPIndicatorLayout.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		225843D4C81E9F8113F6EDCBE39D7779 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */,
+				C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods_Money_Diary.framework */,
 				1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */,
 			);
 			name = Products;
@@ -255,7 +255,7 @@
 			);
 			name = "Pods-Money Diary";
 			productName = Pods_Money_Diary;
-			productReference = C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */;
+			productReference = C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods_Money_Diary.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -427,7 +427,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,7 +562,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-Money Diary/Pods-Money Diary-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

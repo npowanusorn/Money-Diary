@@ -22,8 +22,8 @@ extension UIView {
         UIView.animate(withDuration: duration) {
             self.alpha = alpha
         } completion: { _ in
+            if alpha == 0 { self.isHidden = true }
             completion?()
         }
-        if alpha == 0 { self.isHidden = true }
     }
 }

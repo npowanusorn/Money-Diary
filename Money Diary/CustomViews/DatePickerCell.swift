@@ -1,0 +1,25 @@
+//
+//  DatePickerCell.swift
+//  Money Diary
+//
+//  Created by Nucha Powanusorn on 2022-06-16.
+//
+
+import UIKit
+
+class DatePickerCell: UITableViewCell {
+
+    @IBOutlet private var datePicker: UIDatePicker!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+}

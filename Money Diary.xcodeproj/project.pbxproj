@@ -22,6 +22,8 @@
 		505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */; };
 		505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */; };
 		505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11E284F1473007AFBE0 /* RoundedView.swift */; };
+		5088FEC9285C4F81006726DE /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5088FEC7285C4F81006726DE /* DatePickerCell.swift */; };
+		5088FECA285C4F81006726DE /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5088FEC8285C4F81006726DE /* DatePickerCell.xib */; };
 		50A221AE2854FC0500D1A139 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A221AC2854FC0500D1A139 /* TextFieldCell.swift */; };
 		50A221AF2854FC0500D1A139 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A221AD2854FC0500D1A139 /* TextFieldCell.xib */; };
 		50A221B22854FDF100D1A139 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A221B02854FDF100D1A139 /* TextViewCell.swift */; };
@@ -50,6 +52,8 @@
 		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
 		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		5088FEC7285C4F81006726DE /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		5088FEC8285C4F81006726DE /* DatePickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		50A221AC2854FC0500D1A139 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		50A221AD2854FC0500D1A139 /* TextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		50A221B02854FDF100D1A139 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				50A221B02854FDF100D1A139 /* TextViewCell.swift */,
 				50A221B12854FDF100D1A139 /* TextViewCell.xib */,
 				50A221B42855016700D1A139 /* ContentSizedTableView.swift */,
+				5088FEC7285C4F81006726DE /* DatePickerCell.swift */,
+				5088FEC8285C4F81006726DE /* DatePickerCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5088FECA285C4F81006726DE /* DatePickerCell.xib in Resources */,
 				50A221AF2854FC0500D1A139 /* TextFieldCell.xib in Resources */,
 				50A221B32854FDF100D1A139 /* TextViewCell.xib in Resources */,
 				5038E69328530FDA00756D60 /* AddTransactionsVC.xib in Resources */,
@@ -291,6 +298,7 @@
 				50A221B52855016700D1A139 /* ContentSizedTableView.swift in Sources */,
 				505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */,
 				5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */,
+				5088FEC9285C4F81006726DE /* DatePickerCell.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddTransactionsVC.swift in Sources */,
 				5038E6662852D6D800756D60 /* AddVC.swift in Sources */,

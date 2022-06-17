@@ -7,10 +7,19 @@
 
 import UIKit
 
+protocol TextViewCellDelegate {
+    func textViewDidChange(text: String)
+}
+
 class TextViewCell: UITableViewCell {
 
     @IBOutlet private var notesTextView: UITextView!
     @IBOutlet private var placeholderLabel: UILabel!
+    var delegate: TextViewCellDelegate?
+    
+    var notesText: String {
+        notesTextView.text
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +40,7 @@ class TextViewCell: UITableViewCell {
 
 extension TextViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
+        delegate?.textViewDidChange(text: textView.text)
         if textView.text.isEmpty {
             placeholderLabel.text = "Notes"
             placeholderLabel.isHidden = false

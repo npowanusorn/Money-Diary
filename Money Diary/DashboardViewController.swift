@@ -42,13 +42,12 @@ class DashboardViewController: UIViewController {
         
         let addVC = AddTransactionsVC()
         let navigation = UINavigationController(rootViewController: addVC)
-        if let sheet = navigation.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.prefersEdgeAttachedInCompactHeight = true
-            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-        }
-        
+//        if let sheet = navigation.sheetPresentationController {
+//            sheet.detents = [.medium(), .large()]
+//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//            sheet.prefersEdgeAttachedInCompactHeight = true
+//            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+//        }
         present(navigation, animated: true)
     }
     

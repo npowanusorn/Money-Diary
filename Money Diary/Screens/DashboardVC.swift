@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPIndicator
 
 class DashboardVC: UIViewController {
 
@@ -24,13 +25,13 @@ class DashboardVC: UIViewController {
         tableView.layer.cornerRadius = 12
 
 //        transactionList = [Transaction(amount: 1, notes: "a", date: Date()), Transaction(amount: 2, notes: "b", date: Date())]
-        WalletManager.shared.injectMockWallets(count: 10)
+//        WalletManager.shared.injectMockWallets(count: 10)
         walletsList = WalletManager.shared.getWallets()
         transactionList = TransactionManager.shared.getTransactions()
         balanceLabel.text = String(format: "$%.2f", getTotalBalance())
         setupMenuButton()
     }
-
+    
     @IBAction func addTransactionTapped(_ sender: Any) {
         let addTransactionVC = AddTransactionsVC()
         addTransactionVC.delegate = self
@@ -52,7 +53,25 @@ class DashboardVC: UIViewController {
         let menu = UIMenu(title: "", options: .displayInline, children: [addWalletAction, settingsAction])
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
+    }
+    
+    func getTotalBalance() -> Double {
+        var amount: Double = 0
+        for wallet in WalletManager.shared.getWallets() {
+            amount += wallet.balance
+        }
+        return amount
+    }
 
+    func refreshData(at indexPath: IndexPath? = nil) {
+        walletsList = WalletManager.shared.getWallets()
+        transactionList = TransactionManager.shared.getTransactions()
+//        if let indexPath = indexPath {
+//            tableView.reloadRows(at: [indexPath], with: .fade)
+//        } else {
+//        }
+        tableView.reloadData()
+        balanceLabel.text = String(format: "$%.2f", getTotalBalance())
     }
 
 }
@@ -125,18 +144,26 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    func getTotalBalance() -> Double {
-        var amount: Double = 0
-        for wallet in WalletManager.shared.getWallets() {
-            amount += wallet.balance
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 1 { return nil }
+        if WalletManager.shared.numberOfWallets == 0 { return nil }
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
+            let alertController = UIAlertController(title: "Delete Wallet", message: "Delete wallet?", preferredStyle: .alert)
+            let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                let result = WalletManager.shared.removeWallet(at: indexPath.row)
+                self.refreshData(at: indexPath)
+                completion(result)
+            }
+            let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                completion(false)
+            }
+            alertController.addAction(deleteAlertAction)
+            alertController.addAction(cancelAlertAction)
+            self.present(alertController, animated: true)
         }
-        return amount
-    }
-
-    func refreshData() {
-        tableView.reloadData()
-        balanceLabel.text = String(format: "$%.2f", getTotalBalance())
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
@@ -151,6 +178,7 @@ extension DashboardVC: AddedTransactionDelegate {
 
 extension DashboardVC: AddedWalletDelegate {
     func didAddWallet(wallet: Wallet) {
+        SPIndicator.present(title: "Added", preset: .done, haptic: .success)
         walletsList = WalletManager.shared.getWallets()
         refreshData()
     }

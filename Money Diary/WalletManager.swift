@@ -61,5 +61,16 @@ class WalletManager {
     func addTransactionToWallet(at index: Int, transaction: Transaction) {
         wallets[index].transactions.append(transaction)
     }
+    
+    func removeWallet(at index: Int) -> Bool {
+        guard numberOfWallets > 0, index < numberOfWallets, index >= 0 else { return false }
+        wallets.remove(at: index)
+        if chosenWalletIndex > index {
+            chosenWalletIndex -= 1
+        } else if chosenWalletIndex == index {
+            chosenWalletIndex = 0
+        }
+        return true
+    }
 
 }

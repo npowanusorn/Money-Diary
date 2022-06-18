@@ -23,7 +23,7 @@ class DashboardViewController: UIViewController {
             table?.delegate = self
             table?.rowHeight = Constants.cellHeight
         }
-        
+        walletsTableView.layer.cornerRadius = 12
         walletsTableHeight.constant = Constants.walletTableHeight
         walletsTableView.register(UINib(nibName: "WalletsCell", bundle: nil), forCellReuseIdentifier: Constants.CellIdentifier.walletCellIdentifier)
         topSpendingTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.CellIdentifier.topSpendingCellIdentifier)
@@ -70,9 +70,11 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             cell.walletName = "My Wallets"
             cell.makeNameLabelBold()
             cell.isBalanceHidden = true
+            cell.selectionStyle = .none
         } else {
             cell.walletName = "test wallet \(indexPath.row)"
             cell.walletBalance = "$\(indexPath.row)"
+            cell.accessoryType = .disclosureIndicator
         }
         return cell
     }
@@ -93,6 +95,10 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentConfiguration = content
         cell.backgroundColor = .clear
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

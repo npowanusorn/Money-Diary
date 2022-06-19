@@ -14,7 +14,7 @@ class WalletsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "List"
+        title = "Wallet"
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +37,8 @@ extension WalletsListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletListCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = WalletManager.shared.getWallets(at: indexPath.row).name
+        content.text = WalletManager.shared.getWallet(at: indexPath.row).name
+        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
         cell.contentConfiguration = content
         if indexPath.row == WalletManager.shared.chosenWalletIndex {
             cell.accessoryType = .checkmark

@@ -51,7 +51,8 @@ class AddTransactionsVC: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.layer.cornerRadius = 12
+//        tableView.layer.cornerRadius = 12
+        tableView.keyboardDismissMode = .onDrag
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCellHeight(_:)), name: Notification.Name(rawValue: "textViewDidChange"), object: nil)
     }
@@ -108,6 +109,7 @@ class AddTransactionsVC: UIViewController {
     @objc
     func addAction() {
         let transaction = Transaction(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex)
+        TransactionManager.shared.addTransaction(newTransaction: transaction)
         delegate?.didAddTransaction(transaction: transaction)
         dismiss(animated: true)
     }
@@ -166,6 +168,7 @@ extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
             cell.delegate = self
             if indexPath.row == 0 {
                 cell.setPlaceholder(with: "Amount")
+                cell.textView?.keyboardType = .decimalPad
                 cell.textView?.tag = 0
             } else {
                 cell.setPlaceholder(with: "Note")
@@ -176,9 +179,10 @@ extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
         } else if indexPath.section == 1 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             var content = cell.defaultContentConfiguration()
-            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
             content.text = "Wallet"
-            content.secondaryText = WalletManager.shared.getWallets(at: WalletManager.shared.chosenWalletIndex).name
+            content.secondaryText = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex).name
+            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+            content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
@@ -186,9 +190,10 @@ extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == 0 {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
                 var content = cell.defaultContentConfiguration()
-                content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
                 content.text = "Date"
                 content.secondaryText = selectedDateString
+                content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+                content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
                 cell.contentConfiguration = content
                 cell.selectionStyle = .none
                 return cell

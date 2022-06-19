@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardVC" customModule="Money_Diary" customModuleProvider="target">
             <connections>
                 <outlet property="balanceLabel" destination="pSX-Oj-Qus" id="lBG-0U-W2r"/>
-                <outlet property="ellipsisButton" destination="DYW-Wo-E4P" id="2Fz-eh-L7u"/>
+                <outlet property="ellipsisButton" destination="Cr1-nC-Tzf" id="G0t-9C-kD4"/>
                 <outlet property="tableView" destination="djk-3s-FlT" id="OYA-nk-8Wi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -64,15 +64,16 @@
                     </constraints>
                     <blurEffect style="prominent"/>
                 </visualEffectView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYW-Wo-E4P" userLabel="Ellipsis Button">
-                    <rect key="frame" x="378" y="73.333333333333329" width="40" height="40"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr1-nC-Tzf" userLabel="Ellipsis Button">
+                    <rect key="frame" x="365.66666666666669" y="54" width="52.333333333333314" height="52.333333333333343"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="hjO-Xf-jda"/>
-                        <constraint firstAttribute="width" constant="40" id="qHV-Si-vJI"/>
+                        <constraint firstAttribute="width" secondItem="Cr1-nC-Tzf" secondAttribute="height" multiplier="1:1" id="CvA-U1-YLS"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="ellipsis.circle.fill" catalog="system"/>
-                    <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle.fill" catalog="system"/>
+                    <buttonConfiguration key="configuration" style="plain" image="ellipsis.circle.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                    </buttonConfiguration>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -80,13 +81,14 @@
             <constraints>
                 <constraint firstItem="pSX-Oj-Qus" firstAttribute="top" secondItem="1vr-ld-mvB" secondAttribute="bottom" id="1DW-KG-VM9"/>
                 <constraint firstItem="djk-3s-FlT" firstAttribute="top" secondItem="pSX-Oj-Qus" secondAttribute="bottom" constant="20" id="8QV-WF-xiK"/>
+                <constraint firstItem="Cr1-nC-Tzf" firstAttribute="bottom" secondItem="pSX-Oj-Qus" secondAttribute="bottom" id="HKu-RZ-0tQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jRC-JY-r83" secondAttribute="trailing" id="Lgp-XX-ozf"/>
-                <constraint firstItem="DYW-Wo-E4P" firstAttribute="top" secondItem="pSX-Oj-Qus" secondAttribute="top" id="SWP-eo-Trw"/>
+                <constraint firstItem="Cr1-nC-Tzf" firstAttribute="top" secondItem="1vr-ld-mvB" secondAttribute="top" id="OAB-t1-asE"/>
                 <constraint firstItem="djk-3s-FlT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wbc-BN-8wk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="djk-3s-FlT" secondAttribute="trailing" id="aDO-Bf-nnZ"/>
                 <constraint firstItem="jRC-JY-r83" firstAttribute="top" secondItem="djk-3s-FlT" secondAttribute="bottom" id="c2V-NC-tFq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DYW-Wo-E4P" secondAttribute="trailing" constant="10" id="cgY-d5-iOO"/>
                 <constraint firstItem="1vr-ld-mvB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="jgU-87-7gE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cr1-nC-Tzf" secondAttribute="trailing" constant="10" id="jwn-Ko-iuy"/>
                 <constraint firstItem="jRC-JY-r83" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kP0-NM-jGe"/>
                 <constraint firstAttribute="bottom" secondItem="jRC-JY-r83" secondAttribute="bottom" id="oK1-Dg-9wG"/>
                 <constraint firstItem="1vr-ld-mvB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pcv-YG-JV8"/>

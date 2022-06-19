@@ -30,7 +30,7 @@ class WalletManager {
         return wallets
     }
 
-    func getWallets(at index: Int) -> Wallet {
+    func getWallet(at index: Int) -> Wallet {
         return wallets[index]
     }
 
@@ -38,7 +38,7 @@ class WalletManager {
         wallets.append(newWallet)
     }
 
-    func injectMockWallets(count: Int) {
+    func addMockWallets(count: Int) {
         for counter in 1...count {
             let wallet = Wallet(name: "wallet \(counter)", balance: Double.random(in: 0...1000), transactions: [])
             addWallet(newWallet: wallet)
@@ -58,8 +58,8 @@ class WalletManager {
         }
     }
 
-    func addTransactionToWallet(at index: Int, transaction: Transaction) {
-        wallets[index].transactions.append(transaction)
+    func addTransactionToWallet(transaction: Transaction) {
+        wallets[transaction.walletIndex].transactions.append(transaction)
     }
     
     func removeWallet(at index: Int) -> Bool {

@@ -25,11 +25,25 @@ class DashboardVC: UIViewController {
         tableView.layer.cornerRadius = 12
 
 //        transactionList = [Transaction(amount: 1, notes: "a", date: Date()), Transaction(amount: 2, notes: "b", date: Date())]
-//        WalletManager.shared.injectMockWallets(count: 10)
+        WalletManager.shared.addMockWallets(count: 5)
+        for index in 1...5 {
+            TransactionManager.shared.addMockTransactions(count: Int.random(in: 1...5), walletIndex: index)
+        }
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getTransactions()
+        transactionList = TransactionManager.shared.getAllTransactions()
         balanceLabel.text = String(format: "$%.2f", getTotalBalance())
         setupMenuButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        refreshData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func addTransactionTapped(_ sender: Any) {
@@ -40,6 +54,7 @@ class DashboardVC: UIViewController {
     }
 
     func setupMenuButton() {
+        
         let addWalletAction = UIAction(title: "Add Wallet", image: UIImage(systemName: "plus")) { _ in
             let addWalletVC = AddWalletVC()
             addWalletVC.delegate = self
@@ -49,8 +64,9 @@ class DashboardVC: UIViewController {
         let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gear")) { _ in
             print("settings")
         }
+        let divider = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
         
-        let menu = UIMenu(title: "", options: .displayInline, children: [addWalletAction, settingsAction])
+        let menu = UIMenu(title: "", options: .displayInline, children: [divider, settingsAction])
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
     }
@@ -65,7 +81,7 @@ class DashboardVC: UIViewController {
 
     func refreshData(at indexPath: IndexPath? = nil) {
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getTransactions()
+        transactionList = TransactionManager.shared.getAllTransactions()
 //        if let indexPath = indexPath {
 //            tableView.reloadRows(at: [indexPath], with: .fade)
 //        } else {
@@ -126,22 +142,41 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentTransactionCell")
-            cell.selectionStyle = .none
             var content = cell.defaultContentConfiguration()
             content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-            if transactionList.count == 0 {
+            if transactionList.count > 4, indexPath.row == 3 {
+                content.text = "Show all"
+                cell.contentConfiguration = content
+                cell.accessoryType = .disclosureIndicator
+            } else if transactionList.count == 0 {
+                cell.selectionStyle = .none
                 content.text = "No recent transactions"
                 cell.contentConfiguration = content
-                return cell
+            } else {
+                cell.selectionStyle = .none
+                content.text = transactionList[indexPath.row].notes
+                content.secondaryText = String(format: "$%.2f", transactionList[indexPath.row].amount)
+                cell.contentConfiguration = content
             }
-            content.text = transactionList[indexPath.row].notes
-            content.secondaryText = String(format: "$%.2f", transactionList[indexPath.row].amount)
-            cell.contentConfiguration = content
             return cell
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let walletDetailVC = WalletDetailVC()
+            walletDetailVC.selectedWalletIndex = indexPath.row
+            let back = UIBarButtonItem()
+            back.title = ""
+            navigationItem.backBarButtonItem = back
+            navigationController?.pushViewController(walletDetailVC, animated: true)
+        } else if indexPath.section == 1, indexPath.row == 3 {
+            let allRecordsVC = AllRecordsVC()
+            let back = UIBarButtonItem()
+            back.title = ""
+            navigationItem.backBarButtonItem = back
+            navigationController?.pushViewController(allRecordsVC, animated: true)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -169,9 +204,9 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
 
 extension DashboardVC: AddedTransactionDelegate {
     func didAddTransaction(transaction: Transaction) {
-        TransactionManager.shared.addTransaction(newTransaction: transaction)
+        SPIndicator.present(title: "Added", preset: .done, haptic: .success)
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getTransactions()
+        transactionList = TransactionManager.shared.getAllTransactions()
         refreshData()
     }
 }

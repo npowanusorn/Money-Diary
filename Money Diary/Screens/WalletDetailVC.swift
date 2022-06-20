@@ -10,14 +10,17 @@ import UIKit
 class WalletDetailVC: UIViewController {
 
     var selectedWalletIndex: Int!
-    var wallet: Wallet!
+    
+    private var wallet: Wallet!
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
+    private let tabViewButtonTitles = ["All", "Expenses", "Income"]
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var noRecordFoundView: UIView!
     @IBOutlet private var balanceView: RoundedView!
     @IBOutlet private var balanceLabel: UILabel!
+    @IBOutlet private var tabBarView: SwipeTabView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,6 +31,9 @@ class WalletDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
+        tabBarView.delegate = self
         
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         guard wallet != nil else { return }
@@ -41,6 +47,7 @@ class WalletDetailVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "walletDetailCell")
+        
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -72,7 +79,7 @@ class WalletDetailVC: UIViewController {
 extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return recordManager.getAllDatesSorted(for: selectedWalletIndex).count
+        return recordManager.getAllDatesSorted(for: selectedWalletIndex).count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -80,7 +87,10 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = recordManager.getAllDatesSorted(for: selectedWalletIndex)[section]
+        if section == 0 {
+            return nil
+        }
+        let date = recordManager.getAllDatesSorted(for: selectedWalletIndex)[section - 1]
         if Calendar.current.isDateInToday(date) {
             return "Today"
         } else if Calendar.current.isDateInYesterday(date) {
@@ -96,8 +106,11 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         let dates = recordManager.getAllDatesSorted(for: selectedWalletIndex)
-        return recordManager.getAllRecords(for: dates[section], in: selectedWalletIndex).count
+        return recordManager.getAllRecords(for: dates[section - 1], in: selectedWalletIndex).count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -108,8 +121,16 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletDetailCell", for: indexPath)
         cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
+        content.textProperties.font = K.Fonts.avenirNextRegular17
+        if indexPath.section == 0 {
+            content.text = "Balance: \(getWalletBalance())"
+            content.textProperties.alignment = .center
+            content.textProperties.font = UIFont(name: "Avenir Next Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            cell.contentConfiguration = content
+            return cell
+        }
         let dates = recordManager.getAllDatesSorted(for: selectedWalletIndex)
-        let record = recordManager.getAllRecords(for: dates[indexPath.section], in: selectedWalletIndex)[indexPath.row]
+        let record = recordManager.getAllRecords(for: dates[indexPath.section - 1], in: selectedWalletIndex)[indexPath.row]
         content.text = record.notes
         content.secondaryText = String(format: "$%.2f", record.amount)
         
@@ -122,5 +143,11 @@ extension WalletDetailVC: AddedRecordDelegate {
     func didAddRecord(record: Record) {
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         refreshScreen()
+    }
+}
+
+extension WalletDetailVC: SwipeTabViewDelegate {
+    func didChangeToIndex(index: Int) {
+        print("did change to index: \(index)")
     }
 }

@@ -14,6 +14,7 @@
                 <outlet property="balanceLabel" destination="ihg-NC-2MV" id="1ig-dl-6nk"/>
                 <outlet property="balanceView" destination="CKP-KM-Zmc" id="Ap8-Eu-k2Y"/>
                 <outlet property="noRecordFoundView" destination="9Q5-Qb-vpb" id="aSG-XO-fdi"/>
+                <outlet property="tabBarView" destination="MQW-mV-tYo" id="XSe-7X-cci"/>
                 <outlet property="tableView" destination="D1y-bq-Gjq" id="g3x-ye-Q1C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D1y-bq-Gjq">
-                    <rect key="frame" x="0.0" y="44" width="390" height="696"/>
+                    <rect key="frame" x="0.0" y="44" width="390" height="716"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q5-Qb-vpb">
                     <rect key="frame" x="45" y="322" width="300" height="200"/>
@@ -73,20 +74,32 @@
                         <constraint firstItem="ihg-NC-2MV" firstAttribute="centerX" secondItem="CKP-KM-Zmc" secondAttribute="centerX" id="R7n-Y9-Mz8"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQW-mV-tYo" customClass="SwipeTabView" customModule="Money_Diary" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="760" width="390" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ymq-N5-DDk"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CKP-KM-Zmc" secondAttribute="bottom" id="5Uw-7d-JNp"/>
-                <constraint firstItem="D1y-bq-Gjq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6sa-5W-dil"/>
-                <constraint firstItem="CKP-KM-Zmc" firstAttribute="top" secondItem="D1y-bq-Gjq" secondAttribute="bottom" constant="20" id="8J2-Ed-ljG"/>
-                <constraint firstItem="CKP-KM-Zmc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="B3V-kd-me5"/>
+                <constraint firstItem="MQW-mV-tYo" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="1uZ-et-YBb"/>
                 <constraint firstItem="D1y-bq-Gjq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E7n-4t-a8n"/>
+                <constraint firstItem="MQW-mV-tYo" firstAttribute="top" secondItem="D1y-bq-Gjq" secondAttribute="bottom" id="Jpk-Kp-fUJ"/>
                 <constraint firstItem="9Q5-Qb-vpb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QiB-6Y-l6z"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CKP-KM-Zmc" secondAttribute="trailing" constant="40" id="WIu-nj-4HH"/>
+                <constraint firstItem="D1y-bq-Gjq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WnL-ky-DJj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D1y-bq-Gjq" secondAttribute="trailing" id="aKl-qf-Ydr"/>
                 <constraint firstItem="9Q5-Qb-vpb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pHq-1W-SYj"/>
+                <constraint firstItem="MQW-mV-tYo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xXG-Go-eR5"/>
+                <constraint firstItem="MQW-mV-tYo" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yIa-i2-p4Z"/>
             </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="CKP-KM-Zmc"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="140" y="20.616113744075829"/>
         </view>
     </objects>

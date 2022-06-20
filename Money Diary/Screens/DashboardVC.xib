@@ -45,12 +45,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grB-tM-sJB">
-                                <rect key="frame" x="150.66666666666666" y="12" width="126.99999999999997" height="36"/>
+                                <rect key="frame" x="167" y="12" width="94" height="36"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Add Transaction"/>
+                                <state key="normal" title="Add Record"/>
                                 <connections>
-                                    <action selector="addTransactionTapped:" destination="-1" eventType="touchUpInside" id="oHQ-Eo-ymp"/>
+                                    <action selector="addRecordTapped:" destination="-1" eventType="touchUpInside" id="k4g-iV-xEr"/>
                                 </connections>
                             </button>
                         </subviews>

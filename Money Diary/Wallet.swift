@@ -10,5 +10,5 @@ import Foundation
 struct Wallet {
     var name: String
     var balance: Double
-    var transactions: [Transaction]
+    var records: [Record]
 }

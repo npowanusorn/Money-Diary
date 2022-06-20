@@ -12,15 +12,22 @@ enum Operation {
     case subtract
 }
 
+enum WalletSort {
+    case wallet
+    case date
+}
+
 class WalletManager {
 
     static let shared = WalletManager()
 
     private init() { }
 
-    private var wallets = [Wallet(name: "Wallet", balance: 0, transactions: [])]
+    private var wallets = [Wallet(name: "Wallet", balance: 0, records: [])]
 
     var chosenWalletIndex = 0
+    
+    var sortBy: WalletSort = .wallet
 
     var numberOfWallets: Int {
         return wallets.count
@@ -40,7 +47,7 @@ class WalletManager {
 
     func addMockWallets(count: Int) {
         for counter in 1...count {
-            let wallet = Wallet(name: "wallet \(counter)", balance: Double.random(in: 0...1000), transactions: [])
+            let wallet = Wallet(name: "wallet \(counter)", balance: Double.random(in: 0...1000), records: [])
             addWallet(newWallet: wallet)
         }
     }
@@ -58,8 +65,8 @@ class WalletManager {
         }
     }
 
-    func addTransactionToWallet(transaction: Transaction) {
-        wallets[transaction.walletIndex].transactions.append(transaction)
+    func addRecordToWallet(record: Record) {
+        wallets[record.walletIndex].records.append(record)
     }
     
     func removeWallet(at index: Int) -> Bool {

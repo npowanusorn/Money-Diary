@@ -1,5 +1,5 @@
 //
-//  AddTransactionsVC.swift
+//  AddRecordVC.swift
 //  Money Diary
 //
 //  Created by Nucha Powanusorn on 2022-06-09.
@@ -8,11 +8,11 @@
 import UIKit
 import SPIndicator
 
-protocol AddedTransactionDelegate {
-    func didAddTransaction(transaction: Transaction)
+protocol AddedRecordDelegate {
+    func didAddRecord(record: Record)
 }
 
-class AddTransactionsVC: UIViewController {
+class AddRecordVC: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
     
@@ -31,14 +31,14 @@ class AddTransactionsVC: UIViewController {
 
     private var rightNavBarButtonItem: UIBarButtonItem?
 
-    var delegate: AddedTransactionDelegate?
+    var delegate: AddedRecordDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.presentationController?.delegate = self
 
-        title = "Add Transaction"
+        title = "Add Record"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
         let leftNavBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         rightNavBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addAction))
@@ -51,7 +51,6 @@ class AddTransactionsVC: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.layer.cornerRadius = 12
         tableView.keyboardDismissMode = .onDrag
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateCellHeight(_:)), name: Notification.Name(rawValue: "textViewDidChange"), object: nil)
@@ -108,14 +107,14 @@ class AddTransactionsVC: UIViewController {
     
     @objc
     func addAction() {
-        let transaction = Transaction(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex)
-        TransactionManager.shared.addTransaction(newTransaction: transaction)
-        delegate?.didAddTransaction(transaction: transaction)
+        let record = Record(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex)
+        RecordManager.shared.addRecord(newRecord: record)
+        delegate?.didAddRecord(record: record)
         dismiss(animated: true)
     }
 }
 
-extension AddTransactionsVC: TextViewCellDelegate {
+extension AddRecordVC: TextViewCellDelegate {
     func textViewDidChange(text: String, tag: Int) {
         if tag == 0 {
             amountText = text
@@ -126,7 +125,7 @@ extension AddTransactionsVC: TextViewCellDelegate {
     }
 }
 
-extension AddTransactionsVC: UIAdaptivePresentationControllerDelegate {
+extension AddRecordVC: UIAdaptivePresentationControllerDelegate {
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
         if canDismissScreen {
             return true
@@ -144,7 +143,7 @@ extension AddTransactionsVC: UIAdaptivePresentationControllerDelegate {
     }
 }
 
-extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
+extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -228,7 +227,7 @@ extension AddTransactionsVC: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension AddTransactionsVC: DatePickerCellDelegate {
+extension AddRecordVC: DatePickerCellDelegate {
     func didSelectDate(date: Date) {
         selectedDate = date
         if Calendar.current.isDateInToday(date) {

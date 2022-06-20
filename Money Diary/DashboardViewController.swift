@@ -11,13 +11,13 @@ class DashboardViewController: UIViewController {
     
     @IBOutlet var walletsTableView: UITableView!
     @IBOutlet var topSpendingTableView: UITableView!
-    @IBOutlet var recentTransactionsTableView: UITableView!
+    @IBOutlet var recentRecordTableView: UITableView!
     @IBOutlet var walletsTableHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tables = [walletsTableView, topSpendingTableView, recentTransactionsTableView]
+        let tables = [walletsTableView, topSpendingTableView, recentRecordTableView]
         tables.forEach { table in
             table?.dataSource = self
             table?.delegate = self
@@ -27,7 +27,7 @@ class DashboardViewController: UIViewController {
         walletsTableHeight.constant = Constants.walletTableHeight
         walletsTableView.register(UINib(nibName: "WalletsCell", bundle: nil), forCellReuseIdentifier: Constants.CellIdentifier.walletCellIdentifier)
         topSpendingTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.CellIdentifier.topSpendingCellIdentifier)
-        recentTransactionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.CellIdentifier.recentCellIdentifier)
+        recentRecordTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.CellIdentifier.recentCellIdentifier)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +40,7 @@ class DashboardViewController: UIViewController {
 //        present(addTransactionVC, animated: false)
         
         
-        let addVC = AddTransactionsVC()
+        let addVC = AddRecordVC()
         let navigation = UINavigationController(rootViewController: addVC)
 //        if let sheet = navigation.sheetPresentationController {
 //            sheet.detents = [.medium(), .large()]
@@ -89,7 +89,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func configureRecentsTableView(for indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = recentTransactionsTableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.recentCellIdentifier) else { return UITableViewCell() }
+        guard let cell = recentRecordTableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.recentCellIdentifier) else { return UITableViewCell() }
         var content = cell.defaultContentConfiguration()
         content.text = "recents"
         cell.contentConfiguration = content

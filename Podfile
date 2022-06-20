@@ -7,6 +7,6 @@ target 'Money Diary' do
 
   # Pods for Money Diary
   pod 'SPIndicator'
-  pod 'UITextView+Placeholder'
+  pod 'SwipeMenuViewController'
 
 end

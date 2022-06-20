@@ -14,7 +14,7 @@ class DashboardVC: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var ellipsisButton: UIButton!
 
-    var transactionList: [Transaction] = [Transaction]()
+    var recordList: [Record] = [Record]()
     var walletsList: [Wallet] = [Wallet]()
 
     override func viewDidLoad() {
@@ -24,13 +24,12 @@ class DashboardVC: UIViewController {
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12
 
-//        transactionList = [Transaction(amount: 1, notes: "a", date: Date()), Transaction(amount: 2, notes: "b", date: Date())]
         WalletManager.shared.addMockWallets(count: 5)
         for index in 1...5 {
-            TransactionManager.shared.addMockTransactions(count: Int.random(in: 1...5), walletIndex: index)
+            RecordManager.shared.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
         }
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getAllTransactions()
+        recordList = RecordManager.shared.getAllRecords()
         balanceLabel.text = String(format: "$%.2f", getTotalBalance())
         setupMenuButton()
     }
@@ -46,10 +45,10 @@ class DashboardVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func addTransactionTapped(_ sender: Any) {
-        let addTransactionVC = AddTransactionsVC()
-        addTransactionVC.delegate = self
-        let navigation = UINavigationController(rootViewController: addTransactionVC)
+    @IBAction func addRecordTapped(_ sender: Any) {
+        let addRecordVC = AddRecordVC()
+        addRecordVC.delegate = self
+        let navigation = UINavigationController(rootViewController: addRecordVC)
         present(navigation, animated: true)
     }
 
@@ -79,13 +78,9 @@ class DashboardVC: UIViewController {
         return amount
     }
 
-    func refreshData(at indexPath: IndexPath? = nil) {
+    func refreshData() {
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getAllTransactions()
-//        if let indexPath = indexPath {
-//            tableView.reloadRows(at: [indexPath], with: .fade)
-//        } else {
-//        }
+        recordList = RecordManager.shared.getAllRecords()
         tableView.reloadData()
         balanceLabel.text = String(format: "$%.2f", getTotalBalance())
     }
@@ -102,7 +97,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return "My Wallets"
         } else {
-            return "Recent Transactions"
+            return "Recent Records"
         }
     }
 
@@ -114,12 +109,12 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return walletsList.count == 0 ? 1 : walletsList.count
         } else {
-            if transactionList.count == 0 {
+            if recordList.count == 0 {
                 return 1
-            } else if transactionList.count > 4 {
+            } else if recordList.count > 4 {
                 return 4
             } else {
-                return transactionList.count
+                return recordList.count
             }
         }
     }
@@ -141,21 +136,21 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentTransactionCell")
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentRecordCell")
             var content = cell.defaultContentConfiguration()
             content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-            if transactionList.count > 4, indexPath.row == 3 {
+            if recordList.count > 4, indexPath.row == 3 {
                 content.text = "Show all"
                 cell.contentConfiguration = content
                 cell.accessoryType = .disclosureIndicator
-            } else if transactionList.count == 0 {
+            } else if recordList.count == 0 {
                 cell.selectionStyle = .none
-                content.text = "No recent transactions"
+                content.text = "No recent record"
                 cell.contentConfiguration = content
             } else {
                 cell.selectionStyle = .none
-                content.text = transactionList[indexPath.row].notes
-                content.secondaryText = String(format: "$%.2f", transactionList[indexPath.row].amount)
+                content.text = recordList[indexPath.row].notes
+                content.secondaryText = String(format: "$%.2f", recordList[indexPath.row].amount)
                 cell.contentConfiguration = content
             }
             return cell
@@ -187,7 +182,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             let alertController = UIAlertController(title: "Delete Wallet", message: "Delete wallet?", preferredStyle: .alert)
             let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 let result = WalletManager.shared.removeWallet(at: indexPath.row)
-                self.refreshData(at: indexPath)
+                self.refreshData()
                 completion(result)
             }
             let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -202,11 +197,11 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DashboardVC: AddedTransactionDelegate {
-    func didAddTransaction(transaction: Transaction) {
+extension DashboardVC: AddedRecordDelegate {
+    func didAddRecord(record: Record) {
         SPIndicator.present(title: "Added", preset: .done, haptic: .success)
         walletsList = WalletManager.shared.getWallets()
-        transactionList = TransactionManager.shared.getAllTransactions()
+        recordList = RecordManager.shared.getAllRecords()
         refreshData()
     }
 }

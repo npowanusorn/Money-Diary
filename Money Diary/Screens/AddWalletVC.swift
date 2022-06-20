@@ -66,7 +66,7 @@ class AddWalletVC: UIViewController {
 
     @objc
     func addWallet() {
-        let newWallet = Wallet(name: name, balance: amount, transactions: [])
+        let newWallet = Wallet(name: name, balance: amount, records: [])
         WalletManager.shared.addWallet(newWallet: newWallet)
         delegate?.didAddWallet(wallet: newWallet)
         dismiss(animated: true)

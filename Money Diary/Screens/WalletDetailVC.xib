@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="balanceLabel" destination="ihg-NC-2MV" id="1ig-dl-6nk"/>
                 <outlet property="balanceView" destination="CKP-KM-Zmc" id="Ap8-Eu-k2Y"/>
-                <outlet property="noTransactionFoundView" destination="9Q5-Qb-vpb" id="aSG-XO-fdi"/>
+                <outlet property="noRecordFoundView" destination="9Q5-Qb-vpb" id="aSG-XO-fdi"/>
                 <outlet property="tableView" destination="D1y-bq-Gjq" id="g3x-ye-Q1C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,16 +30,16 @@
                     <rect key="frame" x="45" y="322" width="300" height="200"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uC-vT-CmJ" customClass="RoundedButton" customModule="Money_Diary" customModuleProvider="target">
-                            <rect key="frame" x="64.666666666666686" y="119.66666666666669" width="171" height="36"/>
+                            <rect key="frame" x="81.666666666666671" y="119.66666666666669" width="136.66666666666663" height="36"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Add transaction"/>
+                            <state key="normal" title="Add record"/>
                             <connections>
-                                <action selector="addTransactionTapped:" destination="-1" eventType="touchUpInside" id="e7k-hi-GwP"/>
+                                <action selector="addRecordTapped:" destination="-1" eventType="touchUpInside" id="XH2-lS-dzz"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIV-Kp-Isf">
-                            <rect key="frame" x="64.666666666666686" y="88.333333333333314" width="171" height="23.333333333333329"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No records found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIV-Kp-Isf">
+                            <rect key="frame" x="81.666666666666671" y="88.333333333333314" width="136.66666666666663" height="23.333333333333329"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

@@ -7,108 +7,156 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EE0690F2C9052E68837BCFE290B431F /* UIEdgeInsetsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10545E21AFE12A54754A3E28A7137D92 /* UIEdgeInsetsExtension.swift */; };
-		0FFBD3C89974BEF014D8BE770AF0B7AA /* SPIndicator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B91B86325ADEEF0B9060DEB67A0D2F22 /* SPIndicator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F47953EB1F11DDE4861DC699394DFE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		05EDE1AA1F210B8CEE4DA0B528C11E55 /* AES256CBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB10CC6000C397E786C2BF69AAD169 /* AES256CBC.swift */; };
+		0EE0690F2C9052E68837BCFE290B431F /* UIEdgeInsetsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C7475895DA74A0471371C2D2F04FE6 /* UIEdgeInsetsExtension.swift */; };
+		0FFBD3C89974BEF014D8BE770AF0B7AA /* SPIndicator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BF361F4CEA793DE5353F365EF6D8AEAF /* SPIndicator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		105363B7794B3BB3E220B6A0786ACC57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CAC46061A35D7934E4169AF5E87C30 /* Extensions.swift */; };
+		1FA82465708C3BF7A0FD4A2869C59FDE /* Pods-Money Diary-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */; };
+		2089B8C82F03CCC3749DE9691782C465 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = D251D4432BF3AAE8806C2C10D9999BF2 /* Base64.swift */; };
 		2EC0AD2B1FF6869C03F5C8A6F11CC8DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		3034B20E696E78FD1E76391EBA213AA1 /* SPAlertIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D28CF157B4B352AEE09BFE3DCCF62 /* SPAlertIconErrorView.swift */; };
-		37F9267E3A9442148BA6EF2B535A420C /* SPIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CD967F1613EEFDE8C98B9713DB8A4B /* SPIndicatorView.swift */; };
-		43EC8E06E2A869AB301C7433DFF927FB /* SwipeMenuViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F86CEE6C1AE2F9822C2F9F2021746AB3 /* SwipeMenuViewController-dummy.m */; };
-		535B96365F365518F1FF8E664C496C7A /* Pods-Money Diary-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5EDEBAA7A68EAD70F36244676D3428CC /* SPIndicatorIconPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506CFC8027EC2745A1351248F3C9D78E /* SPIndicatorIconPreset.swift */; };
+		3034B20E696E78FD1E76391EBA213AA1 /* SPAlertIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C060F1775B44A2EC408E4622C6E41E0 /* SPAlertIconErrorView.swift */; };
+		37F9267E3A9442148BA6EF2B535A420C /* SPIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344C6AF6C94FEEAA4F8FD5CC9F8B7E75 /* SPIndicatorView.swift */; };
+		43EC8E06E2A869AB301C7433DFF927FB /* SwipeMenuViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7F46DA503DD4DE98491856779E513D /* SwipeMenuViewController-dummy.m */; };
+		4EA10C6C9F6BCABBD2F320B13B2E79A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		5EDEBAA7A68EAD70F36244676D3428CC /* SPIndicatorIconPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480FAFB18FDE3C40CCAEA17DDBB32A60 /* SPIndicatorIconPreset.swift */; };
 		62D6D17051D9FD5D17E46AEE921AF07E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		6F07A8E82C2FDE592486A4638A7D4C1B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E7A7FAF29ADEDDDA8373E2551F7F60 /* UILabelExtension.swift */; };
-		807A51D5C854FD06C370F3C83C437708 /* SPIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6843FAD6B9FB07718EAC14EC384DB957 /* SPIndicator-dummy.m */; };
-		815B4D16FF6E1C40286162454EFFBF16 /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1EB4CAD0B7CE1660E229BC86290239 /* ContentScrollView.swift */; };
-		856B58EB6752F94302A24DBE8C0879EF /* SPIndicatorPresentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F773BA5232929ABBF4F953A150EB651C /* SPIndicatorPresentSide.swift */; };
-		9175615672207D2E5D2E8255584FD733 /* SPIndicatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB3D11DD50CA771328B1909EBAEB076 /* SPIndicatorLayout.swift */; };
-		9207A437F7CEFB27A97D4A6E7732C855 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B1FF1A57CAE92DAFD9E1ACEC08AEA /* UIFontExtension.swift */; };
-		9E7B6980FF13AD16D567006A179BC89F /* SPIndicatorHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4BC8576A66186F66A5887F5D6C188 /* SPIndicatorHaptic.swift */; };
-		A0A10DE753C4F07ECA58E36FF9ADD32E /* SwipeMenuViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66204079C8053EB1D5DD9598652B6136 /* SwipeMenuViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A75DB7E26F3889C78AF564BB86AB2847 /* SPIndicatorIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD852D275341038C021902E3E86A28E3 /* SPIndicatorIconAnimatable.swift */; };
-		A8882A4A0D6093C37905C4DFE57A327B /* SPIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B96F3B5D6F0B7545F0C04ABFFE6C7 /* SPIndicator.swift */; };
-		A8A66BE15CCE0A6ABCC16ED816580282 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB2DE7FB6735FCC30C768321A51803 /* TabItemView.swift */; };
-		AAD50DB9C8082B8EF422ECEDECAB1724 /* SPIndicatorIconDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F3673572D12BBBB370D513AC8B545 /* SPIndicatorIconDoneView.swift */; };
-		ACDBCB6309A100D771B015A0BD72E970 /* Pods-Money Diary-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */; };
-		C03FD3503CCCE3DB38C214E2ED6DBED5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7279A0EE6A482ACAEDF534995328E6 /* UIViewExtension.swift */; };
-		D45E52ECF4BB7E24BA80E9A170E1F07F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC479202B164ABEA356FC9C05082F2A /* UIColorExtension.swift */; };
-		DDD6B3BC9330D4E33FC2180023E9B6BD /* SwipeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C28BE59DB14B3177F4DAF53BBA972FD /* SwipeMenuView.swift */; };
-		EFF251B9BEB338168A241B732B6EA4CB /* SwipeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AADD59F11EE0D3FD627DF590F30B469 /* SwipeMenuViewController.swift */; };
-		F4584922FF59B64E7A97DB11C766318E /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA24F05E646AB3C91366D01F6C3D1A2 /* TabView.swift */; };
-		F833872D80D115F5869D30024650886A /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50097BD985ABCE2C84A80248AA8A43 /* SwiftUIExtension.swift */; };
-		FAB624DC65CEDBB8F9A72DDD95D684FE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D208C1D893F48EE50AD11E873F5854FF /* UIColorExtension.swift */; };
+		6F07A8E82C2FDE592486A4638A7D4C1B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774825D2E7E2D19B30598B83D512D96B /* UILabelExtension.swift */; };
+		71E3C9B61337D7F5E2C924078616EB44 /* ConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC557B1D74BE15A49F2C0BAE7518E9B /* ConsoleDestination.swift */; };
+		807A51D5C854FD06C370F3C83C437708 /* SPIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EC823897E2F87D491BB7EF6AC81BC /* SPIndicator-dummy.m */; };
+		815B4D16FF6E1C40286162454EFFBF16 /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC91F4F8B66E1469F74934C6510DB7C /* ContentScrollView.swift */; };
+		856B58EB6752F94302A24DBE8C0879EF /* SPIndicatorPresentSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98134DB6DACB7E4A0EF35C79FBF8A294 /* SPIndicatorPresentSide.swift */; };
+		9175615672207D2E5D2E8255584FD733 /* SPIndicatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2AF75782E672621106375CBFCAEEA /* SPIndicatorLayout.swift */; };
+		9207A437F7CEFB27A97D4A6E7732C855 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374A67A3A5DD01D0297DDE5DE17285F1 /* UIFontExtension.swift */; };
+		9E7B6980FF13AD16D567006A179BC89F /* SPIndicatorHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35D750878869668DFC1F00ACB99469 /* SPIndicatorHaptic.swift */; };
+		A0A10DE753C4F07ECA58E36FF9ADD32E /* SwipeMenuViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 028C182E7BEFBFAAB67F2B469E592664 /* SwipeMenuViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A75DB7E26F3889C78AF564BB86AB2847 /* SPIndicatorIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0550D4EAD680EE1F8E363ABB3523C4E /* SPIndicatorIconAnimatable.swift */; };
+		A8882A4A0D6093C37905C4DFE57A327B /* SPIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E653E908DCC3F8FAEDE3005E650329E /* SPIndicator.swift */; };
+		A8A66BE15CCE0A6ABCC16ED816580282 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BFB65953172087B97FB26ACBA6DC /* TabItemView.swift */; };
+		AAD50DB9C8082B8EF422ECEDECAB1724 /* SPIndicatorIconDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EB505BDFAF4126F97DF34CC21C03B /* SPIndicatorIconDoneView.swift */; };
+		AC1C1E28D842814A0FDE4B95CF66E34D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		B043C7B2EED3A995C867CE56B62EAE78 /* SwiftyBeaver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4423701169B4243013360201442D98DB /* SwiftyBeaver-dummy.m */; };
+		C03FD3503CCCE3DB38C214E2ED6DBED5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670B066CAB3D7BBBEEA6B2433769D98 /* UIViewExtension.swift */; };
+		C3CC7B6469B8D587F73A7E54B5B5F9D4 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F580D9F9F141794F2185A9C87D10B1B2 /* Filter.swift */; };
+		C8C63474AB8CFF25B709312336C9C4E9 /* FileDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4400525A0EBA36476455A763DFA65A /* FileDestination.swift */; };
+		CD11C460B8572F784EA36D9FA61F5EB2 /* BaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25AED390A0AE99701556F5B3D8218BC /* BaseDestination.swift */; };
+		D45E52ECF4BB7E24BA80E9A170E1F07F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF90146D3F5B048C6F10FFBE9AFB69F /* UIColorExtension.swift */; };
+		DB786B4AF6784C1969D22251B68C2F80 /* Pods-Money Diary-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDD6B3BC9330D4E33FC2180023E9B6BD /* SwipeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663ED9483682AFA4A24AD48AF5D4579F /* SwipeMenuView.swift */; };
+		E1CE5E1887946D8474DD705542B075FB /* SwiftyBeaver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 54ABF8CA6E6D47BB212802EC50496427 /* SwiftyBeaver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA6C616AA3A2E276C0C87DDE5F11FEAC /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FDAE60C8AB8532ED2238EB322760DB /* SwiftyBeaver.swift */; };
+		EC10038D540FA6F528CC590EBCCED08A /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7524EC3703DF507C23C12E7CF94433 /* SBPlatformDestination.swift */; };
+		EF9D138768E54085076587834F433C5E /* GoogleCloudDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BDA7896A1AC34B3C5A234286D7BF17 /* GoogleCloudDestination.swift */; };
+		EFF251B9BEB338168A241B732B6EA4CB /* SwipeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61BDF10D47DC7B81D619821F8A0568 /* SwipeMenuViewController.swift */; };
+		F11CA4B34F27B6679C4D273E425988D6 /* FilterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1A7D7812F1D2656CB413517AA8F401 /* FilterValidator.swift */; };
+		F4584922FF59B64E7A97DB11C766318E /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A98D744E7521617FB6E2C5A1C13E5 /* TabView.swift */; };
+		F833872D80D115F5869D30024650886A /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A35DA32420204AD8DCE7D72F35B7ED /* SwiftUIExtension.swift */; };
+		FAB624DC65CEDBB8F9A72DDD95D684FE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3356219C2443F1EF66D338F421995D7 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		61565CDD1204AE504315D75563738F6E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2DACB9880823AC6A3C72ED7C7B49473A;
-			remoteInfo = SwipeMenuViewController;
-		};
-		9D59580ECF74C653D2923A0561ACF16B /* PBXContainerItemProxy */ = {
+		288A271E86D61F355D45B4F56E5C16CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 765CC6276452C8332186E7325B6370CD;
 			remoteInfo = SPIndicator;
 		};
+		2AD017F45C0BE12D45A24A857B1A31EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DACB9880823AC6A3C72ED7C7B49473A;
+			remoteInfo = SwipeMenuViewController;
+		};
+		395D8D4966BD8F4DD7D8D323ACDF20A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1740FECD5A74A42ADAE96F3A8246787A;
+			remoteInfo = SwiftyBeaver;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		067B9DD0BCCF53D60CA992C66F5044E0 /* SwipeMenuViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.debug.xcconfig; sourceTree = "<group>"; };
-		10545E21AFE12A54754A3E28A7137D92 /* UIEdgeInsetsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIEdgeInsetsExtension.swift; path = Sources/Classes/UIEdgeInsetsExtension.swift; sourceTree = "<group>"; };
+		028C182E7BEFBFAAB67F2B469E592664 /* SwipeMenuViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-umbrella.h"; sourceTree = "<group>"; };
+		0A2F1457DA0B05F50CF2A35F12F39576 /* SwiftyBeaver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyBeaver.modulemap; sourceTree = "<group>"; };
+		0A61BDF10D47DC7B81D619821F8A0568 /* SwipeMenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuViewController.swift; path = Sources/Classes/SwipeMenuViewController.swift; sourceTree = "<group>"; };
+		11BDA7896A1AC34B3C5A234286D7BF17 /* GoogleCloudDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GoogleCloudDestination.swift; path = Sources/GoogleCloudDestination.swift; sourceTree = "<group>"; };
+		15D2AF75782E672621106375CBFCAEEA /* SPIndicatorLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorLayout.swift; path = Sources/SPIndicator/Models/SPIndicatorLayout.swift; sourceTree = "<group>"; };
 		1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SPIndicator; path = SPIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		184B96F3B5D6F0B7545F0C04ABFFE6C7 /* SPIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicator.swift; path = Sources/SPIndicator/SPIndicator.swift; sourceTree = "<group>"; };
-		1CA24F05E646AB3C91366D01F6C3D1A2 /* TabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Sources/Classes/TabView.swift; sourceTree = "<group>"; };
-		23C4BC8576A66186F66A5887F5D6C188 /* SPIndicatorHaptic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorHaptic.swift; path = Sources/SPIndicator/Services/SPIndicatorHaptic.swift; sourceTree = "<group>"; };
-		273E8161970AB3EE202F78744C5F5624 /* SPIndicator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-prefix.pch"; sourceTree = "<group>"; };
-		2AC479202B164ABEA356FC9C05082F2A /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/SPIndicator/Extensions/UIColorExtension.swift; sourceTree = "<group>"; };
+		19A35DA32420204AD8DCE7D72F35B7ED /* SwiftUIExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftUIExtension.swift; path = Sources/SPIndicator/Extensions/SwiftUIExtension.swift; sourceTree = "<group>"; };
+		1A804060FCFCE8125F72FC2DCEDDB6F9 /* SwiftyBeaver-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-prefix.pch"; sourceTree = "<group>"; };
+		1FF64AB69FF034AA87349BD2BC3AC444 /* SwipeMenuViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-prefix.pch"; sourceTree = "<group>"; };
+		2BDB10CC6000C397E786C2BF69AAD169 /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
 		2DC97C6A3FD03422B9DE89C565CAFF38 /* Pods-Money Diary-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Money Diary-acknowledgements.plist"; sourceTree = "<group>"; };
+		32E2BFB65953172087B97FB26ACBA6DC /* TabItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabItemView.swift; path = Sources/Classes/TabItemView.swift; sourceTree = "<group>"; };
+		344C6AF6C94FEEAA4F8FD5CC9F8B7E75 /* SPIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorView.swift; path = Sources/SPIndicator/SPIndicatorView.swift; sourceTree = "<group>"; };
+		374A67A3A5DD01D0297DDE5DE17285F1 /* UIFontExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIFontExtension.swift; path = Sources/SPIndicator/Extensions/UIFontExtension.swift; sourceTree = "<group>"; };
 		37C46866D8536287410D8674DD58D51C /* Pods-Money Diary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Money Diary.modulemap"; sourceTree = "<group>"; };
-		37E7A7FAF29ADEDDDA8373E2551F7F60 /* UILabelExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = Sources/SPIndicator/Extensions/UILabelExtension.swift; sourceTree = "<group>"; };
-		3AADD59F11EE0D3FD627DF590F30B469 /* SwipeMenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuViewController.swift; path = Sources/Classes/SwipeMenuViewController.swift; sourceTree = "<group>"; };
-		3F7279A0EE6A482ACAEDF534995328E6 /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Sources/Classes/UIViewExtension.swift; sourceTree = "<group>"; };
-		3FFB2DE7FB6735FCC30C768321A51803 /* TabItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabItemView.swift; path = Sources/Classes/TabItemView.swift; sourceTree = "<group>"; };
-		506CFC8027EC2745A1351248F3C9D78E /* SPIndicatorIconPreset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconPreset.swift; path = Sources/SPIndicator/SPIndicatorIconPreset.swift; sourceTree = "<group>"; };
+		4423701169B4243013360201442D98DB /* SwiftyBeaver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-dummy.m"; sourceTree = "<group>"; };
+		480FAFB18FDE3C40CCAEA17DDBB32A60 /* SPIndicatorIconPreset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconPreset.swift; path = Sources/SPIndicator/SPIndicatorIconPreset.swift; sourceTree = "<group>"; };
+		4A1A7D7812F1D2656CB413517AA8F401 /* FilterValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilterValidator.swift; path = Sources/FilterValidator.swift; sourceTree = "<group>"; };
+		4D7524EC3703DF507C23C12E7CF94433 /* SBPlatformDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SBPlatformDestination.swift; path = Sources/SBPlatformDestination.swift; sourceTree = "<group>"; };
+		4F16CBD1AEA2AB1771B3BF284BA84277 /* SwipeMenuViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwipeMenuViewController-Info.plist"; sourceTree = "<group>"; };
+		54ABF8CA6E6D47BB212802EC50496427 /* SwiftyBeaver-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-umbrella.h"; sourceTree = "<group>"; };
 		5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwipeMenuViewController; path = SwipeMenuViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C28BE59DB14B3177F4DAF53BBA972FD /* SwipeMenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuView.swift; path = Sources/Classes/SwipeMenuView.swift; sourceTree = "<group>"; };
-		64102FC97088CFD5C39ED5E041E53CC4 /* SwipeMenuViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeMenuViewController.modulemap; sourceTree = "<group>"; };
-		66204079C8053EB1D5DD9598652B6136 /* SwipeMenuViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-umbrella.h"; sourceTree = "<group>"; };
-		6843FAD6B9FB07718EAC14EC384DB957 /* SPIndicator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SPIndicator-dummy.m"; sourceTree = "<group>"; };
-		6F50097BD985ABCE2C84A80248AA8A43 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftUIExtension.swift; path = Sources/SPIndicator/Extensions/SwiftUIExtension.swift; sourceTree = "<group>"; };
-		6F9D28CF157B4B352AEE09BFE3DCCF62 /* SPAlertIconErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPAlertIconErrorView.swift; path = Sources/SPIndicator/Icons/SPAlertIconErrorView.swift; sourceTree = "<group>"; };
+		5670B066CAB3D7BBBEEA6B2433769D98 /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Sources/Classes/UIViewExtension.swift; sourceTree = "<group>"; };
+		580EC823897E2F87D491BB7EF6AC81BC /* SPIndicator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SPIndicator-dummy.m"; sourceTree = "<group>"; };
+		5ADE3A135DBC3C82F7F0E43187700CA9 /* SwipeMenuViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.debug.xcconfig; sourceTree = "<group>"; };
+		5E653E908DCC3F8FAEDE3005E650329E /* SPIndicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicator.swift; path = Sources/SPIndicator/SPIndicator.swift; sourceTree = "<group>"; };
+		6591AFE912FE982CF3412B3BDC39C5B2 /* SPIndicator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SPIndicator-Info.plist"; sourceTree = "<group>"; };
+		663ED9483682AFA4A24AD48AF5D4579F /* SwipeMenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuView.swift; path = Sources/Classes/SwipeMenuView.swift; sourceTree = "<group>"; };
+		6B4400525A0EBA36476455A763DFA65A /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/FileDestination.swift; sourceTree = "<group>"; };
+		6C060F1775B44A2EC408E4622C6E41E0 /* SPAlertIconErrorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPAlertIconErrorView.swift; path = Sources/SPIndicator/Icons/SPAlertIconErrorView.swift; sourceTree = "<group>"; };
+		70971B369DDC76A1C7E7F3D9E07DD43B /* SPIndicator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-prefix.pch"; sourceTree = "<group>"; };
+		7198AA3BA5EB2B3871B2407411A9A1C4 /* SwiftyBeaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.release.xcconfig; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		74CD967F1613EEFDE8C98B9713DB8A4B /* SPIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorView.swift; path = Sources/SPIndicator/SPIndicatorView.swift; sourceTree = "<group>"; };
+		734A98D744E7521617FB6E2C5A1C13E5 /* TabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Sources/Classes/TabView.swift; sourceTree = "<group>"; };
+		774825D2E7E2D19B30598B83D512D96B /* UILabelExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = Sources/SPIndicator/Extensions/UILabelExtension.swift; sourceTree = "<group>"; };
 		77E27BFDC5A5A48780DC938FF39D2156 /* Pods-Money Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Money Diary.debug.xcconfig"; sourceTree = "<group>"; };
-		7FF5172A45FFC339E01AA8FB06CBE4CD /* SPIndicator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.debug.xcconfig; sourceTree = "<group>"; };
-		8C2B1FF1A57CAE92DAFD9E1ACEC08AEA /* UIFontExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIFontExtension.swift; path = Sources/SPIndicator/Extensions/UIFontExtension.swift; sourceTree = "<group>"; };
-		8E183E096740F214476C9425AB5F9CDA /* SwipeMenuViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.release.xcconfig; sourceTree = "<group>"; };
+		7A5F7001277980B8F3EEA75BCD346E53 /* SwiftyBeaver */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8964942FFCA1B72871D4B29A74711967 /* SPIndicator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.debug.xcconfig; sourceTree = "<group>"; };
 		8F528381FDD1A6746BA79CCB9DEEA1E0 /* Pods-Money Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Money Diary.release.xcconfig"; sourceTree = "<group>"; };
-		904AC36457DB0E0F0250577572C516C1 /* SPIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.release.xcconfig; sourceTree = "<group>"; };
-		969E8300B81EA581E8E3A1CC23B512FB /* SwipeMenuViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwipeMenuViewController-Info.plist"; sourceTree = "<group>"; };
+		98134DB6DACB7E4A0EF35C79FBF8A294 /* SPIndicatorPresentSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorPresentSide.swift; path = Sources/SPIndicator/Models/SPIndicatorPresentSide.swift; sourceTree = "<group>"; };
+		9CC557B1D74BE15A49F2C0BAE7518E9B /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9EB3D11DD50CA771328B1909EBAEB076 /* SPIndicatorLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorLayout.swift; path = Sources/SPIndicator/Models/SPIndicatorLayout.swift; sourceTree = "<group>"; };
-		A3533F09485B446F975E856E55A27E38 /* SPIndicator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SPIndicator-Info.plist"; sourceTree = "<group>"; };
-		A61700E859F10A88D17EE326F3E2999A /* SPIndicator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SPIndicator.modulemap; sourceTree = "<group>"; };
+		9EF90146D3F5B048C6F10FFBE9AFB69F /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/SPIndicator/Extensions/UIColorExtension.swift; sourceTree = "<group>"; };
+		A1FDAE60C8AB8532ED2238EB322760DB /* SwiftyBeaver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Sources/SwiftyBeaver.swift; sourceTree = "<group>"; };
+		A5CAC46061A35D7934E4169AF5E87C30 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Sources/Extensions.swift; sourceTree = "<group>"; };
+		A6330DFD8068F87202723A0781D65732 /* SPIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SPIndicator.release.xcconfig; sourceTree = "<group>"; };
+		A87D7B309364696A59DDAFE08BCFFC6C /* SwipeMenuViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.release.xcconfig; sourceTree = "<group>"; };
 		AA502ACF766A3E7D37B4E36C33433CB6 /* Pods-Money Diary-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Money Diary-Info.plist"; sourceTree = "<group>"; };
+		AB35D750878869668DFC1F00ACB99469 /* SPIndicatorHaptic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorHaptic.swift; path = Sources/SPIndicator/Services/SPIndicatorHaptic.swift; sourceTree = "<group>"; };
+		AB7F46DA503DD4DE98491856779E513D /* SwipeMenuViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeMenuViewController-dummy.m"; sourceTree = "<group>"; };
+		AF3EB505BDFAF4126F97DF34CC21C03B /* SPIndicatorIconDoneView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconDoneView.swift; path = Sources/SPIndicator/Icons/SPIndicatorIconDoneView.swift; sourceTree = "<group>"; };
+		B0550D4EAD680EE1F8E363ABB3523C4E /* SPIndicatorIconAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconAnimatable.swift; path = Sources/SPIndicator/Protocols/SPIndicatorIconAnimatable.swift; sourceTree = "<group>"; };
 		B16CA76F75F713618EC16A6ACDAB0FE1 /* Pods-Money Diary-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Money Diary-frameworks.sh"; sourceTree = "<group>"; };
-		B91B86325ADEEF0B9060DEB67A0D2F22 /* SPIndicator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-umbrella.h"; sourceTree = "<group>"; };
+		BF361F4CEA793DE5353F365EF6D8AEAF /* SPIndicator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SPIndicator-umbrella.h"; sourceTree = "<group>"; };
 		C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Money Diary"; path = Pods_Money_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8A690FB03BD40F853E4603301B9D8AC /* SwiftyBeaver-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyBeaver-Info.plist"; sourceTree = "<group>"; };
 		CBC7993107388233B2F104FF8141FE34 /* Pods-Money Diary-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Money Diary-umbrella.h"; sourceTree = "<group>"; };
-		D208C1D893F48EE50AD11E873F5854FF /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/Classes/UIColorExtension.swift; sourceTree = "<group>"; };
+		CBC91F4F8B66E1469F74934C6510DB7C /* ContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentScrollView.swift; path = Sources/Classes/ContentScrollView.swift; sourceTree = "<group>"; };
+		CC2E3E2018C617826DCC10E75F87E70D /* SPIndicator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SPIndicator.modulemap; sourceTree = "<group>"; };
+		D251D4432BF3AAE8806C2C10D9999BF2 /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = Sources/Base64.swift; sourceTree = "<group>"; };
+		D25AED390A0AE99701556F5B3D8218BC /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
 		D2C2E88E3E0AE3650A8AB6A8D0931F7C /* Pods-Money Diary-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Money Diary-dummy.m"; sourceTree = "<group>"; };
-		DC1EB4CAD0B7CE1660E229BC86290239 /* ContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentScrollView.swift; path = Sources/Classes/ContentScrollView.swift; sourceTree = "<group>"; };
-		DE7F3673572D12BBBB370D513AC8B545 /* SPIndicatorIconDoneView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconDoneView.swift; path = Sources/SPIndicator/Icons/SPIndicatorIconDoneView.swift; sourceTree = "<group>"; };
-		E7D4B1A1C1A04E68671166B03D67CF1C /* SwipeMenuViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-prefix.pch"; sourceTree = "<group>"; };
+		D2C7475895DA74A0471371C2D2F04FE6 /* UIEdgeInsetsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIEdgeInsetsExtension.swift; path = Sources/Classes/UIEdgeInsetsExtension.swift; sourceTree = "<group>"; };
+		D3356219C2443F1EF66D338F421995D7 /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/Classes/UIColorExtension.swift; sourceTree = "<group>"; };
+		E4A18A3F723F0E916B70AAF6B04D4C51 /* SwipeMenuViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeMenuViewController.modulemap; sourceTree = "<group>"; };
+		E4E1B82739AA5A93020211F2E9501F15 /* SwiftyBeaver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.debug.xcconfig; sourceTree = "<group>"; };
 		F007B677889D56985D683E915AAF59F3 /* Pods-Money Diary-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Money Diary-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F773BA5232929ABBF4F953A150EB651C /* SPIndicatorPresentSide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorPresentSide.swift; path = Sources/SPIndicator/Models/SPIndicatorPresentSide.swift; sourceTree = "<group>"; };
-		F86CEE6C1AE2F9822C2F9F2021746AB3 /* SwipeMenuViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeMenuViewController-dummy.m"; sourceTree = "<group>"; };
-		FD852D275341038C021902E3E86A28E3 /* SPIndicatorIconAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SPIndicatorIconAnimatable.swift; path = Sources/SPIndicator/Protocols/SPIndicatorIconAnimatable.swift; sourceTree = "<group>"; };
+		F580D9F9F141794F2185A9C87D10B1B2 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Filter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1935E1FE223A1863B13558E83008930D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EA10C6C9F6BCABBD2F320B13B2E79A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47FC21F7E3F3949F92C3CE8C8B3226F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,47 +173,69 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7E7338AF64EE50E7E0426B239B150D78 /* Frameworks */ = {
+		B439F77CB1AAEEE9FE5EE8609CF889EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F47953EB1F11DDE4861DC699394DFE9 /* Foundation.framework in Frameworks */,
+				AC1C1E28D842814A0FDE4B95CF66E34D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0349E4263A75AC612F9955C182AD72E2 /* SwipeMenuViewController */ = {
+		0DBBFD191AA25BA46F64C08EAA2ED560 /* SwipeMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DC1EB4CAD0B7CE1660E229BC86290239 /* ContentScrollView.swift */,
-				5C28BE59DB14B3177F4DAF53BBA972FD /* SwipeMenuView.swift */,
-				3AADD59F11EE0D3FD627DF590F30B469 /* SwipeMenuViewController.swift */,
-				3FFB2DE7FB6735FCC30C768321A51803 /* TabItemView.swift */,
-				1CA24F05E646AB3C91366D01F6C3D1A2 /* TabView.swift */,
-				D208C1D893F48EE50AD11E873F5854FF /* UIColorExtension.swift */,
-				10545E21AFE12A54754A3E28A7137D92 /* UIEdgeInsetsExtension.swift */,
-				3F7279A0EE6A482ACAEDF534995328E6 /* UIViewExtension.swift */,
-				64CD521A76C6186B515885BBE39DE5D4 /* Support Files */,
+				CBC91F4F8B66E1469F74934C6510DB7C /* ContentScrollView.swift */,
+				663ED9483682AFA4A24AD48AF5D4579F /* SwipeMenuView.swift */,
+				0A61BDF10D47DC7B81D619821F8A0568 /* SwipeMenuViewController.swift */,
+				32E2BFB65953172087B97FB26ACBA6DC /* TabItemView.swift */,
+				734A98D744E7521617FB6E2C5A1C13E5 /* TabView.swift */,
+				D3356219C2443F1EF66D338F421995D7 /* UIColorExtension.swift */,
+				D2C7475895DA74A0471371C2D2F04FE6 /* UIEdgeInsetsExtension.swift */,
+				5670B066CAB3D7BBBEEA6B2433769D98 /* UIViewExtension.swift */,
+				73DAF25B847B43B2EE639DE149C41BBB /* Support Files */,
 			);
 			name = SwipeMenuViewController;
 			path = SwipeMenuViewController;
 			sourceTree = "<group>";
 		};
-		2210BD522AF402289613E7A2FB6A55F8 /* Support Files */ = {
+		2F1D26E9E481097052B4F929C5554B8C /* SPIndicator */ = {
 			isa = PBXGroup;
 			children = (
-				A61700E859F10A88D17EE326F3E2999A /* SPIndicator.modulemap */,
-				6843FAD6B9FB07718EAC14EC384DB957 /* SPIndicator-dummy.m */,
-				A3533F09485B446F975E856E55A27E38 /* SPIndicator-Info.plist */,
-				273E8161970AB3EE202F78744C5F5624 /* SPIndicator-prefix.pch */,
-				B91B86325ADEEF0B9060DEB67A0D2F22 /* SPIndicator-umbrella.h */,
-				7FF5172A45FFC339E01AA8FB06CBE4CD /* SPIndicator.debug.xcconfig */,
-				904AC36457DB0E0F0250577572C516C1 /* SPIndicator.release.xcconfig */,
+				6C060F1775B44A2EC408E4622C6E41E0 /* SPAlertIconErrorView.swift */,
+				5E653E908DCC3F8FAEDE3005E650329E /* SPIndicator.swift */,
+				AB35D750878869668DFC1F00ACB99469 /* SPIndicatorHaptic.swift */,
+				B0550D4EAD680EE1F8E363ABB3523C4E /* SPIndicatorIconAnimatable.swift */,
+				AF3EB505BDFAF4126F97DF34CC21C03B /* SPIndicatorIconDoneView.swift */,
+				480FAFB18FDE3C40CCAEA17DDBB32A60 /* SPIndicatorIconPreset.swift */,
+				15D2AF75782E672621106375CBFCAEEA /* SPIndicatorLayout.swift */,
+				98134DB6DACB7E4A0EF35C79FBF8A294 /* SPIndicatorPresentSide.swift */,
+				344C6AF6C94FEEAA4F8FD5CC9F8B7E75 /* SPIndicatorView.swift */,
+				19A35DA32420204AD8DCE7D72F35B7ED /* SwiftUIExtension.swift */,
+				9EF90146D3F5B048C6F10FFBE9AFB69F /* UIColorExtension.swift */,
+				374A67A3A5DD01D0297DDE5DE17285F1 /* UIFontExtension.swift */,
+				774825D2E7E2D19B30598B83D512D96B /* UILabelExtension.swift */,
+				FD92AC892190BF901A0780D1B4B351E9 /* Support Files */,
+			);
+			name = SPIndicator;
+			path = SPIndicator;
+			sourceTree = "<group>";
+		};
+		3F0369CC920A622E26B3DE12D3A5907F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F1457DA0B05F50CF2A35F12F39576 /* SwiftyBeaver.modulemap */,
+				4423701169B4243013360201442D98DB /* SwiftyBeaver-dummy.m */,
+				C8A690FB03BD40F853E4603301B9D8AC /* SwiftyBeaver-Info.plist */,
+				1A804060FCFCE8125F72FC2DCEDDB6F9 /* SwiftyBeaver-prefix.pch */,
+				54ABF8CA6E6D47BB212802EC50496427 /* SwiftyBeaver-umbrella.h */,
+				E4E1B82739AA5A93020211F2E9501F15 /* SwiftyBeaver.debug.xcconfig */,
+				7198AA3BA5EB2B3871B2407411A9A1C4 /* SwiftyBeaver.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SPIndicator";
+			path = "../Target Support Files/SwiftyBeaver";
 			sourceTree = "<group>";
 		};
 		4B0BE3B9CF3E471E77EAA9F31EB0F94B /* Pods-Money Diary */ = {
@@ -185,22 +255,23 @@
 			path = "Target Support Files/Pods-Money Diary";
 			sourceTree = "<group>";
 		};
-		50EE5F59884592007DCDD47A5CC89C74 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */,
-				1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */,
-				5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		51332BD1F5E3BA53FEC250A701BD30FF /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				4B0BE3B9CF3E471E77EAA9F31EB0F94B /* Pods-Money Diary */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		51B4FF8ADC55FF533A63BC1DD7372CFF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6CBE52829FB2A4AD0525A670F52F6E9 /* Pods-Money Diary */,
+				1610EA30A41A8E40274DA799098CF8BB /* SPIndicator */,
+				7A5F7001277980B8F3EEA75BCD346E53 /* SwiftyBeaver */,
+				5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -211,50 +282,29 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		64CD521A76C6186B515885BBE39DE5D4 /* Support Files */ = {
+		5ADBE7054FAB82339446F1FA7EAA66B6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				64102FC97088CFD5C39ED5E041E53CC4 /* SwipeMenuViewController.modulemap */,
-				F86CEE6C1AE2F9822C2F9F2021746AB3 /* SwipeMenuViewController-dummy.m */,
-				969E8300B81EA581E8E3A1CC23B512FB /* SwipeMenuViewController-Info.plist */,
-				E7D4B1A1C1A04E68671166B03D67CF1C /* SwipeMenuViewController-prefix.pch */,
-				66204079C8053EB1D5DD9598652B6136 /* SwipeMenuViewController-umbrella.h */,
-				067B9DD0BCCF53D60CA992C66F5044E0 /* SwipeMenuViewController.debug.xcconfig */,
-				8E183E096740F214476C9425AB5F9CDA /* SwipeMenuViewController.release.xcconfig */,
+				2F1D26E9E481097052B4F929C5554B8C /* SPIndicator */,
+				F48E91A8261381DC011F0CA765DCB62B /* SwiftyBeaver */,
+				0DBBFD191AA25BA46F64C08EAA2ED560 /* SwipeMenuViewController */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		73DAF25B847B43B2EE639DE149C41BBB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E4A18A3F723F0E916B70AAF6B04D4C51 /* SwipeMenuViewController.modulemap */,
+				AB7F46DA503DD4DE98491856779E513D /* SwipeMenuViewController-dummy.m */,
+				4F16CBD1AEA2AB1771B3BF284BA84277 /* SwipeMenuViewController-Info.plist */,
+				1FF64AB69FF034AA87349BD2BC3AC444 /* SwipeMenuViewController-prefix.pch */,
+				028C182E7BEFBFAAB67F2B469E592664 /* SwipeMenuViewController-umbrella.h */,
+				5ADE3A135DBC3C82F7F0E43187700CA9 /* SwipeMenuViewController.debug.xcconfig */,
+				A87D7B309364696A59DDAFE08BCFFC6C /* SwipeMenuViewController.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwipeMenuViewController";
-			sourceTree = "<group>";
-		};
-		B23D1166DA6D0E9EA01F2E604E9B2AB5 /* SPIndicator */ = {
-			isa = PBXGroup;
-			children = (
-				6F9D28CF157B4B352AEE09BFE3DCCF62 /* SPAlertIconErrorView.swift */,
-				184B96F3B5D6F0B7545F0C04ABFFE6C7 /* SPIndicator.swift */,
-				23C4BC8576A66186F66A5887F5D6C188 /* SPIndicatorHaptic.swift */,
-				FD852D275341038C021902E3E86A28E3 /* SPIndicatorIconAnimatable.swift */,
-				DE7F3673572D12BBBB370D513AC8B545 /* SPIndicatorIconDoneView.swift */,
-				506CFC8027EC2745A1351248F3C9D78E /* SPIndicatorIconPreset.swift */,
-				9EB3D11DD50CA771328B1909EBAEB076 /* SPIndicatorLayout.swift */,
-				F773BA5232929ABBF4F953A150EB651C /* SPIndicatorPresentSide.swift */,
-				74CD967F1613EEFDE8C98B9713DB8A4B /* SPIndicatorView.swift */,
-				6F50097BD985ABCE2C84A80248AA8A43 /* SwiftUIExtension.swift */,
-				2AC479202B164ABEA356FC9C05082F2A /* UIColorExtension.swift */,
-				8C2B1FF1A57CAE92DAFD9E1ACEC08AEA /* UIFontExtension.swift */,
-				37E7A7FAF29ADEDDDA8373E2551F7F60 /* UILabelExtension.swift */,
-				2210BD522AF402289613E7A2FB6A55F8 /* Support Files */,
-			);
-			name = SPIndicator;
-			path = SPIndicator;
-			sourceTree = "<group>";
-		};
-		BE64F0BF58187EB4056E7C5BB8DC9416 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B23D1166DA6D0E9EA01F2E604E9B2AB5 /* SPIndicator */,
-				0349E4263A75AC612F9955C182AD72E2 /* SwipeMenuViewController */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -262,8 +312,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				BE64F0BF58187EB4056E7C5BB8DC9416 /* Pods */,
-				50EE5F59884592007DCDD47A5CC89C74 /* Products */,
+				5ADBE7054FAB82339446F1FA7EAA66B6 /* Pods */,
+				51B4FF8ADC55FF533A63BC1DD7372CFF /* Products */,
 				51332BD1F5E3BA53FEC250A701BD30FF /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -274,6 +324,41 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F48E91A8261381DC011F0CA765DCB62B /* SwiftyBeaver */ = {
+			isa = PBXGroup;
+			children = (
+				2BDB10CC6000C397E786C2BF69AAD169 /* AES256CBC.swift */,
+				D251D4432BF3AAE8806C2C10D9999BF2 /* Base64.swift */,
+				D25AED390A0AE99701556F5B3D8218BC /* BaseDestination.swift */,
+				9CC557B1D74BE15A49F2C0BAE7518E9B /* ConsoleDestination.swift */,
+				A5CAC46061A35D7934E4169AF5E87C30 /* Extensions.swift */,
+				6B4400525A0EBA36476455A763DFA65A /* FileDestination.swift */,
+				F580D9F9F141794F2185A9C87D10B1B2 /* Filter.swift */,
+				4A1A7D7812F1D2656CB413517AA8F401 /* FilterValidator.swift */,
+				11BDA7896A1AC34B3C5A234286D7BF17 /* GoogleCloudDestination.swift */,
+				4D7524EC3703DF507C23C12E7CF94433 /* SBPlatformDestination.swift */,
+				A1FDAE60C8AB8532ED2238EB322760DB /* SwiftyBeaver.swift */,
+				3F0369CC920A622E26B3DE12D3A5907F /* Support Files */,
+			);
+			name = SwiftyBeaver;
+			path = SwiftyBeaver;
+			sourceTree = "<group>";
+		};
+		FD92AC892190BF901A0780D1B4B351E9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC2E3E2018C617826DCC10E75F87E70D /* SPIndicator.modulemap */,
+				580EC823897E2F87D491BB7EF6AC81BC /* SPIndicator-dummy.m */,
+				6591AFE912FE982CF3412B3BDC39C5B2 /* SPIndicator-Info.plist */,
+				70971B369DDC76A1C7E7F3D9E07DD43B /* SPIndicator-prefix.pch */,
+				BF361F4CEA793DE5353F365EF6D8AEAF /* SPIndicator-umbrella.h */,
+				8964942FFCA1B72871D4B29A74711967 /* SPIndicator.debug.xcconfig */,
+				A6330DFD8068F87202723A0781D65732 /* SPIndicator.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SPIndicator";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,17 +380,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B805CC37B8FE900111715D81E2A97D15 /* Headers */ = {
+		7A206636A3839BC396027A586814DD55 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535B96365F365518F1FF8E664C496C7A /* Pods-Money Diary-umbrella.h in Headers */,
+				E1CE5E1887946D8474DD705542B075FB /* SwiftyBeaver-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80FD96EDB7E6AFE73B3718C45A6F9550 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB786B4AF6784C1969D22251B68C2F80 /* Pods-Money Diary-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1740FECD5A74A42ADAE96F3A8246787A /* SwiftyBeaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF1F5258E16636A4848710DDF6E32EAE /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */;
+			buildPhases = (
+				7A206636A3839BC396027A586814DD55 /* Headers */,
+				0A16AE6562D1DE506576A46F407E3757 /* Sources */,
+				B439F77CB1AAEEE9FE5EE8609CF889EB /* Frameworks */,
+				250B7084F2B28237E195C00005354F16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyBeaver;
+			productName = SwiftyBeaver;
+			productReference = 7A5F7001277980B8F3EEA75BCD346E53 /* SwiftyBeaver */;
+			productType = "com.apple.product-type.framework";
+		};
 		2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E6D272D0D30E3B0CE01985A7449D602 /* Build configuration list for PBXNativeTarget "SwipeMenuViewController" */;
@@ -344,18 +455,19 @@
 		};
 		D482B98384C8808BA434602B348E93C1 /* Pods-Money Diary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E391F4FB3642E81D2993D39D6DBBEEF1 /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */;
+			buildConfigurationList = E459E68E515C6CF5D6BC3F318AD26FE4 /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */;
 			buildPhases = (
-				B805CC37B8FE900111715D81E2A97D15 /* Headers */,
-				45D00160738915BDEC132C493354C739 /* Sources */,
-				7E7338AF64EE50E7E0426B239B150D78 /* Frameworks */,
-				C54F5FB75C4047ECA95B01DDA0204FAC /* Resources */,
+				80FD96EDB7E6AFE73B3718C45A6F9550 /* Headers */,
+				41AC913E24A3D54CF38B8E7E2FCDA105 /* Sources */,
+				1935E1FE223A1863B13558E83008930D /* Frameworks */,
+				DD13B11280F99E61887BB1E1DAF621D5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1EF9A35FEF6E145B36323E12E65A8944 /* PBXTargetDependency */,
-				E318647B9837838BCF7C8CB79DCF287B /* PBXTargetDependency */,
+				A6E5E22028B9633D622E3B0E4A40B714 /* PBXTargetDependency */,
+				67844DC7094AAAF869C7E8262324DA55 /* PBXTargetDependency */,
+				15E70303A0DFD782C5E47FB36ECABF9C /* PBXTargetDependency */,
 			);
 			name = "Pods-Money Diary";
 			productName = Pods_Money_Diary;
@@ -380,12 +492,13 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 50EE5F59884592007DCDD47A5CC89C74 /* Products */;
+			productRefGroup = 51B4FF8ADC55FF533A63BC1DD7372CFF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D482B98384C8808BA434602B348E93C1 /* Pods-Money Diary */,
 				765CC6276452C8332186E7325B6370CD /* SPIndicator */,
+				1740FECD5A74A42ADAE96F3A8246787A /* SwiftyBeaver */,
 				2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */,
 			);
 		};
@@ -399,6 +512,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		250B7084F2B28237E195C00005354F16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A35C28E9E9999231CDC98F568F62BB20 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -406,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C54F5FB75C4047ECA95B01DDA0204FAC /* Resources */ = {
+		DD13B11280F99E61887BB1E1DAF621D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,11 +536,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		45D00160738915BDEC132C493354C739 /* Sources */ = {
+		0A16AE6562D1DE506576A46F407E3757 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACDBCB6309A100D771B015A0BD72E970 /* Pods-Money Diary-dummy.m in Sources */,
+				05EDE1AA1F210B8CEE4DA0B528C11E55 /* AES256CBC.swift in Sources */,
+				2089B8C82F03CCC3749DE9691782C465 /* Base64.swift in Sources */,
+				CD11C460B8572F784EA36D9FA61F5EB2 /* BaseDestination.swift in Sources */,
+				71E3C9B61337D7F5E2C924078616EB44 /* ConsoleDestination.swift in Sources */,
+				105363B7794B3BB3E220B6A0786ACC57 /* Extensions.swift in Sources */,
+				C8C63474AB8CFF25B709312336C9C4E9 /* FileDestination.swift in Sources */,
+				C3CC7B6469B8D587F73A7E54B5B5F9D4 /* Filter.swift in Sources */,
+				F11CA4B34F27B6679C4D273E425988D6 /* FilterValidator.swift in Sources */,
+				EF9D138768E54085076587834F433C5E /* GoogleCloudDestination.swift in Sources */,
+				EC10038D540FA6F528CC590EBCCED08A /* SBPlatformDestination.swift in Sources */,
+				EA6C616AA3A2E276C0C87DDE5F11FEAC /* SwiftyBeaver.swift in Sources */,
+				B043C7B2EED3A995C867CE56B62EAE78 /* SwiftyBeaver-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41AC913E24A3D54CF38B8E7E2FCDA105 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FA82465708C3BF7A0FD4A2869C59FDE /* Pods-Money Diary-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,24 +603,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1EF9A35FEF6E145B36323E12E65A8944 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SPIndicator;
-			target = 765CC6276452C8332186E7325B6370CD /* SPIndicator */;
-			targetProxy = 9D59580ECF74C653D2923A0561ACF16B /* PBXContainerItemProxy */;
-		};
-		E318647B9837838BCF7C8CB79DCF287B /* PBXTargetDependency */ = {
+		15E70303A0DFD782C5E47FB36ECABF9C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwipeMenuViewController;
 			target = 2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */;
-			targetProxy = 61565CDD1204AE504315D75563738F6E /* PBXContainerItemProxy */;
+			targetProxy = 2AD017F45C0BE12D45A24A857B1A31EA /* PBXContainerItemProxy */;
+		};
+		67844DC7094AAAF869C7E8262324DA55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyBeaver;
+			target = 1740FECD5A74A42ADAE96F3A8246787A /* SwiftyBeaver */;
+			targetProxy = 395D8D4966BD8F4DD7D8D323ACDF20A3 /* PBXContainerItemProxy */;
+		};
+		A6E5E22028B9633D622E3B0E4A40B714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SPIndicator;
+			target = 765CC6276452C8332186E7325B6370CD /* SPIndicator */;
+			targetProxy = 288A271E86D61F355D45B4F56E5C16CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		14AE3820144B397FF4A6C3FAE68C553A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E183E096740F214476C9425AB5F9CDA /* SwipeMenuViewController.release.xcconfig */;
+			baseConfigurationReference = A87D7B309364696A59DDAFE08BCFFC6C /* SwipeMenuViewController.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -516,7 +661,7 @@
 		};
 		29B076DBC8687227A16D861D56241230 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FF5172A45FFC339E01AA8FB06CBE4CD /* SPIndicator.debug.xcconfig */;
+			baseConfigurationReference = 8964942FFCA1B72871D4B29A74711967 /* SPIndicator.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -549,7 +694,78 @@
 			};
 			name = Debug;
 		};
-		874460DFE6347F5787346FE77F0A9615 /* Debug */ = {
+		3B0301BFACB132565D704784AE6BB520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4E1B82739AA5A93020211F2E9501F15 /* SwiftyBeaver.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver/SwiftyBeaver-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver/SwiftyBeaver-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver/SwiftyBeaver.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyBeaver;
+				PRODUCT_NAME = SwiftyBeaver;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5F72CE8E5F7E6964AC2C0528158D1D35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7198AA3BA5EB2B3871B2407411A9A1C4 /* SwiftyBeaver.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyBeaver/SwiftyBeaver-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyBeaver/SwiftyBeaver-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyBeaver/SwiftyBeaver.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyBeaver;
+				PRODUCT_NAME = SwiftyBeaver;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		71B081422EC1D2EC03DCF5C131692CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77E27BFDC5A5A48780DC938FF39D2156 /* Pods-Money Diary.debug.xcconfig */;
 			buildSettings = {
@@ -714,7 +930,77 @@
 			};
 			name = Release;
 		};
-		B8EB52D860B513BAA88E5A7BA74BCA99 /* Release */ = {
+		BA91620C7E737DF83907048359F517ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6330DFD8068F87202723A0781D65732 /* SPIndicator.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SPIndicator/SPIndicator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SPIndicator/SPIndicator-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SPIndicator/SPIndicator.modulemap";
+				PRODUCT_MODULE_NAME = SPIndicator;
+				PRODUCT_NAME = SPIndicator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E8B8072AF4975922FBF32CBFBAE3C85C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5ADE3A135DBC3C82F7F0E43187700CA9 /* SwipeMenuViewController.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController.modulemap";
+				PRODUCT_MODULE_NAME = SwipeMenuViewController;
+				PRODUCT_NAME = SwipeMenuViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F8372FE3A5D4AB9C16E6D0282CD2DA34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F528381FDD1A6746BA79CCB9DEEA1E0 /* Pods-Money Diary.release.xcconfig */;
 			buildSettings = {
@@ -752,76 +1038,6 @@
 			};
 			name = Release;
 		};
-		BA91620C7E737DF83907048359F517ED /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 904AC36457DB0E0F0250577572C516C1 /* SPIndicator.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SPIndicator/SPIndicator-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SPIndicator/SPIndicator-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SPIndicator/SPIndicator.modulemap";
-				PRODUCT_MODULE_NAME = SPIndicator;
-				PRODUCT_NAME = SPIndicator;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E8B8072AF4975922FBF32CBFBAE3C85C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 067B9DD0BCCF53D60CA992C66F5044E0 /* SwipeMenuViewController.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController.modulemap";
-				PRODUCT_MODULE_NAME = SwipeMenuViewController;
-				PRODUCT_NAME = SwipeMenuViewController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -852,11 +1068,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E391F4FB3642E81D2993D39D6DBBEEF1 /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */ = {
+		E459E68E515C6CF5D6BC3F318AD26FE4 /* Build configuration list for PBXNativeTarget "Pods-Money Diary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				874460DFE6347F5787346FE77F0A9615 /* Debug */,
-				B8EB52D860B513BAA88E5A7BA74BCA99 /* Release */,
+				71B081422EC1D2EC03DCF5C131692CBC /* Debug */,
+				F8372FE3A5D4AB9C16E6D0282CD2DA34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF1F5258E16636A4848710DDF6E32EAE /* Build configuration list for PBXNativeTarget "SwiftyBeaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B0301BFACB132565D704784AE6BB520 /* Debug */,
+				5F72CE8E5F7E6964AC2C0528158D1D35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

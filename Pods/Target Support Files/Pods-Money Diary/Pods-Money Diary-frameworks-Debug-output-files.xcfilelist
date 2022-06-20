@@ -1,2 +1,2 @@
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPIndicator.framework
-${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeMenuViewController.framework

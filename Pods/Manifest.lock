@@ -1,20 +1,20 @@
 PODS:
   - SPIndicator (1.6.4)
-  - "UITextView+Placeholder (1.4.0)"
+  - SwipeMenuViewController (4.1.0)
 
 DEPENDENCIES:
   - SPIndicator
-  - "UITextView+Placeholder"
+  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
     - SPIndicator
-    - "UITextView+Placeholder"
+    - SwipeMenuViewController
 
 SPEC CHECKSUMS:
   SPIndicator: 93e0a4fb23de51294ac48e874c0f081a5e293e4f
-  "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
+  SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
 
-PODFILE CHECKSUM: d4bb42cc6c124d30cebcf208641344ccb5e01260
+PODFILE CHECKSUM: 83a0e82380dfd2a1bca8a962582f438e48238c87
 
 COCOAPODS: 1.11.3

@@ -61,7 +61,11 @@ class DashboardVC: UIViewController {
             self.present(navController, animated: true)
         }
         let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gear")) { _ in
-            print("settings")
+            let settingsVC = SettingsVC()
+            let back = UIBarButtonItem()
+            back.title = ""
+            self.navigationItem.backBarButtonItem = back
+            self.navigationController?.pushViewController(settingsVC, animated: true)
         }
         let divider = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
         

@@ -21,19 +21,13 @@ class WalletDetailVC: UIViewController {
     @IBOutlet private var balanceView: RoundedView!
     @IBOutlet private var balanceLabel: UILabel!
     @IBOutlet private var tabBarView: SwipeTabView!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.sizeToFit()
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
         tabBarView.delegate = self
+        tabBarView.backgroundColor = .secondarySystemGroupedBackground
         
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         guard wallet != nil else { return }
@@ -48,6 +42,8 @@ class WalletDetailVC: UIViewController {
         tableView.dataSource = self
         tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "walletDetailCell")
         
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -72,6 +68,11 @@ class WalletDetailVC: UIViewController {
             amount -= record.amount
         }
         return String(format: "$%.2f", amount)
+    }
+    
+    @objc
+    func getWalletInfo() {
+        print("info")
     }
 }
 

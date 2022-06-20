@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D1y-bq-Gjq">
-                    <rect key="frame" x="0.0" y="44" width="390" height="716"/>
+                    <rect key="frame" x="0.0" y="44" width="390" height="720"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q5-Qb-vpb">
                     <rect key="frame" x="45" y="322" width="300" height="200"/>
@@ -75,17 +75,17 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQW-mV-tYo" customClass="SwipeTabView" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="760" width="390" height="50"/>
+                    <rect key="frame" x="0.0" y="764" width="390" height="80"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ymq-N5-DDk"/>
+                        <constraint firstAttribute="height" constant="80" id="ymq-N5-DDk"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
-                <constraint firstItem="MQW-mV-tYo" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="1uZ-et-YBb"/>
+                <constraint firstItem="MQW-mV-tYo" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="1uZ-et-YBb"/>
                 <constraint firstItem="D1y-bq-Gjq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E7n-4t-a8n"/>
                 <constraint firstItem="MQW-mV-tYo" firstAttribute="top" secondItem="D1y-bq-Gjq" secondAttribute="bottom" id="Jpk-Kp-fUJ"/>
                 <constraint firstItem="9Q5-Qb-vpb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QiB-6Y-l6z"/>

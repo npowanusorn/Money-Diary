@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let dashboardVC = DashboardVC()
         let navController = UINavigationController(rootViewController: dashboardVC)
-        navController.navigationBar.prefersLargeTitles = true
-        navController.navigationItem.largeTitleDisplayMode = .always
+//        navController.navigationBar.prefersLargeTitles = true
+//        navController.navigationItem.largeTitleDisplayMode = .always
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }

@@ -63,10 +63,14 @@ class SwipeTabView: UIView {
         addSubview(stack)
         
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stack.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        stack.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        stack.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        stack.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        stack.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        NSLayoutConstraint(item: stack, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 0.75, constant: 0).isActive = true
+//        stack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        stack.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//        stack.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
     
     private func setupSelectorView() {
@@ -93,6 +97,7 @@ class SwipeTabView: UIView {
             button.setTitle(title, for: .normal)
             button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
+            button.titleLabel?.font = K.Fonts.avenirNextRegular15
             buttons.append(button)
         }
         buttons[0].setTitleColor(selectedTextColor, for: .normal)

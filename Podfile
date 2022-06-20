@@ -8,5 +8,7 @@ target 'Money Diary' do
   # Pods for Money Diary
   pod 'SPIndicator'
   pod 'SwipeMenuViewController'
+  pod 'SwiftyBeaver'
+  pod 'RealmSwift', '~>10'
 
 end

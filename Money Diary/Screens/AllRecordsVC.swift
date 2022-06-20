@@ -13,14 +13,7 @@ class AllRecordsVC: UIViewController {
     
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.sizeToFit()
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         

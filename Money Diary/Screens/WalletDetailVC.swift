@@ -16,7 +16,6 @@ class WalletDetailVC: UIViewController {
     private let recordManager = RecordManager.shared
     private let tabViewButtonTitles = ["All", "Expenses", "Income"]
     private var filterOption: FilterOption = .all
-    private var filteredRecords = [Record]()
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var noRecordFoundView: UIView!
@@ -27,17 +26,17 @@ class WalletDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard selectedWalletIndex != nil else { return }
+
         tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
         tabBarView.setStyle(style: .line)
         tabBarView.setSelectionOrientation(to: .top)
         tabBarView.delegate = self
         tabBarView.backgroundColor = .clear
-        
-        wallet = walletManager.getWallet(at: selectedWalletIndex)
-        guard wallet != nil else { return }
+
+        wallet = walletManager.createFilteredWallet(from: selectedWalletIndex, with: .all)
         title = wallet.name
-        filteredRecords = wallet.records
-        
+
         noRecordFoundView.isHidden = !wallet.records.isEmpty
         tableView.isHidden = wallet.records.isEmpty
         balanceView.isHidden = wallet.records.isEmpty
@@ -69,16 +68,29 @@ class WalletDetailVC: UIViewController {
         noRecordFoundView.isHidden = !wallet.records.isEmpty
         tableView.isHidden = wallet.records.isEmpty
         balanceView.isHidden = wallet.records.isEmpty
-        balanceLabel.text = "Balance: \(getWalletBalance())"
+        if case .all = filterOption {
+            balanceLabel.text = "Balance: \(getWalletBalance())"
+        } else {
+            balanceLabel.text = "Amount: \(getTotalAmount())"
+        }
         tableView.reloadData()
     }
     
     func getWalletBalance() -> String {
-        var amount = wallet.balance
+        var amount = 0.0
+        Log.info("amount: \(amount)")
         for record in wallet.records {
-            amount -= record.amount
+            if record.isExpense {
+                amount -= record.amount
+            } else {
+                amount += record.amount
+            }
         }
         return amount.toCurrencyString()
+    }
+
+    func getTotalAmount() -> String {
+        return wallet.balance.toCurrencyString()
     }
     
     @objc
@@ -86,30 +98,13 @@ class WalletDetailVC: UIViewController {
         Log.info("info")
     }
 
-    private func filterRecords(option: FilterOption) {
-        switch option {
-        case .all:
-            filterOption = wallet
-        case .expense:
-            let filtered = wallet.records.filter { record in
-                return record.isExpense
-            }
-            filteredRecords = filtered
-        case .income:
-            let filtered = wallet.records.filter { record in
-                return !record.isExpense
-            }
-            filteredRecords = filtered
-        }
-        refreshScreen()
-    }
 }
 
 // MARK: - TableView
 extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return recordManager.getAllDatesSorted(for: selectedWalletIndex).count + 1
+        return recordManager.getAllDatesSorted(for: wallet).count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -120,16 +115,25 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return nil
         }
-        let date = recordManager.getAllDatesSorted(for: selectedWalletIndex)[section - 1]
-        return date.toString(with: .long)
+        let date = recordManager.getAllDatesSorted(for: wallet)[section - 1]
+        return date.toString(withFormat: .long)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }
-        let dates = recordManager.getAllDatesSorted(for: selectedWalletIndex)
-        return recordManager.getAllRecords(for: dates[section - 1], in: selectedWalletIndex).count
+        let dates = recordManager.getAllDatesSorted(for: wallet)
+        return recordManager.getAllRecords(for: dates[section - 1], in: wallet).filter({ record in
+            switch filterOption {
+            case .all :
+                return true
+            case .expense:
+                return record.isExpense
+            case .income:
+                return !record.isExpense
+            }
+        }).count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,16 +144,18 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletDetailCell", for: indexPath)
         cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
-//        content.textProperties.font = K.Fonts.regular.getFont(size: 17)
         if indexPath.section == 0 {
-            content.text = "Balance: \(getWalletBalance())"
+            if case .all = filterOption {
+                content.text = "Total: \(getWalletBalance())"
+            } else {
+                content.text = "Total: \(getTotalAmount())"
+            }
             content.textProperties.alignment = .center
-//            content.textProperties.font = UIFont(name: "Avenir Next Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
             cell.contentConfiguration = content
             return cell
         }
-        let dates = recordManager.getAllDatesSorted(for: selectedWalletIndex)
-        let record = recordManager.getAllRecords(for: dates[indexPath.section - 1], in: selectedWalletIndex)[indexPath.row]
+        let dates = recordManager.getAllDatesSorted(for: wallet)
+        let record = recordManager.getAllRecords(for: dates[indexPath.section - 1], in: wallet)[indexPath.row]
         content.text = record.notes
         content.secondaryText = record.amount.toCurrencyString()
         content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
@@ -168,25 +174,18 @@ extension WalletDetailVC: AddedRecordDelegate {
 
 extension WalletDetailVC: TabBarViewDelegate {
     func didChangeToIndex(index: Int) {
-        Log.info("did change to idx: \(index) for walletindex: \(selectedWalletIndex)")
+        Log.info("did change to idx: \(index) for walletindex: \(selectedWalletIndex ?? -1)")
 
         if index == 0 {
-            filterRecords(option: .all)
+            wallet = walletManager.createFilteredWallet(from: selectedWalletIndex, with: .all)
             filterOption = .all
         } else if index == 1 {
-            filterRecords(option: .expense)
+            wallet = walletManager.createFilteredWallet(from: selectedWalletIndex, with: .expense)
             filterOption = .expense
         } else {
-            filterRecords(option: .income)
+            wallet = walletManager.createFilteredWallet(from: selectedWalletIndex, with: .income)
             filterOption = .income
         }
-    }
-}
-
-private extension WalletDetailVC {
-    enum FilterOption {
-        case all
-        case expense
-        case income
+        refreshScreen()
     }
 }

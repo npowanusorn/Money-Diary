@@ -47,7 +47,7 @@ class WalletManager {
 
     func addMockWallets(count: Int) {
         for counter in 1...count {
-            let wallet = Wallet(name: "wallet \(counter)", balance: Double.random(in: 0...1000), records: [])
+            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, records: [])
             addWallet(newWallet: wallet)
         }
     }
@@ -93,4 +93,31 @@ class WalletManager {
         }
     }
 
+    func createFilteredWallet(from walletIndex: Int? = nil, with filterOption: FilterOption = .all) -> Wallet {
+        let allRecords = getRecordsForWallet(walletIndex: walletIndex)
+        let filteredRecords = allRecords.filter { record in
+            switch filterOption {
+            case .all:
+                return true
+            case .expense:
+                return record.isExpense
+            case .income:
+                return !record.isExpense
+            }
+        }
+        var filteredRecordsBalance = 0.0
+        for record in filteredRecords {
+            filteredRecordsBalance += record.amount
+        }
+        var walletName: String {
+            if let walletIndex = walletIndex {
+                return getWallet(at: walletIndex).name
+            }
+            return ""
+        }
+        let wallet = Wallet(name: walletName, balance: filteredRecordsBalance, records: filteredRecords)
+        return wallet
+    }
+
 }
+

@@ -31,3 +31,9 @@ enum K {
     }
             
 }
+
+enum FilterOption {
+    case all
+    case expense
+    case income
+}

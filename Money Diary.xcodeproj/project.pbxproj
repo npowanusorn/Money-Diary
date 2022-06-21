@@ -185,22 +185,22 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5038E6642852D6D800756D60 /* AddVC.swift */,
-				5038E6652852D6D800756D60 /* AddVC.xib */,
 				5038E69028530FDA00756D60 /* AddRecordVC.swift */,
 				5038E69128530FDA00756D60 /* AddRecordVC.xib */,
-				4836D853285D601100746A56 /* DashboardVC.swift */,
-				4836D854285D601100746A56 /* DashboardVC.xib */,
-				4849A89D285DABC1004569EB /* WalletsListVC.swift */,
-				4849A89E285DABC1004569EB /* WalletsListVC.xib */,
+				5038E6642852D6D800756D60 /* AddVC.swift */,
+				5038E6652852D6D800756D60 /* AddVC.xib */,
 				4849A8A1285DBA60004569EB /* AddWalletVC.swift */,
 				4849A8A2285DBA60004569EB /* AddWalletVC.xib */,
-				50E28320285EAC42005A3907 /* WalletDetailVC.swift */,
-				50E28321285EAC42005A3907 /* WalletDetailVC.xib */,
 				50E28346285EFFAF005A3907 /* AllRecordsVC.swift */,
 				50E28347285EFFAF005A3907 /* AllRecordsVC.xib */,
+				4836D853285D601100746A56 /* DashboardVC.swift */,
+				4836D854285D601100746A56 /* DashboardVC.xib */,
 				509D84A828604DA800AC8F58 /* SettingsVC.swift */,
 				509D84A928604DA800AC8F58 /* SettingsVC.xib */,
+				50E28320285EAC42005A3907 /* WalletDetailVC.swift */,
+				50E28321285EAC42005A3907 /* WalletDetailVC.xib */,
+				4849A89D285DABC1004569EB /* WalletsListVC.swift */,
+				4849A89E285DABC1004569EB /* WalletsListVC.xib */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

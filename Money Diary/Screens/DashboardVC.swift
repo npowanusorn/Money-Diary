@@ -119,6 +119,10 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         return 30
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "My Wallets"
@@ -177,6 +181,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 content.text = recordList[indexPath.row].notes
                 content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
+                content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
                 cell.contentConfiguration = content
             }
             return cell

@@ -28,6 +28,7 @@ class TabBarView: UIView {
     private var textColor: UIColor = .secondaryLabel
     private var selectionViewColor: UIColor = globalTintColor
     private var selectedTextColor: UIColor = .label
+    private var selectedIndex: Int = 0
 
     var delegate: TabBarViewDelegate?
 
@@ -109,7 +110,7 @@ class TabBarView: UIView {
                 return self.frame.height
             }
         }
-        selectionView = UIView(frame: CGRect(x: 0, y: yPos, width: selectionWidth, height: height))
+        selectionView = UIView(frame: CGRect(x: selectionWidth * CGFloat(selectedIndex), y: yPos, width: selectionWidth, height: height))
         selectionView.backgroundColor = selectionViewColor
         if case .fill = selectionStyle {
             selectionView.layer.cornerRadius = 12.0
@@ -130,7 +131,7 @@ class TabBarView: UIView {
 //            button.titleLabel?.font = K.Fonts.regular.getFont(size: 15)
             buttons.append(button)
         }
-        buttons[0].setTitleColor(selectedTextColor, for: .normal)
+        buttons[selectedIndex].setTitleColor(selectedTextColor, for: .normal)
     }
     
     @objc
@@ -140,6 +141,7 @@ class TabBarView: UIView {
             if button == sender {
                 delegate?.didChangeToIndex(index: buttonIndex)
                 let selectionPosition = frame.width / CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
+                selectedIndex = buttonIndex
                 UIView.animate(withDuration: 0.3) {
                     self.selectionView.frame.origin.x = selectionPosition
                 }

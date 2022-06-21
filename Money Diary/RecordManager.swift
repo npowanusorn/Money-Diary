@@ -31,7 +31,8 @@ class RecordManager {
         }) {
             allDates.append(recordDate)
         }
-        walletManager.modifyBalance(ofWalletIndex: index, by: newRecord.amount, operation: .subtract)
+
+        walletManager.modifyBalance(ofWalletIndex: index, by: newRecord.amount, operation: newRecord.isExpense ? .subtract : .add)
         walletManager.addRecordToWallet(record: newRecord)
         allRecords.append(newRecord)
         allRecords.sort { record1, record2 in
@@ -64,7 +65,12 @@ class RecordManager {
     }
     
     func getAllRecords(for date: Date, in walletIndex: Int) -> [Record] {
-        let recordsForWallet = getAllRecords(forWalledIndex: walletIndex)
+        let wallet = walletManager.getWallet(at: walletIndex)
+        return getAllRecords(for: date, in: wallet)
+    }
+
+    func getAllRecords(for date: Date, in wallet: Wallet) -> [Record] {
+        let recordsForWallet = wallet.records
         var recordsForWalletInDate = [Record]()
         for record in recordsForWallet {
             if Calendar.current.isDate(record.date, inSameDayAs: date) {
@@ -86,23 +92,28 @@ class RecordManager {
     
     func getAllDatesSorted(for walletIndex: Int? = nil) -> [Date] {
         if let index = walletIndex {
-            let recordsForWallet = getAllRecords(forWalledIndex: index)
-            var recordsDate = [Date]()
-            for record in recordsForWallet {
-                if !recordsDate.contains(where: { date in
-                    Calendar.current.isDate(date, inSameDayAs: record.date)
-                }) {
-                    recordsDate.append(record.date)
-                }
-            }
-            return recordsDate
+            let wallet = walletManager.getWallet(at: index)
+            return getAllDatesSorted(for: wallet)
         }
         return allDates.sorted(by: >)
+    }
+
+    func getAllDatesSorted(for wallet: Wallet) -> [Date] {
+        let recordsForWallet = wallet.records
+        var dates = [Date]()
+        for record in recordsForWallet {
+            if !dates.contains(where: { date in
+                Calendar.current.isDate(date, inSameDayAs: record.date)
+            }) {
+                dates.append(record.date)
+            }
+        }
+        return dates.sorted(by: >)
     }
     
     func addMockRecords(count: Int, walletIndex: Int) {
         for counter in 1...count {
-            let record = Record(amount: Double.random(in: 1...100), notes: "tr \(counter)", date: Date(), walletIndex: walletIndex, isExpense: Bool.random())
+            let record = Record(amount: Double.random(in: 1...100).rounded(toPlaces: 2), notes: "tr \(counter)", date: Date(), walletIndex: walletIndex, isExpense: Bool.random())
             addRecord(newRecord: record)
         }
     }

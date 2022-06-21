@@ -21,7 +21,7 @@ class AddWalletVC: UIViewController {
         didSet { amount = Double(amountString) ?? 0.0 }
     }
     private var amount: Double = 0.0
-    private var canDismiss: Bool {
+    private var canDismissScreen: Bool {
         return name.isEmpty && amountString.isEmpty
     }
 
@@ -31,12 +31,13 @@ class AddWalletVC: UIViewController {
         super.viewDidLoad()
 
         title = "Add Wallet"
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
+        self.navigationController?.presentationController?.delegate = self
         let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         let rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addWallet))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         rightBarButtonItem.isEnabled = false
+        rightBarButtonItem.tintColor = globalTintColor
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
@@ -50,7 +51,7 @@ class AddWalletVC: UIViewController {
 
     @objc
     func dismissView() {
-        if canDismiss {
+        if canDismissScreen {
             dismiss(animated: true)
         } else {
             let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -72,4 +73,22 @@ class AddWalletVC: UIViewController {
         dismiss(animated: true)
     }
 
+}
+
+extension AddWalletVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        if canDismissScreen {
+            return true
+        } else {
+            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+                self.dismiss(animated: true)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alertVC.addAction(primaryAction)
+            alertVC.addAction(cancelAction)
+            self.present(alertVC, animated: true)
+            return false
+        }
+    }
 }

@@ -22,9 +22,9 @@ class AddRecordVC: UIViewController {
     private var isExpense: Bool = true
     
     private var cellHeight: CGFloat = 100.0
-    
+    private var dateDidChange: Bool = false
     private var canDismissScreen: Bool {
-        return amountText.isEmpty && noteText.isEmpty
+        return amountText.isEmpty && noteText.isEmpty && !dateDidChange
     }
 
     private var selectedDateString = "Today"
@@ -60,7 +60,7 @@ class AddRecordVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 2)], with: .none)
     }
 
     @objc
@@ -247,7 +247,7 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             let walletsListVC = WalletsListVC()
             navigationController?.pushViewController(walletsListVC, animated: true)
         }
@@ -257,6 +257,7 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
 
 extension AddRecordVC: DatePickerCellDelegate {
     func didSelectDate(date: Date) {
+        dateDidChange = true
         selectedDate = date
         if Calendar.current.isDateInToday(date) {
             selectedDateString = "Today"
@@ -270,23 +271,14 @@ extension AddRecordVC: DatePickerCellDelegate {
             let dateString = dateFormatter.string(from: date)
             selectedDateString = dateString
         }
-        let indexPath = IndexPath(row: 0, section: 2)
+        let indexPath = IndexPath(row: 0, section: 3)
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
-//extension AddRecordVC: TabBarViewDelegate {
-//    func didChangeToIndex(index: Int) {
-//        if index == 0 {
-//            isExpense = true
-//        } else {
-//            isExpense = false
-//        }
-//    }
-//}
-
 extension AddRecordVC: TabBarCellDelegate {
     func didChangeToIndex(index: Int) {
         Log.info("did change to index: \(index)")
+        isExpense = index == 0 ? true : false
     }
 }

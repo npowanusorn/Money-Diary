@@ -77,6 +77,7 @@ class AllRecordsVC: UIViewController {
             let record = records[indexPath.row]
             content.text = record.notes
             content.secondaryText = record.amount.toCurrencyString()
+            content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
@@ -92,6 +93,7 @@ class AllRecordsVC: UIViewController {
         let record = recordManager.getAllRecords(forDate: dates[indexPath.section])[indexPath.row]
         content.text = record.notes
         content.secondaryText = record.amount.toCurrencyString()
+        content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -127,7 +129,11 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
     }
-    
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch walletManager.sortBy {
         case .wallet:

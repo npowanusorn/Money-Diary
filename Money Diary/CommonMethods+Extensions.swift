@@ -30,6 +30,11 @@ extension Double {
         let string = String(format: "$%.2f", self)
         return string
     }
+
+    func rounded(toPlaces places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }
 
 extension UINavigationItem {
@@ -60,7 +65,7 @@ extension UINavigationItem {
 }
 
 extension Date {
-    func toString(with formatterStyle: DateFormatter.Style) -> String {
+    func toString(withFormat formatterStyle: DateFormatter.Style) -> String {
         if Calendar.current.isDateInToday(self) {
             return "Today"
         } else if Calendar.current.isDateInYesterday(self) {

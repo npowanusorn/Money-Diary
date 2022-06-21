@@ -16,7 +16,7 @@ enum SelectionBarOrientation {
     case bottom
 }
 
-class SwipeTabView: UIView {
+class TabBarView: UIView {
     
     private var buttonTitles: [String]!
     private var buttons: [UIButton]!

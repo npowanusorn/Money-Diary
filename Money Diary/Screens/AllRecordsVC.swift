@@ -28,16 +28,23 @@ class AllRecordsVC: UIViewController {
     
     @objc
     func showSortAlert() {
+        let attributedString = NSAttributedString(string: "Sort by", attributes: [
+            NSAttributedString.Key.foregroundColor : globalTintColor
+        ])
         let alertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        alertController.setValue(attributedString, forKey: "attributedTitle")
         let walletAction = UIAlertAction(title: "Wallet", style: .default) { _ in
             self.walletManager.sortBy = .wallet
             self.tableView.reloadData()
         }
+        walletAction.setValue(globalTintColor, forKey: "titleTextColor")
         let dateAction = UIAlertAction(title: "Date", style: .default) { _ in
             self.walletManager.sortBy = .date
             self.tableView.reloadData()
         }
+        dateAction.setValue(globalTintColor, forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        cancelAction.setValue(globalTintColor, forKey: "titleTextColor")
         let checkmarkImage = UIImage(systemName: "checkmark") ?? UIImage()
         switch walletManager.sortBy {
         case .wallet:
@@ -47,6 +54,7 @@ class AllRecordsVC: UIViewController {
             dateAction.setValue(checkmarkImage, forKey: "image")
             walletAction.setValue(nil, forKey: "image")
         }
+
         alertController.addAction(walletAction)
         alertController.addAction(dateAction)
         alertController.addAction(cancelAction)
@@ -56,8 +64,8 @@ class AllRecordsVC: UIViewController {
     func configureCellByWallet(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allRecordsCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+//        content.textProperties.font = UIFont.systemFont(ofSize: 17)
+//        content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 15)
         let records = walletManager.getWallet(at: indexPath.section).records
         if records.count == 0 {
             content.text = "No record available"
@@ -68,7 +76,7 @@ class AllRecordsVC: UIViewController {
         } else {
             let record = records[indexPath.row]
             content.text = record.notes
-            content.secondaryText = String(format: "$%.2f", record.amount)
+            content.secondaryText = record.amount.toCurrencyString()
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
@@ -78,12 +86,12 @@ class AllRecordsVC: UIViewController {
     func configureCellByDate(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allRecordsCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+//        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//        content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
         let dates = recordManager.getAllDatesSorted()
         let record = recordManager.getAllRecords(forDate: dates[indexPath.section])[indexPath.row]
         content.text = record.notes
-        content.secondaryText = String(format: "$%.2f", record.amount)
+        content.secondaryText = record.amount.toCurrencyString()
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator
         return cell

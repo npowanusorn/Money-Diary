@@ -15,10 +15,11 @@ protocol AddedRecordDelegate {
 class AddRecordVC: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
-    
+
     private var amountIsZero = true
     private var amountText = ""
     private var noteText = ""
+    private var isExpense: Bool = true
     
     private var cellHeight: CGFloat = 100.0
     
@@ -39,16 +40,17 @@ class AddRecordVC: UIViewController {
         self.navigationController?.presentationController?.delegate = self
 
         title = "Add Record"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
         let leftNavBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         rightNavBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addAction))
         rightNavBarButtonItem?.isEnabled = false
+        rightNavBarButtonItem?.tintColor = globalTintColor
         navigationItem.leftBarButtonItem = leftNavBarButtonItem
         navigationItem.rightBarButtonItem = rightNavBarButtonItem
         
         tableView.register(TextViewCell.self, forCellReuseIdentifier: "textViewCell")
         tableView.register(DatePickerCell.self, forCellReuseIdentifier: "datePickerCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TabBarViewCell.self, forCellReuseIdentifier: "tabBarViewCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
@@ -88,6 +90,7 @@ class AddRecordVC: UIViewController {
                 self.dismiss(animated: true)
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            cancelAction.setValue(globalTintColor, forKey: "titleTextColor")
             alertVC.addAction(primaryAction)
             alertVC.addAction(cancelAction)
             present(alertVC, animated: true)
@@ -107,7 +110,7 @@ class AddRecordVC: UIViewController {
     
     @objc
     func addAction() {
-        let record = Record(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex)
+        let record = Record(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex, isExpense: isExpense)
         RecordManager.shared.addRecord(newRecord: record)
         delegate?.didAddRecord(record: record)
         dismiss(animated: true)
@@ -146,7 +149,7 @@ extension AddRecordVC: UIAdaptivePresentationControllerDelegate {
 extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -154,7 +157,7 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 0 || section == 2 {
             return 1
         } else {
             return 2
@@ -163,6 +166,14 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "tabBarViewCell", for: indexPath) as? TabBarViewCell else { return UITableViewCell() }
+            cell.setTitles(titles: ["Expense", "Income"])
+            cell.setStyle(style: .fill)
+            cell.delegate = self
+            cell.selectionStyle = .none
+            cell.accessoryType = .none
+            return cell
+        } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "textViewCell", for: indexPath) as? TextViewCell else { return UITableViewCell() }
             cell.delegate = self
             if indexPath.row == 0 {
@@ -175,13 +186,13 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
             }
             cell.selectionStyle = .none
             return cell
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             var content = cell.defaultContentConfiguration()
             content.text = "Wallet"
             content.secondaryText = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex).name
-            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-            content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//            content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
@@ -191,8 +202,8 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
                 var content = cell.defaultContentConfiguration()
                 content.text = "Date"
                 content.secondaryText = selectedDateString
-                content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-                content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+//                content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//                content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
                 cell.contentConfiguration = content
                 cell.selectionStyle = .none
                 return cell
@@ -206,15 +217,32 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
+            return 40.0
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                return 50.0
+            } else {
+                return cellHeight
+            }
+        } else if indexPath.section == 2 {
             return 50.0
-        } else if indexPath.row == 1 && indexPath.section == 2 {
-            return 350.0
-        } else if indexPath.section == 1{
-            return 50
         } else {
-            return cellHeight
+            if indexPath.row == 0 {
+                return 50.0
+            } else {
+                return 350.0
+            }
         }
+//        if indexPath.row == 0 {
+//            return 50.0
+//        } else if indexPath.row == 1 && indexPath.section == 2 {
+//            return 350.0
+//        } else if indexPath.section == 1{
+//            return 50
+//        } else {
+//            return cellHeight
+//        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -244,5 +272,21 @@ extension AddRecordVC: DatePickerCellDelegate {
         }
         let indexPath = IndexPath(row: 0, section: 2)
         tableView.reloadRows(at: [indexPath], with: .none)
+    }
+}
+
+//extension AddRecordVC: TabBarViewDelegate {
+//    func didChangeToIndex(index: Int) {
+//        if index == 0 {
+//            isExpense = true
+//        } else {
+//            isExpense = false
+//        }
+//    }
+//}
+
+extension AddRecordVC: TabBarCellDelegate {
+    func didChangeToIndex(index: Int) {
+        Log.info("did change to index: \(index)")
     }
 }

@@ -37,6 +37,6 @@ class WalletsCell: UITableViewCell {
     }
     
     func makeNameLabelBold() {
-        walletNameLabel.font = UIFont(name: "Avenir Next Bold", size: 17)
+        walletNameLabel.font = UIFont.boldSystemFont(ofSize: walletNameLabel.font.pointSize)
     }
 }

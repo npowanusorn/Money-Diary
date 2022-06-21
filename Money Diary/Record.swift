@@ -12,4 +12,5 @@ struct Record {
     var notes: String
     var date: Date
     var walletIndex: Int
+    var isExpense: Bool
 }

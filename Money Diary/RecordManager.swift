@@ -11,11 +11,17 @@ class RecordManager {
 
     static let shared = RecordManager()
 
-    private init() { }
+    private init() {
+        allRecords = [Record]()
+        allDates = [Date]()
+        for record in walletManager.getRecordsForWallet() {
+            self.addRecord(newRecord: record)
+        }
+    }
 
-    private var allRecords = [Record]()
-    private var allDates = [Date]()
     private let walletManager = WalletManager.shared
+    private var allRecords: [Record]
+    private var allDates: [Date]
 
     func addRecord(newRecord: Record) {
         let index = newRecord.walletIndex
@@ -96,7 +102,7 @@ class RecordManager {
     
     func addMockRecords(count: Int, walletIndex: Int) {
         for counter in 1...count {
-            let record = Record(amount: Double.random(in: 1...100), notes: "tr \(counter)", date: Date(), walletIndex: walletIndex)
+            let record = Record(amount: Double.random(in: 1...100), notes: "tr \(counter)", date: Date(), walletIndex: walletIndex, isExpense: Bool.random())
             addRecord(newRecord: record)
         }
     }

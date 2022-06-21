@@ -23,7 +23,7 @@ class WalletManager {
 
     private init() { }
 
-    private var wallets = [Wallet(name: "Wallet", balance: 0, records: [])]
+    private var wallets = [Wallet]()
 
     var chosenWalletIndex = 0
     
@@ -78,6 +78,19 @@ class WalletManager {
             chosenWalletIndex = 0
         }
         return true
+    }
+
+    func getRecordsForWallet(walletIndex: Int? = nil) -> [Record] {
+        if let walletIndex = walletIndex {
+            let wallet = getWallet(at: walletIndex)
+            return wallet.records
+        } else {
+            var records = [Record]()
+            for wallet in wallets {
+                records += wallet.records
+            }
+            return records
+        }
     }
 
 }

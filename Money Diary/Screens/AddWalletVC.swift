@@ -31,7 +31,7 @@ class AddWalletVC: UIViewController {
         super.viewDidLoad()
 
         title = "Add Wallet"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)]
         let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         let rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addWallet))
         navigationItem.leftBarButtonItem = leftBarButtonItem

@@ -15,23 +15,28 @@ class WalletDetailVC: UIViewController {
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
     private let tabViewButtonTitles = ["All", "Expenses", "Income"]
+    private var filterOption: FilterOption = .all
+    private var filteredRecords = [Record]()
     
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var noRecordFoundView: UIView!
     @IBOutlet private var balanceView: RoundedView!
     @IBOutlet private var balanceLabel: UILabel!
-    @IBOutlet private var tabBarView: SwipeTabView!
+    @IBOutlet private var tabBarView: TabBarView!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
+        tabBarView.setStyle(style: .line)
+        tabBarView.setSelectionOrientation(to: .top)
         tabBarView.delegate = self
-        tabBarView.backgroundColor = .secondarySystemGroupedBackground
+        tabBarView.backgroundColor = .clear
         
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         guard wallet != nil else { return }
         title = wallet.name
+        filteredRecords = wallet.records
         
         noRecordFoundView.isHidden = !wallet.records.isEmpty
         tableView.isHidden = wallet.records.isEmpty
@@ -44,6 +49,12 @@ class WalletDetailVC: UIViewController {
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
         navigationItem.rightBarButtonItem = rightBarButtonItem
+
+//        let navBarAppearance = UINavigationBarAppearance()
+//        navBarAppearance.configureWithOpaqueBackground()
+//        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+//        navigationController?.navigationBar.standardAppearance = navBarAppearance
+//        navigationController?.navigationBar.compactAppearance = navBarAppearance
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -67,12 +78,30 @@ class WalletDetailVC: UIViewController {
         for record in wallet.records {
             amount -= record.amount
         }
-        return String(format: "$%.2f", amount)
+        return amount.toCurrencyString()
     }
     
     @objc
     func getWalletInfo() {
-        print("info")
+        Log.info("info")
+    }
+
+    private func filterRecords(option: FilterOption) {
+        switch option {
+        case .all:
+            filterOption = wallet
+        case .expense:
+            let filtered = wallet.records.filter { record in
+                return record.isExpense
+            }
+            filteredRecords = filtered
+        case .income:
+            let filtered = wallet.records.filter { record in
+                return !record.isExpense
+            }
+            filteredRecords = filtered
+        }
+        refreshScreen()
     }
 }
 
@@ -92,18 +121,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         let date = recordManager.getAllDatesSorted(for: selectedWalletIndex)[section - 1]
-        if Calendar.current.isDateInToday(date) {
-            return "Today"
-        } else if Calendar.current.isDateInYesterday(date) {
-            return "Yesterday"
-        } else if Calendar.current.isDateInTomorrow(date) {
-            return "Tomorrow"
-        } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            let dateString = dateFormatter.string(from: date)
-            return dateString
-        }
+        return date.toString(with: .long)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,18 +140,19 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletDetailCell", for: indexPath)
         cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
-        content.textProperties.font = K.Fonts.avenirNextRegular17
+//        content.textProperties.font = K.Fonts.regular.getFont(size: 17)
         if indexPath.section == 0 {
             content.text = "Balance: \(getWalletBalance())"
             content.textProperties.alignment = .center
-            content.textProperties.font = UIFont(name: "Avenir Next Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
+//            content.textProperties.font = UIFont(name: "Avenir Next Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
             cell.contentConfiguration = content
             return cell
         }
         let dates = recordManager.getAllDatesSorted(for: selectedWalletIndex)
         let record = recordManager.getAllRecords(for: dates[indexPath.section - 1], in: selectedWalletIndex)[indexPath.row]
         content.text = record.notes
-        content.secondaryText = String(format: "$%.2f", record.amount)
+        content.secondaryText = record.amount.toCurrencyString()
+        content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         
         cell.contentConfiguration = content
         return cell
@@ -147,8 +166,27 @@ extension WalletDetailVC: AddedRecordDelegate {
     }
 }
 
-extension WalletDetailVC: SwipeTabViewDelegate {
+extension WalletDetailVC: TabBarViewDelegate {
     func didChangeToIndex(index: Int) {
-        print("did change to index: \(index)")
+        Log.info("did change to idx: \(index) for walletindex: \(selectedWalletIndex)")
+
+        if index == 0 {
+            filterRecords(option: .all)
+            filterOption = .all
+        } else if index == 1 {
+            filterRecords(option: .expense)
+            filterOption = .expense
+        } else {
+            filterRecords(option: .income)
+            filterOption = .income
+        }
+    }
+}
+
+private extension WalletDetailVC {
+    enum FilterOption {
+        case all
+        case expense
+        case income
     }
 }

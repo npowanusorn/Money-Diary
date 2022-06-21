@@ -10,6 +10,7 @@ import SPIndicator
 
 class DashboardVC: UIViewController {
 
+    @IBOutlet private var addRecordButton: UIButton!
     @IBOutlet private var balanceLabel: UILabel!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var ellipsisButton: UIButton!
@@ -20,26 +21,36 @@ class DashboardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: nil, action: nil)
+//        navigationItem.setTitleAndSubtitle(title: getTotalBalance().toCurrencyString(), subtitle: "Total balance")
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        ellipsisButton.isHidden = true
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12
 
         WalletManager.shared.addMockWallets(count: 5)
-        for index in 1...5 {
+        for index in 0...4 {
             RecordManager.shared.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
         }
         walletsList = WalletManager.shared.getWallets()
         recordList = RecordManager.shared.getAllRecords()
-        balanceLabel.text = String(format: "$%.2f", getTotalBalance())
+        balanceLabel.text = getTotalBalance().toCurrencyString()
         setupMenuButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+
+
+        ellipsisButton.tintColor = globalTintColor
+        addRecordButton.configuration?.baseBackgroundColor = globalTintColor
+
         refreshData()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -70,8 +81,19 @@ class DashboardVC: UIViewController {
         let divider = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
         
         let menu = UIMenu(title: "", options: .displayInline, children: [divider, settingsAction])
+//        navigationItem.rightBarButtonItem?.menu = menu
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
+
+        var configuration = UIButton.Configuration.plain()
+        configuration.imagePadding = 0
+        configuration.image = UIImage(systemName: "ellipsis.circle.fill")
+        configuration.buttonSize = .large
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+//        ellipsisButton.imageView?.contentMode = .scaleAspectFit
+//        ellipsisButton.backgroundColor = .yellow
+        ellipsisButton.configuration = configuration
     }
     
     func getTotalBalance() -> Double {
@@ -86,7 +108,7 @@ class DashboardVC: UIViewController {
         walletsList = WalletManager.shared.getWallets()
         recordList = RecordManager.shared.getAllRecords()
         tableView.reloadData()
-        balanceLabel.text = String(format: "$%.2f", getTotalBalance())
+        balanceLabel.text = getTotalBalance().toCurrencyString()
     }
 
 }
@@ -127,7 +149,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             var content = cell.defaultContentConfiguration()
-            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
             if walletsList.count == 0 {
                 content.text = "No wallets"
                 cell.contentConfiguration = content
@@ -135,14 +157,14 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
             content.text = walletsList[indexPath.row].name
-            content.secondaryText = String(format: "$%.2f", walletsList[indexPath.row].balance)
+            content.secondaryText = walletsList[indexPath.row].balance.toCurrencyString()
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentRecordCell")
             var content = cell.defaultContentConfiguration()
-            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
             if recordList.count > 4, indexPath.row == 3 {
                 content.text = "Show all"
                 cell.contentConfiguration = content
@@ -154,7 +176,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.selectionStyle = .none
                 content.text = recordList[indexPath.row].notes
-                content.secondaryText = String(format: "$%.2f", recordList[indexPath.row].amount)
+                content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
                 cell.contentConfiguration = content
             }
             return cell

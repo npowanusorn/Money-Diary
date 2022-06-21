@@ -29,7 +29,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,14 +47,20 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = "cell"
-        content.textProperties.font = K.Fonts.avenirNextRegular17
+        content.text = "Theme \(indexPath.row + 1)"
+//        content.textProperties.font = K.Fonts.regular.getFont(size: 17)
         cell.contentConfiguration = content
-        cell.selectionStyle = .none
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            globalTintColor = .systemRed
+        } else {
+            globalTintColor = .systemTeal
+        }
+        self.navigationController?.navigationBar.tintColor = globalTintColor
     }
 }

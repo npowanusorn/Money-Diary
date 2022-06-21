@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
-struct K {
+public var Log = SwiftyBeaver.self
+
+enum K {
     
-    struct Fonts {
-        static let avenirNextRegular17 = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        static let avenirNextRegular15 = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
+    enum Fonts: String {
+        case bold = "Bold"
+        case regular = "Regular"
+        case demiBold = "Demi Bold"
+        case medium = "Medium"
+
+        func getFont(size: CGFloat) -> UIFont {
+            let font = UIFont(name: "Avenir Next \(self.rawValue)", size: size) ?? UIFont.systemFont(ofSize: size, weight: .regular)
+            return font
+        }
+//        static let avenirNextRegular17 = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
+//        static let avenirNextRegular15 = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
     }
     
     struct CellID {

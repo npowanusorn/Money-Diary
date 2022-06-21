@@ -29,6 +29,7 @@ class DatePickerCell: UITableViewCell {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
+        datePicker.tintColor = globalTintColor
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(datePicker)
 

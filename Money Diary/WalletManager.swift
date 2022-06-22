@@ -24,6 +24,7 @@ class WalletManager {
     private init() { }
 
     private var wallets = [Wallet]()
+//    private let recordManager = RecordManager.shared
 
     var chosenWalletIndex = 0
     
@@ -117,6 +118,15 @@ class WalletManager {
         }
         let wallet = Wallet(name: walletName, balance: filteredRecordsBalance, records: filteredRecords)
         return wallet
+    }
+
+    func removeRecordFromWallet(recordToRemove: Record) -> Bool {
+        if let index = wallets[recordToRemove.walletIndex].records.firstIndex(of: recordToRemove) {
+            wallets[recordToRemove.walletIndex].records.remove(at: index)
+            return true
+//            return recordManager.removeRecord(recordToRemove: recordToRemove)
+        }
+        return false
     }
 
 }

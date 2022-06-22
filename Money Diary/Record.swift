@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Record {
+struct Record: Equatable {
     var amount: Double
     var notes: String
     var date: Date

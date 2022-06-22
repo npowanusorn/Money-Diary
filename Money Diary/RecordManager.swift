@@ -127,4 +127,12 @@ class RecordManager {
         }
         return list
     }
+
+    func removeRecord(recordToRemove: Record) -> Bool {
+        if let index = allRecords.firstIndex(of: recordToRemove) {
+            allRecords.remove(at: index)
+            return true
+        }
+        return false
+    }
 }

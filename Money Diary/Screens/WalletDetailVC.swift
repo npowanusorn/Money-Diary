@@ -78,7 +78,6 @@ class WalletDetailVC: UIViewController {
     
     func getWalletBalance() -> String {
         var amount = 0.0
-        Log.info("amount: \(amount)")
         for record in wallet.records {
             if record.isExpense {
                 amount -= record.amount

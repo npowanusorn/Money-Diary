@@ -27,8 +27,11 @@ extension String {
 
 extension Double {
     func toCurrencyString() -> String {
-        let string = String(format: "$%.2f", self)
-        return string
+        if self < 0 {
+            return String(format: "-$%.2f", abs(self))
+        } else {
+            return String(format: "$%.2f", self)
+        }
     }
 
     func rounded(toPlaces places: Int) -> Double {

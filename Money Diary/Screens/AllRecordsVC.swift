@@ -66,7 +66,8 @@ class AllRecordsVC: UIViewController {
         var content = cell.defaultContentConfiguration()
 //        content.textProperties.font = UIFont.systemFont(ofSize: 17)
 //        content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 15)
-        let records = walletManager.getWallet(at: indexPath.section).records
+        let records = recordManager.getAllRecords(forWalledIndex: indexPath.section)
+//        let records = walletManager.getWallet(at: indexPath.section).records
         if records.count == 0 {
             content.text = "No record available"
             cell.contentConfiguration = content
@@ -167,6 +168,14 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch walletManager.sortBy {
+        case .wallet:
+            let recordDetailsVC = RecordDetailsVC()
+            recordDetailsVC.selectedRecord = recordManager.getAllRecords(forWalledIndex: indexPath.section)[indexPath.row]
+            navigationController?.pushViewController(recordDetailsVC, animated: true)
+        case .date:
+            return
+        }
     }
     
 }

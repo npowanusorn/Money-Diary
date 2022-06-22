@@ -15,6 +15,9 @@ class DashboardVC: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var ellipsisButton: UIButton!
 
+    private let walletManager = WalletManager.shared
+    private let recordManager = RecordManager.shared
+
     var recordList: [Record] = [Record]()
     var walletsList: [Wallet] = [Wallet]()
 
@@ -30,12 +33,12 @@ class DashboardVC: UIViewController {
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12
 
-        WalletManager.shared.addMockWallets(count: 5)
+        walletManager.addMockWallets(count: 5)
         for index in 0...4 {
-            RecordManager.shared.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
+            walletManager.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
         }
-        walletsList = WalletManager.shared.getWallets()
-        recordList = RecordManager.shared.getAllRecords()
+        walletsList = walletManager.getWallets()
+        recordList = recordManager.getAllRecords()
         balanceLabel.text = getTotalBalance().toCurrencyString()
         setupMenuButton()
     }
@@ -98,15 +101,15 @@ class DashboardVC: UIViewController {
     
     func getTotalBalance() -> Double {
         var amount: Double = 0
-        for wallet in WalletManager.shared.getWallets() {
+        for wallet in walletManager.getWallets() {
             amount += wallet.balance
         }
         return amount
     }
 
     func refreshData() {
-        walletsList = WalletManager.shared.getWallets()
-        recordList = RecordManager.shared.getAllRecords()
+        walletsList = walletManager.getWallets()
+        recordList = recordManager.getAllRecords()
         tableView.reloadData()
         balanceLabel.text = getTotalBalance().toCurrencyString()
     }
@@ -153,7 +156,6 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             var content = cell.defaultContentConfiguration()
-//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
             if walletsList.count == 0 {
                 content.text = "No wallets"
                 cell.contentConfiguration = content
@@ -168,7 +170,6 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentRecordCell")
             var content = cell.defaultContentConfiguration()
-//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
             if recordList.count > 4, indexPath.row == 3 {
                 content.text = "Show all"
                 cell.contentConfiguration = content
@@ -179,7 +180,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 cell.contentConfiguration = content
             } else {
                 cell.selectionStyle = .none
-                content.text = recordList[indexPath.row].notes
+                content.text = recordList[indexPath.row].note
                 content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
                 content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
                 cell.contentConfiguration = content
@@ -208,11 +209,11 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 1 { return nil }
-        if WalletManager.shared.numberOfWallets == 0 { return nil }
+        if walletManager.numberOfWallets == 0 { return nil }
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
             let alertController = UIAlertController(title: "Delete Wallet", message: "Delete wallet?", preferredStyle: .alert)
             let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-                let result = WalletManager.shared.removeWallet(at: indexPath.row)
+                let result = self.walletManager.removeWallet(at: indexPath.row)
                 self.refreshData()
                 completion(result)
             }
@@ -231,8 +232,8 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
 extension DashboardVC: AddedRecordDelegate {
     func didAddRecord(record: Record) {
         SPIndicator.present(title: "Added", preset: .done, haptic: .success)
-        walletsList = WalletManager.shared.getWallets()
-        recordList = RecordManager.shared.getAllRecords()
+        walletsList = walletManager.getWallets()
+        recordList = recordManager.getAllRecords()
         refreshData()
     }
 }
@@ -240,7 +241,7 @@ extension DashboardVC: AddedRecordDelegate {
 extension DashboardVC: AddedWalletDelegate {
     func didAddWallet(wallet: Wallet) {
         SPIndicator.present(title: "Added", preset: .done, haptic: .success)
-        walletsList = WalletManager.shared.getWallets()
+        walletsList = walletManager.getWallets()
         refreshData()
     }
 }

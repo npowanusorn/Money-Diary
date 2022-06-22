@@ -11,128 +11,55 @@ class RecordManager {
 
     static let shared = RecordManager()
 
-    private init() {
-        allRecords = [Record]()
-        allDates = [Date]()
-        for record in walletManager.getRecordsForWallet() {
-            self.addRecord(newRecord: record)
-        }
-    }
+    private init() { }
 
     private let walletManager = WalletManager.shared
-    private var allRecords: [Record]
-    private var allDates: [Date]
+    private var allRecords = [Record]()
+    private var allDates = [Date]()
 
     func addRecord(newRecord: Record) {
-        let index = newRecord.walletIndex
-        let recordDate = newRecord.date
         if !allDates.contains(where: { date in
-            Calendar.current.isDate(recordDate, inSameDayAs: date)
+            Calendar.current.isDate(newRecord.date, inSameDayAs: date)
         }) {
-            allDates.append(recordDate)
+            allDates.append(newRecord.date)
         }
-
-        walletManager.modifyBalance(ofWalletIndex: index, by: newRecord.amount, operation: newRecord.isExpense ? .subtract : .add)
-        walletManager.addRecordToWallet(record: newRecord)
         allRecords.append(newRecord)
-        allRecords.sort { record1, record2 in
-            record1.date.compare(record2.date) == .orderedDescending
-        }
+        allRecords.sort()
     }
-    
+
     func getAllRecords() -> [Record] {
         return allRecords
     }
-    
-    func getAllRecords(forWalledIndex walletIndex: Int) -> [Record] {
-        var list = [Record]()
-        for record in allRecords {
-            if record.walletIndex == walletIndex {
-                list.append(record)
-            }
-        }
-        return list
+
+    func getAllDates() -> [Date] {
+        return allDates
     }
-    
-    func getAllRecords(forDate date: Date) -> [Record] {
+
+    func getAllRecords(for date: Date) -> [Record] {
         var records = [Record]()
         for record in allRecords {
-            if Calendar.current.isDate(record.date, inSameDayAs: date) {
+            if Calendar.current.isDate(date, inSameDayAs: record.date) {
                 records.append(record)
             }
         }
         return records
     }
-    
-    func getAllRecords(for date: Date, in walletIndex: Int) -> [Record] {
-        let wallet = walletManager.getWallet(at: walletIndex)
-        return getAllRecords(for: date, in: wallet)
-    }
 
-    func getAllRecords(for date: Date, in wallet: Wallet) -> [Record] {
-        let recordsForWallet = wallet.records
-        var recordsForWalletInDate = [Record]()
-        for record in recordsForWallet {
-            if Calendar.current.isDate(record.date, inSameDayAs: date) {
-                recordsForWalletInDate.append(record)
-            }
-        }
-        return recordsForWalletInDate
-    }
-    
-    func getRecord(from walletIndex: Int, with name: String) -> Record? {
-        let list = walletManager.getWallet(at: walletIndex).records
-        for item in list {
-            if item.notes == name {
-                return item
-            }
-        }
-        return nil
-    }
-    
-    func getAllDatesSorted(for walletIndex: Int? = nil) -> [Date] {
-        if let index = walletIndex {
-            let wallet = walletManager.getWallet(at: index)
-            return getAllDatesSorted(for: wallet)
-        }
-        return allDates.sorted(by: >)
-    }
-
-    func getAllDatesSorted(for wallet: Wallet) -> [Date] {
-        let recordsForWallet = wallet.records
-        var dates = [Date]()
-        for record in recordsForWallet {
-            if !dates.contains(where: { date in
-                Calendar.current.isDate(date, inSameDayAs: record.date)
-            }) {
-                dates.append(record.date)
-            }
-        }
-        return dates.sorted(by: >)
-    }
-    
-    func addMockRecords(count: Int, walletIndex: Int) {
-        for counter in 1...count {
-            let record = Record(amount: Double.random(in: 1...100).rounded(toPlaces: 2), notes: "tr \(counter)", date: Date(), walletIndex: walletIndex, isExpense: Bool.random())
-            addRecord(newRecord: record)
-        }
-    }
-    
-    func searchForRecord(by name: String) -> [Record] {
-        var list = [Record]()
-        for record in allRecords {
-            if record.notes.contains(name) {
-                list.append(record)
-            }
-        }
-        return list
-    }
-
-    func removeRecord(recordToRemove: Record) -> Bool {
-        if let index = allRecords.firstIndex(of: recordToRemove) {
-            allRecords.remove(at: index)
-            return true
-        }
-        return false
-    }
+//    func searchForRecord(by name: String) -> [Record] {
+//        var list = [Record]()
+//        for record in allRecords {
+//            if ((record.note?.contains(name)) != nil) {
+//                list.append(record)
+//            }
+//        }
+//        return list
+//    }
+//
+//    func removeRecord(recordToRemove: Record) -> Bool {
+//        if let index = allRecords.firstIndex(of: recordToRemove) {
+//            allRecords.remove(at: index)
+//            return true
+//        }
+//        return false
+//    }
 }

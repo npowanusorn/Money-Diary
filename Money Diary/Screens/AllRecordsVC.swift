@@ -25,6 +25,11 @@ class AllRecordsVC: UIViewController {
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle.fill"), style: .plain, target: self, action: #selector(showSortAlert))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     @objc
     func showSortAlert() {
@@ -64,10 +69,8 @@ class AllRecordsVC: UIViewController {
     func configureCellByWallet(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allRecordsCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-//        content.textProperties.font = UIFont.systemFont(ofSize: 17)
-//        content.secondaryTextProperties.font = UIFont.systemFont(ofSize: 15)
-        let records = recordManager.getAllRecords(forWalledIndex: indexPath.section)
-//        let records = walletManager.getWallet(at: indexPath.section).records
+        let wallet = walletManager.getWallet(at: indexPath.section)
+        let records = wallet.records
         if records.count == 0 {
             content.text = "No record available"
             cell.contentConfiguration = content
@@ -76,7 +79,7 @@ class AllRecordsVC: UIViewController {
             return cell
         } else {
             let record = records[indexPath.row]
-            content.text = record.notes
+            content.text = record.note
             content.secondaryText = record.amount.toCurrencyString()
             content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
             cell.contentConfiguration = content
@@ -90,9 +93,9 @@ class AllRecordsVC: UIViewController {
         var content = cell.defaultContentConfiguration()
 //        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
 //        content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
-        let dates = recordManager.getAllDatesSorted()
-        let record = recordManager.getAllRecords(forDate: dates[indexPath.section])[indexPath.row]
-        content.text = record.notes
+        let dates = recordManager.getAllDates()
+        let record = recordManager.getAllRecords(for: dates[indexPath.section])[indexPath.row]
+        content.text = record.note
         content.secondaryText = record.amount.toCurrencyString()
         content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
@@ -109,20 +112,21 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
         case .wallet:
             return walletManager.numberOfWallets
         case .date:
-            return recordManager.getAllDatesSorted().count
+            return recordManager.getAllDates().count
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch walletManager.sortBy {
         case .wallet:
-            if recordManager.getAllRecords(forWalledIndex: section).count == 0 {
+            let wallet = walletManager.getWallet(at: section)
+            if wallet.records.count == 0 {
                 return 1
             }
-            return recordManager.getAllRecords(forWalledIndex: section).count
+            return wallet.records.count
         case .date:
-            let dates = recordManager.getAllDatesSorted()
-            let records = recordManager.getAllRecords(forDate: dates[section])
+            let dates = recordManager.getAllDates()
+            let records = recordManager.getAllRecords(for: dates[section])
             return records.count
         }
     }
@@ -140,7 +144,7 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
         case .wallet:
             return walletManager.getWallet(at: section).name
         case .date:
-            let date = recordManager.getAllDatesSorted()[section]
+            let date = recordManager.getAllDates()[section]
             if Calendar.current.isDateInToday(date) {
                 return "Today"
             } else if Calendar.current.isDateInYesterday(date) {
@@ -171,8 +175,10 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
         switch walletManager.sortBy {
         case .wallet:
             let recordDetailsVC = RecordDetailsVC()
-            recordDetailsVC.selectedRecord = recordManager.getAllRecords(forWalledIndex: indexPath.section)[indexPath.row]
-            navigationController?.pushViewController(recordDetailsVC, animated: true)
+            if let record = walletManager.getWallet(at: indexPath.section).records[safe: indexPath.row] {
+                recordDetailsVC.selectedRecord = record
+                navigationController?.pushViewController(recordDetailsVC, animated: true)
+            } else { return }
         case .date:
             return
         }

@@ -110,8 +110,9 @@ class AddRecordVC: UIViewController {
     
     @objc
     func addAction() {
-        let record = Record(amount: Double(amountText) ?? 0.0, notes: noteText, date: selectedDate, walletIndex: WalletManager.shared.chosenWalletIndex, isExpense: isExpense)
-        RecordManager.shared.addRecord(newRecord: record)
+        let record = Record(amount: Double(amountText) ?? 0.0, note: noteText, date: selectedDate, wallet: WalletManager.shared.chosenWallet, isExpense: isExpense)
+        let wallet = WalletManager.shared.chosenWallet
+        wallet.addRecord(newRecord: record)
         delegate?.didAddRecord(record: record)
         dismiss(animated: true)
     }

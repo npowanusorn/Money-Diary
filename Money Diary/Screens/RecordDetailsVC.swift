@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPIndicator
 
 class RecordDetailsVC: UIViewController {
 
@@ -26,9 +27,9 @@ class RecordDetailsVC: UIViewController {
         headerMoneyLabel.text = selectedRecord.amount.toCurrencyString()
         headerMoneyLabel.textColor = selectedRecord.isExpense ? .systemRed : .systemBlue
         categoryLabel.text = "category"
-        noteLabel.text = selectedRecord.notes
+        noteLabel.text = selectedRecord.note
         dateLabel.text = selectedRecord.date.toString(withFormat: .long)
-        walletLabel.text = walletManager.getWallet(at: selectedRecord.walletIndex).name
+        walletLabel.text = selectedRecord.wallet.name
 
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editRecord))
         rightBarButtonItem.tintColor = globalTintColor
@@ -36,10 +37,15 @@ class RecordDetailsVC: UIViewController {
     }
 
     @IBAction func deleteTapped(_ sender: Any) {
-        if walletManager.removeRecordFromWallet(recordToRemove: selectedRecord) {
-            Log.info("remove record success")
+        let wallet = selectedRecord.wallet
+        if wallet.removeRecord(recordToRemove: selectedRecord) {
+            navigationController?.popViewController(animated: true)
+            SPIndicator.present(title: "Success", message: "Record removed", preset: .done, haptic: .success, from: .top, completion: nil)
         } else {
-            Log.error("error removing record")
+            let alertController = UIAlertController(title: "Error", message: "Error deleting record", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Dismiss", style: .default)
+            alertController.addAction(action)
+            present(alertController, animated: true)
         }
     }
 

@@ -116,7 +116,6 @@
 			children = (
 				5024EE51284DB342000B295A /* Money Diary */,
 				5024EE50284DB342000B295A /* Products */,
-				8C505BD59B8777F437F8B3F3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,13 +208,6 @@
 				487BA54C28629350007E00B6 /* RecordDetailsVC.xib */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		8C505BD59B8777F437F8B3F3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

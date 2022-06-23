@@ -93,6 +93,9 @@ class Wallet {
 
     func removeRecord(at index: Int) -> Bool {
         guard index < _records.count else { return false }
+        let recordToRemove = _records[index]
+        let modifyBalanceAmount = recordToRemove.amount * (recordToRemove.isExpense ? 1.0 : -1.0)
+        modifyBalance(by: modifyBalanceAmount)
         _records.remove(at: index)
         return true
     }

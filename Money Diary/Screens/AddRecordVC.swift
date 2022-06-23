@@ -85,15 +85,10 @@ class AddRecordVC: UIViewController {
     @objc
     func dismissView() {
         if !canDismissScreen {
-            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            let alert = UIAlertController.showUnsavedChangesSheet {
                 self.dismiss(animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            cancelAction.setValue(globalTintColor, forKey: "titleTextColor")
-            alertVC.addAction(primaryAction)
-            alertVC.addAction(cancelAction)
-            present(alertVC, animated: true)
+            present(alert, animated: true)
         } else {
             self.dismiss(animated: true)
         }
@@ -134,14 +129,10 @@ extension AddRecordVC: UIAdaptivePresentationControllerDelegate {
         if canDismissScreen {
             return true
         } else {
-            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            let alert = UIAlertController.showUnsavedChangesSheet {
                 self.dismiss(animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alertVC.addAction(primaryAction)
-            alertVC.addAction(cancelAction)
-            self.present(alertVC, animated: true)
+            present(alert, animated: true)
             return false
         }
     }

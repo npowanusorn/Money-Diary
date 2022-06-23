@@ -47,7 +47,6 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as? ImageCell else { return UITableViewCell() }
-//        var content = cell.defaultContentConfiguration()
 //        content.text = "Theme \(indexPath.row + 1)"
 //        content.image = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
 //        cell.contentConfiguration = content
@@ -66,5 +65,11 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             globalTintColor = .systemTeal
         }
         self.navigationController?.navigationBar.tintColor = globalTintColor
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .compactMap({ $0 as? UIWindowScene })
+            .first?.windows
+            .filter({ $0.isKeyWindow }).first
+        keyWindow?.reload()
     }
 }

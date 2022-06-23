@@ -112,3 +112,97 @@ extension UIImage {
         }
     }
 }
+
+extension UIWindow {
+    func reload() {
+        subviews.forEach { view in
+            view.removeFromSuperview()
+            addSubview(view)
+        }
+    }
+}
+
+extension UIAlertController {
+    func addActions(_ actions: [UIAlertAction]) {
+        for action in actions {
+            addAction(action)
+        }
+    }
+
+    static func showAlert(
+        with title: String?,
+        message: String?,
+        style: UIAlertController.Style,
+        primaryActionName: String,
+        primaryActionStyle: UIAlertAction.Style,
+        secondaryActionName: String?,
+        secondaryActionStyle: UIAlertAction.Style,
+        primaryCompletion: @escaping () -> Void,
+        secondaryCompletion: (() -> Void)? = nil
+    ) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        let primaryAction = UIAlertAction(title: primaryActionName, style: primaryActionStyle) { _ in primaryCompletion() }
+        if let secondaryActionName = secondaryActionName {
+            let secondaryAction = UIAlertAction(title: secondaryActionName, style: secondaryActionStyle) { _ in
+                if let secondaryCompletion = secondaryCompletion { secondaryCompletion() }
+            }
+            alert.addActions([primaryAction, secondaryAction])
+        } else {
+            alert.addAction(primaryAction)
+        }
+        return alert
+    }
+
+    static func showDeleteConfirmationAlert(
+        with title: String,
+        message: String?,
+        primaryCompletion: @escaping () -> Void,
+        secondaryCompletion: (() -> Void)? = nil
+    ) -> UIAlertController {
+        return showAlert(
+            with: title,
+            message: message,
+            style: .alert,
+            primaryActionName: "Delete",
+            primaryActionStyle: .destructive,
+            secondaryActionName: "Cancel",
+            secondaryActionStyle: .cancel,
+            primaryCompletion: primaryCompletion,
+            secondaryCompletion: secondaryCompletion
+        )
+    }
+
+    static func showDismissAlert(with title: String, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+        alert.addAction(dismissAction)
+        return alert
+    }
+
+    static func showDismissScreenAlertSheet(
+        title: String?,
+        message: String?,
+        actionTitle: String,
+        completion: @escaping () -> Void
+    ) -> UIAlertController {
+        return showAlert(
+            with: title,
+            message: message,
+            style: .actionSheet,
+            primaryActionName: actionTitle,
+            primaryActionStyle: .destructive,
+            secondaryActionName: "Cancel",
+            secondaryActionStyle: .cancel,
+            primaryCompletion: completion
+        )
+    }
+
+    static func showUnsavedChangesSheet(completion: @escaping () -> Void) -> UIAlertController {
+        return showDismissScreenAlertSheet(
+            title: "You have unsaved changes",
+            message: nil,
+            actionTitle: "Discard Changes",
+            completion: completion
+        )
+    }
+}

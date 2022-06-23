@@ -54,14 +54,10 @@ class AddWalletVC: UIViewController {
         if canDismissScreen {
             dismiss(animated: true)
         } else {
-            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            let alert = UIAlertController.showUnsavedChangesSheet {
                 self.dismiss(animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alertVC.addAction(primaryAction)
-            alertVC.addAction(cancelAction)
-            present(alertVC, animated: true)
+            present(alert, animated: true)
         }
     }
 
@@ -80,14 +76,10 @@ extension AddWalletVC: UIAdaptivePresentationControllerDelegate {
         if canDismissScreen {
             return true
         } else {
-            let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let primaryAction = UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            let alert = UIAlertController.showUnsavedChangesSheet {
                 self.dismiss(animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            alertVC.addAction(primaryAction)
-            alertVC.addAction(cancelAction)
-            self.present(alertVC, animated: true)
+            present(alert, animated: true)
             return false
         }
     }

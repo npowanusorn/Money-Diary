@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RoundedView: UIView {
+@IBDesignable class RoundedView: UIView {
     
-    var cornerRadius: CGFloat = 12 {
+    @IBInspectable var cornerRadius: CGFloat = 12 {
         didSet { self.layer.cornerRadius = cornerRadius }
     }
     
@@ -29,5 +29,9 @@ class RoundedView: UIView {
     
     private func setupView() {
         layer.cornerRadius = cornerRadius
+    }
+
+    override class func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
     }
 }

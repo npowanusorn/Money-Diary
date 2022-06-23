@@ -60,9 +60,7 @@ class AllRecordsVC: UIViewController {
             walletAction.setValue(nil, forKey: "image")
         }
 
-        alertController.addAction(walletAction)
-        alertController.addAction(dateAction)
-        alertController.addAction(cancelAction)
+        alertController.addActions([walletAction, dateAction, cancelAction])
         present(alertController, animated: true)
     }
     

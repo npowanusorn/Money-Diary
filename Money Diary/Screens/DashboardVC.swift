@@ -211,18 +211,14 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 { return nil }
         if walletManager.numberOfWallets == 0 { return nil }
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
-            let alertController = UIAlertController(title: "Delete Wallet", message: "Delete wallet?", preferredStyle: .alert)
-            let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let alert = UIAlertController.showDeleteConfirmationAlert(with: "Delete Wallet", message: "This action cannot be undone") {
                 let result = self.walletManager.removeWallet(at: indexPath.row)
                 self.refreshData()
                 completion(result)
-            }
-            let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            } secondaryCompletion: {
                 completion(false)
             }
-            alertController.addAction(deleteAlertAction)
-            alertController.addAction(cancelAlertAction)
-            self.present(alertController, animated: true)
+            self.present(alert, animated: true)
         }
         deleteAction.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [deleteAction])

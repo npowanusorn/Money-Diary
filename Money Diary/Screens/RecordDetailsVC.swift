@@ -37,20 +37,25 @@ class RecordDetailsVC: UIViewController {
     }
 
     @IBAction func deleteTapped(_ sender: Any) {
+        let alert = UIAlertController.showDeleteConfirmationAlert(with: "Delete record", message: "This action cannot be undone") {
+            self.performDeletion()
+        }
+        present(alert, animated: true)
+    }
+
+    @objc func editRecord() {
+
+    }
+
+    func performDeletion() {
         let wallet = selectedRecord.wallet
         if wallet.removeRecord(recordToRemove: selectedRecord) {
             navigationController?.popViewController(animated: true)
             SPIndicator.present(title: "Success", message: "Record removed", preset: .done, haptic: .success, from: .top, completion: nil)
         } else {
-            let alertController = UIAlertController(title: "Error", message: "Error deleting record", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Dismiss", style: .default)
-            alertController.addAction(action)
-            present(alertController, animated: true)
+            let alert = UIAlertController.showDismissAlert(with: "Error", message: "Error deleting record")
+            present(alert, animated: true)
         }
-    }
-
-    @objc func editRecord() {
-
     }
 
 }

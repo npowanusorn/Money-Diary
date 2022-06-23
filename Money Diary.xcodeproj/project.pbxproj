@@ -23,6 +23,8 @@
 		4849A8A4285DBA60004569EB /* AddWalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4849A8A2285DBA60004569EB /* AddWalletVC.xib */; };
 		487BA54D28629350007E00B6 /* RecordDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA54B28629350007E00B6 /* RecordDetailsVC.swift */; };
 		487BA54E28629350007E00B6 /* RecordDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA54C28629350007E00B6 /* RecordDetailsVC.xib */; };
+		487BA55328638545007E00B6 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA55128638545007E00B6 /* ImageCell.swift */; };
+		487BA55428638545007E00B6 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA55228638545007E00B6 /* ImageCell.xib */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -70,6 +72,8 @@
 		4849A8A2285DBA60004569EB /* AddWalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddWalletVC.xib; sourceTree = "<group>"; };
 		487BA54B28629350007E00B6 /* RecordDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailsVC.swift; sourceTree = "<group>"; };
 		487BA54C28629350007E00B6 /* RecordDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDetailsVC.xib; sourceTree = "<group>"; };
+		487BA55128638545007E00B6 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		487BA55228638545007E00B6 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */,
 				509D84A22860335C00AC8F58 /* TabBarView.swift */,
 				4839B81F28618F9E0015C048 /* TabBarViewCell.swift */,
+				487BA55128638545007E00B6 /* ImageCell.swift */,
+				487BA55228638545007E00B6 /* ImageCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				4849A8A0285DABC1004569EB /* WalletsListVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
+				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
 				509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */,
 				5024EE5C284DB344000B295A /* Assets.xcassets in Resources */,
 				487BA54E28629350007E00B6 /* RecordDetailsVC.xib in Resources */,
@@ -368,6 +375,7 @@
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */,
 				4836D855285D601100746A56 /* DashboardVC.swift in Sources */,
+				487BA55328638545007E00B6 /* ImageCell.swift in Sources */,
 				4839B81E2860DB690015C048 /* CommonMethods+Extensions.swift in Sources */,
 				5038E6662852D6D800756D60 /* AddVC.swift in Sources */,
 				5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */,

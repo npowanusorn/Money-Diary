@@ -1,0 +1,6 @@
+framework module SPSettingsIcons {
+  umbrella header "SPSettingsIcons-umbrella.h"
+
+  export *
+  module * { export * }
+}

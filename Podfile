@@ -10,5 +10,6 @@ target 'Money Diary' do
   pod 'SwipeMenuViewController'
   pod 'SwiftyBeaver'
   pod 'RealmSwift', '~>10'
+  pod 'SPSettingsIcons'
 
 end

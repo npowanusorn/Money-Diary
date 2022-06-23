@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SPSettingsIcons
 
 class SettingsVC: UIViewController {
 
@@ -17,7 +18,7 @@ class SettingsVC: UIViewController {
         title = "Settings"
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "settingsCell")
+        tableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "settingsCell")
     }
 
 }
@@ -45,11 +46,14 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = "Theme \(indexPath.row + 1)"
-//        content.textProperties.font = K.Fonts.regular.getFont(size: 17)
-        cell.contentConfiguration = content
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as? ImageCell else { return UITableViewCell() }
+//        var content = cell.defaultContentConfiguration()
+//        content.text = "Theme \(indexPath.row + 1)"
+//        content.image = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
+//        cell.contentConfiguration = content
+        cell.primaryText = "Theme \(indexPath.row + 1)"
+        cell.secondaryText = "text"
+        cell.cellImage = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
         cell.accessoryType = .disclosureIndicator
         return cell
     }

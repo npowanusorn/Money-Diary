@@ -2,5 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-Money Diary/Pods-Money Diary-frameworks.s
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/SPIndicator/SPIndicator.framework
+${BUILT_PRODUCTS_DIR}/SPSettingsIcons/SPSettingsIcons.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework
 ${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework

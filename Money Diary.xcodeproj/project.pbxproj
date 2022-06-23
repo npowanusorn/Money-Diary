@@ -50,12 +50,9 @@
 		50E28348285EFFAF005A3907 /* AllRecordsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28346285EFFAF005A3907 /* AllRecordsVC.swift */; };
 		50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E28347285EFFAF005A3907 /* AllRecordsVC.xib */; };
 		50E2834B285FA87A005A3907 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E2834A285FA87A005A3907 /* Constants.swift */; };
-		5CA4355C7B574D9881B08FB7 /* Pods_Money_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D93D4F7A47BF3739049B14A /* Pods_Money_Diary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D93D4F7A47BF3739049B14A /* Pods_Money_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		359694044870F2CB17D3BBFC /* Pods-Money Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Diary.release.xcconfig"; path = "Target Support Files/Pods-Money Diary/Pods-Money Diary.release.xcconfig"; sourceTree = "<group>"; };
 		4836D851285D4C7200746A56 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		4836D853285D601100746A56 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		4836D854285D601100746A56 /* DashboardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardVC.xib; sourceTree = "<group>"; };
@@ -101,7 +98,6 @@
 		50E28346285EFFAF005A3907 /* AllRecordsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordsVC.swift; sourceTree = "<group>"; };
 		50E28347285EFFAF005A3907 /* AllRecordsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllRecordsVC.xib; sourceTree = "<group>"; };
 		50E2834A285FA87A005A3907 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B548C300A79398AF82ABEA67 /* Pods-Money Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Diary.debug.xcconfig"; path = "Target Support Files/Pods-Money Diary/Pods-Money Diary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CA4355C7B574D9881B08FB7 /* Pods_Money_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +117,6 @@
 				5024EE51284DB342000B295A /* Money Diary */,
 				5024EE50284DB342000B295A /* Products */,
 				8C505BD59B8777F437F8B3F3 /* Pods */,
-				68566E02A437FA060A6D891B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,19 +211,9 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		68566E02A437FA060A6D891B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1D93D4F7A47BF3739049B14A /* Pods_Money_Diary.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8C505BD59B8777F437F8B3F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B548C300A79398AF82ABEA67 /* Pods-Money Diary.debug.xcconfig */,
-				359694044870F2CB17D3BBFC /* Pods-Money Diary.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -241,11 +225,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5024EE63284DB344000B295A /* Build configuration list for PBXNativeTarget "Money Diary" */;
 			buildPhases = (
-				EBED16F4BAFDB820A1ADC3A3 /* [CP] Check Pods Manifest.lock */,
 				5024EE4B284DB342000B295A /* Sources */,
 				5024EE4C284DB342000B295A /* Frameworks */,
 				5024EE4D284DB342000B295A /* Resources */,
-				2AA96F362CCF0E899B67438D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,48 +294,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2AA96F362CCF0E899B67438D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Money Diary/Pods-Money Diary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Money Diary/Pods-Money Diary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Money Diary/Pods-Money Diary-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EBED16F4BAFDB820A1ADC3A3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Money Diary-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5024EE4B284DB342000B295A /* Sources */ = {
@@ -530,7 +470,6 @@
 		};
 		5024EE64284DB344000B295A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B548C300A79398AF82ABEA67 /* Pods-Money Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -560,7 +499,6 @@
 		};
 		5024EE65284DB344000B295A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 359694044870F2CB17D3BBFC /* Pods-Money Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

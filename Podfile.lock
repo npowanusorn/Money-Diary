@@ -7,14 +7,12 @@ PODS:
   - SPIndicator (1.6.4)
   - SPSettingsIcons (1.0.1)
   - SwiftyBeaver (1.9.6)
-  - SwipeMenuViewController (4.1.0)
 
 DEPENDENCIES:
   - RealmSwift (~> 10)
   - SPIndicator
   - SPSettingsIcons
   - SwiftyBeaver
-  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
@@ -23,7 +21,6 @@ SPEC REPOS:
     - SPIndicator
     - SPSettingsIcons
     - SwiftyBeaver
-    - SwipeMenuViewController
 
 SPEC CHECKSUMS:
   Realm: f4674e0e7ee537f67a78d79bd8319bc777d61d06
@@ -31,8 +28,7 @@ SPEC CHECKSUMS:
   SPIndicator: 93e0a4fb23de51294ac48e874c0f081a5e293e4f
   SPSettingsIcons: c82728c3858db8cda8a30bed33bad5afd4db5ebd
   SwiftyBeaver: c8241b4745aa269a78ca5a022532c6915e948536
-  SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
 
-PODFILE CHECKSUM: 9a1267d8a5abcffb42807c69b79944deb9cc3b08
+PODFILE CHECKSUM: b683eda946be4db84b8e256ab3fa30c8a7a11ced
 
 COCOAPODS: 1.11.3

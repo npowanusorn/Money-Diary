@@ -44,6 +44,9 @@
 		509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A828604DA800AC8F58 /* SettingsVC.swift */; };
 		509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509D84A928604DA800AC8F58 /* SettingsVC.xib */; };
 		50A221B52855016700D1A139 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A221B42855016700D1A139 /* ContentSizedTableView.swift */; };
+		50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C2286505BD00E9957E /* SwiftyBeaver */; };
+		50AB38C62865061600E9957E /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C52865061600E9957E /* SPIndicator */; };
+		50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C82865062300E9957E /* SPSettingsIcons */; };
 		50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28320285EAC42005A3907 /* WalletDetailVC.swift */; };
 		50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E28321285EAC42005A3907 /* WalletDetailVC.xib */; };
 		50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */; };
@@ -105,6 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */,
+				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
+				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +232,11 @@
 			dependencies = (
 			);
 			name = "Money Diary";
+			packageProductDependencies = (
+				50AB38C2286505BD00E9957E /* SwiftyBeaver */,
+				50AB38C52865061600E9957E /* SPIndicator */,
+				50AB38C82865062300E9957E /* SPSettingsIcons */,
+			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
 			productType = "com.apple.product-type.application";
@@ -254,6 +265,11 @@
 				Base,
 			);
 			mainGroup = 5024EE46284DB342000B295A;
+			packageReferences = (
+				50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				50AB38C42865061600E9957E /* XCRemoteSwiftPackageReference "SPIndicator" */,
+				50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
+			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -540,6 +556,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		50AB38C42865061600E9957E /* XCRemoteSwiftPackageReference "SPIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPIndicator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparrowcode/SPSettingsIcons";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50AB38C2286505BD00E9957E /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		50AB38C52865061600E9957E /* SPIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38C42865061600E9957E /* XCRemoteSwiftPackageReference "SPIndicator" */;
+			productName = SPIndicator;
+		};
+		50AB38C82865062300E9957E /* SPSettingsIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */;
+			productName = SPSettingsIcons;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5024EE47284DB342000B295A /* Project object */;
 }

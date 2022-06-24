@@ -48,8 +48,10 @@
 		50AB38C62865061600E9957E /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C52865061600E9957E /* SPIndicator */; };
 		50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C82865062300E9957E /* SPSettingsIcons */; };
 		50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38CB286508B800E9957E /* SwiftyJSON */; };
-		50AB38CF2865090A00E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38CE2865090A00E9957E /* FirebaseAuth */; };
-		50AB38D12865090A00E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D02865090A00E9957E /* FirebaseFirestore */; };
+		50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50AB38D228654DBC00E9957E /* GoogleService-Info.plist */; };
+		50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D82865550800E9957E /* FirebaseAnalytics */; };
+		50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DA2865550800E9957E /* FirebaseAuth */; };
+		50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DC2865550800E9957E /* FirebaseFirestore */; };
 		50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28320285EAC42005A3907 /* WalletDetailVC.swift */; };
 		50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E28321285EAC42005A3907 /* WalletDetailVC.xib */; };
 		50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */; };
@@ -98,6 +100,7 @@
 		509D84A828604DA800AC8F58 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		50A221B42855016700D1A139 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
+		50AB38D228654DBC00E9957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50E28320285EAC42005A3907 /* WalletDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailVC.swift; sourceTree = "<group>"; };
 		50E28321285EAC42005A3907 /* WalletDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletDetailVC.xib; sourceTree = "<group>"; };
 		50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRightLabelCell.swift; sourceTree = "<group>"; };
@@ -112,11 +115,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */,
-				50AB38CF2865090A00E9957E /* FirebaseAuth in Frameworks */,
+				50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */,
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
+				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
 				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
-				50AB38D12865090A00E9957E /* FirebaseFirestore in Frameworks */,
+				50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +132,7 @@
 			children = (
 				5024EE51284DB342000B295A /* Money Diary */,
 				5024EE50284DB342000B295A /* Products */,
+				50AB38D4286551F900E9957E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +152,7 @@
 				5024EE56284DB342000B295A /* DashboardViewController.swift */,
 				5038E6622852D65700756D60 /* Delegates */,
 				5024EE60284DB344000B295A /* Info.plist */,
+				50AB38D228654DBC00E9957E /* GoogleService-Info.plist */,
 				5024EE5D284DB344000B295A /* LaunchScreen.storyboard */,
 				5024EE58284DB342000B295A /* Main.storyboard */,
 				5038E6632852D69A00756D60 /* Screens */,
@@ -222,6 +228,13 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		50AB38D4286551F900E9957E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,8 +256,9 @@
 				50AB38C52865061600E9957E /* SPIndicator */,
 				50AB38C82865062300E9957E /* SPSettingsIcons */,
 				50AB38CB286508B800E9957E /* SwiftyJSON */,
-				50AB38CE2865090A00E9957E /* FirebaseAuth */,
-				50AB38D02865090A00E9957E /* FirebaseFirestore */,
+				50AB38D82865550800E9957E /* FirebaseAnalytics */,
+				50AB38DA2865550800E9957E /* FirebaseAuth */,
+				50AB38DC2865550800E9957E /* FirebaseFirestore */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -279,7 +293,7 @@
 				50AB38C42865061600E9957E /* XCRemoteSwiftPackageReference "SPIndicator" */,
 				50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
 				50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -297,6 +311,7 @@
 			files = (
 				50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */,
 				50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */,
+				50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */,
 				5038E69328530FDA00756D60 /* AddRecordVC.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddVC.xib in Resources */,
 				4849A8A4285DBA60004569EB /* AddWalletVC.xib in Resources */,
@@ -508,6 +523,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.termuenator.Money-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -537,6 +556,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.termuenator.Money-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -601,12 +624,12 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -632,14 +655,19 @@
 			package = 50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		50AB38CE2865090A00E9957E /* FirebaseAuth */ = {
+		50AB38D82865550800E9957E /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		50AB38DA2865550800E9957E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		50AB38D02865090A00E9957E /* FirebaseFirestore */ = {
+		50AB38DC2865550800E9957E /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */

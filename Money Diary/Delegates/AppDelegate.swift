@@ -7,6 +7,9 @@
 
 import UIKit
 import SwiftyBeaver
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let console = ConsoleDestination()
         console.format = "$DHH:mm:ss$d $C$L$c $N.$F:$l - $M"
         log.addDestination(console)
+        
+        FirebaseApp.configure()
 
         return true
     }

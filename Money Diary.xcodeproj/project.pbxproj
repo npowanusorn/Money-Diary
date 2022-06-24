@@ -47,6 +47,9 @@
 		50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C2286505BD00E9957E /* SwiftyBeaver */; };
 		50AB38C62865061600E9957E /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C52865061600E9957E /* SPIndicator */; };
 		50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38C82865062300E9957E /* SPSettingsIcons */; };
+		50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38CB286508B800E9957E /* SwiftyJSON */; };
+		50AB38CF2865090A00E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38CE2865090A00E9957E /* FirebaseAuth */; };
+		50AB38D12865090A00E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D02865090A00E9957E /* FirebaseFirestore */; };
 		50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28320285EAC42005A3907 /* WalletDetailVC.swift */; };
 		50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E28321285EAC42005A3907 /* WalletDetailVC.xib */; };
 		50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */; };
@@ -109,8 +112,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */,
+				50AB38CF2865090A00E9957E /* FirebaseAuth in Frameworks */,
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
+				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
 				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
+				50AB38D12865090A00E9957E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +242,9 @@
 				50AB38C2286505BD00E9957E /* SwiftyBeaver */,
 				50AB38C52865061600E9957E /* SPIndicator */,
 				50AB38C82865062300E9957E /* SPSettingsIcons */,
+				50AB38CB286508B800E9957E /* SwiftyJSON */,
+				50AB38CE2865090A00E9957E /* FirebaseAuth */,
+				50AB38D02865090A00E9957E /* FirebaseFirestore */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -269,6 +278,8 @@
 				50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 				50AB38C42865061600E9957E /* XCRemoteSwiftPackageReference "SPIndicator" */,
 				50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
+				50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -582,6 +593,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -599,6 +626,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */;
 			productName = SPSettingsIcons;
+		};
+		50AB38CB286508B800E9957E /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		50AB38CE2865090A00E9957E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		50AB38D02865090A00E9957E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50AB38CD2865090A00E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

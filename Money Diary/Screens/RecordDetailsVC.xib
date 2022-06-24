@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,12 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5EY-sM-qgZ">
-                    <rect key="frame" x="50" y="812" width="328" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5EY-sM-qgZ">
+                    <rect key="frame" x="50" y="802" width="328" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="qIP-Ff-Lbt"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Delete"/>
                     <buttonConfiguration key="configuration" style="filled" title="Delete" cornerStyle="large">
-                        <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                         <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                     </buttonConfiguration>
                     <connections>
@@ -70,8 +73,10 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Lyl-Cy-0fp" firstAttribute="leading" secondItem="fan-Cx-THu" secondAttribute="leading" id="4bt-4f-EYq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5EY-sM-qgZ" secondAttribute="bottom" constant="40" id="4ps-yD-dLd"/>
                 <constraint firstItem="Lyl-Cy-0fp" firstAttribute="trailing" secondItem="fan-Cx-THu" secondAttribute="trailing" id="BP7-c9-SVl"/>
                 <constraint firstItem="C0L-1d-Vgs" firstAttribute="leading" secondItem="fan-Cx-THu" secondAttribute="leading" id="EuS-3g-LSO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5EY-sM-qgZ" secondAttribute="trailing" constant="50" id="Gpa-Bb-RJB"/>
                 <constraint firstItem="XSm-Cq-bbe" firstAttribute="trailing" secondItem="fan-Cx-THu" secondAttribute="trailing" id="HiN-6E-Uav"/>
                 <constraint firstItem="XSm-Cq-bbe" firstAttribute="leading" secondItem="fan-Cx-THu" secondAttribute="leading" id="OWI-zE-djY"/>
                 <constraint firstItem="C0L-1d-Vgs" firstAttribute="top" secondItem="Lyl-Cy-0fp" secondAttribute="bottom" constant="20" id="T8I-4T-FxZ"/>
@@ -81,6 +86,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EfM-yb-M5E" secondAttribute="trailing" constant="20" id="dFW-K4-qPJ"/>
                 <constraint firstItem="Lyl-Cy-0fp" firstAttribute="top" secondItem="XSm-Cq-bbe" secondAttribute="bottom" constant="20" id="k3Q-yn-tzY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fan-Cx-THu" secondAttribute="trailing" constant="40" id="luE-p2-zqU"/>
+                <constraint firstItem="5EY-sM-qgZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="nEG-Zg-3UU"/>
                 <constraint firstItem="C0L-1d-Vgs" firstAttribute="trailing" secondItem="fan-Cx-THu" secondAttribute="trailing" id="ojI-hx-Bv0"/>
                 <constraint firstItem="XSm-Cq-bbe" firstAttribute="top" secondItem="fan-Cx-THu" secondAttribute="bottom" constant="20" id="qET-uY-WdL"/>
                 <constraint firstItem="fan-Cx-THu" firstAttribute="top" secondItem="EfM-yb-M5E" secondAttribute="bottom" constant="20" id="xPt-N8-V5f"/>

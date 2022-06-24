@@ -195,7 +195,6 @@ extension WalletDetailVC: AddedRecordDelegate {
 
 extension WalletDetailVC: TabBarViewDelegate {
     func didChangeToIndex(index: Int) {
-        Log.info("did change to idx: \(index) for walletindex: \(selectedWalletIndex ?? -1)")
 
         let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
         if index == 0 {

@@ -7,9 +7,10 @@
 
 import UIKit
 
+@IBDesignable
 class RoundedButton: UIButton {
     
-    let cornerRadius = 8.0
+    @IBInspectable let cornerRadius = 8.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,9 +29,7 @@ class RoundedButton: UIButton {
     
     func setup() {
         self.layer.cornerRadius = cornerRadius
-        self.backgroundColor = .systemBlue
-        self.titleLabel?.font = UIFont(name: "Avenir Next Regular", size: 18)
-        self.setTitleColor(.white, for: .normal)
+        let imageView = UIImageView()
     }
 
 }

@@ -270,7 +270,6 @@ extension AddRecordVC: DatePickerCellDelegate {
 
 extension AddRecordVC: TabBarCellDelegate {
     func didChangeToIndex(index: Int) {
-        Log.info("did change to index: \(index)")
         isExpense = index == 0 ? true : false
     }
 }

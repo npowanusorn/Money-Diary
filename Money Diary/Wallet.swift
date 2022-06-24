@@ -34,16 +34,12 @@ class Wallet {
     }
 
     func modifyBalance(by change: Double) {
-        Log.info("balance before: \(_balance)")
         _balance += change
-        Log.info("balance after: \(_balance)")
         if _balance < 0 { _balance = 0 }
     }
 
     func addRecord(newRecord: Record) {
-        Log.info("newRecord.amount: \(newRecord.amount)")
         let recordAmount = newRecord.amount * (newRecord.isExpense ? -1.0 : 1.0)
-        Log.info("recordAmount: \(recordAmount)")
         _records.append(newRecord)
         modifyBalance(by: recordAmount)
         RecordManager.shared.addRecord(newRecord: newRecord)

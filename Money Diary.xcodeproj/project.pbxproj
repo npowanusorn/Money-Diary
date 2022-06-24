@@ -25,6 +25,9 @@
 		487BA54E28629350007E00B6 /* RecordDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA54C28629350007E00B6 /* RecordDetailsVC.xib */; };
 		487BA55328638545007E00B6 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA55128638545007E00B6 /* ImageCell.swift */; };
 		487BA55428638545007E00B6 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA55228638545007E00B6 /* ImageCell.xib */; };
+		487BA564286586C7007E00B6 /* LoginCreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA562286586C7007E00B6 /* LoginCreateAccountVC.swift */; };
+		487BA565286586C7007E00B6 /* LoginCreateAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA563286586C7007E00B6 /* LoginCreateAccountVC.xib */; };
+		487BA56728658ACF007E00B6 /* TypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA56628658ACF007E00B6 /* TypingLabel.swift */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -79,6 +82,9 @@
 		487BA54C28629350007E00B6 /* RecordDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDetailsVC.xib; sourceTree = "<group>"; };
 		487BA55128638545007E00B6 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		487BA55228638545007E00B6 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		487BA562286586C7007E00B6 /* LoginCreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCreateAccountVC.swift; sourceTree = "<group>"; };
+		487BA563286586C7007E00B6 /* LoginCreateAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCreateAccountVC.xib; sourceTree = "<group>"; };
+		487BA56628658ACF007E00B6 /* TypingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingLabel.swift; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				4839B81F28618F9E0015C048 /* TabBarViewCell.swift */,
 				487BA55128638545007E00B6 /* ImageCell.swift */,
 				487BA55228638545007E00B6 /* ImageCell.xib */,
+				487BA56628658ACF007E00B6 /* TypingLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -224,6 +231,8 @@
 				4849A89E285DABC1004569EB /* WalletsListVC.xib */,
 				487BA54B28629350007E00B6 /* RecordDetailsVC.swift */,
 				487BA54C28629350007E00B6 /* RecordDetailsVC.xib */,
+				487BA562286586C7007E00B6 /* LoginCreateAccountVC.swift */,
+				487BA563286586C7007E00B6 /* LoginCreateAccountVC.xib */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -321,6 +330,7 @@
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
 				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
 				509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */,
+				487BA565286586C7007E00B6 /* LoginCreateAccountVC.xib in Resources */,
 				5024EE5C284DB344000B295A /* Assets.xcassets in Resources */,
 				487BA54E28629350007E00B6 /* RecordDetailsVC.xib in Resources */,
 				5024EE5A284DB342000B295A /* Main.storyboard in Resources */,
@@ -342,6 +352,7 @@
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,
 				50A221B52855016700D1A139 /* ContentSizedTableView.swift in Sources */,
 				50E2834B285FA87A005A3907 /* Constants.swift in Sources */,
+				487BA564286586C7007E00B6 /* LoginCreateAccountVC.swift in Sources */,
 				505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */,
 				5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */,
 				509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */,
@@ -359,6 +370,7 @@
 				4849A89C285D9FD1004569EB /* RecordManager.swift in Sources */,
 				487BA54D28629350007E00B6 /* RecordDetailsVC.swift in Sources */,
 				4849A89F285DABC1004569EB /* WalletsListVC.swift in Sources */,
+				487BA56728658ACF007E00B6 /* TypingLabel.swift in Sources */,
 				4836D85C285D778400746A56 /* Record.swift in Sources */,
 				4849A89A285D9DCC004569EB /* WalletManager.swift in Sources */,
 				50E28348285EFFAF005A3907 /* AllRecordsVC.swift in Sources */,

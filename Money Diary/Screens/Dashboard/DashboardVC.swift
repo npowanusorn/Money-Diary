@@ -7,6 +7,7 @@
 
 import UIKit
 import SPIndicator
+import FirebaseAuth
 
 class DashboardVC: UIViewController {
 
@@ -28,6 +29,8 @@ class DashboardVC: UIViewController {
 //        navigationItem.setTitleAndSubtitle(title: getTotalBalance().toCurrencyString(), subtitle: "Total balance")
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        ellipsisButton.isHidden = true
+        
+        Log.info("ISLOGGEDIN: \(Auth.auth().currentUser != nil)")
 
         UserDefaults.standard.set(true, forKey: K.UserDefaultsKeys.isLoggedIn)
 

@@ -58,6 +58,8 @@
 		50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D82865550800E9957E /* FirebaseAnalytics */; };
 		50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DA2865550800E9957E /* FirebaseAuth */; };
 		50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DC2865550800E9957E /* FirebaseFirestore */; };
+		50D33AB12866CBD800D009B8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D33AB02866CBD800D009B8 /* Validator.swift */; };
+		50E0481F2866D81D008603BC /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 50E0481E2866D81D008603BC /* ProgressHUD */; };
 		50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28320285EAC42005A3907 /* WalletDetailVC.swift */; };
 		50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50E28321285EAC42005A3907 /* WalletDetailVC.xib */; };
 		50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */; };
@@ -113,6 +115,7 @@
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		50A221B42855016700D1A139 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		50AB38D228654DBC00E9957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		50D33AB02866CBD800D009B8 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		50E28320285EAC42005A3907 /* WalletDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailVC.swift; sourceTree = "<group>"; };
 		50E28321285EAC42005A3907 /* WalletDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletDetailVC.xib; sourceTree = "<group>"; };
 		50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRightLabelCell.swift; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */,
+				50E0481F2866D81D008603BC /* ProgressHUD in Frameworks */,
 				50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */,
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
@@ -256,6 +260,7 @@
 				4849A89B285D9FD1004569EB /* RecordManager.swift */,
 				50E2834A285FA87A005A3907 /* Constants.swift */,
 				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
+				50D33AB02866CBD800D009B8 /* Validator.swift */,
 			);
 			path = "Money Diary";
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				50AB38D82865550800E9957E /* FirebaseAnalytics */,
 				50AB38DA2865550800E9957E /* FirebaseAuth */,
 				50AB38DC2865550800E9957E /* FirebaseFirestore */,
+				50E0481E2866D81D008603BC /* ProgressHUD */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -392,6 +398,7 @@
 				50AB38C72865062300E9957E /* XCRemoteSwiftPackageReference "SPSettingsIcons" */,
 				50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -446,6 +453,7 @@
 				487BA564286586C7007E00B6 /* WelcomeVC.swift in Sources */,
 				505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */,
 				5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */,
+				50D33AB12866CBD800D009B8 /* Validator.swift in Sources */,
 				509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */,
 				4836D852285D4C7200746A56 /* DatePickerCell.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
@@ -736,6 +744,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -773,6 +789,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		50E0481E2866D81D008603BC /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

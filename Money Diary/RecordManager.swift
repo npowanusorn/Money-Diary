@@ -44,6 +44,11 @@ class RecordManager {
         }
         return records
     }
+    
+    func removeAllRecords() {
+        allRecords.removeAll()
+        allDates.removeAll()
+    }
 
 //    func searchForRecord(by name: String) -> [Record] {
 //        var list = [Record]()

@@ -6,31 +6,42 @@
 //
 
 import UIKit
+import ProgressHUD
+import SPIndicator
+import Firebase
 
 class LoginCreateAccountVC: UIViewController {
 
     var isLogInVC: Bool = true
 
-    private var signInText: String {
-        return isLogInVC ? "Sign In" : "Create Account"
+    private var signInText: String { isLogInVC ? "Sign In" : "Create Account" }
+    private var email: String { emailTextField.text ?? "" }
+    private var password: String { passwordTextField.text ?? "" }
+    private var confirmPassword: String { confirmPasswordTextField.text ?? "" }
+    private var isPasswordMatch: Bool {
+        if isLogInVC {
+            return !password.isEmpty
+        } else {
+            return password == confirmPassword && !password.isEmpty
+        }
     }
+    private var isValidEmail: Bool { Validator.isValidEmail(email) }
 
-    @IBOutlet private var emailTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet private var confirmPasswordTextField: UITextField!
+    @IBOutlet private var emailTextField: BaseTextField!
+    @IBOutlet private var passwordTextField: PasswordTextField!
+    @IBOutlet private var confirmPasswordTextField: PasswordTextField!
     @IBOutlet private var signInButton: UIButton!
     @IBOutlet private var confirmPasswordView: UIView!
     @IBOutlet private var passwordMismatchLabel: UILabel!
-    @IBOutlet private var contentView: UIView!
-
+    @IBOutlet private var signInToPasswordFieldConstraint: NSLayoutConstraint!
+    @IBOutlet private var signInToConfirmPasswordConstraint: NSLayoutConstraint!
+    @IBOutlet var resetPasswordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = signInText
         navigationController?.navigationBar.titleTextAttributes = getAttributedString(fontSize: 15.0, weight: .bold)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -38,48 +49,93 @@ class LoginCreateAccountVC: UIViewController {
 
         confirmPasswordView.isHidden = isLogInVC
         signInButton.configuration?.attributedTitle = AttributedString(signInText, attributes: AttributeContainer(getAttributedString(fontSize: 15.0, weight: .bold)))
+        signInButton.isEnabled = false
 
         if !isLogInVC {
-            confirmPasswordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             passwordMismatchLabel.isHidden = true
-            signInButton.isEnabled = false
             passwordTextField.returnKeyType = .next
-        }
-    }
-
-    @objc
-    func keyboardWillShow(_ notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if signInButton.transform.isIdentity {
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseOut) {
-                    self.signInButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-                    self.view.frame.origin.y -= 20
-                }
-            }
-        }
-    }
-
-    @objc
-    func keyboardWillHide(_ notification: Notification) {
-        if !signInButton.transform.isIdentity {
-            signInButton.transform = CGAffineTransform.identity
-            self.view.frame.origin.y += 20
+            signInToPasswordFieldConstraint.isActive = false
+            signInToConfirmPasswordConstraint.isActive = true
+            resetPasswordButton.isHidden = true
+        } else {
+            signInToConfirmPasswordConstraint.isActive = false
+            signInToPasswordFieldConstraint.isActive = true
+            signInToPasswordFieldConstraint.constant = 40.0
+            resetPasswordButton.isHidden = false
         }
     }
 
     @IBAction func signInTapped(_ sender: Any) {
-        let dashboardVC = DashboardVC()
-        navigationController?.pushViewController(dashboardVC, animated: true)
+        ProgressHUD.animationType = .circleSpinFade
+        ProgressHUD.show()
+        if isLogInVC {
+            handleSignIn()
+        } else {
+            handleCreateUser()
+        }
     }
 
-    @objc
-    func textFieldDidChange(_ textField: UITextField) {
-        if confirmPasswordTextField.text != passwordTextField.text {
+    @IBAction func resetPasswordTapped(_ sender: Any) {
+        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                Log.error("ERROR RESET PASSWORD: \(error.localizedDescription)")
+                let alert = UIAlertController.showErrorAlert(with: error.localizedDescription)
+                strongSelf.present(alert, animated: true)
+            }
+            strongSelf.present(UIAlertController.showOkAlert(with: "Email sent", message: "Check your email to reset your password"), animated: true)
+        }
+    }
+    
+    @IBAction func textFieldDidChange(_ sender: Any) {
+        if !isValidEmail && !isLogInVC {
             passwordMismatchLabel.isHidden = false
             signInButton.isEnabled = false
-        } else {
-            passwordMismatchLabel.isHidden = true
-            signInButton.isEnabled = true
+            passwordMismatchLabel.text = "Invalid email"
+            return
+        }
+        
+        if !isPasswordMatch {
+            passwordMismatchLabel.isHidden = false
+            signInButton.isEnabled = false
+            passwordMismatchLabel.text = "Passwords do not match"
+            return
+        }
+        passwordMismatchLabel.isHidden = true
+        signInButton.isEnabled = true
+    }
+    
+    func handleSignIn() {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                Log.error("SIGN IN FAILED: \(error.localizedDescription)")
+                let alert = UIAlertController.showDismissAlert(with: "Error", message: error.localizedDescription)
+                strongSelf.present(alert, animated: true)
+                ProgressHUD.dismiss()
+                return
+            }
+            ProgressHUD.dismiss()
+            SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+            let dashboardVC = DashboardVC()
+            strongSelf.navigationController?.pushViewController(dashboardVC, animated: true)
+        }
+    }
+    
+    func handleCreateUser() {
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                Log.error("CREATE ACCOUNT FAILED: \(error.localizedDescription)")
+                let alert = UIAlertController.showDismissAlert(with: "Error", message: error.localizedDescription)
+                strongSelf.present(alert, animated: true)
+                ProgressHUD.dismiss()
+                return
+            }
+            ProgressHUD.dismiss()
+            SPIndicator.present(title: "Success", message: "Created account", preset: .done, haptic: .success)
+            let dashboardVC = DashboardVC()
+            strongSelf.navigationController?.pushViewController(dashboardVC, animated: true)
         }
     }
 }

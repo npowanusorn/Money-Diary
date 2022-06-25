@@ -7,6 +7,8 @@
 
 import UIKit
 import SPSettingsIcons
+import SPIndicator
+import Firebase
 
 class SettingsVC: UIViewController {
 
@@ -24,7 +26,7 @@ class SettingsVC: UIViewController {
     }
 
     private func getLogOutView() -> UIView {
-        let logOutView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+        let logOutView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 120))
 //        logOutView.backgroundColor = .yellow
         var buttonConfiguration = UIButton.Configuration.filled()
         let attributedTitle = NSAttributedString(string: "Log out", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15.0, weight: .bold)])
@@ -34,7 +36,7 @@ class SettingsVC: UIViewController {
         buttonConfiguration.background.strokeWidth = 1.0
         buttonConfiguration.cornerStyle = .large
         let button = UIButton(configuration: buttonConfiguration)
-        button.addTarget(self, action: #selector(logOut), for: .touchUpInside)
+        button.addTarget(self, action: #selector(logOutTapped), for: .touchUpInside)
         logOutView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -43,16 +45,42 @@ class SettingsVC: UIViewController {
         button.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor, constant: 0).isActive = true
         button.centerYAnchor.constraint(equalTo: logOutView.centerYAnchor, constant: 0).isActive = true
 
-//        button.leadingAnchor.constraint(equalTo: logOutView.leadingAnchor, constant: 40).isActive = true
-//        button.trailingAnchor.constraint(equalTo: logOutView.trailingAnchor, constant: 40).isActive = true
-//        button.topAnchor.constraint(equalTo: logOutView.topAnchor, constant: 0).isActive = true
-//        button.bottomAnchor.constraint(equalTo: logOutView.bottomAnchor, constant: 0).isActive = true
+        guard let currentEmail = Auth.auth().currentUser?.email else {
+            return logOutView
+        }
+        let currentEmailLabel = UILabel()
+        currentEmailLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        currentEmailLabel.text = "Logged in with \(currentEmail)"
+        currentEmailLabel.translatesAutoresizingMaskIntoConstraints = false
+        logOutView.addSubview(currentEmailLabel)
+        
+        currentEmailLabel.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor).isActive = true
+        currentEmailLabel.topAnchor.constraint(equalTo: logOutView.topAnchor, constant: 0).isActive = true
         return logOutView
     }
 
     @objc
-    func logOut() {
+    func logOutTapped() {
+        let alert = UIAlertController.showAlert(with: "Log out", message: nil, style: .alert, primaryActionName: "Log out", primaryActionStyle: .destructive, secondaryActionName: "Cancel", secondaryActionStyle: .cancel) {
+            self.handleLogOut()
+        }
+        self.present(alert, animated: true)
+    }
+    
+    func handleLogOut() {
         UserDefaults.standard.set(false, forKey: K.UserDefaultsKeys.isLoggedIn)
+        do {
+            try Auth.auth().signOut()
+        } catch let error as NSError {
+            Log.error("ERROR SIGNING OUT: \(error.localizedDescription)")
+            let alert = UIAlertController.showDismissAlert(with: "Error", message: error.localizedDescription)
+            self.present(alert, animated: true)
+            SPIndicator.present(title: "Error", message: "Unable to sign out", preset: .error, haptic: .error)
+            return
+        }
+        SPIndicator.present(title: "Success", message: "Signed out", preset: .done, haptic: .success)
+        WalletManager.shared.removeAllWallets()
+        RecordManager.shared.removeAllRecords()
         navigationController?.popToRootViewController(animated: true)
     }
 

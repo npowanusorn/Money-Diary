@@ -151,22 +151,26 @@ extension UIAlertController {
         style: UIAlertController.Style,
         primaryActionName: String,
         primaryActionStyle: UIAlertAction.Style,
-        secondaryActionName: String?,
-        secondaryActionStyle: UIAlertAction.Style,
-        primaryCompletion: @escaping () -> Void,
+        secondaryActionName: String? = nil,
+        secondaryActionStyle: UIAlertAction.Style? = nil,
+        primaryCompletion: (() -> Void)?,
         secondaryCompletion: (() -> Void)? = nil
     ) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
-        let primaryAction = UIAlertAction(title: primaryActionName, style: primaryActionStyle) { _ in primaryCompletion() }
-        if let secondaryActionName = secondaryActionName {
+        let primaryAction = UIAlertAction(title: primaryActionName, style: primaryActionStyle) { _ in primaryCompletion?() }
+        if let secondaryActionName = secondaryActionName, let secondaryActionStyle = secondaryActionStyle {
             let secondaryAction = UIAlertAction(title: secondaryActionName, style: secondaryActionStyle) { _ in
-                if let secondaryCompletion = secondaryCompletion { secondaryCompletion() }
+                secondaryCompletion?()
             }
             alert.addActions([primaryAction, secondaryAction])
         } else {
             alert.addAction(primaryAction)
         }
         return alert
+    }
+    
+    static func showErrorAlert(with message: String) -> UIAlertController {
+        return showDismissAlert(with: "Error", message: message)
     }
 
     static func showDeleteConfirmationAlert(
@@ -186,6 +190,10 @@ extension UIAlertController {
             primaryCompletion: primaryCompletion,
             secondaryCompletion: secondaryCompletion
         )
+    }
+    
+    static func showOkAlert(with title: String, message: String?) -> UIAlertController {
+        UIAlertController.showAlert(with: title, message: message, style: .alert, primaryActionName: "Ok", primaryActionStyle: .cancel, primaryCompletion: nil)
     }
 
     static func showDismissAlert(with title: String, message: String?) -> UIAlertController {

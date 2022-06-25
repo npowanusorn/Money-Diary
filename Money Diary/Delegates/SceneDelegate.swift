@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let welcomeVC = WelcomeVC()
         let navController = UINavigationController(rootViewController: welcomeVC)
         window?.rootViewController = navController
-        if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.isLoggedIn) {
+        
+        if Auth.auth().currentUser != nil {
             Log.info("IS LOGGED IN")
             let dashboardVC = DashboardVC()
             navController.pushViewController(dashboardVC, animated: false)

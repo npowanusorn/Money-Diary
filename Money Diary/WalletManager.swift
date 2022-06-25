@@ -88,6 +88,10 @@ class WalletManager {
         }
         return true
     }
+    
+    func removeAllWallets() {
+        wallets.removeAll()
+    }
 
 //    func getRecords(for walletIndex: Int? = nil) -> [Record] {
 //        if let walletIndex = walletIndex {

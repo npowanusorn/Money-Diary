@@ -88,8 +88,8 @@
 		487BA54C28629350007E00B6 /* RecordDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDetailsVC.xib; sourceTree = "<group>"; };
 		487BA55128638545007E00B6 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		487BA55228638545007E00B6 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
-		487BA562286586C7007E00B6 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeVC.swift; path = ../LoginCreateAccount/WelcomeVC.swift; sourceTree = "<group>"; };
-		487BA563286586C7007E00B6 /* WelcomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WelcomeVC.xib; path = ../LoginCreateAccount/WelcomeVC.xib; sourceTree = "<group>"; };
+		487BA562286586C7007E00B6 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		487BA563286586C7007E00B6 /* WelcomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeVC.xib; sourceTree = "<group>"; };
 		487BA56628658ACF007E00B6 /* TypingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingLabel.swift; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -220,15 +220,6 @@
 			path = LoginCreateAccount;
 			sourceTree = "<group>";
 		};
-		48185573286660BD00648BB6 /* WelcomeStartScreen */ = {
-			isa = PBXGroup;
-			children = (
-				487BA562286586C7007E00B6 /* WelcomeVC.swift */,
-				487BA563286586C7007E00B6 /* WelcomeVC.xib */,
-			);
-			path = WelcomeStartScreen;
-			sourceTree = "<group>";
-		};
 		5024EE46284DB342000B295A = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +301,7 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				48185573286660BD00648BB6 /* WelcomeStartScreen */,
+				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
 				5038E6652852D6D800756D60 /* AddVC.xib */,
@@ -331,6 +322,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50D33AAE2866B90100D009B8 /* WelcomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				487BA562286586C7007E00B6 /* WelcomeVC.swift */,
+				487BA563286586C7007E00B6 /* WelcomeVC.xib */,
+			);
+			path = WelcomeVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -18,6 +18,10 @@ func performHaptics() {
     UISelectionFeedbackGenerator().selectionChanged()
 }
 
+func getAttributedString(fontSize: CGFloat, weight: UIFont.Weight) -> [NSAttributedString.Key : Any] {
+    return [NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize, weight: weight)]
+}
+
 extension String {
     func toCurrencyFormat() -> String {
         let formattedString = String(format: "$%.2f", self)
@@ -44,12 +48,10 @@ extension UINavigationItem {
     func setTitleAndSubtitle(title: String, subtitle: String) {
         let titleLabel = UILabel()
         titleLabel.text = title
-//        titleLabel.font = K.Fonts.bold.getFont(size: 24)
         titleLabel.sizeToFit()
 
         let subtitleLabel = UILabel()
         subtitleLabel.text = subtitle
-//        subtitleLabel.font = K.Fonts.regular.getFont(size: 14)
         subtitleLabel.sizeToFit()
 
         let stack = UIStackView(arrangedSubviews: [subtitleLabel, titleLabel])
@@ -110,6 +112,20 @@ extension UIImage {
         return UIGraphicsImageRenderer(size:targetSize).image { _ in
             self.draw(in: CGRect(origin: .zero, size: targetSize))
         }
+    }
+
+    convenience init(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        UIGraphicsBeginImageContextWithOptions(size, false, 1)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        color.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+        guard let aCgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else {
+            self.init()
+            return
+        }
+        self.init(cgImage: aCgImage)
     }
 }
 
@@ -204,5 +220,19 @@ extension UIAlertController {
             actionTitle: "Discard Changes",
             completion: completion
         )
+    }
+}
+
+extension UIButton {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+        self.clipsToBounds = true
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(color.cgColor)
+            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+            let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.setBackgroundImage(colorImage, for: forState)
+        }
     }
 }

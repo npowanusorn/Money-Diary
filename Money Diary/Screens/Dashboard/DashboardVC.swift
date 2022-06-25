@@ -29,6 +29,8 @@ class DashboardVC: UIViewController {
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        ellipsisButton.isHidden = true
 
+        UserDefaults.standard.set(true, forKey: K.UserDefaultsKeys.isLoggedIn)
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12

@@ -11,6 +11,10 @@ import SwiftyBeaver
 public var Log = SwiftyBeaver.self
 
 enum K {
+
+    enum UserDefaultsKeys {
+        static let isLoggedIn = "isLoggedIn"
+    }
     
     enum Fonts: String {
         case bold = "Bold"

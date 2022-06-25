@@ -19,12 +19,47 @@ class SettingsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "settingsCell")
+
+        tableView.tableFooterView = getLogOutView()
+    }
+
+    private func getLogOutView() -> UIView {
+        let logOutView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+//        logOutView.backgroundColor = .yellow
+        var buttonConfiguration = UIButton.Configuration.filled()
+        let attributedTitle = NSAttributedString(string: "Log out", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15.0, weight: .bold)])
+        buttonConfiguration.attributedTitle = AttributedString(attributedTitle)
+        buttonConfiguration.baseBackgroundColor = .systemRed
+        buttonConfiguration.baseForegroundColor = .white
+        buttonConfiguration.background.strokeWidth = 1.0
+        buttonConfiguration.cornerStyle = .large
+        let button = UIButton(configuration: buttonConfiguration)
+        button.addTarget(self, action: #selector(logOut), for: .touchUpInside)
+        logOutView.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        button.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor, constant: 0).isActive = true
+        button.centerYAnchor.constraint(equalTo: logOutView.centerYAnchor, constant: 0).isActive = true
+
+//        button.leadingAnchor.constraint(equalTo: logOutView.leadingAnchor, constant: 40).isActive = true
+//        button.trailingAnchor.constraint(equalTo: logOutView.trailingAnchor, constant: 40).isActive = true
+//        button.topAnchor.constraint(equalTo: logOutView.topAnchor, constant: 0).isActive = true
+//        button.bottomAnchor.constraint(equalTo: logOutView.bottomAnchor, constant: 0).isActive = true
+        return logOutView
+    }
+
+    @objc
+    func logOut() {
+        UserDefaults.standard.set(false, forKey: K.UserDefaultsKeys.isLoggedIn)
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }
 
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

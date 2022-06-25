@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginCreateAccountVC" customModule="Money_Diary" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmPasswordTextField" destination="4Rl-IS-bNF" id="g3I-ta-xE8"/>
+                <outlet property="confirmPasswordView" destination="xNg-oB-Kq0" id="WDz-1o-lyn"/>
+                <outlet property="contentView" destination="LXq-Qc-wPj" id="VzJ-p9-beU"/>
+                <outlet property="emailTextField" destination="oJD-Vl-euO" id="7Ub-iL-lh1"/>
+                <outlet property="passwordMismatchLabel" destination="lTJ-wR-WQq" id="cOl-cl-AFH"/>
+                <outlet property="passwordTextField" destination="7py-Vu-mgd" id="hK3-hT-xYw"/>
+                <outlet property="signInButton" destination="Vgx-Xs-wmk" id="v2Z-wv-0yP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXq-Qc-wPj">
+                    <rect key="frame" x="0.0" y="44" width="428" height="758"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlI-9E-otD">
+                            <rect key="frame" x="20" y="20" width="388" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liV-PX-DcO">
+                            <rect key="frame" x="20" y="114" width="388" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76V-MC-3sj" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
+                            <rect key="frame" x="20" y="148" width="388" height="40"/>
+                            <subviews>
+                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7py-Vu-mgd" userLabel="Password Text Field" customClass="PasswordTextField" customModule="Money_Diary" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="0.0" width="368" height="40"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="xnA-hK-0b1"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="1kh-z7-Mvd"/>
+                                <constraint firstItem="7py-Vu-mgd" firstAttribute="leading" secondItem="76V-MC-3sj" secondAttribute="leading" constant="10" id="EUG-ir-KvH"/>
+                                <constraint firstItem="7py-Vu-mgd" firstAttribute="top" secondItem="76V-MC-3sj" secondAttribute="top" id="WNP-il-0mH"/>
+                                <constraint firstAttribute="bottom" secondItem="7py-Vu-mgd" secondAttribute="bottom" id="aIR-X3-gka"/>
+                                <constraint firstAttribute="trailing" secondItem="7py-Vu-mgd" secondAttribute="trailing" constant="10" id="tSr-nI-XAP"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNg-oB-Kq0">
+                            <rect key="frame" x="20" y="208" width="388" height="94.666666666666686"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvO-zK-AnI">
+                                    <rect key="frame" x="0.0" y="0.0" width="388" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-Dq-9cN" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="34" width="388" height="40"/>
+                                    <subviews>
+                                        <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Rl-IS-bNF" customClass="PasswordTextField" customModule="Money_Diary" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="0.0" width="368" height="40"/>
+                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Xnc-9g-6T1"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="4Rl-IS-bNF" secondAttribute="trailing" constant="10" id="22D-kA-TrM"/>
+                                        <constraint firstItem="4Rl-IS-bNF" firstAttribute="leading" secondItem="kt3-Dq-9cN" secondAttribute="leading" constant="10" id="4fN-ow-t92"/>
+                                        <constraint firstAttribute="height" constant="40" id="Cuv-5d-R2J"/>
+                                        <constraint firstItem="4Rl-IS-bNF" firstAttribute="top" secondItem="kt3-Dq-9cN" secondAttribute="top" id="qBb-gn-hoD"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password does not match" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTJ-wR-WQq">
+                                    <rect key="frame" x="0.0" y="79" width="388" height="15.666666666666671"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="kt3-Dq-9cN" firstAttribute="trailing" secondItem="nvO-zK-AnI" secondAttribute="trailing" id="7Qe-mh-SWg"/>
+                                <constraint firstAttribute="bottom" secondItem="lTJ-wR-WQq" secondAttribute="bottom" id="8CB-5n-Dfb"/>
+                                <constraint firstItem="lTJ-wR-WQq" firstAttribute="top" secondItem="kt3-Dq-9cN" secondAttribute="bottom" constant="5" id="Pcq-8W-3ul"/>
+                                <constraint firstAttribute="trailing" secondItem="lTJ-wR-WQq" secondAttribute="trailing" id="RQl-Qg-HsT"/>
+                                <constraint firstAttribute="trailing" secondItem="nvO-zK-AnI" secondAttribute="trailing" id="SAW-u7-Bwq"/>
+                                <constraint firstItem="nvO-zK-AnI" firstAttribute="top" secondItem="xNg-oB-Kq0" secondAttribute="top" id="VSK-Fq-YE4"/>
+                                <constraint firstItem="nvO-zK-AnI" firstAttribute="leading" secondItem="xNg-oB-Kq0" secondAttribute="leading" id="Zav-rP-9xZ"/>
+                                <constraint firstItem="lTJ-wR-WQq" firstAttribute="leading" secondItem="xNg-oB-Kq0" secondAttribute="leading" id="euQ-Ct-YKQ"/>
+                                <constraint firstItem="kt3-Dq-9cN" firstAttribute="top" secondItem="nvO-zK-AnI" secondAttribute="bottom" constant="10" id="i2o-8l-ZIc"/>
+                                <constraint firstItem="kt3-Dq-9cN" firstAttribute="leading" secondItem="nvO-zK-AnI" secondAttribute="leading" id="oQt-1K-XCS"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYK-s1-azk" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
+                            <rect key="frame" x="20" y="54" width="388" height="40"/>
+                            <subviews>
+                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJD-Vl-euO" userLabel="Email Text Field">
+                                    <rect key="frame" x="10" y="0.0" width="368" height="40"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="bcu-QV-0Q2"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="oJD-Vl-euO" secondAttribute="bottom" id="13Z-i6-t8L"/>
+                                <constraint firstAttribute="height" constant="40" id="Npw-GM-MzF"/>
+                                <constraint firstItem="oJD-Vl-euO" firstAttribute="leading" secondItem="FYK-s1-azk" secondAttribute="leading" constant="10" id="PpE-gk-Rjx"/>
+                                <constraint firstAttribute="trailing" secondItem="oJD-Vl-euO" secondAttribute="trailing" constant="10" id="akP-qW-26W"/>
+                                <constraint firstItem="oJD-Vl-euO" firstAttribute="top" secondItem="FYK-s1-azk" secondAttribute="top" id="mZ7-Oa-L4l"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="liV-PX-DcO" firstAttribute="trailing" secondItem="BlI-9E-otD" secondAttribute="trailing" id="8Il-6l-2g0"/>
+                        <constraint firstItem="xNg-oB-Kq0" firstAttribute="trailing" secondItem="BlI-9E-otD" secondAttribute="trailing" id="E1O-VS-f0x"/>
+                        <constraint firstItem="76V-MC-3sj" firstAttribute="top" secondItem="liV-PX-DcO" secondAttribute="bottom" constant="10" id="EZe-Wp-D2C"/>
+                        <constraint firstItem="76V-MC-3sj" firstAttribute="trailing" secondItem="BlI-9E-otD" secondAttribute="trailing" id="HmH-0P-EGO"/>
+                        <constraint firstItem="76V-MC-3sj" firstAttribute="leading" secondItem="BlI-9E-otD" secondAttribute="leading" id="N8F-Yc-jJs"/>
+                        <constraint firstItem="xNg-oB-Kq0" firstAttribute="top" secondItem="76V-MC-3sj" secondAttribute="bottom" constant="20" id="SbR-oe-GTm"/>
+                        <constraint firstItem="FYK-s1-azk" firstAttribute="top" secondItem="BlI-9E-otD" secondAttribute="bottom" constant="10" id="TIV-hv-WVm"/>
+                        <constraint firstItem="liV-PX-DcO" firstAttribute="top" secondItem="FYK-s1-azk" secondAttribute="bottom" constant="20" id="cdg-Vx-5nA"/>
+                        <constraint firstAttribute="trailing" secondItem="BlI-9E-otD" secondAttribute="trailing" constant="20" id="crz-bc-m3E"/>
+                        <constraint firstItem="FYK-s1-azk" firstAttribute="trailing" secondItem="BlI-9E-otD" secondAttribute="trailing" id="dD7-Ac-yXt"/>
+                        <constraint firstItem="liV-PX-DcO" firstAttribute="leading" secondItem="BlI-9E-otD" secondAttribute="leading" id="dgW-TH-2LL"/>
+                        <constraint firstItem="BlI-9E-otD" firstAttribute="leading" secondItem="LXq-Qc-wPj" secondAttribute="leading" constant="20" id="nmq-Q0-tZp"/>
+                        <constraint firstItem="BlI-9E-otD" firstAttribute="top" secondItem="LXq-Qc-wPj" secondAttribute="top" constant="20" id="wzj-gE-TU0"/>
+                        <constraint firstItem="xNg-oB-Kq0" firstAttribute="leading" secondItem="BlI-9E-otD" secondAttribute="leading" id="yjX-0e-cR0"/>
+                        <constraint firstItem="FYK-s1-azk" firstAttribute="leading" secondItem="BlI-9E-otD" secondAttribute="leading" id="yxu-8y-gBR"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgx-Xs-wmk">
+                    <rect key="frame" x="40" y="802" width="348" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="kAA-bf-HjC"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Sign in" cornerStyle="large">
+                        <backgroundConfiguration key="background">
+                            <color key="backgroundColor" systemColor="labelColor"/>
+                            <color key="strokeColor" systemColor="placeholderTextColor"/>
+                        </backgroundConfiguration>
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="signInTapped:" destination="-1" eventType="touchUpInside" id="Lpo-CB-cav"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Vgx-Xs-wmk" firstAttribute="top" secondItem="LXq-Qc-wPj" secondAttribute="bottom" id="Aac-ix-xOs"/>
+                <constraint firstItem="Vgx-Xs-wmk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="Fk1-bV-ysr"/>
+                <constraint firstItem="LXq-Qc-wPj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gys-nl-enJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vgx-Xs-wmk" secondAttribute="trailing" constant="40" id="jk1-iI-VHS"/>
+                <constraint firstItem="LXq-Qc-wPj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mwC-E6-pRQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LXq-Qc-wPj" secondAttribute="trailing" id="onO-Dy-bXK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vgx-Xs-wmk" secondAttribute="bottom" constant="40" id="rmY-x7-h8f"/>
+            </constraints>
+            <point key="canvasLocation" x="138.78504672897196" y="103.67170626349893"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="4Rl-IS-bNF">
+            <size key="intrinsicContentSize" width="34" height="21"/>
+        </designable>
+        <designable name="7py-Vu-mgd">
+            <size key="intrinsicContentSize" width="34" height="21"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

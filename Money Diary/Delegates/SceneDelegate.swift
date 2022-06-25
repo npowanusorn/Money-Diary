@@ -18,11 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let loginCreateAccountVC = LoginCreateAccountVC()
-        let navController = UINavigationController(rootViewController: loginCreateAccountVC)
-//        navController.navigationBar.prefersLargeTitles = true
-//        navController.navigationItem.largeTitleDisplayMode = .always
+        let welcomeVC = WelcomeVC()
+        let navController = UINavigationController(rootViewController: welcomeVC)
         window?.rootViewController = navController
+        if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.isLoggedIn) {
+            Log.info("IS LOGGED IN")
+            let dashboardVC = DashboardVC()
+            navController.pushViewController(dashboardVC, animated: false)
+        }
         window?.makeKeyAndVisible()
     }
 

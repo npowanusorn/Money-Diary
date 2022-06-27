@@ -18,8 +18,16 @@ func performHaptics() {
     UISelectionFeedbackGenerator().selectionChanged()
 }
 
-func getAttributedString(fontSize: CGFloat, weight: UIFont.Weight) -> [NSAttributedString.Key : Any] {
+func getAttributedStringDict(fontSize: CGFloat, weight: UIFont.Weight) -> [NSAttributedString.Key : Any] {
     return [NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize, weight: weight)]
+}
+
+func getAttributedString(for title: String, fontSize: CGFloat, weight: UIFont.Weight) -> NSAttributedString {
+    return NSAttributedString(string: title, attributes: getAttributedStringDict(fontSize: fontSize, weight: weight))
+}
+
+func getAttributedString(for title: String, fontSize: CGFloat, weight: UIFont.Weight) -> AttributedString {
+    return AttributedString(getAttributedString(for: title, fontSize: fontSize, weight: weight))
 }
 
 extension String {
@@ -169,8 +177,8 @@ extension UIAlertController {
         return alert
     }
     
-    static func showErrorAlert(with message: String) -> UIAlertController {
-        return showDismissAlert(with: "Error", message: message)
+    static func showErrorAlert(title: String = "Error", message: String, completion: (() -> Void)? = nil) -> UIAlertController {
+        return showDismissAlert(with: title, message: message, completion: completion)
     }
 
     static func showDeleteConfirmationAlert(
@@ -192,13 +200,15 @@ extension UIAlertController {
         )
     }
     
-    static func showOkAlert(with title: String, message: String?) -> UIAlertController {
-        UIAlertController.showAlert(with: title, message: message, style: .alert, primaryActionName: "Ok", primaryActionStyle: .cancel, primaryCompletion: nil)
+    static func showOkAlert(with title: String, message: String?, completion: (() -> Void)? = nil) -> UIAlertController {
+        UIAlertController.showAlert(with: title, message: message, style: .alert, primaryActionName: "Ok", primaryActionStyle: .cancel, primaryCompletion: completion)
     }
 
-    static func showDismissAlert(with title: String, message: String?) -> UIAlertController {
+    static func showDismissAlert(with title: String, message: String?, completion: (() -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+            completion?()
+        }
         alert.addAction(dismissAction)
         return alert
     }
@@ -229,6 +239,19 @@ extension UIAlertController {
             completion: completion
         )
     }
+    
+    static func showTextFieldAlert(with title: String, message: String?, actionTitle: String, completion: @escaping (_ textField: UITextField) -> Void) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let submitAction = UIAlertAction(title: actionTitle, style: .destructive) { _ in
+            guard let textField = alertController.textFields?[0] else { return }
+            completion(textField)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addActions([submitAction, cancelAction])
+        return alertController
+    }
 }
 
 extension UIButton {
@@ -241,6 +264,40 @@ extension UIButton {
             let colorImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             self.setBackgroundImage(colorImage, for: forState)
+        }
+    }
+}
+
+extension StringProtocol {
+    subscript(offset: Int) -> Character {
+        self[index(startIndex, offsetBy: offset)]
+    }
+}
+
+extension UILabel {
+    func setTextWithTypingAnimation(_ text: String, delay: TimeInterval = 0.1, completion: (() -> Void)?) {
+        let textLength = text.count
+        var counter = 0
+        self.text = ""
+        Timer.scheduledTimer(withTimeInterval: delay, repeats: true) { timer in
+            if counter < textLength {
+                self.text! += String(text[counter])
+                counter += 1
+            } else {
+                timer.invalidate()
+                sleep(1)
+                completion?()
+            }
+        }
+    }
+}
+
+extension UIView {
+    func restoreAnimation(withDuration duration: TimeInterval = 0.2, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration) {
+            self.transform = CGAffineTransform.identity
+        } completion: { _ in
+            completion?()
         }
     }
 }

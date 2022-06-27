@@ -9,10 +9,12 @@ import UIKit
 import ProgressHUD
 import SPIndicator
 import Firebase
+import RealmSwift
 
 class LoginCreateAccountVC: UIViewController {
 
     var isLogInVC: Bool = true
+    private let realm = try! Realm()
 
     private var signInText: String { isLogInVC ? "Sign In" : "Create Account" }
     private var email: String { emailTextField.text ?? "" }
@@ -28,28 +30,35 @@ class LoginCreateAccountVC: UIViewController {
     private var isValidEmail: Bool { Validator.isValidEmail(email) }
 
     @IBOutlet private var emailTextField: BaseTextField!
+    @IBOutlet private var emailTextFieldView: RoundedView!
     @IBOutlet private var passwordTextField: PasswordTextField!
+    @IBOutlet private var passwordTextFieldView: RoundedView!
     @IBOutlet private var confirmPasswordTextField: PasswordTextField!
-    @IBOutlet private var signInButton: UIButton!
+    @IBOutlet private var confirmPasswordTextFieldView: RoundedView!
+    @IBOutlet private var signInButton: BounceButton!
     @IBOutlet private var confirmPasswordView: UIView!
     @IBOutlet private var passwordMismatchLabel: UILabel!
     @IBOutlet private var signInToPasswordFieldConstraint: NSLayoutConstraint!
     @IBOutlet private var signInToConfirmPasswordConstraint: NSLayoutConstraint!
-    @IBOutlet var resetPasswordButton: UIButton!
+    @IBOutlet var resetPasswordButton: BounceButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = signInText
-        navigationController?.navigationBar.titleTextAttributes = getAttributedString(fontSize: 15.0, weight: .bold)
+        navigationController?.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
         confirmPasswordView.isHidden = isLogInVC
-        signInButton.configuration?.attributedTitle = AttributedString(signInText, attributes: AttributeContainer(getAttributedString(fontSize: 15.0, weight: .bold)))
+        signInButton.configuration?.attributedTitle = AttributedString(signInText, attributes: AttributeContainer(getAttributedStringDict(fontSize: 15.0, weight: .bold)))
         signInButton.isEnabled = false
+        
+        emailTextFieldView.layer.borderWidth = 1.0
+        passwordTextFieldView.layer.borderWidth = 1.0
+        confirmPasswordTextFieldView.layer.borderWidth = 1.0
 
         if !isLogInVC {
             passwordMismatchLabel.isHidden = true
@@ -76,17 +85,11 @@ class LoginCreateAccountVC: UIViewController {
     }
 
     @IBAction func resetPasswordTapped(_ sender: Any) {
-        Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
-            guard let strongSelf = self else { return }
-            if let error = error {
-                Log.error("ERROR RESET PASSWORD: \(error.localizedDescription)")
-                let alert = UIAlertController.showErrorAlert(with: error.localizedDescription)
-                strongSelf.present(alert, animated: true)
-            }
-            strongSelf.present(UIAlertController.showOkAlert(with: "Email sent", message: "Check your email to reset your password"), animated: true)
-        }
+        let passwordResetVC = ResetPasswordVC()
+        let navController = UINavigationController(rootViewController: passwordResetVC)
+        present(navController, animated: true)
     }
-    
+        
     @IBAction func textFieldDidChange(_ sender: Any) {
         if !isValidEmail && !isLogInVC {
             passwordMismatchLabel.isHidden = false
@@ -117,6 +120,11 @@ class LoginCreateAccountVC: UIViewController {
             }
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+            let credential = EmailAuthProvider.credential(withEmail: strongSelf.email, password: strongSelf.password)
+            if let data = try? NSKeyedArchiver.archivedData(withRootObject: credential, requiringSecureCoding: false) {
+                Log.info("SAVED CREDENTIAL")
+                UserDefaults.standard.set(data, forKey: "authCredential")
+            }
             let dashboardVC = DashboardVC()
             strongSelf.navigationController?.pushViewController(dashboardVC, animated: true)
         }
@@ -154,6 +162,22 @@ extension LoginCreateAccountVC: UITextFieldDelegate {
             signInTapped(textField)
         }
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.layer.borderColor = UIColor.white.cgColor
+            passwordTextFieldView.layer.borderColor = nil
+            confirmPasswordTextFieldView.layer.borderColor = nil
+        } else if textField == passwordTextField {
+            emailTextFieldView.layer.borderColor = nil
+            passwordTextFieldView.layer.borderColor = UIColor.white.cgColor
+            confirmPasswordTextFieldView.layer.borderColor = nil
+        } else {
+            emailTextFieldView.layer.borderColor = nil
+            passwordTextFieldView.layer.borderColor = nil
+            confirmPasswordTextFieldView.layer.borderColor = UIColor.white.cgColor
+        }
     }
 
 }

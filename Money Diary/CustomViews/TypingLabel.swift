@@ -7,11 +7,11 @@
 
 import UIKit
 
-@IBDesignable class TypingLabel: UILabel {
+class TypingLabel: UILabel {
     /*
      Set interval time between each characters
      */
-    @IBInspectable var charInterval: Double = 0.1
+    var charInterval: Double = 0.1
 
     /*
      Optional handler which fires when typing animation is finished
@@ -21,7 +21,7 @@ import UIKit
     /*
      If text is always centered during typing
      */
-    @IBInspectable var centerText: Bool = true
+    var centerText: Bool = true
 
     private var typingStopped: Bool = false
     private var typingOver: Bool = true

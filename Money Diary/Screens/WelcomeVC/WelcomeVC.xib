@@ -14,6 +14,7 @@
                 <outlet property="emailButton" destination="Ljo-bR-NzH" id="Rs9-uL-hvF"/>
                 <outlet property="googleButton" destination="SJl-uU-Ha9" id="kPH-iq-EUm"/>
                 <outlet property="headerLabel" destination="U00-sz-GAT" id="JNG-6d-WRN"/>
+                <outlet property="optionsView" destination="lI3-Pw-wha" id="wkM-o9-0e5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,126 +23,136 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Diary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U00-sz-GAT" customClass="TypingLabel" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="20" y="144" width="388" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Diary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U00-sz-GAT">
+                    <rect key="frame" x="20" y="434.33333333333331" width="388" height="57.333333333333314"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-bR-NzH">
-                    <rect key="frame" x="40" y="642" width="348" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Pr0-Xh-896"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Sign in with email" cornerStyle="large">
-                        <backgroundConfiguration key="background">
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <color key="strokeColor" systemColor="placeholderTextColor"/>
-                        </backgroundConfiguration>
-                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="baseForegroundColor" systemColor="labelColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="signInWithEmailTapped:" destination="-1" eventType="touchUpInside" id="tGw-AT-aYr"/>
-                    </connections>
-                </button>
-                <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-uU-Ha9">
-                    <rect key="frame" x="40" y="572" width="348" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="gMo-hf-r6w"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" image="Google" title="Sign in with Google" imagePadding="10" cornerStyle="large">
-                        <backgroundConfiguration key="background">
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="strokeColor" systemColor="placeholderTextColor"/>
-                        </backgroundConfiguration>
-                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="signInWithGoogleTapped:" destination="-1" eventType="touchUpInside" id="oOF-4G-Ie7"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rM-7q-HFA">
-                    <rect key="frame" x="40" y="742" width="348" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="gkw-cx-aK8"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Create Account" cornerStyle="large">
-                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="baseBackgroundColor" systemColor="labelColor"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="createAccountTapped:" destination="-1" eventType="touchUpInside" id="KHO-HO-r2m"/>
-                    </connections>
-                </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTX-3a-2Ce">
-                    <rect key="frame" x="40" y="692" width="348" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI3-Pw-wha">
+                    <rect key="frame" x="40" y="592" width="348" height="220"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBE-dz-EZS">
-                            <rect key="frame" x="167.66666666666666" y="17" width="12.666666666666657" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKH-XK-9OM">
-                            <rect key="frame" x="0.0" y="25.666666666666629" width="157.66666666666666" height="1"/>
-                            <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-uU-Ha9">
+                            <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="1" id="T1d-yv-Nqh"/>
+                                <constraint firstAttribute="height" constant="50" id="gMo-hf-r6w"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" image="Google" title="Sign in with Google" imagePadding="10" cornerStyle="large">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="strokeColor" systemColor="placeholderTextColor"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="signInWithGoogleTapped:" destination="-1" eventType="touchUpInside" id="oOF-4G-Ie7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rM-7q-HFA" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="170" width="348" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="gkw-cx-aK8"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Create Account" cornerStyle="large">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="baseBackgroundColor" systemColor="labelColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="createAccountTapped:" destination="-1" eventType="touchUpInside" id="KHO-HO-r2m"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTX-3a-2Ce">
+                            <rect key="frame" x="0.0" y="120" width="348" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBE-dz-EZS">
+                                    <rect key="frame" x="167.66666666666666" y="17" width="12.666666666666657" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKH-XK-9OM">
+                                    <rect key="frame" x="0.0" y="25.666666666666629" width="157.66666666666666" height="1"/>
+                                    <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="T1d-yv-Nqh"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqB-AO-GJk">
+                                    <rect key="frame" x="190.33333333333337" y="25.666666666666629" width="157.66666666666663" height="1"/>
+                                    <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="apZ-JU-Y19"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="XBE-dz-EZS" firstAttribute="leading" secondItem="oKH-XK-9OM" secondAttribute="trailing" constant="10" id="2PK-Xa-7cD"/>
+                                <constraint firstItem="oKH-XK-9OM" firstAttribute="leading" secondItem="YTX-3a-2Ce" secondAttribute="leading" id="Bqm-vv-z2m"/>
+                                <constraint firstItem="oKH-XK-9OM" firstAttribute="centerY" secondItem="XBE-dz-EZS" secondAttribute="centerY" constant="1" id="CAE-yc-XFA"/>
+                                <constraint firstItem="XBE-dz-EZS" firstAttribute="centerY" secondItem="YTX-3a-2Ce" secondAttribute="centerY" id="LYb-0Q-i2G"/>
+                                <constraint firstItem="nqB-AO-GJk" firstAttribute="centerY" secondItem="XBE-dz-EZS" secondAttribute="centerY" constant="1" id="PZX-RQ-iQ4"/>
+                                <constraint firstItem="nqB-AO-GJk" firstAttribute="leading" secondItem="XBE-dz-EZS" secondAttribute="trailing" constant="10" id="cNU-6o-7uE"/>
+                                <constraint firstAttribute="height" constant="50" id="m3y-wE-YZS"/>
+                                <constraint firstItem="XBE-dz-EZS" firstAttribute="centerX" secondItem="YTX-3a-2Ce" secondAttribute="centerX" id="vP7-Gb-cTz"/>
+                                <constraint firstAttribute="trailing" secondItem="nqB-AO-GJk" secondAttribute="trailing" id="y3w-q4-ZbG"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqB-AO-GJk">
-                            <rect key="frame" x="190.33333333333337" y="25.666666666666629" width="157.66666666666663" height="1"/>
-                            <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-bR-NzH" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="70" width="348" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="1" id="apZ-JU-Y19"/>
+                                <constraint firstAttribute="height" constant="50" id="Pr0-Xh-896"/>
                             </constraints>
-                        </view>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Sign in with email" cornerStyle="large">
+                                <backgroundConfiguration key="background">
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="strokeColor" systemColor="placeholderTextColor"/>
+                                </backgroundConfiguration>
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="baseForegroundColor" systemColor="labelColor"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="signInWithEmailTapped:" destination="-1" eventType="touchUpInside" id="tGw-AT-aYr"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="XBE-dz-EZS" firstAttribute="leading" secondItem="oKH-XK-9OM" secondAttribute="trailing" constant="10" id="2PK-Xa-7cD"/>
-                        <constraint firstItem="oKH-XK-9OM" firstAttribute="leading" secondItem="YTX-3a-2Ce" secondAttribute="leading" id="Bqm-vv-z2m"/>
-                        <constraint firstItem="oKH-XK-9OM" firstAttribute="centerY" secondItem="XBE-dz-EZS" secondAttribute="centerY" constant="1" id="CAE-yc-XFA"/>
-                        <constraint firstItem="XBE-dz-EZS" firstAttribute="centerY" secondItem="YTX-3a-2Ce" secondAttribute="centerY" id="LYb-0Q-i2G"/>
-                        <constraint firstItem="nqB-AO-GJk" firstAttribute="centerY" secondItem="XBE-dz-EZS" secondAttribute="centerY" constant="1" id="PZX-RQ-iQ4"/>
-                        <constraint firstItem="nqB-AO-GJk" firstAttribute="leading" secondItem="XBE-dz-EZS" secondAttribute="trailing" constant="10" id="cNU-6o-7uE"/>
-                        <constraint firstAttribute="height" constant="50" id="m3y-wE-YZS"/>
-                        <constraint firstItem="XBE-dz-EZS" firstAttribute="centerX" secondItem="YTX-3a-2Ce" secondAttribute="centerX" id="vP7-Gb-cTz"/>
-                        <constraint firstAttribute="trailing" secondItem="nqB-AO-GJk" secondAttribute="trailing" id="y3w-q4-ZbG"/>
+                        <constraint firstItem="SJl-uU-Ha9" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="0Qc-FT-w7G"/>
+                        <constraint firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="2kF-Ip-oXG"/>
+                        <constraint firstItem="6rM-7q-HFA" firstAttribute="leading" secondItem="lI3-Pw-wha" secondAttribute="leading" id="6Yj-fZ-XWk"/>
+                        <constraint firstItem="Ljo-bR-NzH" firstAttribute="top" secondItem="SJl-uU-Ha9" secondAttribute="bottom" constant="20" id="B6m-Gp-DK1"/>
+                        <constraint firstItem="YTX-3a-2Ce" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="G01-88-seF"/>
+                        <constraint firstItem="SJl-uU-Ha9" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="RDm-Ar-LRS"/>
+                        <constraint firstItem="Ljo-bR-NzH" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="YhR-Oc-8MT"/>
+                        <constraint firstItem="YTX-3a-2Ce" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="d6T-03-e02"/>
+                        <constraint firstItem="6rM-7q-HFA" firstAttribute="top" secondItem="YTX-3a-2Ce" secondAttribute="bottom" id="irj-f5-Ec5"/>
+                        <constraint firstAttribute="bottom" secondItem="6rM-7q-HFA" secondAttribute="bottom" id="qsz-Jk-TZr"/>
+                        <constraint firstItem="Ljo-bR-NzH" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="yj8-8r-d4R"/>
+                        <constraint firstItem="SJl-uU-Ha9" firstAttribute="top" secondItem="lI3-Pw-wha" secondAttribute="top" id="ysf-VS-T2b"/>
+                        <constraint firstItem="YTX-3a-2Ce" firstAttribute="top" secondItem="Ljo-bR-NzH" secondAttribute="bottom" id="zM1-fO-bj7"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Ljo-bR-NzH" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="8NO-4e-qBt"/>
-                <constraint firstItem="SJl-uU-Ha9" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="8fh-Kf-bjv"/>
-                <constraint firstItem="YTX-3a-2Ce" firstAttribute="top" secondItem="Ljo-bR-NzH" secondAttribute="bottom" id="Bfl-fr-n6B"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" constant="40" id="G50-KP-xUD"/>
-                <constraint firstItem="6rM-7q-HFA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="I3q-Ut-rWc"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6rM-7q-HFA" secondAttribute="bottom" constant="100" id="IXA-XJ-LeI"/>
-                <constraint firstItem="6rM-7q-HFA" firstAttribute="top" secondItem="YTX-3a-2Ce" secondAttribute="bottom" id="KNv-BV-enl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lI3-Pw-wha" secondAttribute="trailing" constant="40" id="55E-HC-Xgd"/>
                 <constraint firstItem="U00-sz-GAT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="P8C-BC-Sf7"/>
-                <constraint firstItem="Ljo-bR-NzH" firstAttribute="top" secondItem="SJl-uU-Ha9" secondAttribute="bottom" constant="20" id="RCZ-Dz-lrX"/>
-                <constraint firstItem="Ljo-bR-NzH" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="RSa-lR-mIs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lI3-Pw-wha" secondAttribute="bottom" constant="80" id="ROA-Pj-MVl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U00-sz-GAT" secondAttribute="trailing" constant="20" id="UTJ-VB-CED"/>
-                <constraint firstItem="SJl-uU-Ha9" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="Yps-Up-DYc"/>
-                <constraint firstItem="YTX-3a-2Ce" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="tdL-KU-sd1"/>
-                <constraint firstItem="U00-sz-GAT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="uu3-s3-uLA"/>
-                <constraint firstItem="YTX-3a-2Ce" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="wgf-W0-UIM"/>
+                <constraint firstItem="lI3-Pw-wha" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="WK4-FX-F2l"/>
+                <constraint firstItem="U00-sz-GAT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="e0M-Ut-YOl"/>
+                <constraint firstItem="U00-sz-GAT" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rqR-sW-3Ct"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+            <point key="canvasLocation" x="137.38317757009344" y="120.5183585313175"/>
         </view>
     </objects>
-    <designables>
-        <designable name="U00-sz-GAT"/>
-    </designables>
     <resources>
         <image name="Google" width="48" height="48"/>
         <systemColor name="labelColor">

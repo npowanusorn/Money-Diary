@@ -39,7 +39,7 @@
 		5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5024EE5D284DB344000B295A /* LaunchScreen.storyboard */; };
 		5038E6662852D6D800756D60 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6642852D6D800756D60 /* AddVC.swift */; };
 		5038E6672852D6D800756D60 /* AddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E6652852D6D800756D60 /* AddVC.xib */; };
-		5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6682852D90A00756D60 /* RoundedButton.swift */; };
+		5038E6692852D90A00756D60 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6682852D90A00756D60 /* BounceButton.swift */; };
 		5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E68C2853052500756D60 /* UIView+Fade.swift */; };
 		5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E69028530FDA00756D60 /* AddRecordVC.swift */; };
 		5038E69328530FDA00756D60 /* AddRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E69128530FDA00756D60 /* AddRecordVC.xib */; };
@@ -58,6 +58,12 @@
 		50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D82865550800E9957E /* FirebaseAnalytics */; };
 		50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DA2865550800E9957E /* FirebaseAuth */; };
 		50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DC2865550800E9957E /* FirebaseFirestore */; };
+		50D03826286949CD00662008 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D03824286949CD00662008 /* SplashVC.swift */; };
+		50D03827286949CD00662008 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D03825286949CD00662008 /* SplashVC.xib */; };
+		50D0382A2869688900662008 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 50D038292869688900662008 /* Realm */; };
+		50D0382C2869688900662008 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D0382B2869688900662008 /* RealmSwift */; };
+		50D038302869788500662008 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D0382E2869788500662008 /* ResetPasswordVC.swift */; };
+		50D038312869788500662008 /* ResetPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D0382F2869788500662008 /* ResetPasswordVC.xib */; };
 		50D33AB12866CBD800D009B8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D33AB02866CBD800D009B8 /* Validator.swift */; };
 		50E0481F2866D81D008603BC /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 50E0481E2866D81D008603BC /* ProgressHUD */; };
 		50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E28320285EAC42005A3907 /* WalletDetailVC.swift */; };
@@ -103,7 +109,7 @@
 		5024EE60284DB344000B295A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5038E6642852D6D800756D60 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		5038E6652852D6D800756D60 /* AddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVC.xib; sourceTree = "<group>"; };
-		5038E6682852D90A00756D60 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		5038E6682852D90A00756D60 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
 		5038E68C2853052500756D60 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
 		5038E69028530FDA00756D60 /* AddRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordVC.swift; sourceTree = "<group>"; };
 		5038E69128530FDA00756D60 /* AddRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecordVC.xib; sourceTree = "<group>"; };
@@ -115,6 +121,10 @@
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		50A221B42855016700D1A139 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		50AB38D228654DBC00E9957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		50D03824286949CD00662008 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		50D03825286949CD00662008 /* SplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
+		50D0382E2869788500662008 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		50D0382F2869788500662008 /* ResetPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordVC.xib; sourceTree = "<group>"; };
 		50D33AB02866CBD800D009B8 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		50E28320285EAC42005A3907 /* WalletDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailVC.swift; sourceTree = "<group>"; };
 		50E28321285EAC42005A3907 /* WalletDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletDetailVC.xib; sourceTree = "<group>"; };
@@ -135,7 +145,9 @@
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
 				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
+				50D0382A2869688900662008 /* Realm in Frameworks */,
 				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
+				50D0382C2869688900662008 /* RealmSwift in Frameworks */,
 				50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +282,7 @@
 			children = (
 				505BA11E284F1473007AFBE0 /* RoundedView.swift */,
 				5038E6612852D64E00756D60 /* WalletsCell */,
-				5038E6682852D90A00756D60 /* RoundedButton.swift */,
+				5038E6682852D90A00756D60 /* BounceButton.swift */,
 				50A221B42855016700D1A139 /* ContentSizedTableView.swift */,
 				4836D851285D4C7200746A56 /* DatePickerCell.swift */,
 				4836D85F285D8CD900746A56 /* TextViewCell.swift */,
@@ -306,6 +318,8 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				50D0382D2869787100662008 /* ResetPasswordVC */,
+				50D03823286949B700662008 /* Splash */,
 				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
@@ -327,6 +341,24 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50D03823286949B700662008 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				50D03824286949CD00662008 /* SplashVC.swift */,
+				50D03825286949CD00662008 /* SplashVC.xib */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		50D0382D2869787100662008 /* ResetPasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				50D0382E2869788500662008 /* ResetPasswordVC.swift */,
+				50D0382F2869788500662008 /* ResetPasswordVC.xib */,
+			);
+			path = ResetPasswordVC;
 			sourceTree = "<group>";
 		};
 		50D33AAE2866B90100D009B8 /* WelcomeVC */ = {
@@ -363,6 +395,8 @@
 				50AB38DA2865550800E9957E /* FirebaseAuth */,
 				50AB38DC2865550800E9957E /* FirebaseFirestore */,
 				50E0481E2866D81D008603BC /* ProgressHUD */,
+				50D038292869688900662008 /* Realm */,
+				50D0382B2869688900662008 /* RealmSwift */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -399,6 +433,7 @@
 				50AB38CA286508B800E9957E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -417,12 +452,14 @@
 				50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */,
 				50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */,
 				50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */,
+				50D03827286949CD00662008 /* SplashVC.xib in Resources */,
 				5038E69328530FDA00756D60 /* AddRecordVC.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddVC.xib in Resources */,
 				4849A8A4285DBA60004569EB /* AddWalletVC.xib in Resources */,
 				4836D856285D601100746A56 /* DashboardVC.xib in Resources */,
 				4849A8A0285DABC1004569EB /* WalletsListVC.xib in Resources */,
 				4818557B28666EE200648BB6 /* LoginCreateAccountVC.xib in Resources */,
+				50D038312869788500662008 /* ResetPasswordVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
 				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
@@ -447,6 +484,7 @@
 				4849A8A3285DBA60004569EB /* AddWalletVC.swift in Sources */,
 				50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */,
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,
+				50D03826286949CD00662008 /* SplashVC.swift in Sources */,
 				50A221B52855016700D1A139 /* ContentSizedTableView.swift in Sources */,
 				50E2834B285FA87A005A3907 /* Constants.swift in Sources */,
 				4818557A28666EE200648BB6 /* LoginCreateAccountVC.swift in Sources */,
@@ -463,7 +501,8 @@
 				4839B81E2860DB690015C048 /* CommonMethods+Extensions.swift in Sources */,
 				5038E6662852D6D800756D60 /* AddVC.swift in Sources */,
 				4818557D2866AFC000648BB6 /* TextFields.swift in Sources */,
-				5038E6692852D90A00756D60 /* RoundedButton.swift in Sources */,
+				50D038302869788500662008 /* ResetPasswordVC.swift in Sources */,
+				5038E6692852D90A00756D60 /* BounceButton.swift in Sources */,
 				505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */,
 				5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */,
 				4836D860285D8CD900746A56 /* TextViewCell.swift in Sources */,
@@ -744,6 +783,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
@@ -789,6 +836,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		50D038292869688900662008 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		50D0382B2869688900662008 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		50E0481E2866D81D008603BC /* ProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;

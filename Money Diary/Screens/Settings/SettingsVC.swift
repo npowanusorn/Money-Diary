@@ -95,8 +95,7 @@ class SettingsVC: UIViewController {
         RecordManager.shared.removeAllRecords()
         UserDefaults.standard.set(nil, forKey: "authCredential")
         
-        guard let welcomeVC = navigationController?.viewControllers[1] else { return }
-        navigationController?.popToViewController(welcomeVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc

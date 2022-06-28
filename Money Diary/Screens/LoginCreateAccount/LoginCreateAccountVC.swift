@@ -71,6 +71,8 @@ class LoginCreateAccountVC: UIViewController {
             signInToPasswordFieldConstraint.isActive = true
             signInToPasswordFieldConstraint.constant = 40.0
             resetPasswordButton.isHidden = false
+            emailTextField.text = "test@email.com"
+            passwordTextField.text = "000000"
         }
     }
 

@@ -11,6 +11,7 @@ import SPIndicator
 class WelcomeVC: UIViewController {
     
     var errorMessage: String? = nil
+    var shouldAnimateElements = false
 
     @IBOutlet private var optionsView: UIView!
     @IBOutlet private var headerLabel: UILabel!
@@ -27,7 +28,7 @@ class WelcomeVC: UIViewController {
 
         googleButton.setImage(UIImage(named: "Google")?.resize(newWidth: 30.0), for: .normal)
         navigationItem.setHidesBackButton(true, animated: true)
-        animateElements()
+        if shouldAnimateElements { animateElements() }
     }
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {

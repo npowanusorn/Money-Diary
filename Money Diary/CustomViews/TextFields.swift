@@ -40,12 +40,12 @@ class PasswordTextField: BaseTextField {
         super.applyStyles()
 
         self.textContentType = .oneTimeCode
-        let showPasswordImage = UIImage(named: "Show Password")?.withRenderingMode(.alwaysTemplate).resize(newHeight: 20).withTintColor(.label)
-        let hidePasswordImage = UIImage(named: "Hide Password")?.withRenderingMode(.alwaysTemplate).resize(newHeight: 20).withTintColor(.label)
+        let showPasswordImage = UIImage(named: "Show Password")?.withTintColor(.label, renderingMode: .alwaysTemplate).resize(newHeight: 20)
+        let hidePasswordImage = UIImage(named: "Hide Password")?.withTintColor(.label, renderingMode: .alwaysTemplate).resize(newHeight: 20)
         let button = UIButton()
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        button.setImage(showPasswordImage, for: UIButton.State())
         button.setImage(hidePasswordImage, for: .selected)
+        button.setImage(showPasswordImage, for: UIButton.State())
         let rightView = button
         rightView.contentMode = .scaleAspectFit
         rightView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)

@@ -24,11 +24,6 @@ class SplashVC: UIViewController {
         }
         
         attemptToLogIn()
-//        navigateToNextScreen(isSignedIn: false)
-        
-//        _ = Auth.auth().addStateDidChangeListener({ auth, user in
-//            Log.info("IS LOGGED IN: \(user != nil)")
-//        })
     }
     
     private func attemptToLogIn() {
@@ -51,11 +46,13 @@ class SplashVC: UIViewController {
     private func navigateToNextScreen(isSignedIn: Bool) {
         let welcomeVC = WelcomeVC()
         welcomeVC.errorMessage = errorMessage
+        welcomeVC.shouldAnimateElements = true
         let dashboardVC = DashboardVC()
-        let nextVC = isSignedIn ? dashboardVC : welcomeVC
-//        navigationController?.setViewControllers([welcomeVC], animated: false)
-//        if isSignedIn { navigationController?.pushViewController(dashboardVC, animated: true) }
-        navigationController?.pushViewController(nextVC, animated: isSignedIn)
+        if isSignedIn {
+            navigationController?.setViewControllers([welcomeVC, dashboardVC], animated: true)
+        } else {
+            navigationController?.setViewControllers([welcomeVC], animated: false)
+        }
     }
 
 }

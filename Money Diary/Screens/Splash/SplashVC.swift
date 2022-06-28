@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class SplashVC: UIViewController {
 
@@ -14,7 +15,10 @@ class SplashVC: UIViewController {
     
     private var isSignedIn = false
     private var errorMessage: String? = nil
-    
+
+    private let keychain = KeychainSwift()
+    private let auth = Auth.auth()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,30 +31,29 @@ class SplashVC: UIViewController {
     }
     
     private func attemptToLogIn() {
-        if let data = UserDefaults.standard.object(forKey: "authCredential") as? Data {
-            if let cred = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? AuthCredential {
-                Auth.auth().signIn(with: cred) { result, error in
-                    Log.info("1234")
-                    if let error = error {
-                        Log.error("ERROR: \(error)")
-                        self.errorMessage = error.localizedDescription
-                        return
-                    }
-                    Log.info("IS SIGNED IN")
-                    self.isSignedIn = true
-                }
+        guard let email = keychain.get("emailKey"), let password = keychain.get("passwordKey") else { return }
+        auth.signIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                Log.error("ERROR: \(error)")
+                strongSelf.errorMessage = error.localizedDescription
+                return
             }
+            Log.info("IS SIGNED IN")
+            strongSelf.isSignedIn = true
         }
     }
     
     private func navigateToNextScreen(isSignedIn: Bool) {
         let welcomeVC = WelcomeVC()
         welcomeVC.errorMessage = errorMessage
-        welcomeVC.shouldAnimateElements = true
         let dashboardVC = DashboardVC()
         if isSignedIn {
+            Log.info("GO TO DASHBOARD")
             navigationController?.setViewControllers([welcomeVC, dashboardVC], animated: true)
         } else {
+            Log.info("GO TO WELCOME")
+            welcomeVC.shouldAnimateElements = true
             navigationController?.setViewControllers([welcomeVC], animated: false)
         }
     }

@@ -10,6 +10,7 @@ import ProgressHUD
 import SPIndicator
 import Firebase
 import RealmSwift
+import KeychainSwift
 
 class LoginCreateAccountVC: UIViewController {
 
@@ -30,18 +31,15 @@ class LoginCreateAccountVC: UIViewController {
     private var isValidEmail: Bool { Validator.isValidEmail(email) }
 
     @IBOutlet private var emailTextField: BaseTextField!
-    @IBOutlet private var emailTextFieldView: RoundedView!
     @IBOutlet private var passwordTextField: PasswordTextField!
-    @IBOutlet private var passwordTextFieldView: RoundedView!
     @IBOutlet private var confirmPasswordTextField: PasswordTextField!
-    @IBOutlet private var confirmPasswordTextFieldView: RoundedView!
     @IBOutlet private var signInButton: BounceButton!
     @IBOutlet private var confirmPasswordView: UIView!
     @IBOutlet private var passwordMismatchLabel: UILabel!
-    @IBOutlet private var signInToPasswordFieldConstraint: NSLayoutConstraint!
     @IBOutlet private var signInToConfirmPasswordConstraint: NSLayoutConstraint!
-    @IBOutlet var resetPasswordButton: BounceButton!
-    
+    @IBOutlet private var resetPasswordButton: BounceButton!
+    @IBOutlet private var signInToPasswordFieldConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,10 +53,6 @@ class LoginCreateAccountVC: UIViewController {
         confirmPasswordView.isHidden = isLogInVC
         signInButton.configuration?.attributedTitle = AttributedString(signInText, attributes: AttributeContainer(getAttributedStringDict(fontSize: 15.0, weight: .bold)))
         signInButton.isEnabled = false
-        
-        emailTextFieldView.layer.borderWidth = 1.0
-        passwordTextFieldView.layer.borderWidth = 1.0
-        confirmPasswordTextFieldView.layer.borderWidth = 1.0
 
         if !isLogInVC {
             passwordMismatchLabel.isHidden = true
@@ -122,6 +116,9 @@ class LoginCreateAccountVC: UIViewController {
             }
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+            let keychain = KeychainSwift()
+            keychain.set(strongSelf.email, forKey: "emailKey")
+            keychain.set(strongSelf.password, forKey: "passwordKey")
             let credential = EmailAuthProvider.credential(withEmail: strongSelf.email, password: strongSelf.password)
             if let data = try? NSKeyedArchiver.archivedData(withRootObject: credential, requiringSecureCoding: false) {
                 Log.info("SAVED CREDENTIAL")
@@ -167,19 +164,11 @@ extension LoginCreateAccountVC: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == emailTextField {
-            emailTextFieldView.layer.borderColor = UIColor.white.cgColor
-            passwordTextFieldView.layer.borderColor = nil
-            confirmPasswordTextFieldView.layer.borderColor = nil
-        } else if textField == passwordTextField {
-            emailTextFieldView.layer.borderColor = nil
-            passwordTextFieldView.layer.borderColor = UIColor.white.cgColor
-            confirmPasswordTextFieldView.layer.borderColor = nil
-        } else {
-            emailTextFieldView.layer.borderColor = nil
-            passwordTextFieldView.layer.borderColor = nil
-            confirmPasswordTextFieldView.layer.borderColor = UIColor.white.cgColor
-        }
+        textField.layer.borderColor = UIColor.white.cgColor
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor = nil
     }
 
 }

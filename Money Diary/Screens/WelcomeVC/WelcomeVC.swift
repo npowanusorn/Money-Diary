@@ -17,7 +17,15 @@ class WelcomeVC: UIViewController {
     @IBOutlet private var headerLabel: UILabel!
     @IBOutlet private var googleButton: UIButton!
     @IBOutlet private var emailButton: BounceButton!
-    
+    @IBOutlet private var headerLabelVerticalConstraint: NSLayoutConstraint!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+//        shouldAnimateElements = UserDefaults.standard.bool(forKey: "shouldAnimateElements")
+//        if shouldAnimateElements ?? false { animateElements() }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +36,10 @@ class WelcomeVC: UIViewController {
 
         googleButton.setImage(UIImage(named: "Google")?.resize(newWidth: 30.0), for: .normal)
         navigationItem.setHidesBackButton(true, animated: true)
+        Log.info("VIEWDIDLOAD")
+        Log.info("SHOULDANIMATE: \(shouldAnimateElements)")
         if shouldAnimateElements { animateElements() }
+        else { positionHeaderLabel() }
     }
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {
@@ -59,15 +70,25 @@ class WelcomeVC: UIViewController {
     }
     
     private func animateElements() {
+        Log.info("ANIMATE")
+
+        let yTranslation = view.frame.height / 4
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0) {
-            let yTranslation = self.view.frame.height / 4
             self.headerLabel.transform = CGAffineTransform(translationX: 0, y: -yTranslation)
         }
-        
+
         optionsView.fadeIn()
         UIView.animate(withDuration: 0.4) {
             self.optionsView.transform = CGAffineTransform(translationX: 0, y: -20)
         }
+
+        shouldAnimateElements = false
+//        UserDefaults.standard.set(false, forKey: "shouldAnimateElements")
+    }
+
+    private func positionHeaderLabel() {
+        let yTranslation = view.frame.height / 4
+        headerLabel.transform = CGAffineTransform(translationX: 0, y: -yTranslation)
     }
 
 }

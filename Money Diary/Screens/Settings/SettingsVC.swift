@@ -9,10 +9,13 @@ import UIKit
 import SPSettingsIcons
 import SPIndicator
 import Firebase
+import KeychainSwift
 
 class SettingsVC: UIViewController {
     
-    let settingsCellList: [[String]] = [["App Theme"], ["Account Management"]]
+    let settingsCellList: [String] = ["App Theme", "Account Management"]
+
+    private let keychain = KeychainSwift()
 
     @IBOutlet private var tableView: UITableView!
     
@@ -93,8 +96,7 @@ class SettingsVC: UIViewController {
         SPIndicator.present(title: "Success", message: "Signed out", preset: .done, haptic: .success)
         WalletManager.shared.removeAllWallets()
         RecordManager.shared.removeAllRecords()
-        UserDefaults.standard.set(nil, forKey: "authCredential")
-        
+        keychain.clear()
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -121,6 +123,22 @@ class SettingsVC: UIViewController {
         }
     }
 
+    func navigateToVC() {
+        if let row = tableView.indexPathForSelectedRow?.row {
+            switch row {
+            case SettingsCellList.AppTheme.rawValue:
+                Log.info("GO TO APP THEME VC")
+            case SettingsCellList.AccountManagement.rawValue:
+                Log.info("GO TO ACCOUNT MGMT VC")
+                let accountManagementVC = AccountManagementVC()
+                navigationController?.pushViewController(accountManagementVC, animated: true)
+            default:
+                Log.info("DEFAULT")
+                return
+            }
+        }
+    }
+
 }
 
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
@@ -130,7 +148,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return settingsCellList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,36 +158,41 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "header"
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as? ImageCell else { return UITableViewCell() }
 //        content.text = "Theme \(indexPath.row + 1)"
 //        content.image = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
 //        cell.contentConfiguration = content
-        cell.primaryText = "Theme \(indexPath.row + 1)"
-        cell.secondaryText = "text"
-        cell.cellImage = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
+        cell.primaryText = settingsCellList[indexPath.row]
+        if indexPath.row == SettingsCellList.AppTheme.rawValue {
+            cell.secondaryText = "App Theme"
+            cell.cellImage = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
+        }
+        if indexPath.row == SettingsCellList.AccountManagement.rawValue {
+            cell.cellImage = UIImage.generateSettingsIcon("person.crop.circle.fill", backgroundColor: globalTintColor)
+        }
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToVC()
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 0 {
-            globalTintColor = .systemRed
-        } else {
-            globalTintColor = .systemTeal
-        }
-        self.navigationController?.navigationBar.tintColor = globalTintColor
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({ $0.activationState == .foregroundActive })
-            .compactMap({ $0 as? UIWindowScene })
-            .first?.windows
-            .filter({ $0.isKeyWindow }).first
-        keyWindow?.reload()
+
+//        self.navigationController?.navigationBar.tintColor = globalTintColor
+//        let keyWindow = UIApplication.shared.connectedScenes
+//            .filter({ $0.activationState == .foregroundActive })
+//            .compactMap({ $0 as? UIWindowScene })
+//            .first?.windows
+//            .filter({ $0.isKeyWindow }).first
+//        keyWindow?.reload()
+    }
+}
+
+private extension SettingsVC {
+    enum SettingsCellList: Int {
+        case AppTheme = 0
+        case AccountManagement
     }
 }

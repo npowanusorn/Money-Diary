@@ -10,6 +10,26 @@ import UIKit
 @IBDesignable
 class BaseTextField: UITextField {
 
+    @IBInspectable let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.rightViewRect(forBounds: bounds)
+        rect.origin.x -= 10
+        return rect
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         applyStyles()
@@ -40,6 +60,7 @@ class PasswordTextField: BaseTextField {
         super.applyStyles()
 
         self.textContentType = .oneTimeCode
+        self.isSecureTextEntry = true
         let showPasswordImage = UIImage(named: "Show Password")?.withTintColor(.label, renderingMode: .alwaysTemplate).resize(newHeight: 20)
         let hidePasswordImage = UIImage(named: "Hide Password")?.withTintColor(.label, renderingMode: .alwaysTemplate).resize(newHeight: 20)
         let button = UIButton()

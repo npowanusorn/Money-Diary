@@ -31,6 +31,11 @@
 		487BA564286586C7007E00B6 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA562286586C7007E00B6 /* WelcomeVC.swift */; };
 		487BA565286586C7007E00B6 /* WelcomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487BA563286586C7007E00B6 /* WelcomeVC.xib */; };
 		487BA56728658ACF007E00B6 /* TypingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487BA56628658ACF007E00B6 /* TypingLabel.swift */; };
+		48DAB1D2286A9C0F00E7461C /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48DAB1D1286A9C0F00E7461C /* KeychainSwift */; };
+		48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1D3286AC65500E7461C /* AccountManagementVC.swift */; };
+		48DAB1D6286AC65500E7461C /* AccountManagementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */; };
+		48DAB1DD286AD0D600E7461C /* ChangeEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1DB286AD0D600E7461C /* ChangeEmailVC.swift */; };
+		48DAB1DE286AD0D600E7461C /* ChangeEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1DC286AD0D600E7461C /* ChangeEmailVC.xib */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -99,6 +104,10 @@
 		487BA562286586C7007E00B6 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		487BA563286586C7007E00B6 /* WelcomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeVC.xib; sourceTree = "<group>"; };
 		487BA56628658ACF007E00B6 /* TypingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingLabel.swift; sourceTree = "<group>"; };
+		48DAB1D3286AC65500E7461C /* AccountManagementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementVC.swift; sourceTree = "<group>"; };
+		48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManagementVC.xib; sourceTree = "<group>"; };
+		48DAB1DB286AD0D600E7461C /* ChangeEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailVC.swift; sourceTree = "<group>"; };
+		48DAB1DC286AD0D600E7461C /* ChangeEmailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeEmailVC.xib; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +154,7 @@
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
 				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
+				48DAB1D2286A9C0F00E7461C /* KeychainSwift in Frameworks */,
 				50D0382A2869688900662008 /* Realm in Frameworks */,
 				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
 				50D0382C2869688900662008 /* RealmSwift in Frameworks */,
@@ -234,6 +244,41 @@
 				4818557928666EE200648BB6 /* LoginCreateAccountVC.xib */,
 			);
 			path = LoginCreateAccount;
+			sourceTree = "<group>";
+		};
+		48DAB1D7286AC65A00E7461C /* AccountManagement */ = {
+			isa = PBXGroup;
+			children = (
+				48DAB1DA286AD0B200E7461C /* DeleteAccount */,
+				48DAB1D9286AD08300E7461C /* ChangeEmail */,
+				48DAB1D8286AD06A00E7461C /* ChangePassword */,
+				48DAB1D3286AC65500E7461C /* AccountManagementVC.swift */,
+				48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */,
+			);
+			path = AccountManagement;
+			sourceTree = "<group>";
+		};
+		48DAB1D8286AD06A00E7461C /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		48DAB1D9286AD08300E7461C /* ChangeEmail */ = {
+			isa = PBXGroup;
+			children = (
+				48DAB1DB286AD0D600E7461C /* ChangeEmailVC.swift */,
+				48DAB1DC286AD0D600E7461C /* ChangeEmailVC.xib */,
+			);
+			path = ChangeEmail;
+			sourceTree = "<group>";
+		};
+		48DAB1DA286AD0B200E7461C /* DeleteAccount */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DeleteAccount;
 			sourceTree = "<group>";
 		};
 		5024EE46284DB342000B295A = {
@@ -332,6 +377,7 @@
 				4818556E2866607400648BB6 /* Settings */,
 				4818556F2866607B00648BB6 /* WalletDetails */,
 				481855702866608C00648BB6 /* WalletsList */,
+				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -397,6 +443,7 @@
 				50E0481E2866D81D008603BC /* ProgressHUD */,
 				50D038292869688900662008 /* Realm */,
 				50D0382B2869688900662008 /* RealmSwift */,
+				48DAB1D1286A9C0F00E7461C /* KeychainSwift */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -434,6 +481,7 @@
 				50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -456,6 +504,7 @@
 				5038E69328530FDA00756D60 /* AddRecordVC.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddVC.xib in Resources */,
 				4849A8A4285DBA60004569EB /* AddWalletVC.xib in Resources */,
+				48DAB1D6286AC65500E7461C /* AccountManagementVC.xib in Resources */,
 				4836D856285D601100746A56 /* DashboardVC.xib in Resources */,
 				4849A8A0285DABC1004569EB /* WalletsListVC.xib in Resources */,
 				4818557B28666EE200648BB6 /* LoginCreateAccountVC.xib in Resources */,
@@ -465,6 +514,7 @@
 				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
 				509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */,
 				487BA565286586C7007E00B6 /* WelcomeVC.xib in Resources */,
+				48DAB1DE286AD0D600E7461C /* ChangeEmailVC.xib in Resources */,
 				5024EE5C284DB344000B295A /* Assets.xcassets in Resources */,
 				487BA54E28629350007E00B6 /* RecordDetailsVC.xib in Resources */,
 				5024EE5A284DB342000B295A /* Main.storyboard in Resources */,
@@ -494,8 +544,10 @@
 				50D33AB12866CBD800D009B8 /* Validator.swift in Sources */,
 				509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */,
 				4836D852285D4C7200746A56 /* DatePickerCell.swift in Sources */,
+				48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */,
+				48DAB1DD286AD0D600E7461C /* ChangeEmailVC.swift in Sources */,
 				4836D855285D601100746A56 /* DashboardVC.swift in Sources */,
 				487BA55328638545007E00B6 /* ImageCell.swift in Sources */,
 				4839B81E2860DB690015C048 /* CommonMethods+Extensions.swift in Sources */,
@@ -743,6 +795,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
@@ -802,6 +862,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		48DAB1D1286A9C0F00E7461C /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		50AB38C2286505BD00E9957E /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;

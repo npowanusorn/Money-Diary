@@ -35,6 +35,16 @@ extension String {
         let formattedString = String(format: "$%.2f", self)
         return "\(formattedString)"
     }
+
+    var localized: String { NSLocalizedString(self, comment: "") }
+
+    func localizeWithFormat(arguments: CVarArg...) -> String {
+        String(format: self.localized, arguments: arguments)
+    }
+
+    func localizeByPropagating(string: String) -> String {
+        self.localized.replacingOccurrences(of: "%@", with: string)
+    }
 }
 
 extension Double {

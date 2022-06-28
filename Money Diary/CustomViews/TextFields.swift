@@ -7,10 +7,9 @@
 
 import UIKit
 
-@IBDesignable
 class BaseTextField: UITextField {
 
-    @IBInspectable let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
@@ -47,6 +46,8 @@ class BaseTextField: UITextField {
 
         self.layer.cornerRadius = 12.0
         self.layer.masksToBounds = true
+        self.layer.borderWidth = 0.0
+        self.layer.borderColor = nil
         self.clipsToBounds = false
         self.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         self.textColor = .label
@@ -54,7 +55,6 @@ class BaseTextField: UITextField {
 
 }
 
-@IBDesignable
 class PasswordTextField: BaseTextField {
     override func applyStyles() {
         super.applyStyles()

@@ -12,6 +12,11 @@ public var Log = SwiftyBeaver.self
 
 enum K {
 
+    enum KeychainKeys {
+        static let passwordKey = "passwordKey"
+        static let emailKey = "emailKey"
+    }
+
     enum UserDefaultsKeys {
         static let isLoggedIn = "isLoggedIn"
     }

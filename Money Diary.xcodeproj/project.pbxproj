@@ -36,6 +36,9 @@
 		48DAB1D6286AC65500E7461C /* AccountManagementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */; };
 		48DAB1DD286AD0D600E7461C /* ChangeEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1DB286AD0D600E7461C /* ChangeEmailVC.swift */; };
 		48DAB1DE286AD0D600E7461C /* ChangeEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1DC286AD0D600E7461C /* ChangeEmailVC.xib */; };
+		48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1E1286B7B0900E7461C /* Localizable.strings */; };
+		48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1E5286B9C8600E7461C /* ChangePasswordVC.swift */; };
+		48DAB1E8286B9C8600E7461C /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1E6286B9C8600E7461C /* ChangePasswordVC.xib */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -108,6 +111,9 @@
 		48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManagementVC.xib; sourceTree = "<group>"; };
 		48DAB1DB286AD0D600E7461C /* ChangeEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailVC.swift; sourceTree = "<group>"; };
 		48DAB1DC286AD0D600E7461C /* ChangeEmailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeEmailVC.xib; sourceTree = "<group>"; };
+		48DAB1E2286B7B0900E7461C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		48DAB1E5286B9C8600E7461C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		48DAB1E6286B9C8600E7461C /* ChangePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordVC.xib; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -249,11 +255,11 @@
 		48DAB1D7286AC65A00E7461C /* AccountManagement */ = {
 			isa = PBXGroup;
 			children = (
-				48DAB1DA286AD0B200E7461C /* DeleteAccount */,
-				48DAB1D9286AD08300E7461C /* ChangeEmail */,
-				48DAB1D8286AD06A00E7461C /* ChangePassword */,
 				48DAB1D3286AC65500E7461C /* AccountManagementVC.swift */,
 				48DAB1D4286AC65500E7461C /* AccountManagementVC.xib */,
+				48DAB1D9286AD08300E7461C /* ChangeEmail */,
+				48DAB1D8286AD06A00E7461C /* ChangePassword */,
+				48DAB1DA286AD0B200E7461C /* DeleteAccount */,
 			);
 			path = AccountManagement;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 		48DAB1D8286AD06A00E7461C /* ChangePassword */ = {
 			isa = PBXGroup;
 			children = (
+				48DAB1E5286B9C8600E7461C /* ChangePasswordVC.swift */,
+				48DAB1E6286B9C8600E7461C /* ChangePasswordVC.xib */,
 			);
 			path = ChangePassword;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				50E2834A285FA87A005A3907 /* Constants.swift */,
 				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
 				50D33AB02866CBD800D009B8 /* Validator.swift */,
+				48DAB1E1286B7B0900E7461C /* Localizable.strings */,
 			);
 			path = "Money Diary";
 			sourceTree = "<group>";
@@ -500,6 +509,7 @@
 				50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */,
 				50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */,
 				50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */,
+				48DAB1E8286B9C8600E7461C /* ChangePasswordVC.xib in Resources */,
 				50D03827286949CD00662008 /* SplashVC.xib in Resources */,
 				5038E69328530FDA00756D60 /* AddRecordVC.xib in Resources */,
 				5038E6672852D6D800756D60 /* AddVC.xib in Resources */,
@@ -510,6 +520,7 @@
 				4818557B28666EE200648BB6 /* LoginCreateAccountVC.xib in Resources */,
 				50D038312869788500662008 /* ResetPasswordVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
+				48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
 				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
 				509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */,
@@ -533,6 +544,7 @@
 				4849A898285D96BF004569EB /* Wallet.swift in Sources */,
 				4849A8A3285DBA60004569EB /* AddWalletVC.swift in Sources */,
 				50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */,
+				48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */,
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,
 				50D03826286949CD00662008 /* SplashVC.swift in Sources */,
 				50A221B52855016700D1A139 /* ContentSizedTableView.swift in Sources */,
@@ -572,6 +584,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		48DAB1E1286B7B0900E7461C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48DAB1E2286B7B0900E7461C /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		5024EE58284DB342000B295A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

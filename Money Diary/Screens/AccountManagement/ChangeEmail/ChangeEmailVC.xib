@@ -78,7 +78,7 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                     <connections>
-                        <action selector="textFieldDidChange:" destination="-1" eventType="editingDidEnd" id="Idf-jb-dzS"/>
+                        <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="Crh-oc-dAe"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJl-3R-91q" customClass="PasswordTextField" customModule="Money_Diary" customModuleProvider="target">
@@ -90,7 +90,7 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                     <connections>
-                        <action selector="textFieldDidChange:" destination="-1" eventType="editingDidEnd" id="JkA-hb-g0Y"/>
+                        <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="RBe-T9-nM7"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EB3-X9-6lN" userLabel="Email Text Field" customClass="BaseTextField" customModule="Money_Diary" customModuleProvider="target">
@@ -102,7 +102,7 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                     <connections>
-                        <action selector="textFieldDidChange:" destination="-1" eventType="editingDidEnd" id="hDr-pn-MvJ"/>
+                        <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="hs2-dH-s3z"/>
                     </connections>
                 </textField>
             </subviews>
@@ -140,17 +140,6 @@
             <point key="canvasLocation" x="138.78504672897196" y="118.5745140388769"/>
         </view>
     </objects>
-    <designables>
-        <designable name="2rQ-bN-1p9">
-            <size key="intrinsicContentSize" width="4" height="22"/>
-        </designable>
-        <designable name="EB3-X9-6lN">
-            <size key="intrinsicContentSize" width="4" height="22"/>
-        </designable>
-        <designable name="cJl-3R-91q">
-            <size key="intrinsicContentSize" width="4" height="22"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

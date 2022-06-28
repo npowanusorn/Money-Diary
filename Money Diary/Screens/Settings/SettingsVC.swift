@@ -18,7 +18,13 @@ class SettingsVC: UIViewController {
     private let keychain = KeychainSwift()
 
     @IBOutlet private var tableView: UITableView!
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.tableFooterView = getLogOutView()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,8 +32,6 @@ class SettingsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "settingsCell")
-
-        tableView.tableFooterView = getLogOutView()
     }
 
     private func getLogOutView() -> UIView {

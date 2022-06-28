@@ -11,13 +11,10 @@ class AccountManagementVC: UIViewController {
 
     @IBOutlet private var tableView: UITableView!
 
-//    private let sectionHeaderText = ["", "Danger Zone"]
-//    private let cellText = [["Change password", ""], [""]]
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Account Management"
+        title = LocalizedKeys.title
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -27,10 +24,13 @@ class AccountManagementVC: UIViewController {
     private func handleSelection() {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         if indexPath.section == CellSectionConfiguration.normal.rawValue {
-            if CellSectionConfiguration.normal.getCellText()[indexPath.row] == "Change Password" {
-
+            if CellSectionConfiguration.normal.getCellText()[indexPath.row] == LocalizedKeys.changePassword {
+                let changePasswordVC = ChangePasswordVC()
+                let navController = UINavigationController(rootViewController: changePasswordVC)
+                self.present(navController, animated: true)
+                return
             }
-            if CellSectionConfiguration.normal.getCellText()[indexPath.row] == "Change Email" {
+            if CellSectionConfiguration.normal.getCellText()[indexPath.row] == LocalizedKeys.changeEmail {
                 let changeEmailVC = ChangeEmailVC()
                 let navController = UINavigationController(rootViewController: changeEmailVC)
                 self.present(navController, animated: true)
@@ -38,11 +38,11 @@ class AccountManagementVC: UIViewController {
             }
         }
         if indexPath.section == CellSectionConfiguration.danger.rawValue {
-            if CellSectionConfiguration.danger.getCellText()[indexPath.row] == "Delete Account" {
+            if CellSectionConfiguration.danger.getCellText()[indexPath.row] == LocalizedKeys.deleteAccount {
 
             }
         }
-        Log.error("ERROR SELECTION NOT HANDLED")
+        Log.error("ERROR SELECTION NOT HANDLED FOR SECTION \(indexPath.section):ROW \(indexPath.row)")
     }
 
 }
@@ -91,19 +91,28 @@ private extension AccountManagementVC {
         func getSectionHeaderText() -> String {
             switch self {
             case .normal:
-                return "General"
+                return LocalizedKeys.general.localized
             case .danger:
-                return "Danger Zone"
+                return LocalizedKeys.dangerZone.localized
             }
         }
 
         func getCellText() -> [String] {
             switch self {
             case .normal:
-                return ["Change Password", "Change Email"]
+                return [LocalizedKeys.changePassword, LocalizedKeys.changeEmail]
             case .danger:
-                return ["Delete Account"]
+                return [LocalizedKeys.deleteAccount]
             }
         }
+    }
+
+    enum LocalizedKeys {
+        static let general = "account_management_section_general".localized
+        static let dangerZone = "account_management_section_danger_zone".localized
+        static let title = "account_management_title".localized
+        static let changePassword = "account_management_change_password".localized
+        static let changeEmail = "account_management_change_email".localized
+        static let deleteAccount = "account_management_delete_account".localized
     }
 }

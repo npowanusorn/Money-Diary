@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  Money Diary
+
+  Created by Nucha Powanusorn on 28/06/2022.
+  
+*/
+
+// Account Management
+"account_management_title" = "Account Management";
+"account_management_section_general" = "General";
+"account_management_section_danger_zone" = "Danger Zone";
+"account_management_change_password" = "Change Password";
+"account_management_change_email" = "Change Email";
+"account_management_delete_account" = "Delete Account";
+
+// Change Email
+"change_email_title" = "Change Email";
+"change_email_password" = "Password";
+"change_email_new_email" = "New Email";
+"change_email_confirm_email" = "Confirm New Email";
+"change_email_button" = "Change Email";
+"change_email_invalid_email" = "Invalid Email";
+"change_email_email_not_match" = "Email does not match";
+"change_email_same_email" = "New email cannot be the same as the old email";
+
+// Change Password
+"change_password_title" = "Change Password";
+"change_password_old_password" = "Old Password";
+"change_password_new_password" = "New Password";
+"change_password_confirm_password" = "Confirm New Password";
+"change_password_minimum_length" = "Password must be at least 6 characters";
+"change_password_password_mismatch" = "Password does not match";
+"change_password_button" = "Change Password";

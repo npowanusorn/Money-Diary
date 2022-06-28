@@ -31,7 +31,7 @@ class SplashVC: UIViewController {
     }
     
     private func attemptToLogIn() {
-        guard let email = keychain.get("emailKey"), let password = keychain.get("passwordKey") else { return }
+        guard let email = keychain.get(K.KeychainKeys.emailKey), let password = keychain.get(K.KeychainKeys.passwordKey) else { return }
         auth.signIn(withEmail: email, password: password) { [weak self] result, error in
             guard let strongSelf = self else { return }
             if let error = error {

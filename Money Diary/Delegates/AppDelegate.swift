@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.addDestination(console)
         
         FirebaseApp.configure()
+        _ = Firestore.firestore()
 
         return true
     }

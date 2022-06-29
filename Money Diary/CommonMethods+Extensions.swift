@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreImage
+import KeychainSwift
 
 private var tintColor: UIColor = .tintColor
 var globalTintColor: UIColor {
@@ -28,6 +29,30 @@ func getAttributedString(for title: String, fontSize: CGFloat, weight: UIFont.We
 
 func getAttributedString(for title: String, fontSize: CGFloat, weight: UIFont.Weight) -> AttributedString {
     return AttributedString(getAttributedString(for: title, fontSize: fontSize, weight: weight))
+}
+
+func delay(_ delay: Double, closure: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC),
+        execute: closure
+    )
+}
+
+func main(_ closure: @escaping () -> Void) {
+    DispatchQueue.main.async(execute: closure)
+}
+
+func background(closure: @escaping () -> Void) {
+    DispatchQueue.global(qos: .background).async {
+        closure()
+    }
+}
+
+func clearAllData() {
+    let keychain = KeychainSwift()
+    keychain.clear()
+    WalletManager.shared.removeAllWallets()
+    RecordManager.shared.removeAllRecords()
 }
 
 extension String {

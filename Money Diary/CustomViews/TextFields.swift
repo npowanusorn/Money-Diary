@@ -53,6 +53,16 @@ class BaseTextField: UITextField {
         self.textColor = .label
     }
 
+    func setWhiteBorder() {
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.white.cgColor
+    }
+
+    func removeBorder() {
+        self.layer.borderWidth = 0.0
+        self.layer.borderColor = nil
+    }
+
 }
 
 class PasswordTextField: BaseTextField {

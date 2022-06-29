@@ -13,17 +13,16 @@ import SPIndicator
 
 class ChangeEmailVC: UIViewController {
 
+    @IBOutlet private var emailLabel: UILabel!
+    @IBOutlet private var passwordLabel: UILabel!
     @IBOutlet private var passwordTextField: PasswordTextField!
     @IBOutlet private var emailTextField: BaseTextField!
-    @IBOutlet private var confirmEmailTextField: BaseTextField!
     @IBOutlet private var validationLabel: UILabel!
-    @IBOutlet private var confirmValidationLabel: UILabel!
     @IBOutlet private var changeEmailButton: BounceButton!
 
     private var password: String { return passwordTextField.text ?? "" }
     private var email: String { return emailTextField.text ?? "" }
-    private var confirmEmail: String { return confirmEmailTextField.text ?? "" }
-    private var shouldEnableButton: Bool { Validator.isValidEmail(email) && email == confirmEmail && isNewEmailDifferent }
+    private var shouldEnableButton: Bool { Validator.isValidEmail(email) && password.count >= 6 }
     private var errorMessage: String? = nil
     private var isNewEmailDifferent: Bool {
         guard let oldEmail = keychain.get(K.KeychainKeys.emailKey) else { return true }
@@ -38,34 +37,24 @@ class ChangeEmailVC: UIViewController {
 
         title = LocalizedKeys.title
 
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem = rightBarButton
+        emailLabel.text = LocalizedKeys.newEmail
+        passwordLabel.text = LocalizedKeys.password
 
         passwordTextField.delegate = self
         emailTextField.delegate = self
-        confirmEmailTextField.delegate = self
 
         passwordTextField.layer.borderColor = nil
         emailTextField.layer.borderColor = nil
-        confirmEmailTextField.layer.borderColor = nil
 
         changeEmailButton.isEnabled = false
         validationLabel.isHidden = true
-        confirmValidationLabel.isHidden = true
         validationLabel.text = LocalizedKeys.invalidEmail
-        confirmValidationLabel.text = LocalizedKeys.emailNotMatch
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         if sender == emailTextField, !email.isEmpty {
             validationLabel.text = LocalizedKeys.invalidEmail
             validationLabel.isHidden = Validator.isValidEmail(email)
-        } else if sender == confirmEmailTextField, !confirmEmail.isEmpty {
-            confirmValidationLabel.isHidden = email == confirmEmail
-        }
-        if !isNewEmailDifferent {
-            validationLabel.text = LocalizedKeys.sameEmail
-            validationLabel.isHidden = false
         }
         changeEmailButton.isEnabled = shouldEnableButton
     }
@@ -89,13 +78,13 @@ class ChangeEmailVC: UIViewController {
             Log.info("EMAIL CHANGED")
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Email changed", preset: .done, haptic: .success, from: .top, completion: nil)
-            dismiss(animated: true)
             keychain.set(email, forKey: K.KeychainKeys.emailKey)
+            main { self.navigationController?.popViewController(animated: true) }
         } catch {
             ProgressHUD.dismiss()
             Log.error("ERROR : \(error.localizedDescription)")
             let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
-            present(alert, animated: true)
+            main { self.present(alert, animated: true) }
         }
     }
 
@@ -114,25 +103,23 @@ class ChangeEmailVC: UIViewController {
 }
 
 extension ChangeEmailVC: UITextFieldDelegate {
-    private func textFieldShouldReturn(_ textField: UITextField) async -> Bool {
-        if textField == passwordTextField {
-            emailTextField.becomeFirstResponder()
-        } else if textField == emailTextField {
-            confirmEmailTextField.becomeFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextTextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextTextField.becomeFirstResponder()
         } else {
-            if shouldEnableButton { await handleChangeEmail() }
+            textField.resignFirstResponder()
         }
         return false
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.white.cgColor
+        guard let textField = textField as? BaseTextField else { return }
+        textField.setWhiteBorder()
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderColor = nil
-        textField.layer.borderWidth = 0.0
+        guard let textField = textField as? BaseTextField else { return }
+        textField.removeBorder()
     }
 }
 
@@ -141,10 +128,7 @@ private extension ChangeEmailVC {
         static let title = "change_email_title".localized
         static let password = "change_email_password".localized
         static let newEmail = "change_email_new_email".localized
-        static let confirmEmail = "change_email_confirm_email".localized
         static let button = "change_email_button".localized
         static let invalidEmail = "change_email_invalid_email".localized
-        static let emailNotMatch = "change_email_email_not_match".localized
-        static let sameEmail = "change_email_same_email".localized
     }
 }

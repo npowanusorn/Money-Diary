@@ -29,7 +29,7 @@ class RecordDetailsVC: UIViewController {
         categoryLabel.text = "category"
         noteLabel.text = selectedRecord.note
         dateLabel.text = selectedRecord.date.toString(withFormat: .long)
-        walletLabel.text = selectedRecord.wallet.name
+        walletLabel.text = walletManager.getWallet(at: selectedRecord.wallet).name
 
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editRecord))
         rightBarButtonItem.tintColor = globalTintColor
@@ -48,7 +48,7 @@ class RecordDetailsVC: UIViewController {
     }
 
     func performDeletion() {
-        let wallet = selectedRecord.wallet
+        let wallet = walletManager.getWallet(at: selectedRecord.wallet)
         if wallet.removeRecord(recordToRemove: selectedRecord) {
             navigationController?.popViewController(animated: true)
             SPIndicator.present(title: "Success", message: "Record removed", preset: .done, haptic: .success, from: .top, completion: nil)

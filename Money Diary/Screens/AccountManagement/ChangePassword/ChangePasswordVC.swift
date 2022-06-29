@@ -37,9 +37,6 @@ class ChangePasswordVC: UIViewController {
         newPasswordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissVC))
-        navigationItem.rightBarButtonItem = rightBarButton
-
         changePasswordButton.isEnabled = false
         topValidationLabel.isHidden = true
         bottomValidationLabel.isHidden = true
@@ -79,13 +76,13 @@ class ChangePasswordVC: UIViewController {
             Log.info("CHANGE PASSWORD: CHANGED")
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Password changed", preset: .done, haptic: .success, from: .top, completion: nil)
-            dismiss(animated: true)
             keychain.set(newPassword, forKey: K.KeychainKeys.passwordKey)
+            main { self.navigationController?.popViewController(animated: true) }
         } catch {
             ProgressHUD.dismiss()
             Log.error("ERROR : \(error.localizedDescription)")
             let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
-            present(alert, animated: true)
+            main { self.present(alert, animated: true) }
         }
     }
 
@@ -102,13 +99,13 @@ class ChangePasswordVC: UIViewController {
 
 extension ChangePasswordVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.white.cgColor
-        textField.layer.borderWidth = 1.0
+        guard let textField = textField as? BaseTextField else { return }
+        textField.setWhiteBorder()
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.clear.cgColor
-        textField.layer.borderWidth = 0.0
+        guard let textField = textField as? BaseTextField else { return }
+        textField.removeBorder()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

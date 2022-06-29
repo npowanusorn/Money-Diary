@@ -16,6 +16,9 @@ class LoginCreateAccountVC: UIViewController {
 
     var isLogInVC: Bool = true
     private let realm = try! Realm()
+    private let auth = Auth.auth()
+    private let db = Firestore.firestore()
+    private let keychain = KeychainSwift()
 
     private var signInText: String { isLogInVC ? "Sign In" : "Create Account" }
     private var email: String { emailTextField.text ?? "" }
@@ -66,13 +69,11 @@ class LoginCreateAccountVC: UIViewController {
             signInToPasswordFieldConstraint.constant = 40.0
             resetPasswordButton.isHidden = false
             emailTextField.text = "test@email.com"
-            passwordTextField.text = "000000"
+            passwordTextField.text = "111111"
         }
     }
 
     @IBAction func signInTapped(_ sender: Any) {
-        ProgressHUD.animationType = .circleSpinFade
-        ProgressHUD.show()
         if isLogInVC {
             handleSignIn()
         } else {
@@ -103,46 +104,41 @@ class LoginCreateAccountVC: UIViewController {
         passwordMismatchLabel.isHidden = true
         signInButton.isEnabled = true
     }
-    
+
     func handleSignIn() {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+        ProgressHUD.animationType = .horizontalCirclesPulse
+        ProgressHUD.show()
+
+        Task {
+            let error = await AuthManager.signIn(with: email, password: password)
             if let error = error {
-                Log.error("SIGN IN FAILED: \(error.localizedDescription)")
-                let alert = UIAlertController.showDismissAlert(with: "Error", message: error.localizedDescription)
-                strongSelf.present(alert, animated: true)
-                ProgressHUD.dismiss()
-                return
+                let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
+                main { self.present(alert, animated: true) }
+            } else {
+                await FirestoreManager.getData()
+                SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+                let dashboardVC = DashboardVC()
+                navigationController?.pushViewController(dashboardVC, animated: true)
             }
             ProgressHUD.dismiss()
-            SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
-            let keychain = KeychainSwift()
-            keychain.set(strongSelf.email, forKey: "emailKey")
-            keychain.set(strongSelf.password, forKey: "passwordKey")
-            let credential = EmailAuthProvider.credential(withEmail: strongSelf.email, password: strongSelf.password)
-            if let data = try? NSKeyedArchiver.archivedData(withRootObject: credential, requiringSecureCoding: false) {
-                Log.info("SAVED CREDENTIAL")
-                UserDefaults.standard.set(data, forKey: "authCredential")
-            }
-            let dashboardVC = DashboardVC()
-            strongSelf.navigationController?.pushViewController(dashboardVC, animated: true)
         }
     }
-    
+
     func handleCreateUser() {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+        ProgressHUD.animationType = .horizontalCirclesPulse
+        ProgressHUD.show()
+
+        Task {
+            let error = await AuthManager.createUser(with: email, password: password)
             if let error = error {
-                Log.error("CREATE ACCOUNT FAILED: \(error.localizedDescription)")
-                let alert = UIAlertController.showDismissAlert(with: "Error", message: error.localizedDescription)
-                strongSelf.present(alert, animated: true)
-                ProgressHUD.dismiss()
-                return
+                let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
+                main { self.present(alert, animated: true) }
+            } else {
+                SPIndicator.present(title: "Success", message: "Created account", preset: .done, haptic: .success)
+                let dashboardVC = DashboardVC()
+                navigationController?.pushViewController(dashboardVC, animated: true)
             }
             ProgressHUD.dismiss()
-            SPIndicator.present(title: "Success", message: "Created account", preset: .done, haptic: .success)
-            let dashboardVC = DashboardVC()
-            strongSelf.navigationController?.pushViewController(dashboardVC, animated: true)
         }
     }
 }

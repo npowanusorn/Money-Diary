@@ -98,9 +98,7 @@ class SettingsVC: UIViewController {
             return
         }
         SPIndicator.present(title: "Success", message: "Signed out", preset: .done, haptic: .success)
-        WalletManager.shared.removeAllWallets()
-        RecordManager.shared.removeAllRecords()
-        keychain.clear()
+        clearAllData()
         navigationController?.popToRootViewController(animated: true)
     }
     

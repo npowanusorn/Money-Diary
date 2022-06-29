@@ -7,28 +7,33 @@
 */
 
 // Account Management
-"account_management_title" = "Account Management";
+"account_management_title" = "Account";
 "account_management_section_general" = "General";
 "account_management_section_danger_zone" = "Danger Zone";
-"account_management_change_password" = "Change Password";
-"account_management_change_email" = "Change Email";
+"account_management_change_password" = "Update Password";
+"account_management_change_email" = "Update Email";
 "account_management_delete_account" = "Delete Account";
 
 // Change Email
-"change_email_title" = "Change Email";
-"change_email_password" = "Password";
-"change_email_new_email" = "New Email";
-"change_email_confirm_email" = "Confirm New Email";
-"change_email_button" = "Change Email";
+"change_email_title" = "Update Email";
+"change_email_password" = "Confirm password";
+"change_email_new_email" = "New email address";
+"change_email_button" = "Save";
 "change_email_invalid_email" = "Invalid Email";
-"change_email_email_not_match" = "Email does not match";
-"change_email_same_email" = "New email cannot be the same as the old email";
 
 // Change Password
-"change_password_title" = "Change Password";
+"change_password_title" = "Update Password";
 "change_password_old_password" = "Old Password";
 "change_password_new_password" = "New Password";
 "change_password_confirm_password" = "Confirm New Password";
 "change_password_minimum_length" = "Password must be at least 6 characters";
 "change_password_password_mismatch" = "Password does not match";
 "change_password_button" = "Change Password";
+
+// Delete Account
+"delete_account_title" = "Delete Account";
+"delete_account_confirm_password" = "Confirm Password";
+"delete_account_description" = "This action is permanent and cannot be undone";
+"delete_account_button" = "Delete Account";
+"delete_account_alert_title" = "Delete Account";
+"delete_account_alert_message" = "This action is permanent and cannot be undone";

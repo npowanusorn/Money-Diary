@@ -7,7 +7,7 @@
 
 import UIKit
 import SPIndicator
-import FirebaseAuth
+import Firebase
 
 class DashboardVC: UIViewController {
 
@@ -18,6 +18,8 @@ class DashboardVC: UIViewController {
 
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
+    private let db = Firestore.firestore()
+    private let currentUser = Auth.auth().currentUser
 
     var recordList: [Record] = [Record]()
     var walletsList: [Wallet] = [Wallet]()
@@ -25,27 +27,29 @@ class DashboardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationItem.rightBarButtonItem = .init(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: nil, action: nil)
-//        navigationItem.setTitleAndSubtitle(title: getTotalBalance().toCurrencyString(), subtitle: "Total balance")
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        ellipsisButton.isHidden = true
-        
         Log.info("ISLOGGEDIN: \(Auth.auth().currentUser != nil)")
 
         UserDefaults.standard.set(true, forKey: K.UserDefaultsKeys.isLoggedIn)
 
+        setupMenuButton()
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12
-
-        walletManager.addMockWallets(count: 5)
-        for index in 0...4 {
-            walletManager.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
-        }
+        
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         balanceLabel.text = getTotalBalance().toCurrencyString()
-        setupMenuButton()
+
+//        walletManager.addMockWallets(count: 5)
+//        for index in 0...4 {
+//            walletManager.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
+//        }
+
+//        Task {
+//            await getDataFromFirestore()
+//            tableView.reloadData()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +121,35 @@ class DashboardVC: UIViewController {
         recordList = recordManager.getAllRecords()
         tableView.reloadData()
         balanceLabel.text = getTotalBalance().toCurrencyString()
+    }
+
+    func getDataFromFirestore() async {
+        guard let currentUser = currentUser else { return }
+        let walletCollection = db.collection("users").document(currentUser.uid).collection("wallets")
+        do {
+            let walletSnapshot = try await walletCollection.getDocuments()
+            let walletDocuments = walletSnapshot.documents
+            for walletDocument in walletDocuments {
+                let walletName = (walletDocument.data()["name"] as? String) ?? ""
+                let walletBalance = (walletDocument.data()["balance"] as? Double) ?? 0.0
+                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
+                let recordCollection = walletCollection.document(walletDocument.documentID).collection("records")
+                let recordSnapshot = try await recordCollection.getDocuments()
+                let recordDocuments = recordSnapshot.documents
+                for recordDocument in recordDocuments {
+                    let amount = (recordDocument.data()["amount"] as? Double) ?? 0.0
+                    let date = (recordDocument.data()["date"] as? Timestamp)?.dateValue() ?? Date()
+                    let isExpense = (recordDocument.data()["isExpense"] as? Bool) ?? true
+                    let note = (recordDocument.data()["note"] as? String) ?? ""
+                    let wallet = (recordDocument.data()["wallet"] as? Int) ?? 0
+                    let record = Record(amount: amount, note: note, date: date, wallet: wallet, isExpense: isExpense)
+                    walletForSnapshot.addRecord(newRecord: record)
+                }
+                walletManager.addWallet(newWallet: walletForSnapshot)
+            }
+        } catch {
+            Log.error("ERROR: \(error)")
+        }
     }
 
 }

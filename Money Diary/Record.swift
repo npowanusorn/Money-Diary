@@ -12,10 +12,11 @@ class Record: Equatable, Comparable {
     var amount: Double
     var note: String?
     var date: Date
-    var wallet: Wallet
+//    var wallet: Wallet
+    var wallet: Int
     var isExpense: Bool
 
-    init(amount: Double, note: String?, date: Date, wallet: Wallet, isExpense: Bool) {
+    init(amount: Double, note: String?, date: Date, wallet: Int, isExpense: Bool) {
         self.amount = amount
         self.note = note
         self.date = date

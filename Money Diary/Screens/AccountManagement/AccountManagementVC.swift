@@ -26,20 +26,20 @@ class AccountManagementVC: UIViewController {
         if indexPath.section == CellSectionConfiguration.normal.rawValue {
             if CellSectionConfiguration.normal.getCellText()[indexPath.row] == LocalizedKeys.changePassword {
                 let changePasswordVC = ChangePasswordVC()
-                let navController = UINavigationController(rootViewController: changePasswordVC)
-                self.present(navController, animated: true)
+                navigationController?.pushViewController(changePasswordVC, animated: true)
                 return
             }
             if CellSectionConfiguration.normal.getCellText()[indexPath.row] == LocalizedKeys.changeEmail {
                 let changeEmailVC = ChangeEmailVC()
-                let navController = UINavigationController(rootViewController: changeEmailVC)
-                self.present(navController, animated: true)
+                navigationController?.pushViewController(changeEmailVC, animated: true)
                 return
             }
         }
         if indexPath.section == CellSectionConfiguration.danger.rawValue {
             if CellSectionConfiguration.danger.getCellText()[indexPath.row] == LocalizedKeys.deleteAccount {
-
+                let deleteAccountVC = DeleteAccountVC()
+                navigationController?.pushViewController(deleteAccountVC, animated: true)
+                return
             }
         }
         Log.error("ERROR SELECTION NOT HANDLED FOR SECTION \(indexPath.section):ROW \(indexPath.row)")
@@ -62,7 +62,7 @@ extension AccountManagementVC: UITableViewDelegate, UITableViewDataSource {
         CellSectionConfiguration.allCases[section].getCellText().count
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50.0 }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50.0 }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)

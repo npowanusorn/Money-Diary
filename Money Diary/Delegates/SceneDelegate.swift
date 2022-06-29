@@ -21,12 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let splashVC = SplashVC()
         let navController = UINavigationController(rootViewController: splashVC)
+        navController.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
         window?.rootViewController = navController
-//        if Auth.auth().currentUser != nil {
-//            Log.info("IS LOGGED IN")
-//            let dashboardVC = DashboardVC()
-//            navController.pushViewController(dashboardVC, animated: false)
-//        }
         window?.makeKeyAndVisible()
     }
 

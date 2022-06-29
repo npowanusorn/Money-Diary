@@ -11,12 +11,27 @@ class BounceButton: UIButton {
         
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setFont()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setFont()
     }
-    
+
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setFont()
+    }
+
+    override func setTitle(_ title: String?, for state: UIControl.State) {
+        self.configuration?.attributedTitle = getAttributedString(for: title ?? "", fontSize: 15.0, weight: .bold)
+    }
+
+    func setFont() {
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
     }

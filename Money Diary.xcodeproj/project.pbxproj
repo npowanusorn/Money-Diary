@@ -39,6 +39,9 @@
 		48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1E1286B7B0900E7461C /* Localizable.strings */; };
 		48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1E5286B9C8600E7461C /* ChangePasswordVC.swift */; };
 		48DAB1E8286B9C8600E7461C /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1E6286B9C8600E7461C /* ChangePasswordVC.xib */; };
+		48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1E9286BCEF900E7461C /* DeleteAccountVC.swift */; };
+		48DAB1EC286BCEF900E7461C /* DeleteAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */; };
+		48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -114,6 +117,9 @@
 		48DAB1E2286B7B0900E7461C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		48DAB1E5286B9C8600E7461C /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		48DAB1E6286B9C8600E7461C /* ChangePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordVC.xib; sourceTree = "<group>"; };
+		48DAB1E9286BCEF900E7461C /* DeleteAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountVC.swift; sourceTree = "<group>"; };
+		48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAccountVC.xib; sourceTree = "<group>"; };
+		48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagers.swift; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +291,8 @@
 		48DAB1DA286AD0B200E7461C /* DeleteAccount */ = {
 			isa = PBXGroup;
 			children = (
+				48DAB1E9286BCEF900E7461C /* DeleteAccountVC.swift */,
+				48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */,
 			);
 			path = DeleteAccount;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				5024EE5D284DB344000B295A /* LaunchScreen.storyboard */,
 				5024EE58284DB342000B295A /* Main.storyboard */,
 				5038E6632852D69A00756D60 /* Screens */,
+				48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */,
 				5038E68C2853052500756D60 /* UIView+Fade.swift */,
 				4836D85B285D778400746A56 /* Record.swift */,
 				4849A897285D96BF004569EB /* Wallet.swift */,
@@ -519,6 +528,7 @@
 				4849A8A0285DABC1004569EB /* WalletsListVC.xib in Resources */,
 				4818557B28666EE200648BB6 /* LoginCreateAccountVC.xib in Resources */,
 				50D038312869788500662008 /* ResetPasswordVC.xib in Resources */,
+				48DAB1EC286BCEF900E7461C /* DeleteAccountVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
@@ -556,10 +566,12 @@
 				50D33AB12866CBD800D009B8 /* Validator.swift in Sources */,
 				509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */,
 				4836D852285D4C7200746A56 /* DatePickerCell.swift in Sources */,
+				48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */,
 				48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */,
 				48DAB1DD286AD0D600E7461C /* ChangeEmailVC.swift in Sources */,
+				48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */,
 				4836D855285D601100746A56 /* DashboardVC.swift in Sources */,
 				487BA55328638545007E00B6 /* ImageCell.swift in Sources */,
 				4839B81E2860DB690015C048 /* CommonMethods+Extensions.swift in Sources */,

@@ -12,6 +12,23 @@ public var Log = SwiftyBeaver.self
 
 enum K {
 
+    enum FirestoreKeys {
+        enum CollectionKeys {
+            static let records = "records"
+            static let wallets = "wallets"
+            static let users = "users"
+        }
+        enum FieldKeys {
+            static let balance = "balance"
+            static let name = "name"
+            static let amount = "amount"
+            static let date = "date"
+            static let expense = "isExpense"
+            static let note = "note"
+            static let wallet = "wallet"
+        }
+    }
+
     enum KeychainKeys {
         static let passwordKey = "passwordKey"
         static let emailKey = "emailKey"
@@ -19,6 +36,7 @@ enum K {
 
     enum UserDefaultsKeys {
         static let isLoggedIn = "isLoggedIn"
+        static let isBiometryEnabled = "isBiometryEnabled"
     }
     
     enum Fonts: String {

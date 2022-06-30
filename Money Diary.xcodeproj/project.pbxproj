@@ -42,6 +42,7 @@
 		48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1E9286BCEF900E7461C /* DeleteAccountVC.swift */; };
 		48DAB1EC286BCEF900E7461C /* DeleteAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */; };
 		48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */; };
+		48DAB1F0286D17DD00E7461C /* BiometryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1EF286D17DD00E7461C /* BiometryManager.swift */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -120,6 +121,7 @@
 		48DAB1E9286BCEF900E7461C /* DeleteAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountVC.swift; sourceTree = "<group>"; };
 		48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAccountVC.xib; sourceTree = "<group>"; };
 		48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagers.swift; sourceTree = "<group>"; };
+		48DAB1EF286D17DD00E7461C /* BiometryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryManager.swift; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +299,25 @@
 			path = DeleteAccount;
 			sourceTree = "<group>";
 		};
+		48DAB1F2286D614300E7461C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				48DAB1EF286D17DD00E7461C /* BiometryManager.swift */,
+				4849A89B285D9FD1004569EB /* RecordManager.swift */,
+				4849A899285D9DCC004569EB /* WalletManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		48DAB1F3286D617700E7461C /* ImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				487BA55128638545007E00B6 /* ImageCell.swift */,
+				487BA55228638545007E00B6 /* ImageCell.xib */,
+			);
+			path = ImageCell;
+			sourceTree = "<group>";
+		};
 		5024EE46284DB342000B295A = {
 			isa = PBXGroup;
 			children = (
@@ -318,24 +339,23 @@
 			isa = PBXGroup;
 			children = (
 				5024EE5B284DB344000B295A /* Assets.xcassets */,
+				48DAB1F2286D614300E7461C /* Managers */,
+				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
+				50E2834A285FA87A005A3907 /* Constants.swift */,
 				5038E6602852D64600756D60 /* CustomViews */,
 				5024EE56284DB342000B295A /* DashboardViewController.swift */,
 				5038E6622852D65700756D60 /* Delegates */,
-				5024EE60284DB344000B295A /* Info.plist */,
-				50AB38D228654DBC00E9957E /* GoogleService-Info.plist */,
-				5024EE5D284DB344000B295A /* LaunchScreen.storyboard */,
-				5024EE58284DB342000B295A /* Main.storyboard */,
-				5038E6632852D69A00756D60 /* Screens */,
 				48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */,
-				5038E68C2853052500756D60 /* UIView+Fade.swift */,
-				4836D85B285D778400746A56 /* Record.swift */,
-				4849A897285D96BF004569EB /* Wallet.swift */,
-				4849A899285D9DCC004569EB /* WalletManager.swift */,
-				4849A89B285D9FD1004569EB /* RecordManager.swift */,
-				50E2834A285FA87A005A3907 /* Constants.swift */,
-				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
-				50D33AB02866CBD800D009B8 /* Validator.swift */,
+				50AB38D228654DBC00E9957E /* GoogleService-Info.plist */,
+				5024EE60284DB344000B295A /* Info.plist */,
+				5024EE5D284DB344000B295A /* LaunchScreen.storyboard */,
 				48DAB1E1286B7B0900E7461C /* Localizable.strings */,
+				5024EE58284DB342000B295A /* Main.storyboard */,
+				4836D85B285D778400746A56 /* Record.swift */,
+				5038E6632852D69A00756D60 /* Screens */,
+				5038E68C2853052500756D60 /* UIView+Fade.swift */,
+				50D33AB02866CBD800D009B8 /* Validator.swift */,
+				4849A897285D96BF004569EB /* Wallet.swift */,
 			);
 			path = "Money Diary";
 			sourceTree = "<group>";
@@ -352,8 +372,7 @@
 				50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */,
 				509D84A22860335C00AC8F58 /* TabBarView.swift */,
 				4839B81F28618F9E0015C048 /* TabBarViewCell.swift */,
-				487BA55128638545007E00B6 /* ImageCell.swift */,
-				487BA55228638545007E00B6 /* ImageCell.xib */,
+				48DAB1F3286D617700E7461C /* ImageCell */,
 				487BA56628658ACF007E00B6 /* TypingLabel.swift */,
 				4818557C2866AFC000648BB6 /* TextFields.swift */,
 			);
@@ -381,9 +400,7 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				50D0382D2869787100662008 /* ResetPasswordVC */,
-				50D03823286949B700662008 /* Splash */,
-				50D33AAE2866B90100D009B8 /* WelcomeVC */,
+				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
 				5038E6652852D6D800756D60 /* AddVC.xib */,
@@ -392,10 +409,12 @@
 				4818556D2866606C00648BB6 /* Dashboard */,
 				481855722866609B00648BB6 /* LoginCreateAccount */,
 				481855712866609300648BB6 /* RecordDetails */,
+				50D0382D2869787100662008 /* ResetPasswordVC */,
 				4818556E2866607400648BB6 /* Settings */,
+				50D03823286949B700662008 /* Splash */,
 				4818556F2866607B00648BB6 /* WalletDetails */,
 				481855702866608C00648BB6 /* WalletsList */,
-				48DAB1D7286AC65A00E7461C /* AccountManagement */,
+				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -569,6 +588,7 @@
 				48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */,
 				48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
+				48DAB1F0286D17DD00E7461C /* BiometryManager.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */,
 				48DAB1DD286AD0D600E7461C /* ChangeEmailVC.swift in Sources */,
 				48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */,

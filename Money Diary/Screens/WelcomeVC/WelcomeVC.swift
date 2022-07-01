@@ -10,7 +10,7 @@ import SPIndicator
 
 class WelcomeVC: UIViewController {
     
-    var errorMessage: String? = nil
+    var error: NSError? = nil
     var shouldAnimateElements = false
 
     @IBOutlet private var optionsView: UIView!
@@ -19,19 +19,11 @@ class WelcomeVC: UIViewController {
     @IBOutlet private var emailButton: BounceButton!
     @IBOutlet private var headerLabelVerticalConstraint: NSLayoutConstraint!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-//        shouldAnimateElements = UserDefaults.standard.bool(forKey: "shouldAnimateElements")
-//        if shouldAnimateElements ?? false { animateElements() }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let errorMessage = errorMessage {
-            let alert = UIAlertController.showErrorAlert(title: "Log in failed", message: errorMessage)
-            present(alert, animated: true)
+        if let error = error {
+            FIRErrorManager.handleError(error: error, viewController: self)
         }
 
         googleButton.setImage(UIImage(named: "Google")?.resize(newWidth: 30.0), for: .normal)

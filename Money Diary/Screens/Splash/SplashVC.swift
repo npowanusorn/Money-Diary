@@ -15,7 +15,7 @@ class SplashVC: UIViewController {
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 
     private var isSignedIn = false
-    private var errorMessage: String? = nil
+    private var error: NSError? = nil
     private var isAnimationDone = false
     private var isFirebaseDone = false
 
@@ -42,20 +42,27 @@ class SplashVC: UIViewController {
     }
 
     private func attemptToLogIn() async {
-        guard let email = keychain.get(K.KeychainKeys.emailKey), let password = keychain.get(K.KeychainKeys.passwordKey) else {
-            Log.info("NO EMAIL/PASSWORD IN KEYCHAIN")
-            self.isFirebaseDone = true
-            if self.isAnimationDone { self.navigateToNextScreen(isSignedIn: self.isSignedIn) }
-            return
-        }
         let wasLoggedIn = UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.isLoggedIn)
-        let error = await AuthManager.signIn(with: email, password: password)
-        if error == nil || wasLoggedIn {
-            self.isSignedIn = true
-            await attemptToGetData()
+        Log.info("WAS LOGGED IN: \(wasLoggedIn)")
+        Log.info("IS INTERNET AVAILABLE: \(NetworkManager.shared.isInternetAvailable)")
+        if !NetworkManager.shared.isInternetAvailable {
+            self.isSignedIn = wasLoggedIn
         } else {
-            Log.error("ERROR: \(error!)")
-            self.errorMessage = error!.localizedDescription
+            guard let email = keychain.get(K.KeychainKeys.emailKey), let password = keychain.get(K.KeychainKeys.passwordKey) else {
+                Log.info("NO EMAIL/PASSWORD IN KEYCHAIN")
+                self.isFirebaseDone = true
+                if self.isAnimationDone { self.navigateToNextScreen(isSignedIn: self.isSignedIn) }
+                return
+            }
+            let error = await AuthManager.signIn(with: email, password: password)
+            if let error = error {
+                Log.error("ERROR SIGNING IN: \(error)")
+                self.error = error as NSError?
+                clearAllData()
+            } else {
+                self.isSignedIn = true
+                await attemptToGetData()
+            }
         }
         isFirebaseDone = true
         if isAnimationDone { self.navigateToNextScreen(isSignedIn: self.isSignedIn)}
@@ -72,7 +79,7 @@ class SplashVC: UIViewController {
 
     private func navigateToNextScreen(isSignedIn: Bool) {
         let welcomeVC = WelcomeVC()
-        welcomeVC.errorMessage = errorMessage
+        welcomeVC.error = error as NSError?
         let dashboardVC = DashboardVC()
         if isSignedIn {
             Log.info("GO TO DASHBOARD")

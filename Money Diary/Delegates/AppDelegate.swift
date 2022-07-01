@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         _ = Firestore.firestore()
 
+        NetworkManager.shared.startInternetCheck()
+
         return true
     }
 

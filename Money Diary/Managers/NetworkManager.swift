@@ -12,7 +12,6 @@ class NetworkManager {
 
     var isInternetAvailable: Bool {
         get {
-            getInternetStatus()
             return _internetAvailable
         }
     }
@@ -37,4 +36,6 @@ class NetworkManager {
         let queue = DispatchQueue(label: "monitor")
         monitor.start(queue: queue)
     }
+
+    func startInternetCheck() { getInternetStatus() }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import KeychainSwift
+import UIKit
 
 // MARK: - Auth
 class AuthManager {
@@ -26,7 +27,21 @@ class AuthManager {
         }
     }
 
-    static func createUser(with email: String, password: String) async -> Error? {
+    static func signIn(with email: String, password: String, viewController: UIViewController) async {
+        do {
+            let keychain = KeychainSwift()
+            Log.info("**** SIGNING IN ****")
+            try await Auth.auth().signIn(withEmail: email, password: password)
+            Log.info("**** SIGNED IN ****")
+            keychain.set(email, forKey: K.KeychainKeys.emailKey)
+            keychain.set(password, forKey: K.KeychainKeys.passwordKey)
+        } catch {
+            Log.error("ERROR SIGNING IN: \(error.localizedDescription)")
+            FIRErrorManager.handleError(error: error as NSError, viewController: viewController)
+        }
+    }
+
+    static func createUser(with email: String, password: String, viewController: UIViewController) async {
         do {
             let keychain = KeychainSwift()
             Log.info("**** CREATING USER ****")
@@ -34,10 +49,9 @@ class AuthManager {
             Log.info("**** CREATED USER ****")
             keychain.set(email, forKey: K.KeychainKeys.emailKey)
             keychain.set(password, forKey: K.KeychainKeys.passwordKey)
-            return nil
         } catch {
             Log.error("ERROR CREATING USER: \(error.localizedDescription)")
-            return error
+            FIRErrorManager.handleError(error: error as NSError, viewController: viewController)
         }
     }
 }
@@ -123,5 +137,30 @@ class FirestoreManager {
         } catch {
             Log.error("ERROR: \(error)")
         }
+    }
+}
+
+class FIRErrorManager {
+    static func handleError(error: NSError, viewController: UIViewController) {
+        var errorMessage = ""
+
+        switch error.code {
+        case AuthErrorCode.networkError.rawValue:
+            errorMessage = "No internet connection available"
+        case
+            AuthErrorCode.userNotFound.rawValue,
+            AuthErrorCode.wrongPassword.rawValue:
+            errorMessage = "Email or password is incorrect"
+        case AuthErrorCode.userDisabled.rawValue:
+            errorMessage = "Account is disabled"
+        case AuthErrorCode.weakPassword.rawValue:
+            errorMessage = "Password must be at least 6 characters long"
+        case AuthErrorCode.emailAlreadyInUse.rawValue:
+            errorMessage = "Email already in use. Sign in or use a different email"
+        default:
+            errorMessage = "Unknown error, try again later. \nError code: \(error.code)"
+        }
+        let alert = UIAlertController.showErrorAlert(message: errorMessage)
+        main { viewController.present(alert, animated: true) }
     }
 }

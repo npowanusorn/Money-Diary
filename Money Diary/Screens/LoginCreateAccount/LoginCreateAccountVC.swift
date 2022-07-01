@@ -115,16 +115,11 @@ class LoginCreateAccountVC: UIViewController {
         ProgressHUD.show()
 
         Task {
-            let error = await AuthManager.signIn(with: email, password: password)
-            if let error = error {
-                let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
-                main { self.present(alert, animated: true) }
-            } else {
-                await FirestoreManager.getData()
-                SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
-                let dashboardVC = DashboardVC()
-                navigationController?.pushViewController(dashboardVC, animated: true)
-            }
+            await AuthManager.signIn(with: email, password: password, viewController: self)
+            await FirestoreManager.getData()
+            SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+            let dashboardVC = DashboardVC()
+            navigationController?.pushViewController(dashboardVC, animated: true)
             ProgressHUD.dismiss()
         }
     }
@@ -134,15 +129,10 @@ class LoginCreateAccountVC: UIViewController {
         ProgressHUD.show()
 
         Task {
-            let error = await AuthManager.createUser(with: email, password: password)
-            if let error = error {
-                let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
-                main { self.present(alert, animated: true) }
-            } else {
-                SPIndicator.present(title: "Success", message: "Created account", preset: .done, haptic: .success)
-                let dashboardVC = DashboardVC()
-                navigationController?.pushViewController(dashboardVC, animated: true)
-            }
+            await AuthManager.createUser(with: email, password: password, viewController: self)
+            SPIndicator.present(title: "Success", message: "Account created", preset: .done, haptic: .success)
+            let dashboardVC = DashboardVC()
+            navigationController?.pushViewController(dashboardVC, animated: true)
             ProgressHUD.dismiss()
         }
     }

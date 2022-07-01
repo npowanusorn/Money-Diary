@@ -40,6 +40,11 @@ class WelcomeVC: UIViewController {
         Log.info("SHOULDANIMATE: \(shouldAnimateElements)")
         if shouldAnimateElements { animateElements() }
         else { positionHeaderLabel() }
+
+        guard let navigationController = self.navigationController else { return }
+        var navigationArray = navigationController.viewControllers
+        navigationArray.removeFirst()
+        self.navigationController?.viewControllers = navigationArray
     }
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {

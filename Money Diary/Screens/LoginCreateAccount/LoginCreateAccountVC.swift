@@ -74,11 +74,7 @@ class LoginCreateAccountVC: UIViewController {
     }
 
     @IBAction func signInTapped(_ sender: Any) {
-        if isLogInVC {
-            handleSignIn()
-        } else {
-            handleCreateUser()
-        }
+        manageSignInCreateAccount()
     }
 
     @IBAction func resetPasswordTapped(_ sender: Any) {
@@ -105,8 +101,17 @@ class LoginCreateAccountVC: UIViewController {
         signInButton.isEnabled = true
     }
 
+    private func manageSignInCreateAccount() {
+        view.endEditing(true)
+        if isLogInVC {
+            handleSignIn()
+        } else {
+            handleCreateUser()
+        }
+    }
+
     func handleSignIn() {
-        ProgressHUD.animationType = .horizontalCirclesPulse
+        ProgressHUD.animationType = .lineSpinFade
         ProgressHUD.show()
 
         Task {
@@ -154,17 +159,19 @@ extension LoginCreateAccountVC: UITextFieldDelegate {
                 confirmPasswordTextField.becomeFirstResponder()
             }
         } else {
-            signInTapped(textField)
+            manageSignInCreateAccount()
         }
         return false
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.white.cgColor
+        guard let textField = textField as? BaseTextField else { return }
+        textField.setWhiteBorder()
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderColor = nil
+        guard let textField = textField as? BaseTextField else { return }
+        textField.removeBorder()
     }
 
 }

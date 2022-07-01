@@ -43,7 +43,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grB-tM-sJB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grB-tM-sJB" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
                                 <rect key="frame" x="139" y="11.333333333333371" width="150" height="37.333333333333336"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="FkK-2d-mam"/>

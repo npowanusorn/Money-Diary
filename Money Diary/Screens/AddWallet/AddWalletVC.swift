@@ -66,6 +66,9 @@ class AddWalletVC: UIViewController {
         let newWallet = Wallet(name: name, balance: amount)
         WalletManager.shared.addWallet(newWallet: newWallet)
         delegate?.didAddWallet(wallet: newWallet)
+
+        Task { await FirestoreManager.writeData(forWallet: newWallet) }
+
         dismiss(animated: true)
     }
 

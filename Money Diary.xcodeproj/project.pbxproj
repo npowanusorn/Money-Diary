@@ -43,6 +43,7 @@
 		48DAB1EC286BCEF900E7461C /* DeleteAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */; };
 		48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */; };
 		48DAB1F0286D17DD00E7461C /* BiometryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1EF286D17DD00E7461C /* BiometryManager.swift */; };
+		48DAB1F5286EADA000E7461C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DAB1F4286EADA000E7461C /* NetworkManager.swift */; };
 		5024EE53284DB342000B295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE52284DB342000B295A /* AppDelegate.swift */; };
 		5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE54284DB342000B295A /* SceneDelegate.swift */; };
 		5024EE57284DB342000B295A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024EE56284DB342000B295A /* DashboardViewController.swift */; };
@@ -122,6 +123,7 @@
 		48DAB1EA286BCEF900E7461C /* DeleteAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAccountVC.xib; sourceTree = "<group>"; };
 		48DAB1ED286C1CC400E7461C /* FirebaseManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManagers.swift; sourceTree = "<group>"; };
 		48DAB1EF286D17DD00E7461C /* BiometryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryManager.swift; sourceTree = "<group>"; };
+		48DAB1F4286EADA000E7461C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5024EE4F284DB342000B295A /* Money Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5024EE52284DB342000B295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5024EE54284DB342000B295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				48DAB1EF286D17DD00E7461C /* BiometryManager.swift */,
 				4849A89B285D9FD1004569EB /* RecordManager.swift */,
 				4849A899285D9DCC004569EB /* WalletManager.swift */,
+				48DAB1F4286EADA000E7461C /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				4836D85C285D778400746A56 /* Record.swift in Sources */,
 				4849A89A285D9DCC004569EB /* WalletManager.swift in Sources */,
 				50E28348285EFFAF005A3907 /* AllRecordsVC.swift in Sources */,
+				48DAB1F5286EADA000E7461C /* NetworkManager.swift in Sources */,
 				509D84A32860335C00AC8F58 /* TabBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

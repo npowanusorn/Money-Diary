@@ -12,8 +12,6 @@ import Firebase
 import KeychainSwift
 
 class SettingsVC: UIViewController {
-    
-    let settingsCellList: [String] = ["App Theme", "Account Management"]
 
     private let keychain = KeychainSwift()
 
@@ -22,23 +20,25 @@ class SettingsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        tableView.tableFooterView = getLogOutView()
+        tableView.tableFooterView = getTableFooterView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Settings"
+        title = LocalizedKeys.title.localized
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "settingsCell")
+        tableView.register(UINib(nibName: Constants.nibName, bundle: nil), forCellReuseIdentifier: Constants.identifier)
     }
 
-    private func getLogOutView() -> UIView {
-        let logOutView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 150))
-//        logOutView.backgroundColor = .yellow
+    private func getTableFooterView() -> UIView {
+        let logOutView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 120))
         var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.attributedTitle = getAttributedString(for: "Log out", fontSize: 15.0, weight: .bold)
+        buttonConfiguration.attributedTitle = getAttributedString(
+            for: LocalizedKeys.logOut.localized,
+            fontSize: 15.0, weight: .bold
+        )
         buttonConfiguration.baseBackgroundColor = .systemRed
         buttonConfiguration.baseForegroundColor = .white
         buttonConfiguration.background.strokeWidth = 1.0
@@ -58,7 +58,7 @@ class SettingsVC: UIViewController {
         }
         let currentEmailLabel = UILabel()
         currentEmailLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        currentEmailLabel.text = "Logged in with \(currentEmail)"
+        currentEmailLabel.text = LocalizedKeys.loggedInWith.localizeWithFormat(arguments: currentEmail)
         currentEmailLabel.translatesAutoresizingMaskIntoConstraints = false
         logOutView.addSubview(currentEmailLabel)
         
@@ -99,7 +99,11 @@ class SettingsVC: UIViewController {
         }
         SPIndicator.present(title: "Success", message: "Signed out", preset: .done, haptic: .success)
         clearAllData()
-        navigationController?.popToRootViewController(animated: true)
+        let welcomeVC = WelcomeVC()
+        guard let navigationController = navigationController else { return }
+        let navigationArray: [UIViewController] = [welcomeVC] + navigationController.viewControllers
+        self.navigationController?.viewControllers = navigationArray
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc
@@ -130,7 +134,7 @@ class SettingsVC: UIViewController {
             switch row {
             case SettingsCellList.AppTheme.rawValue:
                 Log.info("GO TO APP THEME VC")
-            case SettingsCellList.AccountManagement.rawValue:
+            case SettingsCellList.Account.rawValue:
                 Log.info("GO TO ACCOUNT MGMT VC")
                 let accountManagementVC = AccountManagementVC()
                 navigationController?.pushViewController(accountManagementVC, animated: true)
@@ -150,7 +154,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsCellList.count
+        return SettingsCellList.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -162,17 +166,17 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath) as? ImageCell else { return UITableViewCell() }
-//        content.text = "Theme \(indexPath.row + 1)"
-//        content.image = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
-//        cell.contentConfiguration = content
-        cell.primaryText = settingsCellList[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.identifier,
+            for: indexPath
+        ) as? ImageCell else { return UITableViewCell() }
+        cell.primaryText = SettingsCellList.allCases[indexPath.row].name()
         if indexPath.row == SettingsCellList.AppTheme.rawValue {
-            cell.secondaryText = "App Theme"
-            cell.cellImage = UIImage.generateSettingsIcon("paintpalette.fill", backgroundColor: globalTintColor)
+            cell.secondaryText = "Dark"
+            cell.cellImage = UIImage.generateSettingsIcon(ImageName.appThemeIcon, backgroundColor: globalTintColor)
         }
-        if indexPath.row == SettingsCellList.AccountManagement.rawValue {
-            cell.cellImage = UIImage.generateSettingsIcon("person.crop.circle.fill", backgroundColor: globalTintColor)
+        if indexPath.row == SettingsCellList.Account.rawValue {
+            cell.cellImage = UIImage.generateSettingsIcon(ImageName.accountIcon, backgroundColor: globalTintColor)
         }
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -193,8 +197,36 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 private extension SettingsVC {
-    enum SettingsCellList: Int {
+    enum SettingsCellList: Int, CaseIterable {
         case AppTheme = 0
-        case AccountManagement
+        case Account
+
+        func name() -> String {
+            switch self {
+            case .AppTheme:
+                return LocalizedKeys.appTheme.localized
+            case .Account:
+                return LocalizedKeys.account.localized
+            }
+        }
     }
+}
+
+private extension SettingsVC {
+    enum Constants {
+        static let nibName = "ImageCell"
+        static let identifier = "\(ImageCell.self)"
+    }
+    enum ImageName {
+        static let appThemeIcon = "paintpalette.fill"
+        static let accountIcon = "person.crop.circle.fill"
+    }
+    enum LocalizedKeys {
+        static let appTheme = "settings_app_theme"
+        static let account = "settings_account"
+        static let title = "settings_title"
+        static let logOut = "settings_log_out"
+        static let loggedInWith = "settings_logged_in_with"
+    }
+
 }

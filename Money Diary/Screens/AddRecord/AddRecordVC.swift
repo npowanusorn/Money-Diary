@@ -109,6 +109,9 @@ class AddRecordVC: UIViewController {
         let wallet = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex)
         wallet.addRecord(newRecord: record)
         delegate?.didAddRecord(record: record)
+
+        Task { await FirestoreManager.writeData(forRecord: record) }
+
         dismiss(animated: true)
     }
 }

@@ -11,7 +11,7 @@ import Firebase
 
 class DashboardVC: UIViewController {
 
-    @IBOutlet private var addRecordButton: UIButton!
+    @IBOutlet private var addRecordButton: BounceButton!
     @IBOutlet private var balanceLabel: UILabel!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var ellipsisButton: UIButton!
@@ -36,20 +36,18 @@ class DashboardVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 12
-        
+        tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "\(LeftRightLabelCell.self)")
+
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         balanceLabel.text = getTotalBalance().toCurrencyString()
 
-//        walletManager.addMockWallets(count: 5)
-//        for index in 0...4 {
-//            walletManager.addMockRecords(count: Int.random(in: 1...5), walletIndex: index)
-//        }
-
-//        Task {
-//            await getDataFromFirestore()
-//            tableView.reloadData()
-//        }
+        guard let navigationController = self.navigationController else { return }
+        var navigationArray = navigationController.viewControllers
+        let temp = navigationArray.last
+        navigationArray.removeAll()
+        navigationArray.append(temp!)
+        self.navigationController?.viewControllers = navigationArray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,13 +75,14 @@ class DashboardVC: UIViewController {
 
     func setupMenuButton() {
         
-        let addWalletAction = UIAction(title: "Add Wallet", image: UIImage(systemName: "plus")) { _ in
+        let addWalletAction = UIAction(title: LocalizedKeys.addWallet.localized, image: UIImage(systemName: ImageName.addImage)) { _ in
             let addWalletVC = AddWalletVC()
             addWalletVC.delegate = self
             let navController = UINavigationController(rootViewController: addWalletVC)
+            navController.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
             self.present(navController, animated: true)
         }
-        let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gear")) { _ in
+        let settingsAction = UIAction(title: LocalizedKeys.settings.localized, image: UIImage(systemName: ImageName.settingsImage)) { _ in
             let settingsVC = SettingsVC()
             let back = UIBarButtonItem()
             back.title = ""
@@ -93,18 +92,15 @@ class DashboardVC: UIViewController {
         let divider = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
         
         let menu = UIMenu(title: "", options: .displayInline, children: [divider, settingsAction])
-//        navigationItem.rightBarButtonItem?.menu = menu
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
 
         var configuration = UIButton.Configuration.plain()
         configuration.imagePadding = 0
-        configuration.image = UIImage(systemName: "ellipsis.circle.fill")
+        configuration.image = UIImage(systemName: ImageName.ellipsisImage)
         configuration.buttonSize = .large
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
-//        ellipsisButton.imageView?.contentMode = .scaleAspectFit
-//        ellipsisButton.backgroundColor = .yellow
         ellipsisButton.configuration = configuration
     }
     
@@ -125,30 +121,44 @@ class DashboardVC: UIViewController {
 
     func getDataFromFirestore() async {
         guard let currentUser = currentUser else { return }
-        let walletCollection = db.collection("users").document(currentUser.uid).collection("wallets")
+        let walletCollection = db.collection(K.FirestoreKeys.CollectionKeys.users).document(currentUser.uid).collection(K.FirestoreKeys.CollectionKeys.wallets)
         do {
             let walletSnapshot = try await walletCollection.getDocuments()
             let walletDocuments = walletSnapshot.documents
             for walletDocument in walletDocuments {
-                let walletName = (walletDocument.data()["name"] as? String) ?? ""
-                let walletBalance = (walletDocument.data()["balance"] as? Double) ?? 0.0
+                let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
+                let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
                 let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
-                let recordCollection = walletCollection.document(walletDocument.documentID).collection("records")
+                let recordCollection = walletCollection.document(walletDocument.documentID).collection(K.FirestoreKeys.CollectionKeys.records)
                 let recordSnapshot = try await recordCollection.getDocuments()
                 let recordDocuments = recordSnapshot.documents
                 for recordDocument in recordDocuments {
-                    let amount = (recordDocument.data()["amount"] as? Double) ?? 0.0
-                    let date = (recordDocument.data()["date"] as? Timestamp)?.dateValue() ?? Date()
-                    let isExpense = (recordDocument.data()["isExpense"] as? Bool) ?? true
-                    let note = (recordDocument.data()["note"] as? String) ?? ""
-                    let wallet = (recordDocument.data()["wallet"] as? Int) ?? 0
+                    let amount = (recordDocument.data()[K.FirestoreKeys.FieldKeys.amount] as? Double) ?? 0.0
+                    let date = (recordDocument.data()[K.FirestoreKeys.FieldKeys.date] as? Timestamp)?.dateValue() ?? Date()
+                    let isExpense = (recordDocument.data()[K.FirestoreKeys.FieldKeys.expense] as? Bool) ?? true
+                    let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
+                    let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.wallet] as? Int) ?? 0
                     let record = Record(amount: amount, note: note, date: date, wallet: wallet, isExpense: isExpense)
                     walletForSnapshot.addRecord(newRecord: record)
                 }
                 walletManager.addWallet(newWallet: walletForSnapshot)
             }
         } catch {
-            Log.error("ERROR: \(error)")
+            Log.error("ERROR GETTING DATA FROM FIRESTORE: \(error)")
+        }
+    }
+
+    private func getNumberOfRows(forSection section: Int) -> Int {
+        if section == DashboardTableSections.myWallet.rawValue {
+            return walletsList.count == 0 ? 1 : walletsList.count
+        } else {
+            if recordList.count == 0 {
+                return 1
+            } else if recordList.count > 4 {
+                return 4
+            } else {
+                return recordList.count
+            }
         }
     }
 
@@ -165,37 +175,30 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "My Wallets"
-        } else {
-            return "Recent Records"
-        }
+        return DashboardTableSections.allCases[section].name()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return DashboardTableSections.allCases.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return walletsList.count == 0 ? 1 : walletsList.count
-        } else {
-            if recordList.count == 0 {
-                return 1
-            } else if recordList.count > 4 {
-                return 4
-            } else {
-                return recordList.count
-            }
-        }
+        return getNumberOfRows(forSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "\(LeftRightLabelCell.self)",
+            for: indexPath
+        ) as? LeftRightLabelCell else {
+            return UITableViewCell()
+        }
+        
+        if indexPath.section == DashboardTableSections.myWallet.rawValue {
+            cell.selectionStyle = .default
             var content = cell.defaultContentConfiguration()
             if walletsList.count == 0 {
-                content.text = "No wallets"
+                content.text = LocalizedKeys.noWallet.localized
                 cell.contentConfiguration = content
                 cell.selectionStyle = .none
                 return cell
@@ -206,17 +209,18 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             return cell
         } else {
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "recentRecordCell")
             var content = cell.defaultContentConfiguration()
             if recordList.count > 4, indexPath.row == 3 {
-                content.text = "Show all"
+                content.text = LocalizedKeys.showAll.localized
                 cell.contentConfiguration = content
                 cell.accessoryType = .disclosureIndicator
             } else if recordList.count == 0 {
+                cell.accessoryType = .none
                 cell.selectionStyle = .none
-                content.text = "No recent record"
+                content.text = LocalizedKeys.noRecord.localized
                 cell.contentConfiguration = content
             } else {
+                cell.accessoryType = .none
                 cell.selectionStyle = .none
                 content.text = recordList[indexPath.row].note
                 content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
@@ -229,6 +233,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            guard walletsList.count > 0 else { return }
             let walletDetailVC = WalletDetailVC()
             walletDetailVC.selectedWalletIndex = indexPath.row
             let back = UIBarButtonItem()
@@ -248,8 +253,14 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 1 { return nil }
         if walletManager.numberOfWallets == 0 { return nil }
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
-            let alert = UIAlertController.showDeleteConfirmationAlert(with: "Delete Wallet", message: "This action cannot be undone") {
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: LocalizedKeys.deleteAction.localized
+        ) { action, view, completion in
+            let alert = UIAlertController.showDeleteConfirmationAlert(
+                with: LocalizedKeys.deleteTitle.localized,
+                message: LocalizedKeys.deleteMessage.localized
+            ) {
                 let result = self.walletManager.removeWallet(at: indexPath.row)
                 self.refreshData()
                 completion(result)
@@ -258,14 +269,14 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             }
             self.present(alert, animated: true)
         }
-        deleteAction.image = UIImage(systemName: "trash.fill")
+        deleteAction.image = UIImage(systemName: ImageName.deleteImage)
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
 extension DashboardVC: AddedRecordDelegate {
     func didAddRecord(record: Record) {
-        SPIndicator.present(title: "Added", preset: .done, haptic: .success)
+        SPIndicator.present(title: LocalizedKeys.added.localized, preset: .done, haptic: .success)
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         refreshData()
@@ -274,8 +285,47 @@ extension DashboardVC: AddedRecordDelegate {
 
 extension DashboardVC: AddedWalletDelegate {
     func didAddWallet(wallet: Wallet) {
-        SPIndicator.present(title: "Added", preset: .done, haptic: .success)
+        SPIndicator.present(title: LocalizedKeys.added.localized, preset: .done, haptic: .success)
         walletsList = walletManager.getWallets()
         refreshData()
+    }
+}
+
+private extension DashboardVC {
+    enum LocalizedKeys {
+        static let title = "dashboard_title"
+        static let totalBalance = "dashboard_total_balance"
+        static let myWallet = "dashboard_my_wallet"
+        static let recentRecords = "dashboard_recent_records"
+        static let addRecord = "dashboard_add_record"
+        static let addWallet = "dashboard_menu_add_wallet"
+        static let settings = "dashboard_menu_settings"
+        static let noWallet = "dashboard_no_wallet"
+        static let noRecord = "dashboard_no_record"
+        static let showAll = "dashboard_show_all"
+        static let deleteTitle = "dashboard_alert_delete_title"
+        static let deleteMessage = "dashboard_alert_delete_message"
+        static let cancel = "dashboard_alert_cancel"
+        static let deleteAction = "dashboard_alert_delete"
+        static let added = "dashboard_indicator_added"
+    }
+    enum ImageName {
+        static let ellipsisImage = "ellipsis.circle.fill"
+        static let settingsImage = "gear"
+        static let addImage = "plus"
+        static let deleteImage = "trash.fill"
+    }
+    enum DashboardTableSections: Int, CaseIterable {
+        case myWallet = 0
+        case recentRecord
+
+        func name() -> String {
+            switch self {
+            case .myWallet:
+                return LocalizedKeys.myWallet.localized
+            case .recentRecord:
+                return LocalizedKeys.recentRecords.localized
+            }
+        }
     }
 }

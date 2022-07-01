@@ -31,7 +31,7 @@ class WalletDetailVC: UIViewController {
 
         tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
         tabBarView.setStyle(style: .line)
-        tabBarView.setSelectionOrientation(to: .top)
+        tabBarView.setSelectionOrientation(to: .bottom)
         tabBarView.delegate = self
         tabBarView.backgroundColor = .clear
 
@@ -67,9 +67,9 @@ class WalletDetailVC: UIViewController {
     }
     
     func refreshScreen() {
-        noRecordFoundView.isHidden = !wallet.records.isEmpty
-        tableView.isHidden = wallet.records.isEmpty
-        balanceView.isHidden = wallet.records.isEmpty
+        noRecordFoundView.isHidden = !filteredRecord.isEmpty
+        tableView.isHidden = filteredRecord.isEmpty
+        balanceView.isHidden = filteredRecord.isEmpty
         if case .all = filterOption {
             balanceLabel.text = "Balance: \(getWalletBalance())"
         } else {

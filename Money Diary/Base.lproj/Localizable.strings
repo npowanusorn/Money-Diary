@@ -37,3 +37,28 @@
 "delete_account_button" = "Delete Account";
 "delete_account_alert_title" = "Delete Account";
 "delete_account_alert_message" = "This action is permanent and cannot be undone";
+
+// Settings
+"settings_title" = "Settings";
+"settings_app_theme" = "App Theme";
+"settings_account" = "Account";
+"settings_log_out" = "Log out";
+"settings_logged_in_with" = "Logged in with %@";
+
+// Dashboard
+"dashboard_title" = "Dashboard";
+"dashboard_total_balance" = "Total Balance";
+"dashboard_my_wallet" = "My Wallet";
+"dashboard_recent_records" = "Recent Records";
+"dashboard_add_record" = "Add Record";
+"dashboard_menu_add_wallet" = "Add Wallet";
+"dashboard_menu_settings" = "Settings";
+"dashboard_no_wallet" = "No wallet";
+"dashboard_no_record" = "No recent record";
+"dashboard_show_all" = "Show all";
+"dashboard_alert_delete_title" = "Delete Wallet";
+"dashboard_alert_delete_message" = "This action cannot be undone";
+"dashboard_alert_cancel" = "Cancel";
+"dashboard_alert_delete" = "Delete";
+"dashboard_indicator_added" = "Added";
+

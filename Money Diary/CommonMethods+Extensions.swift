@@ -320,8 +320,10 @@ extension UILabel {
                 counter += 1
             } else {
                 timer.invalidate()
-                sleep(1)
-                completion?()
+                Task {
+                    try await Task.sleep(seconds: 0.5)
+                    completion?()
+                }
             }
         }
     }
@@ -363,5 +365,12 @@ extension NSLayoutConstraint {
 
         NSLayoutConstraint.activate([newConstraint])
         return newConstraint
+    }
+}
+
+extension Task where Success == Never, Failure == Never {
+    static func sleep(seconds: Double) async throws {
+        let duration = UInt64(seconds * 1_000_000_000)
+        try await Task.sleep(nanoseconds: duration)
     }
 }

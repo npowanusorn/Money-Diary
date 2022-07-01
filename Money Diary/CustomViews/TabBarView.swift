@@ -124,8 +124,12 @@ class TabBarView: UIView {
         buttons.removeAll()
         subviews.forEach { $0.removeFromSuperview() }
         for title in buttonTitles {
+            var configuration = UIButton.Configuration.plain()
+            configuration.title = title
+//            configuration.attributedTitle =
             let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .bold)
             button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
 //            button.titleLabel?.font = K.Fonts.regular.getFont(size: 15)

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashVC" customModule="Money_Diary" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="UB7-Q2-a4s" id="e9E-M1-SCP"/>
                 <outlet property="mainLabel" destination="4J3-Vu-bHz" id="mve-bd-bze"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,14 +26,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-Q2-a4s">
+                    <rect key="frame" x="145" y="583" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="CTP-fq-Cc9"/>
+                        <constraint firstAttribute="width" constant="100" id="meM-4w-dlH"/>
+                    </constraints>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4J3-Vu-bHz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ITC-RI-lrN"/>
+                <constraint firstItem="UB7-Q2-a4s" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Oe4-pM-il6"/>
                 <constraint firstItem="4J3-Vu-bHz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SjO-V5-3Gm"/>
                 <constraint firstItem="4J3-Vu-bHz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="V3m-K5-nn1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4J3-Vu-bHz" secondAttribute="trailing" constant="20" id="loW-Th-wQj"/>
+                <constraint firstItem="UB7-Q2-a4s" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.5" id="t3N-fs-ae6"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
         </view>

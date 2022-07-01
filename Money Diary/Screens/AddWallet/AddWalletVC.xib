@@ -21,83 +21,90 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqd-kO-2Dv" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="20" y="64" width="388" height="50"/>
+                    <rect key="frame" x="20" y="63.999999999999993" width="388" height="100.33333333333331"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scr-tC-9ZQ">
-                            <rect key="frame" x="20" y="13.333333333333327" width="47" height="23.333333333333329"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                            <rect key="frame" x="20" y="15.000000000000002" width="100" height="19.666666666666671"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="p47-xz-oJM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZC-yJ-6Np" userLabel="Name Text Field">
-                            <rect key="frame" x="102.66666666666666" y="10" width="265.33333333333337" height="30"/>
+                            <rect key="frame" x="120" y="15.000000000000002" width="248" height="19.666666666666671"/>
                             <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="MGS-LE-EMY"/>
                             </connections>
                         </textField>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="fZC-yJ-6Np" secondAttribute="bottom" constant="10" id="Pi6-m7-PHS"/>
-                        <constraint firstAttribute="height" constant="50" id="QL5-Qf-hCV"/>
-                        <constraint firstItem="scr-tC-9ZQ" firstAttribute="centerY" secondItem="hqd-kO-2Dv" secondAttribute="centerY" id="YhY-W0-qKB"/>
-                        <constraint firstItem="scr-tC-9ZQ" firstAttribute="leading" secondItem="hqd-kO-2Dv" secondAttribute="leading" constant="20" id="gUH-jw-Grk"/>
-                        <constraint firstItem="fZC-yJ-6Np" firstAttribute="top" secondItem="hqd-kO-2Dv" secondAttribute="top" constant="10" id="wVB-Lo-9cI"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ege-1F-qvY" customClass="RoundedView" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="20" y="134" width="388" height="50"/>
-                    <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x14-wv-Uti">
-                            <rect key="frame" x="19.999999999999996" y="13.333333333333341" width="62.666666666666657" height="23.333333333333329"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                            <rect key="frame" x="20" y="65.666666666666657" width="100" height="19.666666666666671"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOK-hd-uzq" userLabel="Amount Text Field">
-                            <rect key="frame" x="102.66666666666666" y="10" width="265.33333333333337" height="30"/>
+                            <rect key="frame" x="120" y="65.666666666666657" width="248" height="19.666666666666671"/>
                             <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             <connections>
                                 <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="PFS-Hx-MF6"/>
                             </connections>
                         </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-ar-q8x" userLabel="Separator">
+                            <rect key="frame" x="20" y="49.666666666666671" width="348" height="1"/>
+                            <color key="backgroundColor" systemColor="separatorColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="LYN-oP-AKk"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="vOK-hd-uzq" secondAttribute="trailing" constant="20" id="1BH-Ur-RJM"/>
-                        <constraint firstItem="vOK-hd-uzq" firstAttribute="top" secondItem="Ege-1F-qvY" secondAttribute="top" constant="10" id="2d3-Ag-7Ny"/>
-                        <constraint firstAttribute="bottom" secondItem="vOK-hd-uzq" secondAttribute="bottom" constant="10" id="FgP-hm-6fV"/>
-                        <constraint firstAttribute="height" constant="50" id="TgW-6H-sYl"/>
-                        <constraint firstItem="x14-wv-Uti" firstAttribute="leading" secondItem="Ege-1F-qvY" secondAttribute="leading" constant="20" id="ZgM-rl-hDm"/>
-                        <constraint firstItem="vOK-hd-uzq" firstAttribute="leading" secondItem="x14-wv-Uti" secondAttribute="trailing" constant="20" id="gN2-eP-AOx"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oEl-ca-HQv"/>
-                        <constraint firstItem="x14-wv-Uti" firstAttribute="centerY" secondItem="Ege-1F-qvY" secondAttribute="centerY" id="uQP-dx-Vbs"/>
+                        <constraint firstItem="x14-wv-Uti" firstAttribute="leading" secondItem="scr-tC-9ZQ" secondAttribute="leading" id="2rj-ae-sGS"/>
+                        <constraint firstItem="vOK-hd-uzq" firstAttribute="bottom" secondItem="x14-wv-Uti" secondAttribute="bottom" id="3ji-rK-UhV"/>
+                        <constraint firstItem="fZC-yJ-6Np" firstAttribute="leading" secondItem="scr-tC-9ZQ" secondAttribute="trailing" id="3tQ-uX-qre"/>
+                        <constraint firstItem="fZC-yJ-6Np" firstAttribute="top" secondItem="scr-tC-9ZQ" secondAttribute="top" id="AvU-Ae-4Qt"/>
+                        <constraint firstItem="x14-wv-Uti" firstAttribute="height" secondItem="scr-tC-9ZQ" secondAttribute="height" id="C6Q-7W-Kk9"/>
+                        <constraint firstItem="vOK-hd-uzq" firstAttribute="leading" secondItem="fZC-yJ-6Np" secondAttribute="leading" id="JOU-lW-aUA"/>
+                        <constraint firstItem="fZC-yJ-6Np" firstAttribute="centerY" secondItem="scr-tC-9ZQ" secondAttribute="centerY" id="JWX-Ln-6gn"/>
+                        <constraint firstItem="dn5-ar-q8x" firstAttribute="leading" secondItem="hqd-kO-2Dv" secondAttribute="leading" constant="20" id="KlV-H0-Gde"/>
+                        <constraint firstItem="x14-wv-Uti" firstAttribute="top" secondItem="dn5-ar-q8x" secondAttribute="bottom" constant="15" id="VIV-cB-hvy"/>
+                        <constraint firstItem="dn5-ar-q8x" firstAttribute="top" secondItem="scr-tC-9ZQ" secondAttribute="bottom" constant="15" id="WNI-1N-PxC"/>
+                        <constraint firstItem="scr-tC-9ZQ" firstAttribute="top" secondItem="hqd-kO-2Dv" secondAttribute="top" constant="15" id="X18-L2-YNz"/>
+                        <constraint firstAttribute="trailing" secondItem="fZC-yJ-6Np" secondAttribute="trailing" constant="20" id="dzt-yK-60M"/>
+                        <constraint firstItem="x14-wv-Uti" firstAttribute="trailing" secondItem="scr-tC-9ZQ" secondAttribute="trailing" id="ebW-DM-22m"/>
+                        <constraint firstItem="vOK-hd-uzq" firstAttribute="top" secondItem="x14-wv-Uti" secondAttribute="top" id="etB-wh-grO"/>
+                        <constraint firstItem="scr-tC-9ZQ" firstAttribute="leading" secondItem="hqd-kO-2Dv" secondAttribute="leading" constant="20" id="gUH-jw-Grk"/>
+                        <constraint firstItem="vOK-hd-uzq" firstAttribute="trailing" secondItem="fZC-yJ-6Np" secondAttribute="trailing" id="k08-Hr-ZhK"/>
+                        <constraint firstAttribute="bottom" secondItem="x14-wv-Uti" secondAttribute="bottom" constant="15" id="kjw-BZ-Bn7"/>
+                        <constraint firstItem="fZC-yJ-6Np" firstAttribute="bottom" secondItem="scr-tC-9ZQ" secondAttribute="bottom" id="qlG-h1-MGV"/>
+                        <constraint firstItem="vOK-hd-uzq" firstAttribute="height" secondItem="scr-tC-9ZQ" secondAttribute="height" id="rEc-ay-oEA"/>
+                        <constraint firstAttribute="trailing" secondItem="dn5-ar-q8x" secondAttribute="trailing" constant="20" id="wie-B5-0hf"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ege-1F-qvY" secondAttribute="trailing" constant="20" id="3ca-kl-Hwe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hqd-kO-2Dv" secondAttribute="trailing" constant="20" id="8ih-wo-ajJ"/>
                 <constraint firstItem="hqd-kO-2Dv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="LJ7-ZG-esB"/>
-                <constraint firstItem="Ege-1F-qvY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="fjq-hh-hto"/>
-                <constraint firstItem="Ege-1F-qvY" firstAttribute="top" secondItem="hqd-kO-2Dv" secondAttribute="bottom" constant="20" id="jBA-Di-iPO"/>
-                <constraint firstItem="fZC-yJ-6Np" firstAttribute="trailing" secondItem="vOK-hd-uzq" secondAttribute="trailing" id="mwu-P5-FhL"/>
                 <constraint firstItem="hqd-kO-2Dv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="rle-EL-1JA"/>
-                <constraint firstItem="fZC-yJ-6Np" firstAttribute="leading" secondItem="vOK-hd-uzq" secondAttribute="leading" id="wPn-cv-rJV"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="102"/>
+            <point key="canvasLocation" x="138.78504672897196" y="101.72786177105833"/>
         </view>
     </objects>
     <resources>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

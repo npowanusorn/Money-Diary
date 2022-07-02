@@ -65,24 +65,21 @@ class SettingsVC: UIViewController {
         currentEmailLabel.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor).isActive = true
         currentEmailLabel.topAnchor.constraint(equalTo: logOutView.topAnchor, constant: 0).isActive = true
         
-//        buttonConfiguration.attributedTitle = getAttributedString(for: "Delete account", fontSize: 15.0, weight: .bold)
-//        let deleteAccountButton = BounceButton(configuration: buttonConfiguration)
-//        logOutView.addSubview(deleteAccountButton)
-//        deleteAccountButton.translatesAutoresizingMaskIntoConstraints = false
-//        deleteAccountButton.addTarget(self, action: #selector(deleteAccountTapped), for: .touchUpInside)
-//        
-//        deleteAccountButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 20).isActive = true
-//        deleteAccountButton.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor).isActive = true
-//        deleteAccountButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        deleteAccountButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return logOutView
     }
 
     @objc
     func logOutTapped() {
-        let alert = UIAlertController.showAlert(with: "Log out", message: nil, style: .alert, primaryActionName: "Log out", primaryActionStyle: .destructive, secondaryActionName: "Cancel", secondaryActionStyle: .cancel) {
-            self.handleLogOut()
-        }
+        let alert = UIAlertController.showAlert(
+            with: LocalizedKeys.logOut.localized,
+            message: LocalizedKeys.logOutMessage.localized,
+            style: .alert,
+            primaryActionName: LocalizedKeys.logOut.localized,
+            primaryActionStyle: .destructive,
+            secondaryActionName: LocalizedKeys.cancel.localized,
+            secondaryActionStyle: .cancel) {
+                self.handleLogOut()
+            }
         self.present(alert, animated: true)
     }
     
@@ -106,29 +103,6 @@ class SettingsVC: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc
-    func deleteAccountTapped() {
-        if let email = Auth.auth().currentUser?.email {
-            let alert = UIAlertController.showTextFieldAlert(with: "Delete account", message: "Type in your email to continue", actionTitle: "Continue") { textField in
-                if textField.text == email {
-                    self.handleDeleteAccount()
-                }
-            }
-            self.present(alert, animated: true)
-        }
-    }
-    
-    func handleDeleteAccount() {
-        Auth.auth().currentUser?.delete { error in
-            if let error = error {
-                Log.error("ERROR DELETING ACCOUNT: \(error)")
-                self.present(UIAlertController.showErrorAlert(message: error.localizedDescription), animated: true)
-                return
-            }
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-
     func navigateToVC() {
         if let row = tableView.indexPathForSelectedRow?.row {
             switch row {
@@ -226,7 +200,9 @@ private extension SettingsVC {
         static let account = "settings_account"
         static let title = "settings_title"
         static let logOut = "settings_log_out"
+        static let logOutMessage = "settings_log_out_message"
         static let loggedInWith = "settings_logged_in_with"
+        static let cancel = "settings_cancel"
     }
 
 }

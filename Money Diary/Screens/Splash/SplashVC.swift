@@ -47,6 +47,7 @@ class SplashVC: UIViewController {
         Log.info("IS INTERNET AVAILABLE: \(NetworkManager.shared.isInternetAvailable)")
         if !NetworkManager.shared.isInternetAvailable {
             self.isSignedIn = wasLoggedIn
+            if isSignedIn { await attemptToGetData() }
         } else {
             guard let email = keychain.get(K.KeychainKeys.emailKey), let password = keychain.get(K.KeychainKeys.passwordKey) else {
                 Log.info("NO EMAIL/PASSWORD IN KEYCHAIN")

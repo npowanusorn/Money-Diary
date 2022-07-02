@@ -305,9 +305,9 @@
 			isa = PBXGroup;
 			children = (
 				48DAB1EF286D17DD00E7461C /* BiometryManager.swift */,
+				48DAB1F4286EADA000E7461C /* NetworkManager.swift */,
 				4849A89B285D9FD1004569EB /* RecordManager.swift */,
 				4849A899285D9DCC004569EB /* WalletManager.swift */,
-				48DAB1F4286EADA000E7461C /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -342,7 +342,6 @@
 			isa = PBXGroup;
 			children = (
 				5024EE5B284DB344000B295A /* Assets.xcassets */,
-				48DAB1F2286D614300E7461C /* Managers */,
 				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
 				50E2834A285FA87A005A3907 /* Constants.swift */,
 				5038E6602852D64600756D60 /* CustomViews */,
@@ -354,6 +353,7 @@
 				5024EE5D284DB344000B295A /* LaunchScreen.storyboard */,
 				48DAB1E1286B7B0900E7461C /* Localizable.strings */,
 				5024EE58284DB342000B295A /* Main.storyboard */,
+				48DAB1F2286D614300E7461C /* Managers */,
 				4836D85B285D778400746A56 /* Record.swift */,
 				5038E6632852D69A00756D60 /* Screens */,
 				5038E68C2853052500756D60 /* UIView+Fade.swift */,
@@ -366,18 +366,18 @@
 		5038E6602852D64600756D60 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				505BA11E284F1473007AFBE0 /* RoundedView.swift */,
-				5038E6612852D64E00756D60 /* WalletsCell */,
 				5038E6682852D90A00756D60 /* BounceButton.swift */,
 				50A221B42855016700D1A139 /* ContentSizedTableView.swift */,
 				4836D851285D4C7200746A56 /* DatePickerCell.swift */,
-				4836D85F285D8CD900746A56 /* TextViewCell.swift */,
+				48DAB1F3286D617700E7461C /* ImageCell */,
 				50E28324285EB95B005A3907 /* LeftRightLabelCell.swift */,
+				505BA11E284F1473007AFBE0 /* RoundedView.swift */,
 				509D84A22860335C00AC8F58 /* TabBarView.swift */,
 				4839B81F28618F9E0015C048 /* TabBarViewCell.swift */,
-				48DAB1F3286D617700E7461C /* ImageCell */,
-				487BA56628658ACF007E00B6 /* TypingLabel.swift */,
 				4818557C2866AFC000648BB6 /* TextFields.swift */,
+				4836D85F285D8CD900746A56 /* TextViewCell.swift */,
+				487BA56628658ACF007E00B6 /* TypingLabel.swift */,
+				5038E6612852D64E00756D60 /* WalletsCell */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";

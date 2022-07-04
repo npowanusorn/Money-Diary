@@ -21,6 +21,7 @@ class SplashVC: UIViewController {
 
     private let keychain = KeychainSwift()
     private let auth = Auth.auth()
+    private let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,13 @@ class SplashVC: UIViewController {
             }
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+        }
+        
+        if defaults.bool(forKey: K.UserDefaultsKeys.localAccount) {
+            loadLocalData()
+            isSignedIn = true
+            isFirebaseDone = true
+            return
         }
 
         Task { await attemptToLogIn() }
@@ -90,6 +98,10 @@ class SplashVC: UIViewController {
             welcomeVC.shouldAnimateElements = true
             navigationController?.pushViewController(welcomeVC, animated: false)
         }
+    }
+    
+    private func loadLocalData() {
+        Log.info("**** LOAD LOCAL DATA ****")
     }
 
 }

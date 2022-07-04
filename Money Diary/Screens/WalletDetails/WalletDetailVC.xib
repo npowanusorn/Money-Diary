@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="balanceLabel" destination="ihg-NC-2MV" id="1ig-dl-6nk"/>
                 <outlet property="balanceView" destination="CKP-KM-Zmc" id="Ap8-Eu-k2Y"/>
+                <outlet property="circlePlusButton" destination="5cc-aN-AZb" id="kWs-kl-FmC"/>
                 <outlet property="noRecordFoundView" destination="9Q5-Qb-vpb" id="aSG-XO-fdi"/>
                 <outlet property="tabBarView" destination="MQW-mV-tYo" id="XSe-7X-cci"/>
                 <outlet property="tableView" destination="D1y-bq-Gjq" id="g3x-ye-Q1C"/>
@@ -48,7 +49,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="1uC-vT-CmJ" firstAttribute="trailing" secondItem="ZIV-Kp-Isf" secondAttribute="trailing" id="Aj4-EM-I1b"/>
                         <constraint firstItem="1uC-vT-CmJ" firstAttribute="leading" secondItem="ZIV-Kp-Isf" secondAttribute="leading" id="F3e-Im-YJS"/>
@@ -83,13 +84,27 @@
                         <constraint firstAttribute="height" constant="40" id="ymq-N5-DDk"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cc-aN-AZb" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
+                    <rect key="frame" x="334" y="796" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3Vy-j5-A0V"/>
+                        <constraint firstAttribute="width" constant="50" id="aT0-Oh-27J"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" cornerStyle="capsule"/>
+                    <connections>
+                        <action selector="addRecordTapped:" destination="-1" eventType="touchUpInside" id="934-4E-t7b"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
             <constraints>
                 <constraint firstItem="D1y-bq-Gjq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E7n-4t-a8n"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5cc-aN-AZb" secondAttribute="trailing" constant="30" id="HXg-vO-ylH"/>
                 <constraint firstItem="MQW-mV-tYo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OI4-6X-5Ib"/>
                 <constraint firstItem="9Q5-Qb-vpb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QiB-6Y-l6z"/>
+                <constraint firstAttribute="bottom" secondItem="5cc-aN-AZb" secondAttribute="bottom" constant="50" id="SPv-er-Jt8"/>
                 <constraint firstItem="D1y-bq-Gjq" firstAttribute="top" secondItem="MQW-mV-tYo" secondAttribute="bottom" id="Uac-Ah-iI6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D1y-bq-Gjq" secondAttribute="trailing" id="aKl-qf-Ydr"/>
                 <constraint firstAttribute="bottom" secondItem="D1y-bq-Gjq" secondAttribute="bottom" id="cOI-kx-Tg8"/>
@@ -106,6 +121,7 @@
         </view>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

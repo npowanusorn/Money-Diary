@@ -14,6 +14,7 @@ import KeychainSwift
 class SettingsVC: UIViewController {
 
     private let keychain = KeychainSwift()
+    private let isUsingLocalAccount = UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount)
 
     @IBOutlet private var tableView: UITableView!
 
@@ -52,10 +53,8 @@ class SettingsVC: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         button.centerXAnchor.constraint(equalTo: logOutView.centerXAnchor, constant: 0).isActive = true
         button.centerYAnchor.constraint(equalTo: logOutView.centerYAnchor, constant: 0).isActive = true
-
-        guard let currentEmail = Auth.auth().currentUser?.email else {
-            return logOutView
-        }
+        
+        let currentEmail = Auth.auth().currentUser?.email ?? LocalizedKeys.localAccount.localized
         let currentEmailLabel = UILabel()
         currentEmailLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         currentEmailLabel.text = LocalizedKeys.loggedInWith.localizeWithFormat(arguments: currentEmail)
@@ -72,7 +71,8 @@ class SettingsVC: UIViewController {
     func logOutTapped() {
         let alert = UIAlertController.showAlert(
             with: LocalizedKeys.logOut.localized,
-            message: LocalizedKeys.logOutMessage.localized,
+            message: isUsingLocalAccount ?
+            LocalizedKeys.logOutMessageLocalAccount.localized : LocalizedKeys.logOutMessage.localized,
             style: .alert,
             primaryActionName: LocalizedKeys.logOut.localized,
             primaryActionStyle: .destructive,
@@ -85,6 +85,7 @@ class SettingsVC: UIViewController {
     
     func handleLogOut() {
         UserDefaults.standard.set(false, forKey: K.UserDefaultsKeys.isLoggedIn)
+        UserDefaults.standard.set(false, forKey: K.UserDefaultsKeys.localAccount)
         do {
             try Auth.auth().signOut()
         } catch let error as NSError {
@@ -203,6 +204,8 @@ private extension SettingsVC {
         static let logOutMessage = "settings_log_out_message"
         static let loggedInWith = "settings_logged_in_with"
         static let cancel = "settings_cancel"
+        static let localAccount = "settings_local_account"
+        static let logOutMessageLocalAccount = "settings_log_out_message_local_account"
     }
 
 }

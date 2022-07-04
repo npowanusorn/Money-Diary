@@ -44,8 +44,10 @@
 "settings_account" = "Account";
 "settings_log_out" = "Log out";
 "settings_log_out_message" = "Are you sure you want to log out?";
+"settings_log_out_message_local_account" = "You are using a local account. By logging out, you will delete all your data. You can create an account under \"Account\" settings";
 "settings_cancel" = "Cancel";
-"settings_logged_in_with" = "Logged in with %@";
+"settings_logged_in_with" = "Logged in with: %@";
+"settings_local_account" = "Local account";
 
 // Dashboard
 "dashboard_title" = "Dashboard";
@@ -63,4 +65,4 @@
 "dashboard_alert_cancel" = "Cancel";
 "dashboard_alert_delete" = "Delete";
 "dashboard_indicator_added" = "Added";
-
+"dashboard_alert_no_wallet_message" = "Create a wallet before adding a record";

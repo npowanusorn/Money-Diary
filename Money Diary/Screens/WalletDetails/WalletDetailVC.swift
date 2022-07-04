@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WalletDetailVC: UIViewController {
 
@@ -14,7 +15,7 @@ class WalletDetailVC: UIViewController {
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
     private var wallet: Wallet!
-    private var filteredRecord = [Record]()
+    private var filteredRecord = List<Record>()
     private let tabViewButtonTitles = ["All", "Expenses", "Income"]
     private var filterOption: FilterOption = .all
     
@@ -23,7 +24,8 @@ class WalletDetailVC: UIViewController {
     @IBOutlet private var balanceView: RoundedView!
     @IBOutlet private var balanceLabel: UILabel!
     @IBOutlet private var tabBarView: TabBarView!
-        
+    @IBOutlet private var circlePlusButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,7 @@ class WalletDetailVC: UIViewController {
         noRecordFoundView.isHidden = !wallet.records.isEmpty
         tableView.isHidden = wallet.records.isEmpty
         balanceView.isHidden = wallet.records.isEmpty
+        circlePlusButton.isHidden = wallet.records.isEmpty
         balanceLabel.text = "Balance: \(getWalletBalance())"
         
         tableView.delegate = self
@@ -70,6 +73,7 @@ class WalletDetailVC: UIViewController {
         noRecordFoundView.isHidden = !filteredRecord.isEmpty
         tableView.isHidden = filteredRecord.isEmpty
         balanceView.isHidden = filteredRecord.isEmpty
+        circlePlusButton.isHidden = filteredRecord.isEmpty
         if case .all = filterOption {
             balanceLabel.text = "Balance: \(getWalletBalance())"
         } else {
@@ -146,7 +150,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let dates = selectedWallet.getAllDates()
 
         return selectedWallet.getRecordsForDate(date: dates[section - 1]).filter { record in
-            switch filterOption {
+            switch self.filterOption {
             case .all:
                 return true
             case .expense:

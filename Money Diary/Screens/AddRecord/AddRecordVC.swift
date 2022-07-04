@@ -7,6 +7,7 @@
 
 import UIKit
 import SPIndicator
+import RealmSwift
 
 protocol AddedRecordDelegate {
     func didAddRecord(record: Record)
@@ -105,13 +106,29 @@ class AddRecordVC: UIViewController {
     
     @objc
     func addAction() {
-        let record = Record(amount: Double(amountText) ?? 0.0, note: noteText, date: selectedDate, wallet: WalletManager.shared.chosenWalletIndex, isExpense: isExpense)
-        let wallet = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex)
-        wallet.addRecord(newRecord: record)
+        let record = Record()
+        record.amount = Double(amountText) ?? 0.0
+        record.note = noteText
+        record.date = selectedDate
+        record.wallet = WalletManager.shared.chosenWalletIndex
+        record.isExpense = isExpense
+        
+        if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
+            do {
+                Log.info("**** WRITING TO REALM ****")
+                let realm = try Realm()
+                let wallet = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex)
+                try realm.write {
+                    realm.add(record)
+                    wallet.addRecord(newRecord: record)
+                }
+            } catch {
+                Log.error("REALM WRITE ERROR: \(error)")
+            }
+        } else {
+            Task { await FirestoreManager.writeData(forRecord: record) }
+        }
         delegate?.didAddRecord(record: record)
-
-        Task { await FirestoreManager.writeData(forRecord: record) }
-
         dismiss(animated: true)
     }
 }

@@ -51,7 +51,10 @@ class WalletManager {
 
     func addMockWallets(count: Int) {
         for counter in 1...count {
-            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0)
+            let wallet = Wallet()
+            wallet.name = "wallet \(counter)"
+            wallet.modifyBalance(to: 1000.0)
+//            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0)
             addWallet(newWallet: wallet)
         }
     }
@@ -59,7 +62,13 @@ class WalletManager {
     func addMockRecords(count: Int, walletIndex: Int) {
         let wallet = getWallet(at: walletIndex)
         for counter in 1...count {
-            let record = Record(amount: Double.random(in: 1...100).rounded(toPlaces: 2), note: "tr \(counter)", date: Date(), wallet: walletIndex, isExpense: Bool.random())
+            let record = Record()
+            record.amount = Double.random(in: 1...100).rounded(toPlaces: 2)
+            record.note = "tr \(counter)"
+            record.date = Date()
+            record.wallet = walletIndex
+            record.isExpense = Bool.random()
+//            let record = Record(amount: Double.random(in: 1...100).rounded(toPlaces: 2), note: "tr \(counter)", date: Date(), wallet: walletIndex, isExpense: Bool.random())
             wallet.addRecord(newRecord: record)
         }
     }

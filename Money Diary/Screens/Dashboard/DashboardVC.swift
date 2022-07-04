@@ -67,6 +67,11 @@ class DashboardVC: UIViewController {
     }
     
     @IBAction func addRecordTapped(_ sender: Any) {
+        guard !walletsList.isEmpty else {
+            let alert = UIAlertController.showDismissAlert(with: LocalizedKeys.noWallet.localized, message: LocalizedKeys.noWalletMessage.localized)
+            present(alert, animated: true)
+            return
+        }
         let addRecordVC = AddRecordVC()
         addRecordVC.delegate = self
         let navigation = UINavigationController(rootViewController: addRecordVC)
@@ -95,13 +100,6 @@ class DashboardVC: UIViewController {
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
 
-        var configuration = UIButton.Configuration.plain()
-        configuration.imagePadding = 0
-        configuration.image = UIImage(systemName: ImageName.ellipsisImage)
-        configuration.buttonSize = .large
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-
-        ellipsisButton.configuration = configuration
     }
     
     func getTotalBalance() -> Double {
@@ -128,7 +126,10 @@ class DashboardVC: UIViewController {
             for walletDocument in walletDocuments {
                 let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
                 let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
+//                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
+                let walletForSnapshot = Wallet()
+                walletForSnapshot.name = walletName
+                walletForSnapshot.modifyBalance(to: walletBalance)
                 let recordCollection = walletCollection.document(walletDocument.documentID).collection(K.FirestoreKeys.CollectionKeys.records)
                 let recordSnapshot = try await recordCollection.getDocuments()
                 let recordDocuments = recordSnapshot.documents
@@ -138,7 +139,12 @@ class DashboardVC: UIViewController {
                     let isExpense = (recordDocument.data()[K.FirestoreKeys.FieldKeys.expense] as? Bool) ?? true
                     let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
                     let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.wallet] as? Int) ?? 0
-                    let record = Record(amount: amount, note: note, date: date, wallet: wallet, isExpense: isExpense)
+                    let record = Record()
+                    record.amount = amount
+                    record.note = note
+                    record.date = date
+                    record.wallet = wallet
+                    record.isExpense = isExpense
                     walletForSnapshot.addRecord(newRecord: record)
                 }
                 walletManager.addWallet(newWallet: walletForSnapshot)
@@ -308,6 +314,7 @@ private extension DashboardVC {
         static let cancel = "dashboard_alert_cancel"
         static let deleteAction = "dashboard_alert_delete"
         static let added = "dashboard_indicator_added"
+        static let noWalletMessage = "dashboard_alert_no_wallet_message"
     }
     enum ImageName {
         static let ellipsisImage = "ellipsis.circle.fill"

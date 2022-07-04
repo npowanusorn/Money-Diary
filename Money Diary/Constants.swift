@@ -37,6 +37,7 @@ enum K {
     enum UserDefaultsKeys {
         static let isLoggedIn = "isLoggedIn"
         static let isBiometryEnabled = "isBiometryEnabled"
+        static let localAccount = "localAccount"
     }
     
     enum Fonts: String {

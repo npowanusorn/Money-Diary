@@ -6,11 +6,19 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Wallet {
-    private var _name: String
-    private var _balance: Double
-    private var _records: [Record]
+class Wallet: Object {
+    @objc dynamic var _name: String = ""
+    @objc dynamic var _balance: Double = 0.0
+    let _records = List<Record>()
+    
+//    init(name: String, balance: Double, records: [Record]? = nil) {
+//        self._name = name
+//        self._balance = balance
+//        self._records = records ?? [Record]()
+//    }
+    
     var name: String {
         get { return _name }
         set { _name = newValue }
@@ -18,14 +26,8 @@ class Wallet {
     var balance: Double {
         get { return _balance }
     }
-    var records: [Record] {
+    var records: List<Record> {
         get { return _records }
-    }
-
-    init(name: String, balance: Double, records: [Record]? = nil) {
-        self._name = name
-        self._balance = balance
-        self._records = records ?? [Record]()
     }
 
     func modifyBalance(to newBalance: Double) {
@@ -45,8 +47,8 @@ class Wallet {
         RecordManager.shared.addRecord(newRecord: newRecord)
     }
 
-    func getRecordsForDate(date: Date) -> [Record] {
-        var recordsForDate = [Record]()
+    func getRecordsForDate(date: Date) -> List<Record> {
+        let recordsForDate = List<Record>()
         for record in records {
             if Calendar.current.isDate(date, inSameDayAs: record.date) {
                 recordsForDate.append(record)
@@ -55,8 +57,8 @@ class Wallet {
         return recordsForDate
     }
 
-    func getRecordsByType(type: FilterOption) -> [Record] {
-        var recordsByType = [Record]()
+    func getRecordsByType(type: FilterOption) -> List<Record> {
+        let recordsByType = List<Record>()
         for record in records {
             switch type {
             case .all:

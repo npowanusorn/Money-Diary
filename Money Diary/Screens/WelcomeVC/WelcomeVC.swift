@@ -56,6 +56,20 @@ class WelcomeVC: UIViewController {
         goToNext(isLogIn: false)
     }
 
+    @IBAction func continueWithoutAccountTapped(_ sender: BounceButton) {
+        let alert = UIAlertController.showAlert(with: "Continue without account", message: "Your data will only be available on this device", style: .alert, primaryActionName: "Continue", primaryActionStyle: .default, secondaryActionName: "Cancel", secondaryActionStyle: .cancel, primaryCompletion: {
+            self.handleContinueWithAccount()
+        }, secondaryCompletion: nil)
+        present(alert, animated: true)
+    }
+    
+    private func handleContinueWithAccount() {
+        Log.info("CONTINUE WITHOUT ACCOUNT")
+        UserDefaults.standard.set(true, forKey: "localAccount")
+        let dashboardVC = DashboardVC()
+        navigationController?.pushViewController(dashboardVC, animated: true)
+    }
+    
     private func goToNext(isLogIn: Bool) {
         let loginCreateAccountVC = LoginCreateAccountVC()
         loginCreateAccountVC.isLogInVC = isLogIn

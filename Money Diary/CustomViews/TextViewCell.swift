@@ -42,11 +42,11 @@ class TextViewCell: UITableViewCell {
         let placeholderLabel = UILabel()
         label = placeholderLabel
         textView.backgroundColor = .clear
-        textView.font = UIFont(name: "Avenir Next Regular", size: 17)
+        textView.font = UIFont.systemFont(ofSize: 17)
         textView.translatesAutoresizingMaskIntoConstraints = false
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         placeholderLabel.text = "Note"
-        placeholderLabel.font = UIFont(name: "Avenir Next Regular", size: 17)
+        placeholderLabel.font = UIFont.systemFont(ofSize: 17)
         placeholderLabel.textColor = .placeholderText
         textView.delegate = self
         contentView.addSubview(textView)

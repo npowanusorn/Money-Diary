@@ -10,6 +10,7 @@ import SwiftyBeaver
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         NetworkManager.shared.startInternetCheck()
 
+        do { _ = try Realm() }
+        catch { Log.error("REALM ERROR: \(error)") }
+        Log.info("\(String(describing: Realm.Configuration.defaultConfiguration.fileURL))")
         return true
     }
 

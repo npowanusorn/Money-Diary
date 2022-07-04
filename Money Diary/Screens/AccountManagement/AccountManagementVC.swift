@@ -68,6 +68,7 @@ extension AccountManagementVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = CellSectionConfiguration.allCases[indexPath.section].getCellText()[indexPath.row]
+        content.textProperties.font = UIFont.systemFont(ofSize: 15.0)
         if indexPath.section == CellSectionConfiguration.danger.rawValue {
             content.textProperties.color = .systemRed
         } else {

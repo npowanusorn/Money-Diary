@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol AddedWalletDelegate {
     func didAddWallet(wallet: Wallet)
@@ -63,11 +64,26 @@ class AddWalletVC: UIViewController {
 
     @objc
     func addWallet() {
-        let newWallet = Wallet(name: name, balance: amount)
+//        let newWallet = Wallet(name: name, balance: amount)
+        let newWallet = Wallet()
+        newWallet.name = name
+        newWallet.modifyBalance(to: amount)
         WalletManager.shared.addWallet(newWallet: newWallet)
         delegate?.didAddWallet(wallet: newWallet)
 
-        Task { await FirestoreManager.writeData(forWallet: newWallet) }
+        if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
+            do {
+                Log.info("**** WRITING TO REALM ****")
+                let realm = try Realm()
+                try realm.write {
+                    realm.add(newWallet)
+                }
+            } catch {
+                Log.error("REALM WRITE ERROR: \(error)")
+            }
+        } else {
+            Task { await FirestoreManager.writeData(forWallet: newWallet) }
+        }
 
         dismiss(animated: true)
     }

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import KeychainSwift
+import RealmSwift
 
 class SplashVC: UIViewController {
 
@@ -39,7 +40,7 @@ class SplashVC: UIViewController {
             self.activityIndicator.startAnimating()
         }
         
-        if defaults.bool(forKey: K.UserDefaultsKeys.localAccount) {
+        if isLocalAccount {
             loadLocalData()
             isSignedIn = true
             isFirebaseDone = true
@@ -101,7 +102,23 @@ class SplashVC: UIViewController {
     }
     
     private func loadLocalData() {
-        Log.info("**** LOAD LOCAL DATA ****")
+        Log.info("**** LOAD LOCAL REALM DATA ****")
+        
+        do {
+            let realm = try Realm()
+            let allWallets = realm.objects(Wallet.self)
+            let allRecords = realm.objects(Record.self)
+
+            allWallets.forEach { wallet in
+                WalletManager.shared.addWallet(newWallet: wallet)
+            }
+
+            allRecords.forEach { record in
+                RecordManager.shared.addRecord(newRecord: record)
+            }
+        } catch {
+            Log.error("ERROR READING REALM DATA: \(error)")
+        }
     }
 
 }

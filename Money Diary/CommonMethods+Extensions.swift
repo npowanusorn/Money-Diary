@@ -10,6 +10,11 @@ import CoreImage
 import KeychainSwift
 
 private var tintColor: UIColor = .tintColor
+
+var isLocalAccount: Bool {
+    UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount)
+}
+
 var globalTintColor: UIColor {
     get { return tintColor }
     set { tintColor = newValue }

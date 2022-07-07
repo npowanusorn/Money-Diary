@@ -106,12 +106,7 @@ class AddRecordVC: UIViewController {
     
     @objc
     func addAction() {
-        let record = Record()
-        record.amount = Double(amountText) ?? 0.0
-        record.note = noteText
-        record.date = selectedDate
-        record.wallet = WalletManager.shared.chosenWalletIndex
-        record.isExpense = isExpense
+        let record = Record(amount: Double(amountText) ?? 0.0, note: noteText, date: selectedDate, wallet: WalletManager.shared.chosenWalletIndex, isExpense: isExpense)
         
         if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
             do {

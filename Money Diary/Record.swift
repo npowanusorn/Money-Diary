@@ -36,13 +36,14 @@ class Record: Object, Comparable {
         set { _isExpense = newValue }
     }
 
-//    init(amount: Double, note: String?, date: Date, wallet: Int, isExpense: Bool) {
-//        self._amount = amount
-//        self._note = note
-//        self._date = date
-//        self._wallet = wallet
-//        self._isExpense = isExpense
-//    }
+    convenience init(amount: Double, note: String?, date: Date, wallet: Int, isExpense: Bool) {
+        self.init()
+        _amount = amount
+        _note = note
+        _date = date
+        _wallet = wallet
+        _isExpense = isExpense
+    }
 
     static func == (lhs: Record, rhs: Record) -> Bool {
         return lhs.date == rhs.date && lhs.isExpense == rhs.isExpense && lhs.amount == rhs.amount && lhs.note == rhs.note

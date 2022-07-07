@@ -9,15 +9,15 @@ import Foundation
 import RealmSwift
 
 class Wallet: Object {
-    @objc dynamic var _name: String = ""
-    @objc dynamic var _balance: Double = 0.0
-    let _records = List<Record>()
+    @objc dynamic private var _name: String = ""
+    @objc dynamic private var _balance: Double = 0.0
+    private let _records = List<Record>()
     
-//    init(name: String, balance: Double, records: [Record]? = nil) {
-//        self._name = name
-//        self._balance = balance
-//        self._records = records ?? [Record]()
-//    }
+    convenience init(name: String, balance: Double) {
+        self.init()
+        self._name = name
+        self._balance = balance
+    }
     
     var name: String {
         get { return _name }

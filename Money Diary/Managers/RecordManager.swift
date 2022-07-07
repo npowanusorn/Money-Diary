@@ -49,6 +49,16 @@ class RecordManager {
         allRecords.removeAll()
         allDates.removeAll()
     }
+    
+    func removeRecord(for wallet: Int) {
+        var newRecords = [Record]()
+        for record in allRecords {
+            if record.wallet != wallet {
+                newRecords.append(record)
+            }
+        }
+        allRecords = newRecords
+    }
 
 //    func searchForRecord(by name: String) -> [Record] {
 //        var list = [Record]()

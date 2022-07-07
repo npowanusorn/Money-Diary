@@ -8,6 +8,7 @@
 import UIKit
 import SPIndicator
 import Firebase
+import RealmSwift
 
 class DashboardVC: UIViewController {
 
@@ -126,10 +127,7 @@ class DashboardVC: UIViewController {
             for walletDocument in walletDocuments {
                 let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
                 let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
-//                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
-                let walletForSnapshot = Wallet()
-                walletForSnapshot.name = walletName
-                walletForSnapshot.modifyBalance(to: walletBalance)
+                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
                 let recordCollection = walletCollection.document(walletDocument.documentID).collection(K.FirestoreKeys.CollectionKeys.records)
                 let recordSnapshot = try await recordCollection.getDocuments()
                 let recordDocuments = recordSnapshot.documents
@@ -139,12 +137,7 @@ class DashboardVC: UIViewController {
                     let isExpense = (recordDocument.data()[K.FirestoreKeys.FieldKeys.expense] as? Bool) ?? true
                     let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
                     let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.wallet] as? Int) ?? 0
-                    let record = Record()
-                    record.amount = amount
-                    record.note = note
-                    record.date = date
-                    record.wallet = wallet
-                    record.isExpense = isExpense
+                    let record = Record(amount: amount, note: note, date: date, wallet: wallet, isExpense: isExpense)
                     walletForSnapshot.addRecord(newRecord: record)
                 }
                 walletManager.addWallet(newWallet: walletForSnapshot)
@@ -267,6 +260,20 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 with: LocalizedKeys.deleteTitle.localized,
                 message: LocalizedKeys.deleteMessage.localized
             ) {
+                let walletToRemove = self.walletManager.getWallet(at: indexPath.row)
+                let recordForWallet = walletToRemove.records
+                do {
+                    let realm = try Realm()
+                    try realm.write {
+//                        Log.info("**** DELETING RECORDS ****")
+//                        realm.delete(recordForWallet)
+                        Log.info("**** DELETING WALLET ****")
+                        realm.delete(walletToRemove)
+                        Log.info("**** DELETING DONE ****")
+                    }
+                } catch {
+                    Log.error("ERROR DELETING FROM REALM: \(error)")
+                }
                 let result = self.walletManager.removeWallet(at: indexPath.row)
                 self.refreshData()
                 completion(result)

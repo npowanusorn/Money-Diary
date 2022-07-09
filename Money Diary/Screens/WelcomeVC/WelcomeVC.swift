@@ -7,6 +7,7 @@
 
 import UIKit
 import SPIndicator
+import GoogleSignIn
 
 class WelcomeVC: UIViewController {
     
@@ -15,10 +16,13 @@ class WelcomeVC: UIViewController {
 
     @IBOutlet private var optionsView: UIView!
     @IBOutlet private var headerLabel: UILabel!
-    @IBOutlet private var googleButton: UIButton!
+    @IBOutlet private var googleButton: BounceButton!
     @IBOutlet private var emailButton: BounceButton!
+    @IBOutlet private var createAccountButton: BounceButton!
+    @IBOutlet private var continueWithoutAccountButton: BounceButton!
     @IBOutlet private var headerLabelVerticalConstraint: NSLayoutConstraint!
-
+    @IBOutlet private var termsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,8 +31,9 @@ class WelcomeVC: UIViewController {
         }
 
         googleButton.setImage(UIImage(named: "Google")?.resize(newWidth: 30.0), for: .normal)
+        googleButton.configuration?.imagePadding = 20.0
+        
         navigationItem.setHidesBackButton(true, animated: true)
-        Log.info("VIEWDIDLOAD")
         Log.info("SHOULDANIMATE: \(shouldAnimateElements)")
         if shouldAnimateElements { animateElements() }
         else { positionHeaderLabel() }
@@ -37,6 +42,15 @@ class WelcomeVC: UIViewController {
         var navigationArray = navigationController.viewControllers
         navigationArray.removeFirst()
         self.navigationController?.viewControllers = navigationArray
+        
+        let termsText = LocalizedKeys.createAccountSubtext.localized + LocalizedKeys.terms.localized
+        termsLabel.text = termsText
+        let attributedString = NSMutableAttributedString(string: termsText)
+        let range = (termsText as NSString).range(of: LocalizedKeys.terms.localized)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemBlue, range: range)
+        termsLabel.attributedText = attributedString
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(termsTextTapped))
+        termsLabel.addGestureRecognizer(tapGesture)
     }
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {
@@ -101,5 +115,24 @@ class WelcomeVC: UIViewController {
         let yTranslation = view.frame.height / 4
         headerLabel.transform = CGAffineTransform(translationX: 0, y: -yTranslation)
     }
+    
+    @objc
+    private func termsTextTapped() {
+        Log.info("TERMS TAPPED")
+        let termsVC = TermsDetailVC()
+        let navController = UINavigationController(rootViewController: termsVC)
+        present(navController, animated: true)
+    }
 
+}
+
+extension WelcomeVC {
+    enum LocalizedKeys {
+        static let signInWithEmail = "welcome_sign_in_with_email"
+        static let signInWithGoogle = "welcome_sign_in_with_google"
+        static let createAccount = "welcome_create_account"
+        static let continueWithoutAccount = "welcome_continue_without_account"
+        static let terms = "welcome_terms"
+        static let createAccountSubtext = "welcome_create_account_subtext"
+    }
 }

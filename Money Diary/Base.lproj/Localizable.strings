@@ -66,3 +66,14 @@
 "dashboard_alert_delete" = "Delete";
 "dashboard_indicator_added" = "Added";
 "dashboard_alert_no_wallet_message" = "Create a wallet before adding a record";
+
+// Welcome
+"welcome_sign_in_with_email" = "Sign in with email";
+"welcome_sign_in_with_google" = "Sign in with Google";
+"welcome_create_account" = "Create account";
+"welcome_continue_without_account" = "Continue without account";
+"welcome_terms" = "terms and conditions";
+"welcome_create_account_subtext" = "By signing up, you agree to the ";
+
+// Terms
+"terms_title" = "Terms and Conditions";

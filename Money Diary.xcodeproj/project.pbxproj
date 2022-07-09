@@ -50,6 +50,8 @@
 		5024EE5A284DB342000B295A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5024EE58284DB342000B295A /* Main.storyboard */; };
 		5024EE5C284DB344000B295A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5024EE5B284DB344000B295A /* Assets.xcassets */; };
 		5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5024EE5D284DB344000B295A /* LaunchScreen.storyboard */; };
+		50293A58287945980034C55C /* TermsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50293A56287945980034C55C /* TermsDetailVC.swift */; };
+		50293A59287945980034C55C /* TermsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50293A57287945980034C55C /* TermsDetailVC.xib */; };
 		5038E6662852D6D800756D60 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6642852D6D800756D60 /* AddVC.swift */; };
 		5038E6672852D6D800756D60 /* AddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E6652852D6D800756D60 /* AddVC.xib */; };
 		5038E6692852D90A00756D60 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6682852D90A00756D60 /* BounceButton.swift */; };
@@ -71,6 +73,7 @@
 		50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D82865550800E9957E /* FirebaseAnalytics */; };
 		50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DA2865550800E9957E /* FirebaseAuth */; };
 		50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DC2865550800E9957E /* FirebaseFirestore */; };
+		50CCBEF62870985700A75C8A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50CCBEF52870985700A75C8A /* GoogleSignIn */; };
 		50D03826286949CD00662008 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D03824286949CD00662008 /* SplashVC.swift */; };
 		50D03827286949CD00662008 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D03825286949CD00662008 /* SplashVC.xib */; };
 		50D0382A2869688900662008 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 50D038292869688900662008 /* Realm */; };
@@ -132,6 +135,8 @@
 		5024EE5B284DB344000B295A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5024EE5E284DB344000B295A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5024EE60284DB344000B295A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50293A56287945980034C55C /* TermsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDetailVC.swift; sourceTree = "<group>"; };
+		50293A57287945980034C55C /* TermsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsDetailVC.xib; sourceTree = "<group>"; };
 		5038E6642852D6D800756D60 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		5038E6652852D6D800756D60 /* AddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVC.xib; sourceTree = "<group>"; };
 		5038E6682852D90A00756D60 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
@@ -169,6 +174,7 @@
 				50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */,
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
+				50CCBEF62870985700A75C8A /* GoogleSignIn in Frameworks */,
 				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
 				48DAB1D2286A9C0F00E7461C /* KeychainSwift in Frameworks */,
 				50D0382A2869688900662008 /* Realm in Frameworks */,
@@ -363,6 +369,15 @@
 			path = "Money Diary";
 			sourceTree = "<group>";
 		};
+		50293A55287945780034C55C /* TermsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				50293A56287945980034C55C /* TermsDetailVC.swift */,
+				50293A57287945980034C55C /* TermsDetailVC.xib */,
+			);
+			path = TermsDetail;
+			sourceTree = "<group>";
+		};
 		5038E6602852D64600756D60 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +418,7 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				50293A55287945780034C55C /* TermsDetail */,
 				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
@@ -484,6 +500,7 @@
 				50D038292869688900662008 /* Realm */,
 				50D0382B2869688900662008 /* RealmSwift */,
 				48DAB1D1286A9C0F00E7461C /* KeychainSwift */,
+				50CCBEF52870985700A75C8A /* GoogleSignIn */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -522,6 +539,7 @@
 				50E0481D2866D81D008603BC /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				50CCBEF42870985700A75C8A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -537,6 +555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50293A59287945980034C55C /* TermsDetailVC.xib in Resources */,
 				50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */,
 				50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */,
 				50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */,
@@ -588,6 +607,7 @@
 				50D33AB12866CBD800D009B8 /* Validator.swift in Sources */,
 				509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */,
 				4836D852285D4C7200746A56 /* DatePickerCell.swift in Sources */,
+				50293A58287945980034C55C /* TermsDetailVC.swift in Sources */,
 				48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */,
 				48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
@@ -901,6 +921,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		50CCBEF42870985700A75C8A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -959,6 +987,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		50CCBEF52870985700A75C8A /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50CCBEF42870985700A75C8A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 		50D038292869688900662008 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

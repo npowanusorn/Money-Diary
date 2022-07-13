@@ -27,7 +27,7 @@ class WelcomeVC: UIViewController {
         super.viewDidLoad()
         
         if let error = error {
-            FIRErrorManager.handleError(error: error, viewController: self)
+            FirebaseErrorManager.handleError(error: error, viewController: self)
         }
 
         googleButton.setImage(UIImage(named: "Google")?.resize(newWidth: 30.0), for: .normal)

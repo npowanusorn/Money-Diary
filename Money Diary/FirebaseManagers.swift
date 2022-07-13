@@ -37,7 +37,7 @@ class AuthManager {
             keychain.set(password, forKey: K.KeychainKeys.passwordKey)
         } catch {
             Log.error("ERROR SIGNING IN: \(error.localizedDescription)")
-            FIRErrorManager.handleError(error: error as NSError, viewController: viewController)
+            FirebaseErrorManager.handleError(error: error as NSError, viewController: viewController)
         }
     }
 
@@ -51,7 +51,25 @@ class AuthManager {
             keychain.set(password, forKey: K.KeychainKeys.passwordKey)
         } catch {
             Log.error("ERROR CREATING USER: \(error.localizedDescription)")
-            FIRErrorManager.handleError(error: error as NSError, viewController: viewController)
+            FirebaseErrorManager.handleError(error: error as NSError, viewController: viewController)
+        }
+    }
+    
+    static func deleteAccount(with password: String, viewController: UIViewController) async {
+        let keychain = KeychainSwift()
+        let currentUser = Auth.auth().currentUser
+        guard let email = keychain.get(K.KeychainKeys.emailKey) else { return }
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        do {
+            Log.info("**** REAUTHENTICATING ****")
+            try await currentUser?.reauthenticate(with: credential)
+            Log.info("**** REAUTHENTICATED - STARTING ACCOUNT DELETION ****")
+            try await currentUser?.delete()
+            Log.info("**** DELETION COMPLETE ****")
+            clearAllData()
+        } catch let error as NSError {
+            Log.error("ERROR DELETING: \(error.localizedDescription)")
+            FirebaseErrorManager.handleError(error: error, viewController: viewController)
         }
     }
 }
@@ -142,7 +160,7 @@ class FirestoreManager {
     }
 }
 
-class FIRErrorManager {
+class FirebaseErrorManager {
     static func handleError(error: NSError, viewController: UIViewController) {
         var errorMessage = ""
 

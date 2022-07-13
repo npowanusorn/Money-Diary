@@ -51,22 +51,9 @@ class DeleteAccountVC: UIViewController {
         ProgressHUD.show()
 
         guard let email = keychain.get(K.KeychainKeys.emailKey) else { return }
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-
-        do {
-            Log.info("**** REAUTHENTICATING ****")
-            try await currentUser?.reauthenticate(with: credential)
-            Log.info("**** REAUTHENTICATED - STARTING ACCOUNT DELETION ****")
-            try await currentUser?.delete()
-            Log.info("**** DELETION COMPLETE ****")
-            clearAllData()
-            ProgressHUD.dismiss()
-            main { self.navigationController?.popToRootViewController(animated: true) }
-        } catch {
-            Log.error("ERROR DELETING: \(error.localizedDescription)")
-            let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
-            main { self.present(alert, animated: true) }
-        }
+        await AuthManager.deleteAccount(with: email, viewController: self)
+        ProgressHUD.dismiss()
+        main { self.navigationController?.popToRootViewController(animated: true) }
     }
 }
 

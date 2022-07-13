@@ -68,6 +68,11 @@ class WalletManager {
             wallet.addRecord(newRecord: record)
         }
     }
+    
+    func addRecordToWallet(record: Record) {
+        let wallet = getWallet(at: record.wallet)
+        wallet.addRecord(newRecord: record)
+    }
 
 //    func updateBalance(ofWalletIndex index: Int, with balance: Double) {
 //        getWallet(at: index).modifyBalance(to: balance)

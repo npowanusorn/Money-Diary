@@ -158,6 +158,25 @@ class FirestoreManager {
             Log.error("ERROR: \(error)")
         }
     }
+    
+    static func deleteWallet(wallet: Wallet) async {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let db = Firestore.firestore()
+        let walletCollection = db.collection(K.FirestoreKeys.CollectionKeys.users)
+            .document(currentUser.uid)
+            .collection(K.FirestoreKeys.CollectionKeys.wallets)
+        do {
+            let walletDocuments = try await walletCollection.getDocuments().documents
+            for walletDocument in walletDocuments {
+                let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
+                if walletName == wallet.name {
+                    try await walletCollection.document(walletDocument.documentID).delete()
+                }
+            }
+        } catch {
+            Log.error("ERROR: \(error)")
+        }
+    }
 }
 
 class FirebaseErrorManager {

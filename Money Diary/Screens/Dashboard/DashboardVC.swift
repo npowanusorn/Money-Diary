@@ -160,6 +160,21 @@ class DashboardVC: UIViewController {
             }
         }
     }
+    
+    private func deleteWalletFromRealm(wallet: Wallet) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+//                Log.info("**** DELETING RECORDS ****")
+//                realm.delete(recordForWallet)
+                Log.info("**** DELETING WALLET ****")
+                realm.delete(wallet)
+                Log.info("**** DELETING DONE ****")
+            }
+        } catch {
+            Log.error("ERROR DELETING FROM REALM: \(error)")
+        }
+    }
 
 }
 
@@ -200,13 +215,12 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 content.text = LocalizedKeys.noWallet.localized
                 cell.contentConfiguration = content
                 cell.selectionStyle = .none
+                cell.isUserInteractionEnabled = false
                 return cell
             }
             content.text = walletsList[indexPath.row].name
             content.secondaryText = walletsList[indexPath.row].balance.toCurrencyString()
             cell.contentConfiguration = content
-            cell.accessoryType = .disclosureIndicator
-            return cell
         } else {
             var content = cell.defaultContentConfiguration()
             if recordList.count > 4, indexPath.row == 3 {
@@ -216,22 +230,23 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             } else if recordList.count == 0 {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
+                cell.isUserInteractionEnabled = false
                 content.text = LocalizedKeys.noRecord.localized
                 cell.contentConfiguration = content
             } else {
                 cell.accessoryType = .none
-                cell.selectionStyle = .none
                 content.text = recordList[indexPath.row].note
                 content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
                 content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
                 cell.contentConfiguration = content
             }
-            return cell
         }
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == DashboardTableSections.myWallet.rawValue {
             guard walletsList.count > 0 else { return }
             let walletDetailVC = WalletDetailVC()
             walletDetailVC.selectedWalletIndex = indexPath.row
@@ -239,12 +254,20 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             back.title = ""
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(walletDetailVC, animated: true)
-        } else if indexPath.section == 1, indexPath.row == 3 {
+        } else if indexPath.section == DashboardTableSections.recentRecord.rawValue, indexPath.row == 3, recordList.count > 4 {
             let allRecordsVC = AllRecordsVC()
             let back = UIBarButtonItem()
             back.title = ""
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(allRecordsVC, animated: true)
+        } else {
+            let selectedRecord = recordList[indexPath.row]
+            let recordDetailVC = RecordDetailsVC()
+            recordDetailVC.selectedRecord = selectedRecord
+            let back = UIBarButtonItem()
+            back.title = ""
+            navigationItem.backBarButtonItem = back
+            navigationController?.pushViewController(recordDetailVC, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -261,19 +284,13 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 message: LocalizedKeys.deleteMessage.localized
             ) {
                 let walletToRemove = self.walletManager.getWallet(at: indexPath.row)
-                let recordForWallet = walletToRemove.records
-                do {
-                    let realm = try Realm()
-                    try realm.write {
-//                        Log.info("**** DELETING RECORDS ****")
-//                        realm.delete(recordForWallet)
-                        Log.info("**** DELETING WALLET ****")
-                        realm.delete(walletToRemove)
-                        Log.info("**** DELETING DONE ****")
-                    }
-                } catch {
-                    Log.error("ERROR DELETING FROM REALM: \(error)")
+//                let recordForWallet = walletToRemove.records
+                if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
+                    self.deleteWalletFromRealm(wallet: walletToRemove)
+                } else {
+                    Task { await FirestoreManager.deleteWallet(wallet: walletToRemove) }
                 }
+                
                 let result = self.walletManager.removeWallet(at: indexPath.row)
                 self.refreshData()
                 completion(result)

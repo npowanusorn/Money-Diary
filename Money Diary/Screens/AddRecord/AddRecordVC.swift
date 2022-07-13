@@ -107,7 +107,7 @@ class AddRecordVC: UIViewController {
     @objc
     func addAction() {
         let record = Record(amount: Double(amountText) ?? 0.0, note: noteText, date: selectedDate, wallet: WalletManager.shared.chosenWalletIndex, isExpense: isExpense)
-        
+        WalletManager.shared.addRecordToWallet(record: record)
         if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
             do {
                 Log.info("**** WRITING TO REALM ****")

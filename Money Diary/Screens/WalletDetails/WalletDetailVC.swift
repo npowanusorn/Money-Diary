@@ -29,24 +29,12 @@ class WalletDetailVC: UIViewController {
         
         guard selectedWalletIndex != nil else { return }
 
-        tabBarView.setButtonTitles(buttonTitles: Constants.tabViewButtonTitles)
-        tabBarView.setStyle(style: .line)
-        tabBarView.setSelectionOrientation(to: .bottom)
-        tabBarView.delegate = self
-        tabBarView.backgroundColor = .clear
-
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         title = wallet.name
-
-        noRecordFoundView.isHidden = !wallet.records.isEmpty
-        tableView.isHidden = wallet.records.isEmpty
-        balanceView.isHidden = wallet.records.isEmpty
-        circlePlusButton.isHidden = wallet.records.isEmpty
-        balanceLabel.text = "Balance: \(getWalletBalance())"
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "walletDetailCell")
+        setupTabBar()
+        setupTable()
+        refreshScreen()
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -60,8 +48,17 @@ class WalletDetailVC: UIViewController {
         present(navigation, animated: true)
     }
     
-    func refreshScreen() {
+    private func setupTabBar() {
+        tabBarView.setButtonTitles(buttonTitles: Constants.tabViewButtonTitles)
+        tabBarView.setStyle(style: .line)
+        tabBarView.setSelectionOrientation(to: .bottom)
+        tabBarView.delegate = self
+        tabBarView.backgroundColor = .clear
+    }
+    
+    private func refreshScreen() {
         let recordsList = wallet.getRecordsByType(type: filterOption)
+        tabBarView.isHidden = filterOption == .all && recordsList.isEmpty
         noRecordFoundView.isHidden = !recordsList.isEmpty
         tableView.isHidden = recordsList.isEmpty
         balanceView.isHidden = recordsList.isEmpty
@@ -72,6 +69,12 @@ class WalletDetailVC: UIViewController {
             balanceLabel.text = "Amount: \(getTotalAmount())"
         }
         tableView.reloadData()
+    }
+    
+    private func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "walletDetailCell")
     }
     
     func getWalletBalance() -> String {

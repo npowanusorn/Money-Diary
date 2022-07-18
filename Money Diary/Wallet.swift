@@ -63,8 +63,9 @@ class Wallet: Object {
         return getRecordsByType(recordsForDate, type: filter)
     }
 
-    private func getRecordsByType(_ records: List<Record>, type: FilterOption) -> List<Record> {
+    func getRecordsByType(_ records: List<Record>? = nil, type: FilterOption) -> List<Record> {
         let recordsByType = List<Record>()
+        let records = records ?? self.records
         for record in records {
             switch type {
             case .all:

@@ -57,4 +57,15 @@ class Record: Object, Comparable {
     static func < (lhs: Record, rhs: Record) -> Bool {
         return lhs.date < rhs.date
     }
+    
+    func matchFilter(filter: FilterOption) -> Bool {
+        switch filter {
+        case .all:
+            return true
+        case .expense:
+            return self.isExpense
+        case .income:
+            return !self.isExpense
+        }
+    }
 }

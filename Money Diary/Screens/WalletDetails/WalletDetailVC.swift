@@ -120,7 +120,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
-        return selectedWallet.getAllDates().count + 1
+        return selectedWallet.getAllDates(filtered: filterOption).count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -132,7 +132,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
-        let date = selectedWallet.getAllDates()[section - 1]
+        let date = selectedWallet.getAllDates(filtered: filterOption)[section - 1]
         return date.toString(withFormat: .long)
     }
     
@@ -141,9 +141,9 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
-        let dates = selectedWallet.getAllDates()
+        let dates = selectedWallet.getAllDates(filtered: filterOption)
 
-        return selectedWallet.getRecordsForDate(date: dates[section - 1]).filter { record in
+        return selectedWallet.getRecordsForDate(date: dates[section - 1], filteredBy: filterOption).filter { record in
             switch self.filterOption {
             case .all:
                 return true
@@ -174,8 +174,8 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
-        let date = selectedWallet.getAllDates()[indexPath.section - 1]
-        let recordsForDate = [Record](selectedWallet.getRecordsForDate(date: date).reversed())
+        let date = selectedWallet.getAllDates(filtered: filterOption)[indexPath.section - 1]
+        let recordsForDate = [Record](selectedWallet.getRecordsForDate(date: date, filteredBy: filterOption).reversed())
         let recordForDate = recordsForDate[indexPath.row]
         content.text = recordForDate.note
         content.secondaryText = recordForDate.amount.toCurrencyString()
@@ -197,17 +197,15 @@ extension WalletDetailVC: AddedRecordDelegate {
 extension WalletDetailVC: TabBarViewDelegate {
     func didChangeToIndex(index: Int) {
 
-        let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
-        if index == 0 {
-            filteredRecord = selectedWallet.getRecordsByType(type: .all)
-            filterOption = .all
-        } else if index == 1 {
-            filteredRecord = selectedWallet.getRecordsByType(type: .expense)
-            filterOption = .expense
-        } else {
-            filteredRecord = selectedWallet.getRecordsByType(type: .income)
-            filterOption = .income
-        }
+//        let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
+        filterOption = FilterOption.init(rawValue: index) ?? .all
+//        if index == 0 {
+//            filterOption = .all
+//        } else if index == 1 {
+//            filterOption = .expense
+//        } else {
+//            filterOption = .income
+//        }
         refreshScreen()
     }
 }

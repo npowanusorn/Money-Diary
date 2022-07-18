@@ -53,17 +53,17 @@ class Wallet: Object {
         RecordManager.shared.addRecord(newRecord: newRecord)
     }
 
-    func getRecordsForDate(date: Date) -> List<Record> {
+    func getRecordsForDate(date: Date, filteredBy filter: FilterOption) -> List<Record> {
         let recordsForDate = List<Record>()
         for record in records {
             if Calendar.current.isDate(date, inSameDayAs: record.date) {
                 recordsForDate.append(record)
             }
         }
-        return recordsForDate
+        return getRecordsByType(recordsForDate, type: filter)
     }
 
-    func getRecordsByType(type: FilterOption) -> List<Record> {
+    private func getRecordsByType(_ records: List<Record>, type: FilterOption) -> List<Record> {
         let recordsByType = List<Record>()
         for record in records {
             switch type {
@@ -82,12 +82,12 @@ class Wallet: Object {
         return recordsByType
     }
 
-    func getAllDates() -> [Date] {
+    func getAllDates(filtered: FilterOption) -> [Date] {
         var allDates = [Date]()
         for record in records {
             if !allDates.contains(where: { date in
                 Calendar.current.isDate(date, inSameDayAs: record.date)
-            }) {
+            }), record.matchFilter(filter: filtered) {
                 allDates.append(record.date)
             }
         }

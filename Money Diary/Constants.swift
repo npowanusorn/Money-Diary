@@ -57,8 +57,8 @@ enum K {
     static let unknownID = "unknown id"
 }
 
-enum FilterOption {
-    case all
+enum FilterOption: Int {
+    case all = 0
     case expense
     case income
 }

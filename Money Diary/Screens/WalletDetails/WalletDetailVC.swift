@@ -15,7 +15,6 @@ class WalletDetailVC: UIViewController {
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
     private var wallet: Wallet!
-    private let tabViewButtonTitles = ["All", "Expenses", "Income"]
     private var filterOption: FilterOption = .all
     
     @IBOutlet private var tableView: UITableView!
@@ -30,7 +29,7 @@ class WalletDetailVC: UIViewController {
         
         guard selectedWalletIndex != nil else { return }
 
-        tabBarView.setButtonTitles(buttonTitles: tabViewButtonTitles)
+        tabBarView.setButtonTitles(buttonTitles: Constants.tabViewButtonTitles)
         tabBarView.setStyle(style: .line)
         tabBarView.setSelectionOrientation(to: .bottom)
         tabBarView.delegate = self
@@ -195,8 +194,13 @@ extension WalletDetailVC: AddedRecordDelegate {
 
 extension WalletDetailVC: TabBarViewDelegate {
     func didChangeToIndex(index: Int) {
-
         filterOption = FilterOption.init(rawValue: index) ?? .all
         refreshScreen()
+    }
+}
+
+private extension WalletDetailVC {
+    enum Constants {
+        static let tabViewButtonTitles = ["All", "Expenses", "Income"]
     }
 }

@@ -12,6 +12,7 @@ class RecordDetailsVC: UIViewController {
 
     var selectedRecord: Record!
 
+    @IBOutlet private var tableView: UITableView!
     @IBOutlet private var headerMoneyLabel: UILabel!
     @IBOutlet private var categoryLabel: UILabel!
     @IBOutlet private var noteLabel: UILabel!
@@ -19,9 +20,11 @@ class RecordDetailsVC: UIViewController {
     @IBOutlet private var walletLabel: UILabel!
 
     private let walletManager = WalletManager.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTable()
 
         guard selectedRecord != nil else { return }
         headerMoneyLabel.text = selectedRecord.amount.toCurrencyString()
@@ -58,5 +61,93 @@ class RecordDetailsVC: UIViewController {
             present(alert, animated: true)
         }
     }
+    
+    private func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
+    }
 
+}
+
+extension RecordDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        RecordDetailsTableSection.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        20.0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let currentSection = RecordDetailsTableSection(rawValue: section) else { return nil }
+        return currentSection.getSectionName()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)") else { return UITableViewCell() }
+        guard let currentSection = RecordDetailsTableSection(rawValue: indexPath.section) else { return cell }
+        var content = cell.defaultContentConfiguration()
+        switch currentSection {
+        case .amount:
+            content.text = selectedRecord.amount.toCurrencyString()
+            content.textProperties.font = UIFont.systemFont(ofSize: 48.0, weight: .bold)
+            content.textProperties.color = selectedRecord.isExpense ? .systemRed : .systemBlue
+            content.textProperties.alignment = .center
+            cell.backgroundColor = .clear
+        case .category:
+            content.text = "Groceries"
+            content.textProperties.font = .systemFont(ofSize: 20.0)
+        case .note:
+            content.text = selectedRecord.note ?? "N/A"
+            content.textProperties.font = .systemFont(ofSize: 20.0)
+        case .date:
+            content.text = selectedRecord.date.toString(withFormat: .long)
+            content.textProperties.font = .systemFont(ofSize: 20.0)
+        case .wallet:
+            content.text = walletManager.getWallet(by: selectedRecord.walletID)?.name ?? ""
+            content.textProperties.font = .systemFont(ofSize: 20.0)
+        }
+        cell.contentConfiguration = content
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
+private enum RecordDetailsTableSection: Int, CaseIterable {
+    case amount = 0, category, note, date, wallet
+    
+    func getName() -> String {
+        switch self {
+        case .amount:
+            return "Amount"
+        case .category:
+            return "Category"
+        case .note:
+            return "Note"
+        case .date:
+            return "Date"
+        case .wallet:
+            return "Wallet"
+        }
+    }
+    
+    func getSectionName() -> String? {
+        switch self {
+        case .amount:
+            return nil
+        case .category:
+            return "Category"
+        case .note:
+            return "Note"
+        case .date:
+            return "Date"
+        case .wallet:
+            return "Wallet"
+        }
+    }
 }

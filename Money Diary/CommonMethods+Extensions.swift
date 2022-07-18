@@ -127,6 +127,11 @@ extension UINavigationItem {
 // MARK: - Date
 extension Date {
     func toString(withFormat formatterStyle: DateFormatter.Style) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = formatterStyle
+        if formatterStyle == .full || formatterStyle == .long {
+            return dateFormatter.string(from: self)
+        }
         if Calendar.current.isDateInToday(self) {
             return "Today"
         } else if Calendar.current.isDateInYesterday(self) {
@@ -134,8 +139,6 @@ extension Date {
         } else if Calendar.current.isDateInTomorrow(self) {
             return "Tomorrow"
         } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = formatterStyle
             return dateFormatter.string(from: self)
         }
     }

@@ -68,8 +68,7 @@ class LoginCreateAccountVC: UIViewController {
             signInToPasswordFieldConstraint.isActive = true
             signInToPasswordFieldConstraint.constant = 40.0
             resetPasswordButton.isHidden = false
-            emailTextField.text = "test@email.com"
-            passwordTextField.text = "111111"
+            bypass()
         }
     }
 
@@ -108,6 +107,12 @@ class LoginCreateAccountVC: UIViewController {
         } else {
             handleCreateUser()
         }
+    }
+
+    private func bypass() {
+        emailTextField.text = "test@email.com"
+        passwordTextField.text = "111111"
+        signInButton.isEnabled = true
     }
 
     func handleSignIn() {

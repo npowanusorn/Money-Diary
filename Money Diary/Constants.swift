@@ -25,7 +25,8 @@ enum K {
             static let date = "date"
             static let expense = "isExpense"
             static let note = "note"
-            static let wallet = "wallet"
+            static let walletID = "walletID"
+            static let id = "id"
         }
     }
 
@@ -50,14 +51,10 @@ enum K {
             let font = UIFont(name: "Avenir Next \(self.rawValue)", size: size) ?? UIFont.systemFont(ofSize: size, weight: .regular)
             return font
         }
-//        static let avenirNextRegular17 = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-//        static let avenirNextRegular15 = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
     }
     
-    struct CellID {
-        
-    }
-            
+    static let unknownWalletID = "unknown wallet id"
+    static let unknownID = "unknown id"
 }
 
 enum FilterOption {

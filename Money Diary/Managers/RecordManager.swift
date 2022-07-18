@@ -50,10 +50,10 @@ class RecordManager {
         allDates.removeAll()
     }
     
-    func removeRecord(for wallet: Int) {
+    func removeRecord(for walletID: String) {
         var newRecords = [Record]()
         for record in allRecords {
-            if record.wallet != wallet {
+            if record.walletID != walletID {
                 newRecords.append(record)
             }
         }

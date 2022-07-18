@@ -53,12 +53,6 @@ class WalletDetailVC: UIViewController {
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-
-//        let navBarAppearance = UINavigationBarAppearance()
-//        navBarAppearance.configureWithOpaqueBackground()
-//        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-//        navigationController?.navigationBar.standardAppearance = navBarAppearance
-//        navigationController?.navigationBar.compactAppearance = navBarAppearance
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -170,7 +164,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
         if indexPath.section == 0 {
-            if case .all = filterOption {
+            if filterOption == .all {
                 content.text = "Total: \(getWalletBalance())"
             } else {
                 content.text = "Total: \(getTotalAmount())"
@@ -179,10 +173,13 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.contentConfiguration = content
             return cell
         }
-        let record = filteredRecord[indexPath.row]
-        content.text = record.note
-        content.secondaryText = record.amount.toCurrencyString()
-        content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
+        let selectedWallet = walletManager.getWallet(at: selectedWalletIndex)
+        let date = selectedWallet.getAllDates()[indexPath.section - 1]
+        let recordsForDate = [Record](selectedWallet.getRecordsForDate(date: date).reversed())
+        let recordForDate = recordsForDate[indexPath.row]
+        content.text = recordForDate.note
+        content.secondaryText = recordForDate.amount.toCurrencyString()
+        content.secondaryTextProperties.color = recordForDate.isExpense ? .systemRed : .systemBlue
         
         cell.contentConfiguration = content
         return cell

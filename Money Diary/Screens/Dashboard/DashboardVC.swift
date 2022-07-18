@@ -136,8 +136,8 @@ class DashboardVC: UIViewController {
                     let date = (recordDocument.data()[K.FirestoreKeys.FieldKeys.date] as? Timestamp)?.dateValue() ?? Date()
                     let isExpense = (recordDocument.data()[K.FirestoreKeys.FieldKeys.expense] as? Bool) ?? true
                     let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
-                    let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.wallet] as? Int) ?? 0
-                    let record = Record(amount: amount, note: note, date: date, wallet: wallet, isExpense: isExpense)
+                    let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.walletID] as? String) ?? K.unknownWalletID
+                    let record = Record(amount: amount, note: note, date: date, walletID: wallet, isExpense: isExpense)
                     walletForSnapshot.addRecord(newRecord: record)
                 }
                 walletManager.addWallet(newWallet: walletForSnapshot)
@@ -226,15 +226,14 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             if recordList.count > 4, indexPath.row == 3 {
                 content.text = LocalizedKeys.showAll.localized
                 cell.contentConfiguration = content
-                cell.accessoryType = .disclosureIndicator
             } else if recordList.count == 0 {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.isUserInteractionEnabled = false
                 content.text = LocalizedKeys.noRecord.localized
                 cell.contentConfiguration = content
+                return cell
             } else {
-                cell.accessoryType = .none
                 content.text = recordList[indexPath.row].note
                 content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
                 content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
@@ -242,6 +241,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.accessoryType = .disclosureIndicator
+        cell.isUserInteractionEnabled = true
         return cell
     }
 

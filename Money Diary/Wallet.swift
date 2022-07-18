@@ -9,14 +9,17 @@ import Foundation
 import RealmSwift
 
 class Wallet: Object {
-    @objc dynamic private var _name: String = ""
+    
+    @objc dynamic private var _name = ""
     @objc dynamic private var _balance: Double = 0.0
+    @objc dynamic private var _id = ""
     private let _records = List<Record>()
     
-    convenience init(name: String, balance: Double) {
+    convenience init(name: String, balance: Double, id: String = generateUID()) {
         self.init()
-        self._name = name
-        self._balance = balance
+        _name = name
+        _balance = balance
+        _id = id
     }
     
     var name: String {
@@ -28,6 +31,9 @@ class Wallet: Object {
     }
     var records: List<Record> {
         get { return _records }
+    }
+    var id: String {
+        get { _id }
     }
 
     func modifyBalance(to newBalance: Double) {
@@ -103,6 +109,14 @@ class Wallet: Object {
             return removeRecord(at: index)
         }
         return false
+    }
+    
+    static func ==(lhs: Wallet, rhs: Wallet) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func isSameWalletAs(wallet: Wallet) -> Bool {
+        return self.id == wallet.id
     }
 
 }

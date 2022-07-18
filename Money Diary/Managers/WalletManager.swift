@@ -44,6 +44,15 @@ class WalletManager {
     func getWallet(at index: Int) -> Wallet {
         return wallets[index]
     }
+    
+    func getWallet(by id: String) -> Wallet? {
+        for wallet in wallets {
+            if wallet.id == id {
+                return wallet
+            }
+        }
+        return nil
+    }
 
     func addWallet(newWallet: Wallet) {
         wallets.append(newWallet)
@@ -56,21 +65,21 @@ class WalletManager {
         }
     }
 
-    func addMockRecords(count: Int, walletIndex: Int) {
-        let wallet = getWallet(at: walletIndex)
-        for counter in 1...count {
-            let record = Record(
-                amount: Double.random(in: 1...100).rounded(toPlaces: 2),
-                note: "tr \(counter)", date: Date(),
-                wallet: walletIndex,
-                isExpense: Bool.random()
-            )
-            wallet.addRecord(newRecord: record)
-        }
-    }
+//    func addMockRecords(count: Int, walletIndex: Int) {
+//        let wallet = getWallet(at: walletIndex)
+//        for counter in 1...count {
+//            let record = Record(
+//                amount: Double.random(in: 1...100).rounded(toPlaces: 2),
+//                note: "tr \(counter)", date: Date(),
+//                wallet: walletIndex,
+//                isExpense: Bool.random()
+//            )
+//            wallet.addRecord(newRecord: record)
+//        }
+//    }
     
     func addRecordToWallet(record: Record) {
-        let wallet = getWallet(at: record.wallet)
+        guard let wallet = getWallet(by: record.walletID) else { return }
         wallet.addRecord(newRecord: record)
     }
 
@@ -90,14 +99,14 @@ class WalletManager {
     
     func removeWallet(at index: Int) -> Bool {
         guard numberOfWallets > 0, index < numberOfWallets, index >= 0 else { return false }
+        let wallet = wallets[index]
         wallets.remove(at: index)
         if chosenWalletIndex > index {
             chosenWalletIndex -= 1
         } else if chosenWalletIndex == index {
             chosenWalletIndex = 0
         }
-        Log.info("12345INDEX: \(index)")
-        RecordManager.shared.removeRecord(for: index)
+        RecordManager.shared.removeRecord(for: wallet.id)
         return true
     }
     

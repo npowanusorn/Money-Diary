@@ -60,6 +60,11 @@ func clearAllData() {
     RecordManager.shared.removeAllRecords()
 }
 
+func generateUID() -> String {
+    UUID().uuidString
+}
+
+// MARK: - String
 extension String {
     func toCurrencyFormat() -> String {
         let formattedString = String(format: "$%.2f", self)
@@ -77,6 +82,7 @@ extension String {
     }
 }
 
+// MARK: - Double
 extension Double {
     func toCurrencyString() -> String {
         if self < 0 {
@@ -92,6 +98,7 @@ extension Double {
     }
 }
 
+// MARK: - UINavigationItem
 extension UINavigationItem {
     func setTitleAndSubtitle(title: String, subtitle: String) {
         let titleLabel = UILabel()
@@ -117,6 +124,7 @@ extension UINavigationItem {
     }
 }
 
+// MARK: - Date
 extension Date {
     func toString(withFormat formatterStyle: DateFormatter.Style) -> String {
         if Calendar.current.isDateInToday(self) {
@@ -133,12 +141,14 @@ extension Date {
     }
 }
 
+// MARK: - Collection
 extension Collection {
     subscript (safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }
 
+// MARK: - UIImage
 extension UIImage {
     func resize(newWidth desiredWidth: CGFloat) -> UIImage {
         let oldWidth = size.width
@@ -177,6 +187,7 @@ extension UIImage {
     }
 }
 
+// MARK: - UIWindow
 extension UIWindow {
     func reload() {
         subviews.forEach { view in
@@ -186,6 +197,7 @@ extension UIWindow {
     }
 }
 
+// MARK: - UIAlertController
 extension UIAlertController {
     func addActions(_ actions: [UIAlertAction]) {
         for action in actions {
@@ -294,6 +306,7 @@ extension UIAlertController {
     }
 }
 
+// MARK: - UIButton
 extension UIButton {
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         self.clipsToBounds = true
@@ -308,12 +321,14 @@ extension UIButton {
     }
 }
 
+// MARK: - StringProtocol
 extension StringProtocol {
     subscript(offset: Int) -> Character {
         self[index(startIndex, offsetBy: offset)]
     }
 }
 
+// MARK: - UILabel
 extension UILabel {
     func setTextWithTypingAnimation(_ text: String, delay: TimeInterval = 0.1, completion: (() -> Void)?) {
         let textLength = text.count
@@ -334,6 +349,7 @@ extension UILabel {
     }
 }
 
+// MARK: - UIView
 extension UIView {
     func restoreAnimation(withDuration duration: TimeInterval = 0.2, completion: (() -> Void)? = nil) {
         UIView.animate(withDuration: duration) {
@@ -344,6 +360,7 @@ extension UIView {
     }
 }
 
+// MARK: - NSLayoutConstraint
 extension NSLayoutConstraint {
     /**
      Change multiplier constraint
@@ -373,6 +390,7 @@ extension NSLayoutConstraint {
     }
 }
 
+// MARK: - Task
 extension Task where Success == Never, Failure == Never {
     static func sleep(seconds: Double) async throws {
         let duration = UInt64(seconds * 1_000_000_000)

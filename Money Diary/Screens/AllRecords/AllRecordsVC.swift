@@ -89,8 +89,6 @@ class AllRecordsVC: UIViewController {
     func configureCellByDate(_ tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allRecordsCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-//        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-//        content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
         let dates = recordManager.getAllDates()
         let record = recordManager.getAllRecords(for: dates[indexPath.section])[indexPath.row]
         content.text = record.note

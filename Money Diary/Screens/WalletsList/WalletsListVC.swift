@@ -38,7 +38,6 @@ extension WalletsListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletListCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = WalletManager.shared.getWallet(at: indexPath.row).name
-//        content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
         cell.contentConfiguration = content
         if indexPath.row == WalletManager.shared.chosenWalletIndex {
             cell.accessoryType = .checkmark

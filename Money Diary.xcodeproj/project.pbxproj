@@ -435,7 +435,6 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				508999C428865EC900809F99 /* TabBarController */,
 				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
@@ -448,6 +447,7 @@
 				50D0382D2869787100662008 /* ResetPasswordVC */,
 				4818556E2866607400648BB6 /* Settings */,
 				50D03823286949B700662008 /* Splash */,
+				508999C428865EC900809F99 /* TabBarController */,
 				50293A55287945780034C55C /* TermsDetail */,
 				4818556F2866607B00648BB6 /* WalletDetails */,
 				481855702866608C00648BB6 /* WalletsList */,

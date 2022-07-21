@@ -123,9 +123,8 @@ class LoginCreateAccountVC: UIViewController {
             await AuthManager.signIn(with: email, password: password, viewController: self)
             await FirestoreManager.getData()
             SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
-            let dashboardVC = DashboardVC()
-            navigationController?.pushViewController(dashboardVC, animated: true)
             ProgressHUD.dismiss()
+            showDashboard(isFromSplash: false)
         }
     }
 
@@ -136,9 +135,8 @@ class LoginCreateAccountVC: UIViewController {
         Task {
             await AuthManager.createUser(with: email, password: password, viewController: self)
             SPIndicator.present(title: "Success", message: "Account created", preset: .done, haptic: .success)
-            let dashboardVC = DashboardVC()
-            navigationController?.pushViewController(dashboardVC, animated: true)
             ProgressHUD.dismiss()
+            showDashboard(isFromSplash: false)
         }
     }
 }

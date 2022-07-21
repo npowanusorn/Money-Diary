@@ -37,11 +37,6 @@ class WelcomeVC: UIViewController {
         Log.info("SHOULDANIMATE: \(shouldAnimateElements)")
         if shouldAnimateElements { animateElements() }
         else { positionHeaderLabel() }
-
-        guard let navigationController = self.navigationController else { return }
-        var navigationArray = navigationController.viewControllers
-        navigationArray.removeFirst()
-        self.navigationController?.viewControllers = navigationArray
         
         let termsText = LocalizedKeys.createAccountSubtext.localized + LocalizedKeys.terms.localized
         termsLabel.text = termsText
@@ -51,6 +46,12 @@ class WelcomeVC: UIViewController {
         termsLabel.attributedText = attributedString
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(termsTextTapped))
         termsLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {
@@ -115,7 +116,7 @@ class WelcomeVC: UIViewController {
         let yTranslation = view.frame.height / 4
         headerLabel.transform = CGAffineTransform(translationX: 0, y: -yTranslation)
     }
-    
+
     @objc
     private func termsTextTapped() {
         Log.info("TERMS TAPPED")

@@ -8,6 +8,7 @@
 import UIKit
 import CoreImage
 import KeychainSwift
+import UIOnboarding
 
 private var tintColor: UIColor = .tintColor
 
@@ -354,11 +355,31 @@ extension UILabel {
 
 // MARK: - UIView
 extension UIView {
-    func restoreAnimation(withDuration duration: TimeInterval = 0.2, completion: (() -> Void)? = nil) {
+    func animateClickStart(withDuration duration: TimeInterval = 0.1, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration) {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { _ in
+            completion?()
+        }
+    }
+    
+    func restoreAnimation(withDuration duration: TimeInterval = 0.1, completion: (() -> Void)? = nil) {
         UIView.animate(withDuration: duration) {
             self.transform = CGAffineTransform.identity
         } completion: { _ in
             completion?()
+        }
+    }
+    
+    func addSubviews(_ views: UIView...) {
+        views.forEach { addSubview($0) }
+    }
+    
+    func animateClick(withDuration duration: TimeInterval = 0.1, completion: (() -> Void)? = nil) {
+        animateClickStart(withDuration: duration) {
+            self.restoreAnimation(withDuration: duration) {
+                completion?()
+            }
         }
     }
 }
@@ -398,5 +419,87 @@ extension Task where Success == Never, Failure == Never {
     static func sleep(seconds: Double) async throws {
         let duration = UInt64(seconds * 1_000_000_000)
         try await Task.sleep(nanoseconds: duration)
+    }
+}
+
+// MARK: - UIStackView
+extension UIStackView {
+    func addArrangedSubviews(_ views: [UIView]) {
+        views.forEach { addArrangedSubview($0) }
+    }
+}
+
+// MARK: - UIViewController
+extension UIViewController {
+    func showDashboard(isFromSplash: Bool) {
+        let tabController = TabBarController()
+        navigationController?.pushViewController(tabController, animated: true, completion: {
+            if isFromSplash {
+                self.navigationController?.viewControllers = [WelcomeVC(), tabController]
+            }
+        })
+    }
+}
+
+// MARK: - UINavigationController
+extension UINavigationController {
+    public func pushViewController(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+}
+
+// MARK: - UIOnboardingViewConfiguration
+extension UIOnboardingViewConfiguration {
+    private struct OnboardConfigurationHelper {
+        static func getIcon() -> UIImage {
+            Bundle.main.appIcon ?? UIImage()
+        }
+        
+        static func firstLineTitle() -> NSMutableAttributedString {
+            .init(string: "Welcome to", attributes: [.foregroundColor: UIColor.label])
+        }
+        
+        static func secondLineTitle() -> NSMutableAttributedString {
+            .init(string: Bundle.main.displayName ?? "Money Diary", attributes: [.foregroundColor: globalTintColor])
+        }
+        
+        static func features() -> Array<UIOnboardingFeature> {
+            .init([
+                .init(
+                    icon: UIImage(systemName: "swift") ?? UIImage(),
+                    iconTint: globalTintColor,
+                    title: "Feature 1",
+                    description: "Description 1"
+                ),
+                .init(
+                    icon: UIImage(systemName: "paperplane.fill") ?? UIImage(),
+                    iconTint: globalTintColor,
+                    title: "Feature 2",
+                    description: "Description 2"
+                )
+            ])
+        }
+        
+        static func textView() -> UIOnboardingTextViewConfiguration {
+            .init(icon: UIImage(), text: "")
+        }
+        
+        static func setupButton() -> UIOnboardingButtonConfiguration {
+            .init(title: "Continue", backgroundColor: globalTintColor)
+        }
+    }
+    
+    static func setup() -> UIOnboardingViewConfiguration {
+        .init(
+            appIcon: OnboardConfigurationHelper.getIcon(),
+            firstTitleLine: OnboardConfigurationHelper.firstLineTitle(),
+            secondTitleLine: OnboardConfigurationHelper.secondLineTitle(),
+            features: OnboardConfigurationHelper.features(),
+            textViewConfiguration: OnboardConfigurationHelper.textView(),
+            buttonConfiguration: OnboardConfigurationHelper.setupButton()
+        )
     }
 }

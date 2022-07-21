@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import KeychainSwift
 import RealmSwift
+import UIOnboarding
 
 class SplashVC: UIViewController {
 
@@ -19,6 +20,7 @@ class SplashVC: UIViewController {
     private var error: NSError? = nil
     private var isAnimationDone = false
     private var isFirebaseDone = false
+    private var completion: (()->Void)?
 
     private let keychain = KeychainSwift()
     private let auth = Auth.auth()
@@ -90,14 +92,22 @@ class SplashVC: UIViewController {
     private func navigateToNextScreen(isSignedIn: Bool) {
         let welcomeVC = WelcomeVC()
         welcomeVC.error = error as NSError?
-        let dashboardVC = DashboardVC()
         if isSignedIn {
             Log.info("GO TO DASHBOARD")
-            navigationController?.pushViewController(dashboardVC, animated: true)
+            showDashboard(isFromSplash: true)
         } else {
             Log.info("GO TO WELCOME")
             welcomeVC.shouldAnimateElements = true
-            navigationController?.pushViewController(welcomeVC, animated: false)
+            
+            completion = { self.navigationController?.viewControllers = [welcomeVC] }
+            
+            if !UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.hasCompletedOnboard) {
+                let onboardingVC = UIOnboardingViewController(withConfiguration: .setup())
+                onboardingVC.delegate = self
+                navigationController?.present(onboardingVC, animated: true)
+            } else {
+                completion?()
+            }
         }
     }
     
@@ -121,4 +131,13 @@ class SplashVC: UIViewController {
         }
     }
 
+}
+
+extension SplashVC: UIOnboardingViewControllerDelegate {
+    func didFinishOnboarding(onboardingViewController: UIOnboardingViewController) {
+        onboardingViewController.dismiss(animated: true) {
+            UserDefaults.standard.set(true, forKey: K.UserDefaultsKeys.hasCompletedOnboard)
+            self.completion?()
+        }
+    }
 }

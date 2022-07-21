@@ -97,11 +97,8 @@ class SettingsVC: UIViewController {
         }
         SPIndicator.present(title: "Success", message: "Signed out", preset: .done, haptic: .success)
         clearAllData()
-        let welcomeVC = WelcomeVC()
-        guard let navigationController = navigationController else { return }
-        let navigationArray: [UIViewController] = [welcomeVC] + navigationController.viewControllers
-        self.navigationController?.viewControllers = navigationArray
-        self.navigationController?.popToRootViewController(animated: true)
+        guard let tabBarController = tabBarController else { return }
+        tabBarController.navigationController?.popToRootViewController(animated: true)
     }
     
     func navigateToVC() {

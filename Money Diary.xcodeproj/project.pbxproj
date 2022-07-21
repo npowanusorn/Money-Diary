@@ -61,6 +61,14 @@
 		505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */; };
 		505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */; };
 		505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11E284F1473007AFBE0 /* RoundedView.swift */; };
+		508999C62886643100809F99 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999C52886643100809F99 /* TabBarController.swift */; };
+		508999E92886666E00809F99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 508999E82886666E00809F99 /* SnapKit */; };
+		508999EC288666E000809F99 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 508999EB288666E000809F99 /* RxGesture */; };
+		508999EF2886670400809F99 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 508999EE2886670400809F99 /* RxSwift */; };
+		508999F22886682C00809F99 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F12886682C00809F99 /* CustomTabBar.swift */; };
+		508999F428866A8C00809F99 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F328866A8C00809F99 /* CustomTabItem.swift */; };
+		508999F628866C0600809F99 /* CustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F528866C0600809F99 /* CustomItemView.swift */; };
+		508999F92888CB7F00809F99 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 508999F82888CB7F00809F99 /* UIOnboarding */; };
 		509D84A32860335C00AC8F58 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A22860335C00AC8F58 /* TabBarView.swift */; };
 		509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A828604DA800AC8F58 /* SettingsVC.swift */; };
 		509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509D84A928604DA800AC8F58 /* SettingsVC.xib */; };
@@ -146,6 +154,10 @@
 		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
 		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		508999C52886643100809F99 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		508999F12886682C00809F99 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		508999F328866A8C00809F99 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
+		508999F528866C0600809F99 /* CustomItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemView.swift; sourceTree = "<group>"; };
 		509D84A22860335C00AC8F58 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		509D84A828604DA800AC8F58 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -171,14 +183,18 @@
 			files = (
 				50AB38C92865062300E9957E /* SPSettingsIcons in Frameworks */,
 				50E0481F2866D81D008603BC /* ProgressHUD in Frameworks */,
+				508999E92886666E00809F99 /* SnapKit in Frameworks */,
 				50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */,
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
+				508999EC288666E000809F99 /* RxGesture in Frameworks */,
 				50CCBEF62870985700A75C8A /* GoogleSignIn in Frameworks */,
 				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
 				48DAB1D2286A9C0F00E7461C /* KeychainSwift in Frameworks */,
 				50D0382A2869688900662008 /* Realm in Frameworks */,
 				50AB38C62865061600E9957E /* SPIndicator in Frameworks */,
+				508999EF2886670400809F99 /* RxSwift in Frameworks */,
+				508999F92888CB7F00809F99 /* UIOnboarding in Frameworks */,
 				50D0382C2869688900662008 /* RealmSwift in Frameworks */,
 				50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */,
 			);
@@ -381,6 +397,7 @@
 		5038E6602852D64600756D60 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				508999F02886676B00809F99 /* CustomTabBar */,
 				5038E6682852D90A00756D60 /* BounceButton.swift */,
 				50A221B42855016700D1A139 /* ContentSizedTableView.swift */,
 				4836D851285D4C7200746A56 /* DatePickerCell.swift */,
@@ -418,6 +435,7 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				508999C428865EC900809F99 /* TabBarController */,
 				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
@@ -436,6 +454,24 @@
 				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		508999C428865EC900809F99 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				508999C52886643100809F99 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		508999F02886676B00809F99 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				508999F12886682C00809F99 /* CustomTabBar.swift */,
+				508999F328866A8C00809F99 /* CustomTabItem.swift */,
+				508999F528866C0600809F99 /* CustomItemView.swift */,
+			);
+			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
 		50AB38D4286551F900E9957E /* Frameworks */ = {
@@ -501,6 +537,10 @@
 				50D0382B2869688900662008 /* RealmSwift */,
 				48DAB1D1286A9C0F00E7461C /* KeychainSwift */,
 				50CCBEF52870985700A75C8A /* GoogleSignIn */,
+				508999E82886666E00809F99 /* SnapKit */,
+				508999EB288666E000809F99 /* RxGesture */,
+				508999EE2886670400809F99 /* RxSwift */,
+				508999F82888CB7F00809F99 /* UIOnboarding */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -540,6 +580,10 @@
 				50D038282869688900662008 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				50CCBEF42870985700A75C8A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				508999E72886666E00809F99 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				508999EA288666E000809F99 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				508999ED2886670400809F99 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				508999F72888CB7F00809F99 /* XCRemoteSwiftPackageReference "UIOnboarding" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -593,6 +637,7 @@
 				4839B82028618F9E0015C048 /* TabBarViewCell.swift in Sources */,
 				50E28322285EAC42005A3907 /* WalletDetailVC.swift in Sources */,
 				4849A898285D96BF004569EB /* Wallet.swift in Sources */,
+				508999C62886643100809F99 /* TabBarController.swift in Sources */,
 				4849A8A3285DBA60004569EB /* AddWalletVC.swift in Sources */,
 				50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */,
 				48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */,
@@ -617,6 +662,7 @@
 				48DAB1EE286C1CC400E7461C /* FirebaseManagers.swift in Sources */,
 				4836D855285D601100746A56 /* DashboardVC.swift in Sources */,
 				487BA55328638545007E00B6 /* ImageCell.swift in Sources */,
+				508999F22886682C00809F99 /* CustomTabBar.swift in Sources */,
 				4839B81E2860DB690015C048 /* CommonMethods+Extensions.swift in Sources */,
 				5038E6662852D6D800756D60 /* AddVC.swift in Sources */,
 				4818557D2866AFC000648BB6 /* TextFields.swift in Sources */,
@@ -624,6 +670,8 @@
 				5038E6692852D90A00756D60 /* BounceButton.swift in Sources */,
 				505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */,
 				5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */,
+				508999F628866C0600809F99 /* CustomItemView.swift in Sources */,
+				508999F428866A8C00809F99 /* CustomTabItem.swift in Sources */,
 				4836D860285D8CD900746A56 /* TextViewCell.swift in Sources */,
 				4849A89C285D9FD1004569EB /* RecordManager.swift in Sources */,
 				487BA54D28629350007E00B6 /* RecordDetailsVC.swift in Sources */,
@@ -881,6 +929,38 @@
 				kind = branch;
 			};
 		};
+		508999E72886666E00809F99 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		508999EA288666E000809F99 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		508999ED2886670400809F99 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		508999F72888CB7F00809F99 /* XCRemoteSwiftPackageReference "UIOnboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lascic/UIOnboarding.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		50AB38C1286505BD00E9957E /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
@@ -952,6 +1032,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48DAB1D0286A9C0F00E7461C /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		508999E82886666E00809F99 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508999E72886666E00809F99 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		508999EB288666E000809F99 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508999EA288666E000809F99 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+		508999EE2886670400809F99 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508999ED2886670400809F99 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		508999F82888CB7F00809F99 /* UIOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508999F72888CB7F00809F99 /* XCRemoteSwiftPackageReference "UIOnboarding" */;
+			productName = UIOnboarding;
 		};
 		50AB38C2286505BD00E9957E /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;

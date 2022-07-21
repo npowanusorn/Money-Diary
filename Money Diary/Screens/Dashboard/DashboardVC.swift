@@ -42,13 +42,6 @@ class DashboardVC: UIViewController {
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         balanceLabel.text = getTotalBalance().toCurrencyString()
-
-        guard let navigationController = self.navigationController else { return }
-        var navigationArray = navigationController.viewControllers
-        let temp = navigationArray.last
-        navigationArray.removeAll()
-        navigationArray.append(temp!)
-        self.navigationController?.viewControllers = navigationArray
     }
     
     override func viewWillAppear(_ animated: Bool) {

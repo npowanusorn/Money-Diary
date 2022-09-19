@@ -75,22 +75,13 @@ class DashboardVC: UIViewController {
     func setupMenuButton() {
         
         let addWalletAction = UIAction(title: LocalizedKeys.addWallet.localized, image: UIImage(systemName: ImageName.addImage)) { _ in
-            let addWalletVC = AddWalletVC()
-            addWalletVC.delegate = self
-            let navController = UINavigationController(rootViewController: addWalletVC)
+            let chooseWalletType = ChooseWalletTypeVC()
+            chooseWalletType.delegate = self
+            let navController = UINavigationController(rootViewController: chooseWalletType)
             navController.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
             self.present(navController, animated: true)
         }
-        let settingsAction = UIAction(title: LocalizedKeys.settings.localized, image: UIImage(systemName: ImageName.settingsImage)) { _ in
-            let settingsVC = SettingsVC()
-            let back = UIBarButtonItem()
-            back.title = ""
-            self.navigationItem.backBarButtonItem = back
-            self.navigationController?.pushViewController(settingsVC, animated: true)
-        }
-        let divider = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
-        
-        let menu = UIMenu(title: "", options: .displayInline, children: [divider, settingsAction])
+        let menu = UIMenu(title: "", options: .displayInline, children: [addWalletAction])
         ellipsisButton.menu = menu
         ellipsisButton.showsMenuAsPrimaryAction = true
 

@@ -77,3 +77,9 @@
 
 // Terms
 "terms_title" = "Terms and Conditions";
+
+// Choose Wallet Type
+"cash" = "Cash";
+"bank" = "Bank Account";
+"credit" = "Credit Card";
+"laundry" = "Laundry Card";

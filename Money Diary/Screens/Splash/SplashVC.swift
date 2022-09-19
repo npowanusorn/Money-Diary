@@ -21,6 +21,9 @@ class SplashVC: UIViewController {
     private var isAnimationDone = false
     private var isFirebaseDone = false
     private var completion: (()->Void)?
+    private var isNotFirstTimeAppLaunch: Bool {
+        UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.isNotFirstTimeAppLaunch)
+    }
 
     private let keychain = KeychainSwift()
     private let auth = Auth.auth()
@@ -28,6 +31,11 @@ class SplashVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if !isNotFirstTimeAppLaunch {
+            keychain.clear()
+            UserDefaults.standard.set(true, forKey: K.UserDefaultsKeys.isNotFirstTimeAppLaunch)
+        }
 
         activityIndicator.isHidden = true
 

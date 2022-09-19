@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D1y-bq-Gjq">
-                    <rect key="frame" x="0.0" y="84" width="414" height="812"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Q5-Qb-vpb">
                     <rect key="frame" x="57" y="348" width="300" height="200"/>
@@ -78,14 +79,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQW-mV-tYo" customClass="TabBarView" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="40"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="ymq-N5-DDk"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cc-aN-AZb" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
-                    <rect key="frame" x="334" y="796" width="50" height="50"/>
+                    <rect key="frame" x="334" y="736" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3Vy-j5-A0V"/>
                         <constraint firstAttribute="width" constant="50" id="aT0-Oh-27J"/>
@@ -104,7 +105,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5cc-aN-AZb" secondAttribute="trailing" constant="30" id="HXg-vO-ylH"/>
                 <constraint firstItem="MQW-mV-tYo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OI4-6X-5Ib"/>
                 <constraint firstItem="9Q5-Qb-vpb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QiB-6Y-l6z"/>
-                <constraint firstAttribute="bottom" secondItem="5cc-aN-AZb" secondAttribute="bottom" constant="50" id="SPv-er-Jt8"/>
+                <constraint firstAttribute="bottom" secondItem="5cc-aN-AZb" secondAttribute="bottom" constant="110" id="SPv-er-Jt8"/>
                 <constraint firstItem="D1y-bq-Gjq" firstAttribute="top" secondItem="MQW-mV-tYo" secondAttribute="bottom" id="Uac-Ah-iI6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D1y-bq-Gjq" secondAttribute="trailing" id="aKl-qf-Ydr"/>
                 <constraint firstAttribute="bottom" secondItem="D1y-bq-Gjq" secondAttribute="bottom" id="cOI-kx-Tg8"/>

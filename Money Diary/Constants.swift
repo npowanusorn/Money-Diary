@@ -40,6 +40,7 @@ enum K {
         static let isBiometryEnabled = "isBiometryEnabled"
         static let localAccount = "localAccount"
         static let hasCompletedOnboard = "hasCompleteOnboard"
+        static let isNotFirstTimeAppLaunch = "isNotFirstTimeAppLaunch"
     }
     
     enum Fonts: String {

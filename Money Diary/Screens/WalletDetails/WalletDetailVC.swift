@@ -10,8 +10,7 @@ import RealmSwift
 
 class WalletDetailVC: UIViewController {
 
-    var selectedWalletIndex: Int!
-    
+    private var selectedWalletIndex: Int!
     private let walletManager = WalletManager.shared
     private let recordManager = RecordManager.shared
     private var wallet: Wallet!
@@ -27,7 +26,8 @@ class WalletDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard selectedWalletIndex != nil else { return }
+        guard AppCache.shared.chosenWalletIndex != nil else { return }
+        selectedWalletIndex = AppCache.shared.chosenWalletIndex
 
         wallet = walletManager.getWallet(at: selectedWalletIndex)
         title = wallet.name
@@ -101,6 +101,10 @@ class WalletDetailVC: UIViewController {
     @objc
     func getWalletInfo() {
         Log.info("info")
+        AppCache.shared.chosenWalletIndex = selectedWalletIndex
+        let walletInfoVC = WalletInfoVC()
+        let navController = UINavigationController(rootViewController: walletInfoVC)
+        present(navController, animated: true)
     }
 
     func getAllDates(from records: [Record]) -> [Date] {

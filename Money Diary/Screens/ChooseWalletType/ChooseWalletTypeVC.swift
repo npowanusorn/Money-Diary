@@ -12,13 +12,15 @@ class ChooseWalletTypeVC: UIViewController {
     @IBOutlet private weak var walletTypeTableView: UITableView!
     @IBOutlet private weak var nextButton: BounceButton!
 
+    private var selectedType: WalletType = .unknown
+
     var delegate: AddedWalletDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
-        navigationItem.leftBarButtonItem = leftBarButtonItem
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
 
         walletTypeTableView.delegate = self
         walletTypeTableView.dataSource = self
@@ -30,6 +32,7 @@ class ChooseWalletTypeVC: UIViewController {
     }
 
     @IBAction func nextButtonTapped(_ sender: Any) {
+        AppCache.shared.walletType = selectedType
         let addWalletVC = AddWalletVC()
         addWalletVC.delegate = delegate
         navigationController?.pushViewController(addWalletVC, animated: true)
@@ -44,7 +47,7 @@ class ChooseWalletTypeVC: UIViewController {
 
 extension ChooseWalletTypeVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        WalletTypes.allCases.count
+        WalletType.allCases.count - 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,8 +57,9 @@ extension ChooseWalletTypeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)") else { return UITableViewCell() }
         var content = cell.defaultContentConfiguration()
-        content.text = WalletTypes.allCases[indexPath.section].getName()
+        content.text = WalletType.allCases[indexPath.section].getName()
         content.textProperties.alignment = .center
+        content.textProperties.font = .systemFont(ofSize: 17, weight: .bold)
         cell.contentConfiguration = content
         cell.selectionStyle = .none
         return cell
@@ -66,7 +70,7 @@ extension ChooseWalletTypeVC: UITableViewDelegate, UITableViewDataSource {
         Log.info("SELECTED TYPE: \(indexPath.section)")
 
         var cellSection = [Int]()
-        for index in 0...WalletTypes.allCases.count {
+        for index in 0...WalletType.allCases.count {
             if index != indexPath.section {
                 cellSection.append(index)
             }
@@ -82,11 +86,7 @@ extension ChooseWalletTypeVC: UITableViewDelegate, UITableViewDataSource {
         selectedCell?.layer.borderWidth = 2
         selectedCell?.layer.borderColor = globalTintColor.cgColor
         nextButton.isEnabled = true
+
+        selectedType = WalletType.allCases[indexPath.section]
     }
-}
-
-private enum WalletTypes: String, CaseIterable {
-    case cash, bank, credit, laundry
-
-    func getName() -> String { self.rawValue.localized }
 }

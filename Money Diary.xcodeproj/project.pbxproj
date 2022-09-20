@@ -55,6 +55,7 @@
 		5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5024EE5D284DB344000B295A /* LaunchScreen.storyboard */; };
 		50293A58287945980034C55C /* TermsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50293A56287945980034C55C /* TermsDetailVC.swift */; };
 		50293A59287945980034C55C /* TermsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50293A57287945980034C55C /* TermsDetailVC.xib */; };
+		502AE46528D9685A009FFA36 /* AppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502AE46428D9685A009FFA36 /* AppCache.swift */; };
 		5038E6662852D6D800756D60 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6642852D6D800756D60 /* AddVC.swift */; };
 		5038E6672852D6D800756D60 /* AddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5038E6652852D6D800756D60 /* AddVC.xib */; };
 		5038E6692852D90A00756D60 /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038E6682852D90A00756D60 /* BounceButton.swift */; };
@@ -72,6 +73,8 @@
 		508999F428866A8C00809F99 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F328866A8C00809F99 /* CustomTabItem.swift */; };
 		508999F628866C0600809F99 /* CustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F528866C0600809F99 /* CustomItemView.swift */; };
 		508999F92888CB7F00809F99 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 508999F82888CB7F00809F99 /* UIOnboarding */; };
+		5099AAE728D93C07001BE93B /* WalletInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099AAE528D93C07001BE93B /* WalletInfoVC.swift */; };
+		5099AAE828D93C07001BE93B /* WalletInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5099AAE628D93C07001BE93B /* WalletInfoVC.xib */; };
 		509D84A32860335C00AC8F58 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A22860335C00AC8F58 /* TabBarView.swift */; };
 		509D84AA28604DA800AC8F58 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A828604DA800AC8F58 /* SettingsVC.swift */; };
 		509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509D84A928604DA800AC8F58 /* SettingsVC.xib */; };
@@ -151,6 +154,7 @@
 		5024EE60284DB344000B295A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50293A56287945980034C55C /* TermsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDetailVC.swift; sourceTree = "<group>"; };
 		50293A57287945980034C55C /* TermsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsDetailVC.xib; sourceTree = "<group>"; };
+		502AE46428D9685A009FFA36 /* AppCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCache.swift; sourceTree = "<group>"; };
 		5038E6642852D6D800756D60 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		5038E6652852D6D800756D60 /* AddVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddVC.xib; sourceTree = "<group>"; };
 		5038E6682852D90A00756D60 /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 		508999F12886682C00809F99 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		508999F328866A8C00809F99 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		508999F528866C0600809F99 /* CustomItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemView.swift; sourceTree = "<group>"; };
+		5099AAE528D93C07001BE93B /* WalletInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfoVC.swift; sourceTree = "<group>"; };
+		5099AAE628D93C07001BE93B /* WalletInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletInfoVC.xib; sourceTree = "<group>"; };
 		509D84A22860335C00AC8F58 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		509D84A828604DA800AC8F58 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
@@ -386,6 +392,7 @@
 		5024EE51284DB342000B295A /* Money Diary */ = {
 			isa = PBXGroup;
 			children = (
+				502AE46428D9685A009FFA36 /* AppCache.swift */,
 				5024EE5B284DB344000B295A /* Assets.xcassets */,
 				4839B81D2860DB690015C048 /* CommonMethods+Extensions.swift */,
 				50E2834A285FA87A005A3907 /* Constants.swift */,
@@ -459,13 +466,13 @@
 		5038E6632852D69A00756D60 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				501BFFDA28D82ADD0011D911 /* ChooseWalletType */,
 				48DAB1D7286AC65A00E7461C /* AccountManagement */,
 				4818556A2866603C00648BB6 /* AddRecord */,
 				5038E6642852D6D800756D60 /* AddVC.swift */,
 				5038E6652852D6D800756D60 /* AddVC.xib */,
 				4818556B2866605400648BB6 /* AddWallet */,
 				4818556C2866605D00648BB6 /* AllRecords */,
+				501BFFDA28D82ADD0011D911 /* ChooseWalletType */,
 				4818556D2866606C00648BB6 /* Dashboard */,
 				481855722866609B00648BB6 /* LoginCreateAccount */,
 				481855712866609300648BB6 /* RecordDetails */,
@@ -475,6 +482,7 @@
 				508999C428865EC900809F99 /* TabBarController */,
 				50293A55287945780034C55C /* TermsDetail */,
 				4818556F2866607B00648BB6 /* WalletDetails */,
+				5099AAE428D93BF5001BE93B /* WalletInfo */,
 				481855702866608C00648BB6 /* WalletsList */,
 				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 			);
@@ -497,6 +505,15 @@
 				508999F528866C0600809F99 /* CustomItemView.swift */,
 			);
 			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		5099AAE428D93BF5001BE93B /* WalletInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5099AAE528D93C07001BE93B /* WalletInfoVC.swift */,
+				5099AAE628D93C07001BE93B /* WalletInfoVC.xib */,
+			);
+			path = WalletInfo;
 			sourceTree = "<group>";
 		};
 		50AB38D4286551F900E9957E /* Frameworks */ = {
@@ -627,6 +644,7 @@
 				50293A59287945980034C55C /* TermsDetailVC.xib in Resources */,
 				50E28349285EFFAF005A3907 /* AllRecordsVC.xib in Resources */,
 				50E28323285EAC42005A3907 /* WalletDetailVC.xib in Resources */,
+				5099AAE828D93C07001BE93B /* WalletInfoVC.xib in Resources */,
 				50AB38D328654DBC00E9957E /* GoogleService-Info.plist in Resources */,
 				48DAB1E8286B9C8600E7461C /* ChangePasswordVC.xib in Resources */,
 				50D03827286949CD00662008 /* SplashVC.xib in Resources */,
@@ -682,6 +700,7 @@
 				50293A58287945980034C55C /* TermsDetailVC.swift in Sources */,
 				48DAB1EB286BCEF900E7461C /* DeleteAccountVC.swift in Sources */,
 				48DAB1D5286AC65500E7461C /* AccountManagementVC.swift in Sources */,
+				502AE46528D9685A009FFA36 /* AppCache.swift in Sources */,
 				5024EE53284DB342000B295A /* AppDelegate.swift in Sources */,
 				48DAB1F0286D17DD00E7461C /* BiometryManager.swift in Sources */,
 				5038E69228530FDA00756D60 /* AddRecordVC.swift in Sources */,
@@ -695,6 +714,7 @@
 				4818557D2866AFC000648BB6 /* TextFields.swift in Sources */,
 				50D038302869788500662008 /* ResetPasswordVC.swift in Sources */,
 				5038E6692852D90A00756D60 /* BounceButton.swift in Sources */,
+				5099AAE728D93C07001BE93B /* WalletInfoVC.swift in Sources */,
 				505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */,
 				5024EE55284DB342000B295A /* SceneDelegate.swift in Sources */,
 				508999F628866C0600809F99 /* CustomItemView.swift in Sources */,

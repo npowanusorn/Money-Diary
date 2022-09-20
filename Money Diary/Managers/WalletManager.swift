@@ -27,9 +27,9 @@ class WalletManager {
 //    private let recordManager = RecordManager.shared
 
     var chosenWalletIndex = 0
-//    var chosenWallet: Wallet {
-//        getWallet(at: chosenWalletIndex)
-//    }
+    var chosenWallet: Wallet {
+        getWallet(at: chosenWalletIndex)
+    }
     
     var sortBy: WalletSort = .wallet
 
@@ -60,7 +60,8 @@ class WalletManager {
 
     func addMockWallets(count: Int) {
         for counter in 1...count {
-            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0)
+            let type = WalletType.allCases[Int.random(in: 0...3)]
+            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, type: type)
             addWallet(newWallet: wallet)
         }
     }

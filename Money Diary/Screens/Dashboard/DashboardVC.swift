@@ -73,7 +73,6 @@ class DashboardVC: UIViewController {
     }
 
     func setupMenuButton() {
-        
         let addWalletAction = UIAction(title: LocalizedKeys.addWallet.localized, image: UIImage(systemName: ImageName.addImage)) { _ in
             let chooseWalletType = ChooseWalletTypeVC()
             chooseWalletType.delegate = self
@@ -111,7 +110,8 @@ class DashboardVC: UIViewController {
             for walletDocument in walletDocuments {
                 let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
                 let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance)
+                let walletType = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? WalletType) ?? .unknown
+                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType)
                 let recordCollection = walletCollection.document(walletDocument.documentID).collection(K.FirestoreKeys.CollectionKeys.records)
                 let recordSnapshot = try await recordCollection.getDocuments()
                 let recordDocuments = recordSnapshot.documents
@@ -232,16 +232,16 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == DashboardTableSections.myWallet.rawValue {
             guard walletsList.count > 0 else { return }
+            AppCache.shared.chosenWalletIndex = indexPath.row
             let walletDetailVC = WalletDetailVC()
-            walletDetailVC.selectedWalletIndex = indexPath.row
             let back = UIBarButtonItem()
-            back.title = ""
+            back.title = "Home"
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(walletDetailVC, animated: true)
         } else if indexPath.section == DashboardTableSections.recentRecord.rawValue, indexPath.row == 3, recordList.count > 4 {
             let allRecordsVC = AllRecordsVC()
             let back = UIBarButtonItem()
-            back.title = ""
+            back.title = "Home"
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(allRecordsVC, animated: true)
         } else {
@@ -249,7 +249,7 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             let recordDetailVC = RecordDetailsVC()
             recordDetailVC.selectedRecord = selectedRecord
             let back = UIBarButtonItem()
-            back.title = ""
+            back.title = "Home"
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(recordDetailVC, animated: true)
         }

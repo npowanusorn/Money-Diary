@@ -25,7 +25,11 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        googleButton.setTitle(LocalizedKeys.signInWithGoogle.localized, for: .normal)
+        emailButton.setTitle(LocalizedKeys.signInWithEmail.localized, for: .normal)
+        createAccountButton.setTitle(LocalizedKeys.createAccount.localized, for: .normal)
+
         if let error = error {
             FirebaseErrorManager.handleError(error: error, viewController: self)
         }
@@ -46,6 +50,8 @@ class WelcomeVC: UIViewController {
         termsLabel.attributedText = attributedString
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(termsTextTapped))
         termsLabel.addGestureRecognizer(tapGesture)
+
+        continueWithoutAccountButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +62,8 @@ class WelcomeVC: UIViewController {
 
     @IBAction func signInWithGoogleTapped(_ sender: Any) {
         Log.info("SIGN IN WITH GOOGLE")
-        SPIndicator.present(title: "Success", message: "Logged in", preset: .done, haptic: .success) {
-//            self.goToNext()
-        }
+        let alert = UIAlertController.showDismissAlert(with: "Error", message: "Not Implemented")
+        present(alert, animated: true)
     }
 
     @IBAction func signInWithEmailTapped(_ sender: Any) {

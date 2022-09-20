@@ -79,7 +79,7 @@ class ChangeEmailVC: UIViewController {
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Email changed", preset: .done, haptic: .success, from: .top, completion: nil)
             keychain.set(email, forKey: K.KeychainKeys.emailKey)
-            main { self.navigationController?.popViewController(animated: true) }
+            main { _ = self.navigationController?.popViewController(animated: true) }
         } catch {
             ProgressHUD.dismiss()
             Log.error("ERROR : \(error.localizedDescription)")

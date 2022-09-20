@@ -77,7 +77,7 @@ class ChangePasswordVC: UIViewController {
             ProgressHUD.dismiss()
             SPIndicator.present(title: "Success", message: "Password changed", preset: .done, haptic: .success, from: .top, completion: nil)
             keychain.set(newPassword, forKey: K.KeychainKeys.passwordKey)
-            main { self.navigationController?.popViewController(animated: true) }
+            main { _ = self.navigationController?.popViewController(animated: true) }
         } catch {
             ProgressHUD.dismiss()
             Log.error("ERROR : \(error.localizedDescription)")

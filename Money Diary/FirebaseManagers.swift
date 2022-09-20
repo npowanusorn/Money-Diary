@@ -90,7 +90,9 @@ class FirestoreManager {
                 let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
                 let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
                 let walletID = (walletDocument.data()[K.FirestoreKeys.FieldKeys.id] as? String) ?? generateUID()
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, id: walletID)
+                let walletTypeString = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? String) ?? "unknown"
+                let walletType = WalletType(rawValue: walletTypeString) ?? .unknown
+                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType, id: walletID)
                 let recordCollectionQuery = walletCollection
                     .document(walletDocument.documentID)
                     .collection(K.FirestoreKeys.CollectionKeys.records)
@@ -123,7 +125,8 @@ class FirestoreManager {
         walletCollection.addDocument(data: [
             K.FirestoreKeys.FieldKeys.name : newWallet.name,
             K.FirestoreKeys.FieldKeys.balance: newWallet.balance,
-            K.FirestoreKeys.FieldKeys.id : newWallet.id
+            K.FirestoreKeys.FieldKeys.id : newWallet.id,
+            K.FirestoreKeys.FieldKeys.type : newWallet.type.rawValue
         ]) { error in
             if let error = error {
                 Log.error("ERROR WRITING WALLET: \(error)")

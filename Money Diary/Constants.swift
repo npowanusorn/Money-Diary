@@ -10,6 +10,8 @@ import SwiftyBeaver
 
 public var Log = SwiftyBeaver.self
 
+//public var AppCache = [String : Any]()
+
 enum K {
 
     enum FirestoreKeys {
@@ -27,6 +29,7 @@ enum K {
             static let note = "note"
             static let walletID = "walletID"
             static let id = "id"
+            static let type = "type"
         }
     }
 
@@ -54,6 +57,11 @@ enum K {
             return font
         }
     }
+
+    enum Cache {
+        static let walletType = "walletType"
+        static let selectedWallet = "selectedWallet"
+    }
     
     static let unknownWalletID = "unknown wallet id"
     static let unknownID = "unknown id"
@@ -63,4 +71,10 @@ enum FilterOption: Int {
     case all = 0
     case expense
     case income
+}
+
+enum WalletType: String, CaseIterable {
+    case cash, bank, credit, laundry, unknown
+
+    func getName() -> String { self.rawValue.localized }
 }

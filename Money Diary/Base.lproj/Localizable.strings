@@ -72,7 +72,7 @@
 "welcome_sign_in_with_google" = "Sign in with Google";
 "welcome_create_account" = "Create account";
 "welcome_continue_without_account" = "Continue without account";
-"welcome_terms" = "terms and conditions";
+"welcome_terms" = "Terms and Conditions";
 "welcome_create_account_subtext" = "By signing up, you agree to the ";
 
 // Terms
@@ -83,3 +83,9 @@
 "bank" = "Bank Account";
 "credit" = "Credit Card";
 "laundry" = "Laundry Card";
+"unknown" = "UNKNOWN";
+
+// Wallet Info
+"type" = "Type";
+"balance" = "Balance";
+"id" = "ID";

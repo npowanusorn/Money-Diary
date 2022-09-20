@@ -14,9 +14,10 @@ protocol AddedWalletDelegate {
 
 class AddWalletVC: UIViewController {
 
-    @IBOutlet var walletNameTextField: UITextField!
-    @IBOutlet var amountTextField: UITextField!
-
+    @IBOutlet private var walletNameTextField: UITextField!
+    @IBOutlet private var amountTextField: UITextField!
+    @IBOutlet private weak var addButton: BounceButton!
+    
     private var name = ""
     private var amountString = "" {
         didSet { amount = Double(amountString) ?? 0.0 }
@@ -33,12 +34,16 @@ class AddWalletVC: UIViewController {
 
         title = "Add Wallet"
         self.navigationController?.presentationController?.delegate = self
-        let leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
-        let rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addWallet))
-        navigationItem.leftBarButtonItem = leftBarButtonItem
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        rightBarButtonItem.isEnabled = false
         rightBarButtonItem.tintColor = globalTintColor
+
+        addButton.isEnabled = false
+
+        amountTextField.delegate = self
+
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
@@ -47,24 +52,12 @@ class AddWalletVC: UIViewController {
         } else {
             amountString = sender.text ?? ""
         }
-        navigationItem.rightBarButtonItem?.isEnabled = walletNameTextField.hasText && amountTextField.hasText
+        addButton.isEnabled = walletNameTextField.hasText && amountTextField.hasText
     }
 
-    @objc
-    func dismissView() {
-        if canDismissScreen {
-            dismiss(animated: true)
-        } else {
-            let alert = UIAlertController.showUnsavedChangesSheet {
-                self.dismiss(animated: true)
-            }
-            present(alert, animated: true)
-        }
-    }
-
-    @objc
-    func addWallet() {
-        let newWallet = Wallet(name: name, balance: amount)
+    @IBAction func addButtonTapped(_ sender: Any) {
+        let walletType = AppCache.shared.walletType ?? .unknown
+        let newWallet = Wallet(name: name, balance: amount, type: walletType)
         WalletManager.shared.addWallet(newWallet: newWallet)
         delegate?.didAddWallet(wallet: newWallet)
 
@@ -85,6 +78,30 @@ class AddWalletVC: UIViewController {
         dismiss(animated: true)
     }
 
+    @objc
+    func dismissView() {
+        if canDismissScreen {
+            dismiss(animated: true)
+        } else {
+            let alert = UIAlertController.showUnsavedChangesSheet {
+                self.dismiss(animated: true)
+            }
+            present(alert, animated: true)
+        }
+    }
+//
+//    @objc func keyboardWillShow(notification: Notification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            addButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: Notification) {
+//        if addButton.transform.ty != 0 {
+//            addButton.transform = CGAffineTransform(translationX: 0, y: 0)
+//        }
+//    }
+
 }
 
 extension AddWalletVC: UIAdaptivePresentationControllerDelegate {
@@ -98,5 +115,15 @@ extension AddWalletVC: UIAdaptivePresentationControllerDelegate {
             present(alert, animated: true)
             return false
         }
+    }
+}
+
+extension AddWalletVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text, let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            return updatedText.isValidDouble || updatedText.isEmpty
+        }
+        return false
     }
 }

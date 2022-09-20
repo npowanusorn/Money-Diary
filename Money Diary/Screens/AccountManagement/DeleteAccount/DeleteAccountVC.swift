@@ -53,7 +53,7 @@ class DeleteAccountVC: UIViewController {
         guard let email = keychain.get(K.KeychainKeys.emailKey) else { return }
         await AuthManager.deleteAccount(with: email, viewController: self)
         ProgressHUD.dismiss()
-        main { self.navigationController?.popToRootViewController(animated: true) }
+        main { _ = self.navigationController?.popToRootViewController(animated: true) }
     }
 }
 

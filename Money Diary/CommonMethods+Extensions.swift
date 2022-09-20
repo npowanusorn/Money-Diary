@@ -81,6 +81,14 @@ extension String {
     func localizeByPropagating(string: String) -> String {
         self.localized.replacingOccurrences(of: "%@", with: string)
     }
+
+    var isValidDouble: Bool {
+        return Double(self) != nil
+    }
+
+    var isValidInteger: Bool {
+        return Int(self) != nil
+    }
 }
 
 // MARK: - Double

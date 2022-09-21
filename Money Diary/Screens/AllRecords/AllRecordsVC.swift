@@ -81,6 +81,7 @@ class AllRecordsVC: UIViewController {
             content.secondaryText = record.amount.toCurrencyString()
             content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
             cell.contentConfiguration = content
+            cell.selectionStyle = .default
             cell.accessoryType = .disclosureIndicator
             return cell
         }
@@ -95,6 +96,7 @@ class AllRecordsVC: UIViewController {
         content.secondaryText = record.amount.toCurrencyString()
         content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
+        cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -168,16 +170,17 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let recordDetailsVC = RecordDetailsVC()
         switch walletManager.sortBy {
         case .wallet:
-            let recordDetailsVC = RecordDetailsVC()
-            if let record = walletManager.getWallet(at: indexPath.section).records[safe: indexPath.row] {
-                recordDetailsVC.selectedRecord = record
-                navigationController?.pushViewController(recordDetailsVC, animated: true)
-            } else { return }
+            guard let record = walletManager.getWallet(at: indexPath.section).records[safe: indexPath.row] else { return }
+            AppCache.shared.selectedRecord = record
         case .date:
-            return
+            let dates = recordManager.getAllDates()
+            let record = recordManager.getAllRecords(for: dates[indexPath.section])[indexPath.row]
+            AppCache.shared.selectedRecord = record
         }
+        navigationController?.pushViewController(recordDetailsVC, animated: true)
     }
     
 }

@@ -235,21 +235,20 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
             AppCache.shared.chosenWalletIndex = indexPath.row
             let walletDetailVC = WalletDetailVC()
             let back = UIBarButtonItem()
-            back.title = "Home"
+            back.title = LocalizedKeys.home.localized
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(walletDetailVC, animated: true)
         } else if indexPath.section == DashboardTableSections.recentRecord.rawValue, indexPath.row == 3, recordList.count > 4 {
             let allRecordsVC = AllRecordsVC()
             let back = UIBarButtonItem()
-            back.title = "Home"
+            back.title = LocalizedKeys.home.localized
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(allRecordsVC, animated: true)
         } else {
-            let selectedRecord = recordList[indexPath.row]
+            AppCache.shared.selectedRecord = recordList[indexPath.row]
             let recordDetailVC = RecordDetailsVC()
-            recordDetailVC.selectedRecord = selectedRecord
             let back = UIBarButtonItem()
-            back.title = "Home"
+            back.title = LocalizedKeys.home.localized
             navigationItem.backBarButtonItem = back
             navigationController?.pushViewController(recordDetailVC, animated: true)
         }
@@ -268,7 +267,6 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 message: LocalizedKeys.deleteMessage.localized
             ) {
                 let walletToRemove = self.walletManager.getWallet(at: indexPath.row)
-//                let recordForWallet = walletToRemove.records
                 if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
                     self.deleteWalletFromRealm(wallet: walletToRemove)
                 } else {
@@ -323,6 +321,7 @@ private extension DashboardVC {
         static let deleteAction = "dashboard_alert_delete"
         static let added = "dashboard_indicator_added"
         static let noWalletMessage = "dashboard_alert_no_wallet_message"
+        static let home = "dashboard_back_home"
     }
     enum ImageName {
         static let ellipsisImage = "ellipsis.circle.fill"

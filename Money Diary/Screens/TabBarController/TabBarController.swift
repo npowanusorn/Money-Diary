@@ -13,6 +13,7 @@ class TabBarController: UITabBarController {
     
     private let customTabBar = CustomTabBar()
     private let dispose = DisposeBag()
+    private let controllers = CustomTabItem.allCases.map { UINavigationController(rootViewController: $0.viewController) }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,15 +51,16 @@ class TabBarController: UITabBarController {
     private func setupProperties() {
         tabBar.isHidden = true
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
-        
         selectedIndex = 0
-        let controllers = CustomTabItem.allCases.map { UINavigationController(rootViewController: $0.viewController) }
         setViewControllers(controllers, animated: true)
     }
     
     private func selectTab(index: Int) {
-        self.selectedIndex = index
-        
+        if self.selectedIndex == index {
+            controllers[index].popToRootViewController(animated: true)
+        } else {
+            self.selectedIndex = index
+        }
     }
     
     private func bind() {

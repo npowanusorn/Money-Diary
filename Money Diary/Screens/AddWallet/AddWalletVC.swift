@@ -40,6 +40,7 @@ class AddWalletVC: UIViewController {
 
         addButton.isEnabled = false
 
+        walletNameTextField.placeholder = AppCache.shared.walletType?.getName()
         amountTextField.delegate = self
 
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

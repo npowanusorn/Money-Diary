@@ -66,6 +66,7 @@
 "dashboard_alert_delete" = "Delete";
 "dashboard_indicator_added" = "Added";
 "dashboard_alert_no_wallet_message" = "Create a wallet before adding a record";
+"dashboard_back_home" = "Home";
 
 // Welcome
 "welcome_sign_in_with_email" = "Sign in with email";

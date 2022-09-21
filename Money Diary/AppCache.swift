@@ -13,4 +13,5 @@ class AppCache {
     var dictionary = [String : Any]()
     var chosenWalletIndex: Int?
     var walletType: WalletType?
+    var selectedRecord: Record?
 }

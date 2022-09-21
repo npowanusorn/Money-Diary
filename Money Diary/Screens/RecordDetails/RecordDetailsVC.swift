@@ -10,16 +10,16 @@ import SPIndicator
 
 class RecordDetailsVC: UIViewController {
 
-    var selectedRecord: Record!
+    private let walletManager = WalletManager.shared
+    private var selectedRecord: Record {
+        guard let record = AppCache.shared.selectedRecord else { fatalError("selectedRecord is nil") }
+        return record
+    }
 
     @IBOutlet private var tableView: UITableView!
-
-    private let walletManager = WalletManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard selectedRecord != nil else { return }
 
         setupTable()
 
@@ -36,7 +36,7 @@ class RecordDetailsVC: UIViewController {
     }
 
     @objc func editRecord() {
-
+        // TODO
     }
 
     func performDeletion() {

@@ -13,6 +13,9 @@ public var Log = SwiftyBeaver.self
 //public var AppCache = [String : Any]()
 
 enum K {
+    enum NotificationName {
+        static let didDeleteWallet = "didDeleteWallet"
+    }
 
     enum FirestoreKeys {
         enum CollectionKeys {
@@ -24,6 +27,7 @@ enum K {
             static let balance = "balance"
             static let name = "name"
             static let amount = "amount"
+            static let dateCreated = "dateCreated"
             static let date = "date"
             static let expense = "isExpense"
             static let note = "note"

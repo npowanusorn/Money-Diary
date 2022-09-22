@@ -38,6 +38,8 @@ class WalletDetailVC: UIViewController {
         
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
         navigationItem.rightBarButtonItem = rightBarButtonItem
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteWallet), name: Notification.Name("didDeleteWallet"), object: nil)
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -100,7 +102,6 @@ class WalletDetailVC: UIViewController {
     
     @objc
     func getWalletInfo() {
-        Log.info("info")
         AppCache.shared.chosenWalletIndex = selectedWalletIndex
         let walletInfoVC = WalletInfoVC()
         let navController = UINavigationController(rootViewController: walletInfoVC)
@@ -117,6 +118,12 @@ class WalletDetailVC: UIViewController {
             }
         }
         return dates
+    }
+
+    @objc
+    private func didDeleteWallet() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(K.NotificationName.didDeleteWallet), object: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }

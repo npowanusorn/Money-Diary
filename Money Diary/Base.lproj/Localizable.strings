@@ -87,6 +87,10 @@
 "unknown" = "UNKNOWN";
 
 // Wallet Info
+"title" = "Info";
+"alert_title" = "Delete Wallet";
+"alert_message" = "All records in this wallet will be deleted. This action cannot be undone";
 "type" = "Type";
 "balance" = "Balance";
 "id" = "ID";
+"date_created" = "Date Created";

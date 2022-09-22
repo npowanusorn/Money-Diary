@@ -9,14 +9,26 @@ import UIKit
 
 class WalletInfoVC: UIViewController {
 
+    @IBOutlet private weak var deleteButton: BounceButton!
     @IBOutlet private weak var walletInfoTableView: UITableView!
+
+    private var chosenWalletIndex: Int {
+        guard let index = AppCache.shared.chosenWalletIndex else {
+            fatalError()
+        }
+        return index
+    }
+
+    private var selectedWallet: Wallet {
+        WalletManager.shared.getWallet(at: chosenWalletIndex)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let rightNavBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightNavBarButton
-        title = "Info"
+        title = LocalizedKeys.title.localized
 
         walletInfoTableView.delegate = self
         walletInfoTableView.dataSource = self
@@ -24,9 +36,30 @@ class WalletInfoVC: UIViewController {
         walletInfoTableView.bounces = false
     }
 
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        let alert = UIAlertController.showDeleteConfirmationAlert(
+            with: LocalizedKeys.alertTitle.localized,
+            message: LocalizedKeys.alertMessage.localized
+        ) {
+            self.handleDeleteWallet()
+        }
+        present(alert, animated: true)
+    }
+
     @objc
     private func dismissView() {
         self.dismiss(animated: true)
+    }
+
+    private func handleDeleteWallet() {
+        Task {
+            await FirestoreManager.deleteWallet(wallet: selectedWallet)
+            if WalletManager.shared.removeWallet(at: chosenWalletIndex) {
+                self.dismiss(animated: true) {
+                    NotificationCenter.default.post(name: Notification.Name(K.NotificationName.didDeleteWallet), object: nil)
+                }
+            }
+        }
     }
 }
 
@@ -34,8 +67,6 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)") else { return UITableViewCell() }
         guard let currentSection = WalletInfoTableSection(rawValue: indexPath.section) else { return cell }
-        guard let chosenWalletIndex = AppCache.shared.chosenWalletIndex else { return cell }
-        let selectedWallet = WalletManager.shared.getWallet(at: chosenWalletIndex)
         var content = cell.defaultContentConfiguration()
         switch currentSection {
         case .name:
@@ -47,6 +78,8 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
             content.text = selectedWallet.type.getName()
         case .balance:
             content.text = selectedWallet.balance.toCurrencyString()
+        case .dateCreated:
+            content.text = selectedWallet.dateCreated.formatted()
         case .id:
             content.text = selectedWallet.id
             content.textProperties.font = .systemFont(ofSize: 12)
@@ -71,18 +104,30 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 private enum WalletInfoTableSection: Int, CaseIterable {
-    case name = 0, type, balance, id
+    case name = 0, type, balance, dateCreated, id
 
     func getSectionName() -> String? {
         switch self {
         case .name:
             return nil
         case .type:
-            return "type".localized
+            return LocalizedKeys.type.localized
         case .balance:
-            return "balance".localized
+            return LocalizedKeys.balance.localized
+        case .dateCreated:
+            return LocalizedKeys.dateCreated.localized
         case .id:
-            return "id".localized
+            return LocalizedKeys.id.localized
         }
     }
+}
+
+private enum LocalizedKeys {
+    static let title = "title"
+    static let alertTitle = "alert_title"
+    static let alertMessage = "alert_message"
+    static let type = "type"
+    static let balance = "balance"
+    static let id = "id"
+    static let dateCreated = "date_created"
 }

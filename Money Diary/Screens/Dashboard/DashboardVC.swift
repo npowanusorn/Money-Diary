@@ -101,36 +101,6 @@ class DashboardVC: UIViewController {
         balanceLabel.text = getTotalBalance().toCurrencyString()
     }
 
-    func getDataFromFirestore() async {
-        guard let currentUser = currentUser else { return }
-        let walletCollection = db.collection(K.FirestoreKeys.CollectionKeys.users).document(currentUser.uid).collection(K.FirestoreKeys.CollectionKeys.wallets)
-        do {
-            let walletSnapshot = try await walletCollection.getDocuments()
-            let walletDocuments = walletSnapshot.documents
-            for walletDocument in walletDocuments {
-                let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
-                let walletBalance = (walletDocument.data()[K.FirestoreKeys.FieldKeys.balance] as? Double) ?? 0.0
-                let walletType = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? WalletType) ?? .unknown
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType)
-                let recordCollection = walletCollection.document(walletDocument.documentID).collection(K.FirestoreKeys.CollectionKeys.records)
-                let recordSnapshot = try await recordCollection.getDocuments()
-                let recordDocuments = recordSnapshot.documents
-                for recordDocument in recordDocuments {
-                    let amount = (recordDocument.data()[K.FirestoreKeys.FieldKeys.amount] as? Double) ?? 0.0
-                    let date = (recordDocument.data()[K.FirestoreKeys.FieldKeys.date] as? Timestamp)?.dateValue() ?? Date()
-                    let isExpense = (recordDocument.data()[K.FirestoreKeys.FieldKeys.expense] as? Bool) ?? true
-                    let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
-                    let wallet = (recordDocument.data()[K.FirestoreKeys.FieldKeys.walletID] as? String) ?? K.unknownWalletID
-                    let record = Record(amount: amount, note: note, date: date, walletID: wallet, isExpense: isExpense)
-                    walletForSnapshot.addRecord(newRecord: record)
-                }
-                walletManager.addWallet(newWallet: walletForSnapshot)
-            }
-        } catch {
-            Log.error("ERROR GETTING DATA FROM FIRESTORE: \(error)")
-        }
-    }
-
     private func getNumberOfRows(forSection section: Int) -> Int {
         if section == DashboardTableSections.myWallet.rawValue {
             return walletsList.count == 0 ? 1 : walletsList.count

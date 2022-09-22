@@ -84,7 +84,9 @@ class FirestoreManager {
             .document(currentUser.uid)
             .collection(K.FirestoreKeys.CollectionKeys.wallets)
         do {
-            let walletSnapshot = try await walletCollection.getDocuments()
+            let walletSnapshot = try await walletCollection
+                .order(by: K.FirestoreKeys.FieldKeys.dateCreated)
+                .getDocuments()
             let walletDocuments = walletSnapshot.documents
             for walletDocument in walletDocuments {
                 let walletName = (walletDocument.data()[K.FirestoreKeys.FieldKeys.name] as? String) ?? ""
@@ -92,7 +94,8 @@ class FirestoreManager {
                 let walletID = (walletDocument.data()[K.FirestoreKeys.FieldKeys.id] as? String) ?? generateUID()
                 let walletTypeString = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? String) ?? "unknown"
                 let walletType = WalletType(rawValue: walletTypeString) ?? .unknown
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType, id: walletID)
+                let walletDateCreated = (walletDocument.data()[K.FirestoreKeys.FieldKeys.dateCreated] as? Timestamp)?.dateValue() ?? .distantPast
+                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType, dateCreated: walletDateCreated, id: walletID)
                 let recordCollectionQuery = walletCollection
                     .document(walletDocument.documentID)
                     .collection(K.FirestoreKeys.CollectionKeys.records)
@@ -126,7 +129,8 @@ class FirestoreManager {
             K.FirestoreKeys.FieldKeys.name : newWallet.name,
             K.FirestoreKeys.FieldKeys.balance: newWallet.balance,
             K.FirestoreKeys.FieldKeys.id : newWallet.id,
-            K.FirestoreKeys.FieldKeys.type : newWallet.type.rawValue
+            K.FirestoreKeys.FieldKeys.type : newWallet.type.rawValue,
+            K.FirestoreKeys.FieldKeys.dateCreated : newWallet.dateCreated
         ]) { error in
             if let error = error {
                 Log.error("ERROR WRITING WALLET: \(error)")
@@ -200,10 +204,8 @@ class FirestoreManager {
                     let recordCollection = walletCollection
                         .document(walletDocument.documentID)
                         .collection(K.FirestoreKeys.CollectionKeys.records)
-                    Log.info("1234 3")
                     let recordDocuments = try await recordCollection.getDocuments().documents
                     for recordDocument in recordDocuments {
-                        Log.info("1234 4")
                         let recordID = recordDocument.data()[K.FirestoreKeys.FieldKeys.id] as? String ?? K.unknownID
                         if recordID == record.id {
                             Log.info("ATTEMPTING TO DELETE RECORD")

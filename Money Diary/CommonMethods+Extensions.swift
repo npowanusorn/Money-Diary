@@ -65,6 +65,12 @@ func generateUID() -> String {
     UUID().uuidString
 }
 
+func makeDate(day: Int, month: Int, year: Int) -> Date {
+    var calendar = Calendar(identifier: .gregorian)
+    let components = DateComponents(year: year, month: month, day: day)
+    return calendar.date(from: components) ?? .distantPast
+}
+
 // MARK: - String
 extension String {
     func toCurrencyFormat() -> String {

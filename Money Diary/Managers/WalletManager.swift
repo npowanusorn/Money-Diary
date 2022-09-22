@@ -38,6 +38,7 @@ class WalletManager {
     }
 
     func getWallets() -> [Wallet] {
+        wallets.sort { $0.dateCreated < $1.dateCreated }
         return wallets
     }
 
@@ -56,14 +57,26 @@ class WalletManager {
 
     func addWallet(newWallet: Wallet) {
         wallets.append(newWallet)
+        wallets.sort { $0.dateCreated < $1.dateCreated }
     }
 
     func addMockWallets(count: Int) {
         for counter in 1...count {
             let type = WalletType.allCases[Int.random(in: 0...3)]
-            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, type: type)
+            let year = Int.random(in: 2000...2022)
+            let month = Int.random(in: 1...12)
+            let day = Int.random(in: 1...28)
+            let date = makeDate(day: day, month: month, year: year)
+            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, type: type, dateCreated: date)
             addWallet(newWallet: wallet)
         }
+    }
+
+    func checkNameDuplicate(name: String) -> Bool {
+        for wallet in wallets {
+            if wallet.name == name { return true }
+        }
+        return false
     }
 
 //    func addMockRecords(count: Int, walletIndex: Int) {

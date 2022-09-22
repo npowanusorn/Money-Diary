@@ -57,8 +57,13 @@ class AddWalletVC: UIViewController {
     }
 
     @IBAction func addButtonTapped(_ sender: Any) {
+        guard !WalletManager.shared.checkNameDuplicate(name: name) else {
+            let alert = UIAlertController.showErrorAlert(message: "\(name) already exist")
+            present(alert, animated: true)
+            return
+        }
         let walletType = AppCache.shared.walletType ?? .unknown
-        let newWallet = Wallet(name: name, balance: amount, type: walletType)
+        let newWallet = Wallet(name: name, balance: amount, type: walletType, dateCreated: .now)
         WalletManager.shared.addWallet(newWallet: newWallet)
         delegate?.didAddWallet(wallet: newWallet)
 

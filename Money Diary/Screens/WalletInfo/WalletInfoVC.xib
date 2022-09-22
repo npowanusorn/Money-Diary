@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalletInfoVC" customModule="Money_Diary" customModuleProvider="target">
             <connections>
+                <outlet property="deleteButton" destination="YuY-g1-ccb" id="XJc-AD-f8Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="walletInfoTableView" destination="HBh-Z6-0Pn" id="n20-Rf-aZP"/>
             </connections>
@@ -21,16 +22,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-Z6-0Pn">
-                    <rect key="frame" x="0.0" y="59" width="430" height="839"/>
+                    <rect key="frame" x="0.0" y="59" width="430" height="719"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuY-g1-ccb" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
+                    <rect key="frame" x="50" y="798" width="330" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="nqA-tU-Bxn"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Delete"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Delete" cornerStyle="large">
+                        <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="deleteButtonTapped:" destination="-1" eventType="touchUpInside" id="hr0-Sw-z3i"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HBh-Z6-0Pn" secondAttribute="bottom" id="BdV-q6-RoT"/>
+                <constraint firstItem="YuY-g1-ccb" firstAttribute="top" secondItem="HBh-Z6-0Pn" secondAttribute="bottom" constant="20" id="69t-fk-idJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YuY-g1-ccb" secondAttribute="bottom" constant="50" id="ARh-st-rRr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HBh-Z6-0Pn" secondAttribute="trailing" id="Lyk-ym-Dbr"/>
                 <constraint firstItem="HBh-Z6-0Pn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QGQ-bk-Ckx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YuY-g1-ccb" secondAttribute="trailing" constant="50" id="QhW-gB-Ova"/>
                 <constraint firstItem="HBh-Z6-0Pn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kaM-Je-ekg"/>
+                <constraint firstItem="YuY-g1-ccb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="nuj-4l-Bxr"/>
             </constraints>
             <point key="canvasLocation" x="136.74418604651163" y="20.600858369098713"/>
         </view>
@@ -38,6 +56,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -17,9 +17,9 @@ class TabBarController: UITabBarController {
     private let gradientView = UIView(
         frame: CGRect(
             x: 0,
-            y: ScreenSize.height - Constants.tabBarHeight,
+            y: ScreenSize.height - Constants.tabBarHeight - Constants.offset,
             width: ScreenSize.width,
-            height: Constants.tabBarHeight
+            height: Constants.tabBarHeight + Constants.offset
         )
     )
 
@@ -62,7 +62,10 @@ class TabBarController: UITabBarController {
         let gradient = CAGradientLayer()
         gradient.frame = gradientView.bounds
         gradient.colors = [UIColor.clear.cgColor, UIColor.systemGroupedBackground.cgColor]
+        gradient.startPoint = CGPoint(x: Constants.xPoint, y: Constants.startPointY)
+        gradient.endPoint = CGPoint(x: Constants.xPoint, y: Constants.endPointY)
         gradientView.layer.insertSublayer(gradient, at: 0)
+        gradientView.isUserInteractionEnabled = false
         selectedIndex = 0
         setViewControllers(controllers, animated: true)
     }
@@ -85,4 +88,8 @@ class TabBarController: UITabBarController {
 
 private enum Constants {
     static let tabBarHeight: CGFloat = 90
+    static let offset: CGFloat = 40
+    static let xPoint = 0.5
+    static let startPointY = 0.0
+    static let endPointY = 0.8
 }

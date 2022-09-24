@@ -42,8 +42,8 @@ final class CustomTabBar: UIStackView {
         distribution = .fillEqually
         alignment = .center
         
-        backgroundColor = .systemGroupedBackground
-        
+        backgroundColor = .clear
+
         itemViews.forEach { item in
             item.translatesAutoresizingMaskIntoConstraints = false
             item.clipsToBounds = true

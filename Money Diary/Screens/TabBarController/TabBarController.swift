@@ -14,7 +14,15 @@ class TabBarController: UITabBarController {
     private let customTabBar = CustomTabBar()
     private let dispose = DisposeBag()
     private let controllers = CustomTabItem.allCases.map { UINavigationController(rootViewController: $0.viewController) }
-    
+    private let gradientView = UIView(
+        frame: CGRect(
+            x: 0,
+            y: ScreenSize.height - Constants.tabBarHeight,
+            width: ScreenSize.width,
+            height: Constants.tabBarHeight
+        )
+    )
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -38,19 +46,23 @@ class TabBarController: UITabBarController {
     }
     
     private func setupHierarchy() {
-        view.addSubview(customTabBar)
+        view.addSubviews(gradientView, customTabBar)
     }
     
     private func setupLayout() {
         customTabBar.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(Constants.tabBarHeight)
         }
     }
     
     private func setupProperties() {
         tabBar.isHidden = true
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
+        let gradient = CAGradientLayer()
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.systemGroupedBackground.cgColor]
+        gradientView.layer.insertSublayer(gradient, at: 0)
         selectedIndex = 0
         setViewControllers(controllers, animated: true)
     }
@@ -69,4 +81,8 @@ class TabBarController: UITabBarController {
             .disposed(by: dispose)
     }
     
+}
+
+private enum Constants {
+    static let tabBarHeight: CGFloat = 90
 }

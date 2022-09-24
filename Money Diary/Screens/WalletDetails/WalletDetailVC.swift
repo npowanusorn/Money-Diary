@@ -178,9 +178,9 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
         if indexPath.section == 0 {
             if filterOption == .all {
-                content.text = "Total: \(getWalletBalance())"
+                content.text = LocalizedKeys.total.localizeWithFormat(arguments: getWalletBalance())
             } else {
-                content.text = "Total: \(getTotalAmount())"
+                content.text = LocalizedKeys.total.localizeWithFormat(arguments: getTotalAmount())
             }
             content.textProperties.alignment = .center
             cell.contentConfiguration = content
@@ -193,9 +193,16 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         content.text = recordForDate.note
         content.secondaryText = recordForDate.amount.toCurrencyString()
         content.secondaryTextProperties.color = recordForDate.isExpense ? .systemRed : .systemBlue
-        
         cell.contentConfiguration = content
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == numberOfSections(in: tableView) - 1 {
+            return Constants.lastSectionFooterHeight
+        } else {
+            return Constants.normalSectionFooterHeight
+        }
     }
 }
 
@@ -215,6 +222,19 @@ extension WalletDetailVC: TabBarViewDelegate {
 
 private extension WalletDetailVC {
     enum Constants {
-        static let tabViewButtonTitles = ["All", "Expenses", "Income"]
+        static let tabViewButtonTitles = [
+            LocalizedKeys.all.localized,
+            LocalizedKeys.expenses.localized,
+            LocalizedKeys.income.localized
+        ]
+        static let normalSectionFooterHeight: CGFloat = 15.0
+        static let lastSectionFooterHeight: CGFloat = 110.0
+    }
+
+    enum LocalizedKeys {
+        static let all = "wallet_detail_tab_all"
+        static let expenses = "wallet_detail_tab_expenses"
+        static let income = "wallet_detail_tab_income"
+        static let total = "wallet_detail_total"
     }
 }

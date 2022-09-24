@@ -73,6 +73,7 @@
 		508999F428866A8C00809F99 /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F328866A8C00809F99 /* CustomTabItem.swift */; };
 		508999F628866C0600809F99 /* CustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999F528866C0600809F99 /* CustomItemView.swift */; };
 		508999F92888CB7F00809F99 /* UIOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 508999F82888CB7F00809F99 /* UIOnboarding */; };
+		508AC04B28DE8F8D00611CD0 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508AC04A28DE8F8D00611CD0 /* ScreenSize.swift */; };
 		5099AAE728D93C07001BE93B /* WalletInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099AAE528D93C07001BE93B /* WalletInfoVC.swift */; };
 		5099AAE828D93C07001BE93B /* WalletInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5099AAE628D93C07001BE93B /* WalletInfoVC.xib */; };
 		509D84A32860335C00AC8F58 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D84A22860335C00AC8F58 /* TabBarView.swift */; };
@@ -168,6 +169,7 @@
 		508999F12886682C00809F99 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		508999F328866A8C00809F99 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		508999F528866C0600809F99 /* CustomItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemView.swift; sourceTree = "<group>"; };
+		508AC04A28DE8F8D00611CD0 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		5099AAE528D93C07001BE93B /* WalletInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfoVC.swift; sourceTree = "<group>"; };
 		5099AAE628D93C07001BE93B /* WalletInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletInfoVC.xib; sourceTree = "<group>"; };
 		509D84A22860335C00AC8F58 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				5038E68C2853052500756D60 /* UIView+Fade.swift */,
 				50D33AB02866CBD800D009B8 /* Validator.swift */,
 				4849A897285D96BF004569EB /* Wallet.swift */,
+				508AC04A28DE8F8D00611CD0 /* ScreenSize.swift */,
 			);
 			path = "Money Diary";
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				508999C62886643100809F99 /* TabBarController.swift in Sources */,
 				501BFFDD28D82B020011D911 /* ChooseWalletTypeVC.swift in Sources */,
 				4849A8A3285DBA60004569EB /* AddWalletVC.swift in Sources */,
+				508AC04B28DE8F8D00611CD0 /* ScreenSize.swift in Sources */,
 				50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */,
 				48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */,
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,

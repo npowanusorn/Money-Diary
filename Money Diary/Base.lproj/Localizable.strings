@@ -94,3 +94,9 @@
 "balance" = "Balance";
 "id" = "ID";
 "date_created" = "Date Created";
+
+// Wallet Detail
+"wallet_detail_tab_all" = "All";
+"wallet_detail_tab_expenses" = "Expenses";
+"wallet_detail_tab_income" = "Income";
+"wallet_detail_total" = "Total: %@";

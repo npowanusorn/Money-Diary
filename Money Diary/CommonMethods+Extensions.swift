@@ -66,7 +66,7 @@ func generateUID() -> String {
 }
 
 func makeDate(day: Int, month: Int, year: Int) -> Date {
-    var calendar = Calendar(identifier: .gregorian)
+    let calendar = Calendar(identifier: .gregorian)
     let components = DateComponents(year: year, month: month, day: day)
     return calendar.date(from: components) ?? .distantPast
 }

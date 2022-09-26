@@ -26,8 +26,10 @@ class WalletInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightNavBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
-        navigationItem.rightBarButtonItem = rightNavBarButton
+        let dismissNavBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(leftNavBarButtonTapped))
+        let editNavBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(rightNavBarButtonTapped))
+        navigationItem.leftBarButtonItem = dismissNavBarButton
+        navigationItem.rightBarButtonItem = editNavBarButton
         title = LocalizedKeys.title.localized
 
         walletInfoTableView.delegate = self
@@ -47,8 +49,13 @@ class WalletInfoVC: UIViewController {
     }
 
     @objc
-    private func dismissView() {
+    private func leftNavBarButtonTapped() {
         self.dismiss(animated: true)
+    }
+
+    @objc
+    private func rightNavBarButtonTapped() {
+        Log.info("EDIT WALLET TAPPED GO TO EDIT WALLET VC")
     }
 
     private func handleDeleteWallet() {

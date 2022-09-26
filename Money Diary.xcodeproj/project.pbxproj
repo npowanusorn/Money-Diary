@@ -65,6 +65,8 @@
 		505BA11C284F0DF5007AFBE0 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */; };
 		505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */; };
 		505BA11F284F1473007AFBE0 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505BA11E284F1473007AFBE0 /* RoundedView.swift */; };
+		507B6E6C28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B6E6A28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.swift */; };
+		507B6E6D28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507B6E6B28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.xib */; };
 		508999C62886643100809F99 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508999C52886643100809F99 /* TabBarController.swift */; };
 		508999E92886666E00809F99 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 508999E82886666E00809F99 /* SnapKit */; };
 		508999EC288666E000809F99 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 508999EB288666E000809F99 /* RxGesture */; };
@@ -165,6 +167,8 @@
 		505BA11A284F0DF5007AFBE0 /* WalletsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		505BA11B284F0DF5007AFBE0 /* WalletsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletsCell.xib; sourceTree = "<group>"; };
 		505BA11E284F1473007AFBE0 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		507B6E6A28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigureWalletCurrencyVC.swift; path = "Money Diary/Screens/ConfigureWallet/ChooseWalletType/ConfigureWalletCurrencyVC.swift"; sourceTree = SOURCE_ROOT; };
+		507B6E6B28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigureWalletCurrencyVC.xib; path = "Money Diary/Screens/ConfigureWallet/ChooseWalletType/ConfigureWalletCurrencyVC.xib"; sourceTree = SOURCE_ROOT; };
 		508999C52886643100809F99 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		508999F12886682C00809F99 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		508999F328866A8C00809F99 /* CustomTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
@@ -377,9 +381,9 @@
 		5024EE46284DB342000B295A = {
 			isa = PBXGroup;
 			children = (
+				50AB38D4286551F900E9957E /* Frameworks */,
 				5024EE51284DB342000B295A /* Money Diary */,
 				5024EE50284DB342000B295A /* Products */,
-				50AB38D4286551F900E9957E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,7 +479,7 @@
 				5038E6652852D6D800756D60 /* AddVC.xib */,
 				4818556B2866605400648BB6 /* AddWallet */,
 				4818556C2866605D00648BB6 /* AllRecords */,
-				501BFFDA28D82ADD0011D911 /* ChooseWalletType */,
+				507B6E6828E15B20003A5F54 /* ConfigureWallet */,
 				4818556D2866606C00648BB6 /* Dashboard */,
 				481855722866609B00648BB6 /* LoginCreateAccount */,
 				481855712866609300648BB6 /* RecordDetails */,
@@ -490,6 +494,24 @@
 				50D33AAE2866B90100D009B8 /* WelcomeVC */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		507B6E6828E15B20003A5F54 /* ConfigureWallet */ = {
+			isa = PBXGroup;
+			children = (
+				507B6E6928E15B29003A5F54 /* ConfigureCurrency */,
+				501BFFDA28D82ADD0011D911 /* ChooseWalletType */,
+			);
+			path = ConfigureWallet;
+			sourceTree = "<group>";
+		};
+		507B6E6928E15B29003A5F54 /* ConfigureCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				507B6E6A28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.swift */,
+				507B6E6B28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.xib */,
+			);
+			path = ConfigureCurrency;
 			sourceTree = "<group>";
 		};
 		508999C428865EC900809F99 /* TabBarController */ = {
@@ -665,6 +687,7 @@
 				48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
 				487BA55428638545007E00B6 /* ImageCell.xib in Resources */,
+				507B6E6D28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.xib in Resources */,
 				509D84AB28604DA800AC8F58 /* SettingsVC.xib in Resources */,
 				487BA565286586C7007E00B6 /* WelcomeVC.xib in Resources */,
 				48DAB1DE286AD0D600E7461C /* ChangeEmailVC.xib in Resources */,
@@ -688,6 +711,7 @@
 				501BFFDD28D82B020011D911 /* ChooseWalletTypeVC.swift in Sources */,
 				4849A8A3285DBA60004569EB /* AddWalletVC.swift in Sources */,
 				508AC04B28DE8F8D00611CD0 /* ScreenSize.swift in Sources */,
+				507B6E6C28E15B3E003A5F54 /* ConfigureWalletCurrencyVC.swift in Sources */,
 				50E28325285EB95B005A3907 /* LeftRightLabelCell.swift in Sources */,
 				48DAB1E7286B9C8600E7461C /* ChangePasswordVC.swift in Sources */,
 				5038E68D2853052500756D60 /* UIView+Fade.swift in Sources */,

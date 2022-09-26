@@ -219,6 +219,27 @@ class FirestoreManager {
             Log.error("ERROR: \(error)")
         }
     }
+
+    static func modifyWalletName(wallet: Wallet, newName: String) async {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let db = Firestore.firestore()
+        let walletCollection = db.collection(K.FirestoreKeys.CollectionKeys.users)
+            .document(currentUser.uid)
+            .collection(K.FirestoreKeys.CollectionKeys.wallets)
+        do {
+            let walletDocuments = try await walletCollection.getDocuments().documents
+            for walletDocument in walletDocuments {
+                let walletID = walletDocument.data()[K.FirestoreKeys.FieldKeys.id] as? String ?? K.unknownWalletID
+                if walletID == wallet.id {
+                    try await walletCollection.document(walletDocument.documentID).updateData([
+                        K.FirestoreKeys.FieldKeys.name : newName
+                    ])
+                }
+            }
+        } catch {
+            Log.error("ERROR: \(error)")
+        }
+    }
 }
 
 class FirebaseErrorManager {

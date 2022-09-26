@@ -56,7 +56,12 @@ class AddRecordVC: UIViewController {
         tableView.dataSource = self
         tableView.keyboardDismissMode = .onDrag
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCellHeight(_:)), name: Notification.Name(rawValue: "textViewDidChange"), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateCellHeight(_:)),
+            name: "textViewDidChange",
+            object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -199,8 +204,6 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
             var content = cell.defaultContentConfiguration()
             content.text = "Wallet"
             content.secondaryText = WalletManager.shared.getWallet(at: WalletManager.shared.chosenWalletIndex).name
-//            content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-//            content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             cell.contentConfiguration = content
             cell.accessoryType = .disclosureIndicator
             return cell
@@ -210,8 +213,6 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
                 var content = cell.defaultContentConfiguration()
                 content.text = "Date"
                 content.secondaryText = selectedDateString
-//                content.textProperties.font = UIFont(name: "Avenir Next Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-//                content.secondaryTextProperties.font = UIFont(name: "Avenir Next Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
                 cell.contentConfiguration = content
                 cell.selectionStyle = .none
                 return cell
@@ -242,15 +243,6 @@ extension AddRecordVC: UITableViewDataSource, UITableViewDelegate {
                 return 350.0
             }
         }
-//        if indexPath.row == 0 {
-//            return 50.0
-//        } else if indexPath.row == 1 && indexPath.section == 2 {
-//            return 350.0
-//        } else if indexPath.section == 1{
-//            return 50
-//        } else {
-//            return cellHeight
-//        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

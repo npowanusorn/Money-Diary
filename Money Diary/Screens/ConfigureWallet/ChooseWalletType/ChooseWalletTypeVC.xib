@@ -38,8 +38,8 @@
                         <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="SxS-Zx-aL0"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fde-nD-4Xt">
-                    <rect key="frame" x="20" y="202" width="390" height="516"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fde-nD-4Xt">
+                    <rect key="frame" x="0.0" y="202" width="430" height="516"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -47,12 +47,12 @@
             <constraints>
                 <constraint firstItem="LAh-jf-WhJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="83e-a3-x3e"/>
                 <constraint firstItem="nay-xE-DAx" firstAttribute="top" secondItem="fde-nD-4Xt" secondAttribute="bottom" constant="80" id="9GN-Cq-jwM"/>
-                <constraint firstItem="fde-nD-4Xt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="CML-G9-Oao"/>
+                <constraint firstItem="fde-nD-4Xt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CML-G9-Oao"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LAh-jf-WhJ" secondAttribute="trailing" constant="30" id="D1N-s9-Xej"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nay-xE-DAx" secondAttribute="trailing" constant="50" id="JKg-Um-FIh"/>
                 <constraint firstItem="fde-nD-4Xt" firstAttribute="top" secondItem="LAh-jf-WhJ" secondAttribute="bottom" constant="80" id="KWm-J7-Sbr"/>
                 <constraint firstItem="nay-xE-DAx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="Qrq-ht-Zwe"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fde-nD-4Xt" secondAttribute="trailing" constant="20" id="baU-gg-v3W"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fde-nD-4Xt" secondAttribute="trailing" id="baU-gg-v3W"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nay-xE-DAx" secondAttribute="bottom" constant="50" id="rSx-wp-kV3"/>
                 <constraint firstItem="LAh-jf-WhJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="vqV-2x-tF5"/>
             </constraints>

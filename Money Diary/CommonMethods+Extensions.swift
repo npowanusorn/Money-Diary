@@ -517,3 +517,22 @@ extension UIOnboardingViewConfiguration {
         )
     }
 }
+
+// MARK: - NotificationCenter
+extension NotificationCenter {
+    func post(name: String, object: Any?) {
+        let notificationName = Notification.Name(name)
+        post(name: notificationName, object: object)
+    }
+
+    func addObserver(_ observer: Any, selector aSelector: Selector, name aName: String, object anObject: Any?) {
+        let notificationName = Notification.Name(aName)
+        addObserver(observer, selector: aSelector, name: notificationName, object: anObject)
+    }
+
+    func removeObserver(_ observer: Any, name aName: String, object anObject: Any?) {
+        let notificationName = Notification.Name(aName)
+        removeObserver(observer, name: notificationName, object: anObject)
+    }
+    
+}

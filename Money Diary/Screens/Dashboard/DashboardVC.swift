@@ -42,6 +42,13 @@ class DashboardVC: UIViewController {
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         balanceLabel.text = getTotalBalance().toCurrencyString()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didAddWallet),
+            name: K.NotificationName.didAddWallet,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +82,6 @@ class DashboardVC: UIViewController {
     func setupMenuButton() {
         let addWalletAction = UIAction(title: LocalizedKeys.addWallet.localized, image: UIImage(systemName: ImageName.addImage)) { _ in
             let chooseWalletType = ChooseWalletTypeVC()
-            chooseWalletType.delegate = self
             let navController = UINavigationController(rootViewController: chooseWalletType)
             navController.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
             self.present(navController, animated: true)
@@ -99,6 +105,13 @@ class DashboardVC: UIViewController {
         recordList = recordManager.getAllRecords()
         tableView.reloadData()
         balanceLabel.text = getTotalBalance().toCurrencyString()
+    }
+
+    @objc
+    func didAddWallet() {
+        SPIndicator.present(title: LocalizedKeys.added.localized, preset: .done, haptic: .success)
+        walletsList = walletManager.getWallets()
+        refreshData()
     }
 
     private func getNumberOfRows(forSection section: Int) -> Int {
@@ -261,14 +274,6 @@ extension DashboardVC: AddedRecordDelegate {
         SPIndicator.present(title: LocalizedKeys.added.localized, preset: .done, haptic: .success)
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
-        refreshData()
-    }
-}
-
-extension DashboardVC: AddedWalletDelegate {
-    func didAddWallet(wallet: Wallet) {
-        SPIndicator.present(title: LocalizedKeys.added.localized, preset: .done, haptic: .success)
-        walletsList = walletManager.getWallets()
         refreshData()
     }
 }

@@ -27,8 +27,6 @@ class AddWalletVC: UIViewController {
         return name.isEmpty && amountString.isEmpty
     }
 
-    var delegate: AddedWalletDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,9 +40,6 @@ class AddWalletVC: UIViewController {
 
         walletNameTextField.placeholder = AppCache.shared.walletType?.getName()
         amountTextField.delegate = self
-
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
@@ -65,7 +60,7 @@ class AddWalletVC: UIViewController {
         let walletType = AppCache.shared.walletType ?? .unknown
         let newWallet = Wallet(name: name, balance: amount, type: walletType, dateCreated: .now)
         WalletManager.shared.addWallet(newWallet: newWallet)
-        delegate?.didAddWallet(wallet: newWallet)
+        NotificationCenter.default.post(name: K.NotificationName.didAddWallet, object: nil)
 
         if UserDefaults.standard.bool(forKey: K.UserDefaultsKeys.localAccount) {
             do {

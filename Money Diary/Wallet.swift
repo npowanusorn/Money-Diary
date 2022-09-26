@@ -56,6 +56,11 @@ class Wallet: Object {
         if _balance < 0 { _balance = 0 }
     }
 
+    func modifyName(newName: String) {
+        guard !newName.isEmpty else { return }
+        _name = newName
+    }
+
     func addRecord(newRecord: Record) {
         let recordAmount = newRecord.amount * (newRecord.isExpense ? -1.0 : 1.0)
         _records.append(newRecord)

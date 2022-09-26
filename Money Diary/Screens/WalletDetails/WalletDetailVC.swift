@@ -35,11 +35,36 @@ class WalletDetailVC: UIViewController {
         setupTabBar()
         setupTable()
         refreshScreen()
-        
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill"), style: .plain, target: self, action: #selector(getWalletInfo))
+
+        let rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: Constants.infoImage),
+            style: .plain,
+            target: self,
+            action: #selector(getWalletInfo)
+        )
         navigationItem.rightBarButtonItem = rightBarButtonItem
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteWallet), name: Notification.Name("didDeleteWallet"), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDeleteWallet),
+            name: K.NotificationName.didDeleteWallet,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didUpdateWalletName),
+            name: K.NotificationName.didUpdateWalletName,
+            object: nil
+        )
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: K.NotificationName.didUpdateWalletName,
+            object: nil
+        )
     }
 
     @IBAction func addRecordTapped(_ sender: Any) {
@@ -122,8 +147,17 @@ class WalletDetailVC: UIViewController {
 
     @objc
     private func didDeleteWallet() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name(K.NotificationName.didDeleteWallet), object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: K.NotificationName.didDeleteWallet,
+            object: nil
+        )
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    @objc
+    private func didUpdateWalletName() {
+        title = wallet.name
     }
 
 }
@@ -229,6 +263,7 @@ private extension WalletDetailVC {
         ]
         static let normalSectionFooterHeight: CGFloat = 15.0
         static let lastSectionFooterHeight: CGFloat = 110.0
+        static let infoImage = "info.circle.fill"
     }
 
     enum LocalizedKeys {

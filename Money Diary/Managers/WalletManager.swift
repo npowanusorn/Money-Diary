@@ -72,6 +72,7 @@ class WalletManager {
         }
     }
 
+    /// returns true if name already exist, false otherwise
     func checkNameDuplicate(name: String) -> Bool {
         for wallet in wallets {
             if wallet.name == name { return true }
@@ -122,6 +123,10 @@ class WalletManager {
         }
         RecordManager.shared.removeRecord(for: wallet.id)
         return true
+    }
+
+    func modifyWalletName(wallet: Wallet, name: String) {
+        wallet.modifyName(newName: name)
     }
     
     func removeAllWallets() {

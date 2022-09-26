@@ -100,3 +100,10 @@
 "wallet_detail_tab_expenses" = "Expenses";
 "wallet_detail_tab_income" = "Income";
 "wallet_detail_total" = "Total: %@";
+
+// Currency
+"usd" = "US Dollar";
+"euro" = "Euro";
+"jpy" = "Japanese Yen";
+"cad" = "Canadian Dollar";
+"thb" = "Thai Baht";

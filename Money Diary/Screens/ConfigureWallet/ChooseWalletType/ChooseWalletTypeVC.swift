@@ -14,12 +14,10 @@ class ChooseWalletTypeVC: UIViewController {
 
     private var selectedType: WalletType = .unknown
 
-    var delegate: AddedWalletDelegate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightBarButtonItem
 
         walletTypeTableView.delegate = self
@@ -32,10 +30,9 @@ class ChooseWalletTypeVC: UIViewController {
     }
 
     @IBAction func nextButtonTapped(_ sender: Any) {
+        let configureCurrencyVC = ConfigureWalletCurrencyVC()
+        navigationController?.pushViewController(configureCurrencyVC, animated: true)
         AppCache.shared.walletType = selectedType
-        let addWalletVC = AddWalletVC()
-        addWalletVC.delegate = delegate
-        navigationController?.pushViewController(addWalletVC, animated: true)
     }
 
     @objc

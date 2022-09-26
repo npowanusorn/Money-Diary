@@ -14,4 +14,5 @@ class AppCache {
     var chosenWalletIndex: Int?
     var walletType: WalletType?
     var selectedRecord: Record?
+    var chosenCurrency: CurrencyType?
 }

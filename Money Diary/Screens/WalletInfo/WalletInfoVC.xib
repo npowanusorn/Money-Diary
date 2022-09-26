@@ -12,8 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalletInfoVC" customModule="Money_Diary" customModuleProvider="target">
             <connections>
                 <outlet property="deleteButton" destination="YuY-g1-ccb" id="XJc-AD-f8Z"/>
+                <outlet property="textFieldView" destination="USW-rm-4K4" id="LLB-fA-QqQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="walletInfoTableView" destination="HBh-Z6-0Pn" id="n20-Rf-aZP"/>
+                <outlet property="walletNameTextField" destination="igE-0a-cfW" id="y28-CY-1mm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,8 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-Z6-0Pn">
-                    <rect key="frame" x="0.0" y="59" width="430" height="719"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-Z6-0Pn">
+                    <rect key="frame" x="0.0" y="146" width="430" height="632"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuY-g1-ccb" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
                     <rect key="frame" x="50" y="798" width="330" height="50"/>
@@ -38,17 +40,33 @@
                         <action selector="deleteButtonTapped:" destination="-1" eventType="touchUpInside" id="hr0-Sw-z3i"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USW-rm-4K4">
+                    <rect key="frame" x="20" y="59" width="390" height="67"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igE-0a-cfW">
+                    <rect key="frame" x="20" y="59" width="390" height="67"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="igE-0a-cfW" firstAttribute="top" secondItem="USW-rm-4K4" secondAttribute="top" id="0Qd-uF-erx"/>
                 <constraint firstItem="YuY-g1-ccb" firstAttribute="top" secondItem="HBh-Z6-0Pn" secondAttribute="bottom" constant="20" id="69t-fk-idJ"/>
+                <constraint firstItem="igE-0a-cfW" firstAttribute="leading" secondItem="USW-rm-4K4" secondAttribute="leading" id="9l4-5k-bZw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YuY-g1-ccb" secondAttribute="bottom" constant="50" id="ARh-st-rRr"/>
+                <constraint firstItem="igE-0a-cfW" firstAttribute="trailing" secondItem="USW-rm-4K4" secondAttribute="trailing" id="LC0-uV-Jbw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HBh-Z6-0Pn" secondAttribute="trailing" id="Lyk-ym-Dbr"/>
-                <constraint firstItem="HBh-Z6-0Pn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QGQ-bk-Ckx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YuY-g1-ccb" secondAttribute="trailing" constant="50" id="QhW-gB-Ova"/>
+                <constraint firstItem="USW-rm-4K4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="fT1-cx-6Bx"/>
                 <constraint firstItem="HBh-Z6-0Pn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kaM-Je-ekg"/>
+                <constraint firstItem="USW-rm-4K4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="n7c-4P-Do0"/>
                 <constraint firstItem="YuY-g1-ccb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="nuj-4l-Bxr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="USW-rm-4K4" secondAttribute="trailing" constant="20" id="rVF-Qq-ak9"/>
+                <constraint firstItem="igE-0a-cfW" firstAttribute="bottom" secondItem="USW-rm-4K4" secondAttribute="bottom" id="rpR-5i-x7I"/>
+                <constraint firstItem="HBh-Z6-0Pn" firstAttribute="top" secondItem="USW-rm-4K4" secondAttribute="bottom" constant="20" id="vTv-p6-SYL"/>
             </constraints>
             <point key="canvasLocation" x="136.74418604651163" y="20.600858369098713"/>
         </view>

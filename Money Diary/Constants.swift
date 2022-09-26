@@ -15,6 +15,8 @@ public var Log = SwiftyBeaver.self
 enum K {
     enum NotificationName {
         static let didDeleteWallet = "didDeleteWallet"
+        static let didUpdateWalletName = "didUpdateWalletName"
+        static let didAddWallet = "didAddWallet"
     }
 
     enum FirestoreKeys {
@@ -79,6 +81,12 @@ enum FilterOption: Int {
 
 enum WalletType: String, CaseIterable {
     case cash, bank, credit, laundry, unknown
+
+    func getName() -> String { self.rawValue.localized }
+}
+
+enum CurrencyType: String, CaseIterable {
+    case usd, euro, cad, jpy, thb
 
     func getName() -> String { self.rawValue.localized }
 }

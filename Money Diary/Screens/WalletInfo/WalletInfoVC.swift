@@ -9,6 +9,8 @@ import UIKit
 
 class WalletInfoVC: UIViewController {
 
+    @IBOutlet private weak var textFieldView: UIView!
+    @IBOutlet private weak var walletNameTextField: UITextField!
     @IBOutlet private weak var deleteButton: BounceButton!
     @IBOutlet private weak var walletInfoTableView: UITableView!
 
@@ -22,20 +24,52 @@ class WalletInfoVC: UIViewController {
     private var selectedWallet: Wallet {
         WalletManager.shared.getWallet(at: chosenWalletIndex)
     }
+    private var saveNavBarButton: UIBarButtonItem {
+        UIBarButtonItem(
+            barButtonSystemItem: .save,
+            target: self,
+            action: #selector(rightNavBarButtonTapped)
+        )
+    }
+    private var cancelNavBarButton: UIBarButtonItem {
+        UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(leftNavBarButtonTapped)
+        )
+    }
+    private var dismissNavBarButton: UIBarButtonItem {
+        UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(leftNavBarButtonTapped)
+        )
+    }
+    private var editNavBarButton: UIBarButtonItem {
+        UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(rightNavBarButtonTapped)
+        )
+    }
+    private var leftBarButtonItem: UIBarButtonItem? {
+        get { return navigationItem.leftBarButtonItem }
+        set { navigationItem.leftBarButtonItem = newValue }
+    }
+    private var rightBarButtonItem: UIBarButtonItem? {
+        get { return navigationItem.rightBarButtonItem }
+        set { navigationItem.rightBarButtonItem = newValue }
+    }
+    private var isEditingWallet = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let dismissNavBarButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(leftNavBarButtonTapped))
-        let editNavBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(rightNavBarButtonTapped))
-        navigationItem.leftBarButtonItem = dismissNavBarButton
-        navigationItem.rightBarButtonItem = editNavBarButton
-        title = LocalizedKeys.title.localized
 
         walletInfoTableView.delegate = self
         walletInfoTableView.dataSource = self
         walletInfoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
         walletInfoTableView.bounces = false
+        setupInitialUI()
     }
 
     @IBAction func deleteButtonTapped(_ sender: Any) {
@@ -48,14 +82,81 @@ class WalletInfoVC: UIViewController {
         present(alert, animated: true)
     }
 
+    private func setupInitialUI() {
+        walletNameTextField.backgroundColor = .clear
+        walletNameTextField.borderStyle = .none
+        walletNameTextField.text = selectedWallet.name
+        walletNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+
+        handleEditingWalletUI()
+
+        textFieldView.layer.cornerRadius = 12.0
+        textFieldView.backgroundColor = .secondarySystemGroupedBackground
+        textFieldView.isHidden = true
+
+    }
+
     @objc
     private func leftNavBarButtonTapped() {
-        self.dismiss(animated: true)
+        if isEditingWallet {
+            isEditingWallet = false
+            walletNameTextField.text = selectedWallet.name
+            handleEditingWalletUI()
+        } else {
+            self.dismiss(animated: true)
+        }
     }
 
     @objc
     private func rightNavBarButtonTapped() {
         Log.info("EDIT WALLET TAPPED GO TO EDIT WALLET VC")
+        if isEditingWallet {
+            Log.info("CHECK AND SAVE NEW WALLET INFO")
+            guard let name = walletNameTextField.text else { return }
+            if name == selectedWallet.name { return }
+            if WalletManager.shared.checkNameDuplicate(name: name) {
+                let alert = UIAlertController.showErrorAlert(message: "\(name) already exist")
+                present(alert, animated: true)
+                return
+            }
+            selectedWallet.modifyName(newName: name)
+            Task {
+                await FirestoreManager.modifyWalletName(wallet: selectedWallet, newName: name)
+            }
+            isEditingWallet = false
+            NotificationCenter.default.post(
+                name: K.NotificationName.didUpdateWalletName,
+                object: nil
+            )
+        } else {
+            isEditingWallet = true
+        }
+        handleEditingWalletUI()
+    }
+
+    @objc
+    private func textFieldDidChange(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        rightBarButtonItem?.isEnabled = !text.isEmpty
+    }
+
+    private func handleEditingWalletUI() {
+        if isEditingWallet {
+            leftBarButtonItem = cancelNavBarButton
+            rightBarButtonItem = saveNavBarButton
+            walletInfoTableView.fadeOut(withDuration: 0.2)
+            deleteButton.fadeOut(withDuration: 0.2)
+            walletNameTextField.isUserInteractionEnabled = true
+            textFieldView.fadeIn(withDuration: 0.2)
+        } else {
+            leftBarButtonItem = dismissNavBarButton
+            rightBarButtonItem = editNavBarButton
+            walletInfoTableView.fadeIn(withDuration: 0.2)
+            deleteButton.fadeIn(withDuration: 0.2)
+            walletNameTextField.isUserInteractionEnabled = false
+            walletNameTextField.resignFirstResponder()
+            textFieldView.fadeOut(withDuration: 0.2)
+        }
     }
 
     private func handleDeleteWallet() {
@@ -63,7 +164,10 @@ class WalletInfoVC: UIViewController {
             await FirestoreManager.deleteWallet(wallet: selectedWallet)
             if WalletManager.shared.removeWallet(at: chosenWalletIndex) {
                 self.dismiss(animated: true) {
-                    NotificationCenter.default.post(name: Notification.Name(K.NotificationName.didDeleteWallet), object: nil)
+                    NotificationCenter.default.post(
+                        name: K.NotificationName.didDeleteWallet,
+                        object: nil
+                    )
                 }
             }
         }
@@ -76,17 +180,12 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
         guard let currentSection = WalletInfoTableSection(rawValue: indexPath.section) else { return cell }
         var content = cell.defaultContentConfiguration()
         switch currentSection {
-        case .name:
-            content.text = selectedWallet.name
-            content.textProperties.font = .systemFont(ofSize: 48, weight: .bold)
-            content.textProperties.alignment = .center
-            cell.backgroundColor = .clear
         case .type:
             content.text = selectedWallet.type.getName()
         case .balance:
             content.text = selectedWallet.balance.toCurrencyString()
         case .dateCreated:
-            content.text = selectedWallet.dateCreated.formatted()
+            content.text = selectedWallet.dateCreated.formatted(date: .long, time: .omitted)
         case .id:
             content.text = selectedWallet.id
             content.textProperties.font = .systemFont(ofSize: 12)
@@ -111,12 +210,10 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 private enum WalletInfoTableSection: Int, CaseIterable {
-    case name = 0, type, balance, dateCreated, id
+    case type, balance, dateCreated, id
 
     func getSectionName() -> String? {
         switch self {
-        case .name:
-            return nil
         case .type:
             return LocalizedKeys.type.localized
         case .balance:

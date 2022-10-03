@@ -30,9 +30,9 @@ class AddWalletVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Add Wallet"
+        title = "Add \(AppCache.shared.walletType?.getName() ?? "Wallet")"
         self.navigationController?.presentationController?.delegate = self
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissView))
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissView))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         rightBarButtonItem.tintColor = globalTintColor
 
@@ -90,19 +90,6 @@ class AddWalletVC: UIViewController {
             present(alert, animated: true)
         }
     }
-//
-//    @objc func keyboardWillShow(notification: Notification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            addButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: Notification) {
-//        if addButton.transform.ty != 0 {
-//            addButton.transform = CGAffineTransform(translationX: 0, y: 0)
-//        }
-//    }
-
 }
 
 extension AddWalletVC: UIAdaptivePresentationControllerDelegate {

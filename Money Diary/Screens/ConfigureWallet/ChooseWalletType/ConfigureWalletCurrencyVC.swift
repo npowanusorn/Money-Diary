@@ -24,12 +24,20 @@ class ConfigureWalletCurrencyVC: UIViewController {
         tableView.rowHeight = 50
 
         nextButton.isEnabled = false
+
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissView))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     @IBAction func nextButtonTapped(_ sender: Any) {
         AppCache.shared.chosenCurrency = chosenCurrency
         let addWalletVC = AddWalletVC()
         navigationController?.pushViewController(addWalletVC, animated: true)
+    }
+
+    @objc
+    private func dismissView() {
+        self.dismiss(animated: true)
     }
 }
 

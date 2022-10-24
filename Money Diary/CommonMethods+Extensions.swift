@@ -536,3 +536,11 @@ extension NotificationCenter {
     }
     
 }
+
+// MARK: - UITableViewCell
+extension UITableViewCell {
+    func getText() -> String? {
+        guard let content = contentConfiguration as? UIListContentConfiguration else { return nil }
+        return content.text
+    }
+}

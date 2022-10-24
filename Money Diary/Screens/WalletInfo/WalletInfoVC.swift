@@ -61,6 +61,8 @@ class WalletInfoVC: UIViewController {
         set { navigationItem.rightBarButtonItem = newValue }
     }
     private var isEditingWallet = false
+    private var editMenuInteraction: UIEditMenuInteraction!
+    private var selectedCellText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +72,9 @@ class WalletInfoVC: UIViewController {
         walletInfoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
         walletInfoTableView.bounces = false
         setupInitialUI()
+
+        editMenuInteraction = UIEditMenuInteraction(delegate: self)
+        walletInfoTableView.addInteraction(editMenuInteraction)
     }
 
     @IBAction func deleteButtonTapped(_ sender: Any) {
@@ -206,6 +211,29 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let currentSection = WalletInfoTableSection(rawValue: section) else { return nil }
         return currentSection.getSectionName()
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCellText = tableView.cellForRow(at: indexPath)?.getText() ?? ""
+
+        let rectForCellInTableView = tableView.rectForRow(at: indexPath)
+        let location = CGPoint(x: rectForCellInTableView.origin.x + rectForCellInTableView.width / 2, y: rectForCellInTableView.origin.y)
+        let configuration = UIEditMenuConfiguration(identifier: nil, sourcePoint: location)
+        if let interaction = editMenuInteraction {
+            interaction.presentEditMenu(with: configuration)
+        }
+    }
+}
+
+extension WalletInfoVC: UIEditMenuInteractionDelegate {
+    func editMenuInteraction(_ interaction: UIEditMenuInteraction, menuFor configuration: UIEditMenuConfiguration, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        let menu = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Copy", handler: { _ in
+                let pasteboard = UIPasteboard.general
+                pasteboard.string = self.selectedCellText
+            })
+        ])
+        return UIMenu(children: menu.children)
     }
 }
 

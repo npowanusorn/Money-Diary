@@ -15,6 +15,8 @@ class RecordDetailsVC: UIViewController {
         guard let record = AppCache.shared.selectedRecord else { fatalError("selectedRecord is nil") }
         return record
     }
+    private var editMenuInteraction: UIEditMenuInteraction!
+    private var selectedCellText = ""
 
     @IBOutlet private var tableView: UITableView!
     
@@ -26,6 +28,9 @@ class RecordDetailsVC: UIViewController {
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editRecord))
         rightBarButtonItem.tintColor = globalTintColor
         navigationItem.rightBarButtonItem = rightBarButtonItem
+
+        editMenuInteraction = UIEditMenuInteraction(delegate: self)
+        tableView.addInteraction(editMenuInteraction)
     }
 
     @IBAction func deleteTapped(_ sender: Any) {
@@ -104,6 +109,32 @@ extension RecordDetailsVC: UITableViewDelegate, UITableViewDataSource {
         cell.contentConfiguration = content
         cell.selectionStyle = .none
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCellText = tableView.cellForRow(at: indexPath)?.getText() ?? ""
+
+        let rectOfRowInTableView = tableView.rectForRow(at: indexPath)
+        let location = CGPoint(
+            x: rectOfRowInTableView.origin.x + rectOfRowInTableView.width / 2,
+            y: rectOfRowInTableView.origin.y
+        )
+        let configuration = UIEditMenuConfiguration(identifier: nil, sourcePoint: location)
+        if let interaction = editMenuInteraction {
+            interaction.presentEditMenu(with: configuration)
+        }
+    }
+}
+
+extension RecordDetailsVC: UIEditMenuInteractionDelegate {
+    func editMenuInteraction(_ interaction: UIEditMenuInteraction, menuFor configuration: UIEditMenuConfiguration, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        let menu = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Copy", handler: { _ in
+                let pasteboard = UIPasteboard.general
+                pasteboard.string = self.selectedCellText
+            })
+        ])
+        return UIMenu(children: menu.children)
     }
 }
 

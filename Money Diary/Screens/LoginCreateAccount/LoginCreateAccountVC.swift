@@ -38,10 +38,10 @@ class LoginCreateAccountVC: UIViewController {
     @IBOutlet private var confirmPasswordTextField: PasswordTextField!
     @IBOutlet private var signInButton: BounceButton!
     @IBOutlet private var confirmPasswordView: UIView!
-    @IBOutlet private var passwordMismatchLabel: UILabel!
+    @IBOutlet private var textFieldValidationLabel: UILabel!
     @IBOutlet private var signInToConfirmPasswordConstraint: NSLayoutConstraint!
     @IBOutlet private var resetPasswordButton: BounceButton!
-    @IBOutlet private var signInToPasswordFieldConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textFieldValidationLabelTopConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,17 +58,15 @@ class LoginCreateAccountVC: UIViewController {
         signInButton.isEnabled = false
 
         if !isLogInVC {
-            passwordMismatchLabel.isHidden = true
+            textFieldValidationLabel.isHidden = true
             passwordTextField.returnKeyType = .next
-            signInToPasswordFieldConstraint.isActive = false
-            signInToConfirmPasswordConstraint.isActive = true
             resetPasswordButton.isHidden = true
         } else {
-            signInToConfirmPasswordConstraint.isActive = false
-            signInToPasswordFieldConstraint.isActive = true
-            signInToPasswordFieldConstraint.constant = 40.0
+            textFieldValidationLabel.isHidden = true
+            signInToConfirmPasswordConstraint.constant -= confirmPasswordView.frame.height
             resetPasswordButton.isHidden = false
-            bypass()
+            textFieldValidationLabelTopConstraint.constant = -confirmPasswordView.frame.height
+//            bypass()
         }
     }
 
@@ -83,20 +81,28 @@ class LoginCreateAccountVC: UIViewController {
     }
         
     @IBAction func textFieldDidChange(_ sender: Any) {
-        if !isValidEmail && !isLogInVC {
-            passwordMismatchLabel.isHidden = false
+        if !isValidEmail {
             signInButton.isEnabled = false
-            passwordMismatchLabel.text = "Invalid email"
+            if !email.isEmpty {
+                textFieldValidationLabel.isHidden = false
+                textFieldValidationLabel.text = "Invalid email"
+            } else {
+                textFieldValidationLabel.isHidden = true
+            }
             return
         }
         
         if !isPasswordMatch {
-            passwordMismatchLabel.isHidden = false
             signInButton.isEnabled = false
-            passwordMismatchLabel.text = "Passwords do not match"
+            if !password.isEmpty {
+                textFieldValidationLabel.isHidden = false
+                textFieldValidationLabel.text = "Passwords do not match"
+            } else {
+                textFieldValidationLabel.isHidden = true
+            }
             return
         }
-        passwordMismatchLabel.isHidden = true
+        textFieldValidationLabel.isHidden = true
         signInButton.isEnabled = true
     }
 
@@ -120,11 +126,13 @@ class LoginCreateAccountVC: UIViewController {
         ProgressHUD.show()
 
         Task {
-            await AuthManager.signIn(with: email, password: password, viewController: self)
-            await FirestoreManager.getData()
-            SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+            let loginSuccess = await AuthManager.signIn(with: email, password: password, viewController: self)
+            if loginSuccess {
+                await FirestoreManager.getData()
+                SPIndicator.present(title: "Success", message: "Signed in", preset: .done, haptic: .success)
+                showDashboard(isFromSplash: false)
+            }
             ProgressHUD.dismiss()
-            showDashboard(isFromSplash: false)
         }
     }
 

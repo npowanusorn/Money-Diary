@@ -27,7 +27,7 @@ class AuthManager {
         }
     }
 
-    static func signIn(with email: String, password: String, viewController: UIViewController) async {
+    static func signIn(with email: String, password: String, viewController: UIViewController) async -> Bool {
         do {
             let keychain = KeychainSwift()
             Log.info("**** SIGNING IN ****")
@@ -35,9 +35,11 @@ class AuthManager {
             Log.info("**** SIGNED IN ****")
             keychain.set(email, forKey: K.KeychainKeys.emailKey)
             keychain.set(password, forKey: K.KeychainKeys.passwordKey)
+            return true
         } catch {
             Log.error("ERROR SIGNING IN: \(error.localizedDescription)")
             FirebaseErrorManager.handleError(error: error as NSError, viewController: viewController)
+            return false
         }
     }
 

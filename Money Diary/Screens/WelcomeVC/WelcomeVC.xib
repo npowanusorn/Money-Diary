@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI3-Pw-wha">
-                    <rect key="frame" x="40" y="532" width="348" height="260"/>
+                    <rect key="frame" x="40" y="532" width="348" height="280"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJl-uU-Ha9" customClass="BounceButton" customModule="Money_Diary" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
@@ -125,7 +124,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you agree to the terms and conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hei-FM-MjB">
-                            <rect key="frame" x="0.0" y="220" width="348" height="40"/>
+                            <rect key="frame" x="0.0" y="240" width="348" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="35p-DC-Xdg"/>
                             </constraints>
@@ -143,7 +142,7 @@
                         <constraint firstItem="Hei-FM-MjB" firstAttribute="leading" secondItem="lI3-Pw-wha" secondAttribute="leading" id="7pn-m6-hJT"/>
                         <constraint firstItem="Ljo-bR-NzH" firstAttribute="top" secondItem="SJl-uU-Ha9" secondAttribute="bottom" constant="20" id="B6m-Gp-DK1"/>
                         <constraint firstItem="YTX-3a-2Ce" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="G01-88-seF"/>
-                        <constraint firstItem="Hei-FM-MjB" firstAttribute="top" secondItem="6rM-7q-HFA" secondAttribute="bottom" id="KsD-Xp-gr4"/>
+                        <constraint firstItem="Hei-FM-MjB" firstAttribute="top" secondItem="6rM-7q-HFA" secondAttribute="bottom" constant="20" id="KsD-Xp-gr4"/>
                         <constraint firstItem="SJl-uU-Ha9" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="RDm-Ar-LRS"/>
                         <constraint firstItem="Ljo-bR-NzH" firstAttribute="trailing" secondItem="6rM-7q-HFA" secondAttribute="trailing" id="YhR-Oc-8MT"/>
                         <constraint firstItem="YTX-3a-2Ce" firstAttribute="leading" secondItem="6rM-7q-HFA" secondAttribute="leading" id="d6T-03-e02"/>
@@ -174,7 +173,7 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lI3-Pw-wha" secondAttribute="trailing" constant="40" id="55E-HC-Xgd"/>
                 <constraint firstItem="mMZ-uY-nhI" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="73W-OP-MRe"/>
-                <constraint firstItem="mMZ-uY-nhI" firstAttribute="top" secondItem="lI3-Pw-wha" secondAttribute="bottom" constant="50" id="7Jm-FW-5bC"/>
+                <constraint firstItem="mMZ-uY-nhI" firstAttribute="top" secondItem="lI3-Pw-wha" secondAttribute="bottom" constant="30" id="7Jm-FW-5bC"/>
                 <constraint firstItem="mMZ-uY-nhI" firstAttribute="trailing" secondItem="lI3-Pw-wha" secondAttribute="trailing" id="Dmw-jM-0DE"/>
                 <constraint firstItem="U00-sz-GAT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="P8C-BC-Sf7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U00-sz-GAT" secondAttribute="trailing" constant="20" id="UTJ-VB-CED"/>

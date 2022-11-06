@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 
 class ResetPasswordVC: UIViewController {
 
@@ -19,7 +20,8 @@ class ResetPasswordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Reset password"
+        title = LocalizedKeys.title.localized
+        navigationController?.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         
@@ -31,6 +33,8 @@ class ResetPasswordVC: UIViewController {
     }
     
     @IBAction func resetPasswordTapped(_ sender: Any) {
+        ProgressHUD.animationType = .lineSpinFade
+        ProgressHUD.show()
         handleResetPassword()
     }
     
@@ -42,6 +46,7 @@ class ResetPasswordVC: UIViewController {
             } else {
                 strongSelf.handleSuccess()
             }
+            ProgressHUD.dismiss()
         }
     }
         
@@ -68,7 +73,10 @@ class ResetPasswordVC: UIViewController {
     }
     
     private func handleSuccess() {
-        let alert = UIAlertController.showOkAlert(with: "Email sent", message: "Check your email to reset your password") {
+        let alert = UIAlertController.showOkAlert(
+            with: LocalizedKeys.alertTitle.localized,
+            message: LocalizedKeys.alertMessage.localized
+        ) {
             self.dismissVC()
         }
         present(alert, animated: true)
@@ -81,4 +89,10 @@ extension ResetPasswordVC: UITextFieldDelegate {
         handleResetPassword()
         return false
     }
+}
+
+private enum LocalizedKeys {
+    static let title = "reset_password_title"
+    static let alertTitle = "reset_password_alert_title"
+    static let alertMessage = "reset_password_alert_message"
 }

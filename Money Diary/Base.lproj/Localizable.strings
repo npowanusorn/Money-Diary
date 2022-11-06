@@ -107,3 +107,8 @@
 "jpy" = "Japanese Yen";
 "cad" = "Canadian Dollar";
 "thb" = "Thai Baht";
+
+// Reset Password
+"reset_password_title" = "Reset Password";
+"reset_password_alert_title" = "Email sent";
+"reset_password_alert_message" = "Check your email to reset your password";

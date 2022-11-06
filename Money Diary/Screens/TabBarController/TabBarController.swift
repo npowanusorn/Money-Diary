@@ -61,9 +61,10 @@ class TabBarController: UITabBarController {
         customTabBar.translatesAutoresizingMaskIntoConstraints = false
         let gradient = CAGradientLayer()
         gradient.frame = gradientView.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.systemGroupedBackground.cgColor]
+        gradient.colors = [UIColor.black.withAlphaComponent(0).cgColor, UIColor.black.withAlphaComponent(1).cgColor]
         gradient.startPoint = CGPoint(x: Constants.xPoint, y: Constants.startPointY)
         gradient.endPoint = CGPoint(x: Constants.xPoint, y: Constants.endPointY)
+        gradientView.layer.mask = gradient
         gradientView.layer.insertSublayer(gradient, at: 0)
         gradientView.isUserInteractionEnabled = false
         selectedIndex = 0

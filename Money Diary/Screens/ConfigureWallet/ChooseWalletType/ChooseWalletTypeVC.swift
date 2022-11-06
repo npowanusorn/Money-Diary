@@ -44,46 +44,31 @@ class ChooseWalletTypeVC: UIViewController {
 
 extension ChooseWalletTypeVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        WalletType.allCases.count - 1
+        1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        WalletType.allCases.count - 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)") else { return UITableViewCell() }
         var content = cell.defaultContentConfiguration()
-        content.text = WalletType.allCases[indexPath.section].getName()
-        content.textProperties.alignment = .center
-        content.textProperties.font = .systemFont(ofSize: 17, weight: .bold)
+        content.text = WalletType.allCases[indexPath.row].getName()
         cell.contentConfiguration = content
-        cell.selectionStyle = .none
+        cell.accessoryType = .none
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        Log.info("SELECTED TYPE: \(indexPath.section)")
-
-        var cellSection = [Int]()
-        for index in 0...WalletType.allCases.count {
-            if index != indexPath.section {
-                cellSection.append(index)
-            }
+        Log.info("SELECTED TYPE: \(indexPath.row)")
+        for index in 0..<tableView.numberOfRows(inSection: indexPath.section) {
+            let path = IndexPath(row: index, section: indexPath.section)
+            guard let cell = tableView.cellForRow(at: path) else { return }
+            cell.accessoryType = (index == indexPath.row) ? .checkmark : .none
         }
-        for section in cellSection {
-            let path = IndexPath(row: 0, section: section)
-            let cell = tableView.cellForRow(at: path)
-            cell?.layer.borderWidth = 0
-            cell?.layer.borderColor = nil
-        }
-
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        selectedCell?.layer.borderWidth = 2
-        selectedCell?.layer.borderColor = globalTintColor.cgColor
         nextButton.isEnabled = true
-
-        selectedType = WalletType.allCases[indexPath.section]
+        selectedType = WalletType.allCases[indexPath.row]
     }
 }

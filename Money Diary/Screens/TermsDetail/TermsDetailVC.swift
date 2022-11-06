@@ -15,6 +15,7 @@ class TermsDetailVC: UIViewController {
         super.viewDidLoad()
 
         title = LocalizedKeys.title.localized
+        navigationController?.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: ImageName.cross), style: .plain, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }

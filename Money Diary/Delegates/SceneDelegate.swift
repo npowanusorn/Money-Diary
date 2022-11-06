@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navController.navigationBar.titleTextAttributes = getAttributedStringDict(fontSize: 15.0, weight: .bold)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
+        window?.overrideUserInterfaceStyle = .dark
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

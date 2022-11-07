@@ -41,6 +41,7 @@
 // Settings
 "settings_title" = "Settings";
 "settings_app_theme" = "App Theme";
+"settings_data" = "Data";
 "settings_account" = "Account";
 "settings_log_out" = "Log out";
 "settings_log_out_message" = "Are you sure you want to log out?";

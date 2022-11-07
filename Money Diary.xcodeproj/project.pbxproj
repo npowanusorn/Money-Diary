@@ -90,6 +90,9 @@
 		50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38D82865550800E9957E /* FirebaseAnalytics */; };
 		50AB38DB2865550800E9957E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DA2865550800E9957E /* FirebaseAuth */; };
 		50AB38DD2865550800E9957E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 50AB38DC2865550800E9957E /* FirebaseFirestore */; };
+		50B51AFE2918483B009B00EF /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 50B51AFD2918483B009B00EF /* SwiftCSV */; };
+		50B51B0229189797009B00EF /* ImportExportDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B51B0029189797009B00EF /* ImportExportDataVC.swift */; };
+		50B51B0329189797009B00EF /* ImportExportDataVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B51B0129189797009B00EF /* ImportExportDataVC.xib */; };
 		50CCBEF62870985700A75C8A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50CCBEF52870985700A75C8A /* GoogleSignIn */; };
 		50D03826286949CD00662008 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D03824286949CD00662008 /* SplashVC.swift */; };
 		50D03827286949CD00662008 /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D03825286949CD00662008 /* SplashVC.xib */; };
@@ -181,6 +184,8 @@
 		509D84A928604DA800AC8F58 /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
 		50A221B42855016700D1A139 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		50AB38D228654DBC00E9957E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		50B51B0029189797009B00EF /* ImportExportDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExportDataVC.swift; sourceTree = "<group>"; };
+		50B51B0129189797009B00EF /* ImportExportDataVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportExportDataVC.xib; sourceTree = "<group>"; };
 		50D03824286949CD00662008 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		50D03825286949CD00662008 /* SplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
 		50D0382E2869788500662008 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -206,6 +211,7 @@
 				50AB38C3286505BD00E9957E /* SwiftyBeaver in Frameworks */,
 				50AB38CC286508B800E9957E /* SwiftyJSON in Frameworks */,
 				508999EC288666E000809F99 /* RxGesture in Frameworks */,
+				50B51AFE2918483B009B00EF /* SwiftCSV in Frameworks */,
 				50CCBEF62870985700A75C8A /* GoogleSignIn in Frameworks */,
 				50AB38D92865550800E9957E /* FirebaseAnalytics in Frameworks */,
 				48DAB1D2286A9C0F00E7461C /* KeychainSwift in Frameworks */,
@@ -481,6 +487,7 @@
 				4818556C2866605D00648BB6 /* AllRecords */,
 				507B6E6828E15B20003A5F54 /* ConfigureWallet */,
 				4818556D2866606C00648BB6 /* Dashboard */,
+				50B51AFF29189771009B00EF /* ImportExportData */,
 				481855722866609B00648BB6 /* LoginCreateAccount */,
 				481855712866609300648BB6 /* RecordDetails */,
 				50D0382D2869787100662008 /* ResetPasswordVC */,
@@ -548,6 +555,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		50B51AFF29189771009B00EF /* ImportExportData */ = {
+			isa = PBXGroup;
+			children = (
+				50B51B0029189797009B00EF /* ImportExportDataVC.swift */,
+				50B51B0129189797009B00EF /* ImportExportDataVC.xib */,
+			);
+			path = ImportExportData;
+			sourceTree = "<group>";
+		};
 		50D03823286949B700662008 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +624,7 @@
 				508999EB288666E000809F99 /* RxGesture */,
 				508999EE2886670400809F99 /* RxSwift */,
 				508999F82888CB7F00809F99 /* UIOnboarding */,
+				50B51AFD2918483B009B00EF /* SwiftCSV */,
 			);
 			productName = "Money Diary";
 			productReference = 5024EE4F284DB342000B295A /* Money Diary.app */;
@@ -651,6 +668,7 @@
 				508999EA288666E000809F99 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				508999ED2886670400809F99 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				508999F72888CB7F00809F99 /* XCRemoteSwiftPackageReference "UIOnboarding" */,
+				50B51AFC2918483B009B00EF /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 5024EE50284DB342000B295A /* Products */;
 			projectDirPath = "";
@@ -683,6 +701,7 @@
 				4818557B28666EE200648BB6 /* LoginCreateAccountVC.xib in Resources */,
 				50D038312869788500662008 /* ResetPasswordVC.xib in Resources */,
 				48DAB1EC286BCEF900E7461C /* DeleteAccountVC.xib in Resources */,
+				50B51B0329189797009B00EF /* ImportExportDataVC.xib in Resources */,
 				505BA11D284F0DF5007AFBE0 /* WalletsCell.xib in Resources */,
 				48DAB1E3286B7B0900E7461C /* Localizable.strings in Resources */,
 				5024EE5F284DB344000B295A /* LaunchScreen.storyboard in Resources */,
@@ -750,6 +769,7 @@
 				4836D860285D8CD900746A56 /* TextViewCell.swift in Sources */,
 				4849A89C285D9FD1004569EB /* RecordManager.swift in Sources */,
 				487BA54D28629350007E00B6 /* RecordDetailsVC.swift in Sources */,
+				50B51B0229189797009B00EF /* ImportExportDataVC.swift in Sources */,
 				501BFFE528D834440011D911 /* WalletTypeRadioButton.swift in Sources */,
 				4849A89F285DABC1004569EB /* WalletsListVC.swift in Sources */,
 				487BA56728658ACF007E00B6 /* TypingLabel.swift in Sources */,
@@ -1077,6 +1097,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		50B51AFC2918483B009B00EF /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.1;
+			};
+		};
 		50CCBEF42870985700A75C8A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
@@ -1163,6 +1191,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50AB38D72865550800E9957E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		50B51AFD2918483B009B00EF /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50B51AFC2918483B009B00EF /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
 		};
 		50CCBEF52870985700A75C8A /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

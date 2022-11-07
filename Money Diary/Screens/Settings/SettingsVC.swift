@@ -110,9 +110,13 @@ class SettingsVC: UIViewController {
                 Log.info("GO TO ACCOUNT MGMT VC")
                 let accountManagementVC = AccountManagementVC()
                 navigationController?.pushViewController(accountManagementVC, animated: true)
+            case SettingsCellList.Data.rawValue:
+                Log.info("GO TO DATA")
+                let importExportVC = ImportExportDataVC()
+                navigationController?.pushViewController(importExportVC, animated: true)
             default:
-                Log.info("DEFAULT")
-                return
+                let alert = UIAlertController.showErrorAlert(message: "ERROR")
+                present(alert, animated: true)
             }
         }
     }
@@ -150,6 +154,9 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == SettingsCellList.Account.rawValue {
             cell.cellImage = UIImage.generateSettingsIcon(ImageName.accountIcon, backgroundColor: globalTintColor)
         }
+        if indexPath.row == SettingsCellList.Data.rawValue {
+            cell.cellImage = UIImage.generateSettingsIcon(ImageName.dataIcon, backgroundColor: globalTintColor)
+        }
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -172,6 +179,7 @@ private extension SettingsVC {
     enum SettingsCellList: Int, CaseIterable {
         case AppTheme = 0
         case Account
+        case Data
 
         func name() -> String {
             switch self {
@@ -179,6 +187,8 @@ private extension SettingsVC {
                 return LocalizedKeys.appTheme.localized
             case .Account:
                 return LocalizedKeys.account.localized
+            case .Data:
+                return LocalizedKeys.data.localized
             }
         }
     }
@@ -192,6 +202,7 @@ private extension SettingsVC {
     enum ImageName {
         static let appThemeIcon = "paintpalette.fill"
         static let accountIcon = "person.crop.circle.fill"
+        static let dataIcon = "doc.fill"
     }
     enum LocalizedKeys {
         static let appTheme = "settings_app_theme"
@@ -203,6 +214,7 @@ private extension SettingsVC {
         static let cancel = "settings_cancel"
         static let localAccount = "settings_local_account"
         static let logOutMessageLocalAccount = "settings_log_out_message_local_account"
+        static let data = "settings_data"
     }
 
 }

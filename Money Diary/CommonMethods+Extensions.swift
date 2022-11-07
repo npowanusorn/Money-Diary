@@ -322,6 +322,10 @@ extension UIAlertController {
         alertController.addActions([submitAction, cancelAction])
         return alertController
     }
+
+    static func showNotImplementedAlert() -> UIAlertController {
+        return showDismissAlert(with: "Not Implemented", message: "Not Implemented")
+    }
 }
 
 // MARK: - UIButton

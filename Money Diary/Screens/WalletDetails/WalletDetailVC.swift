@@ -91,9 +91,9 @@ class WalletDetailVC: UIViewController {
         balanceView.isHidden = recordsList.isEmpty
         circlePlusButton.isHidden = recordsList.isEmpty
         if filterOption == .all {
-            balanceLabel.text = "Balance: \(getWalletBalance())"
+            balanceLabel.text = LocalizedKeys.balance.localizeWithFormat(arguments: getWalletBalance())
         } else {
-            balanceLabel.text = "Amount: \(getTotalAmount())"
+            balanceLabel.text = LocalizedKeys.amount.localizeWithFormat(arguments: getTotalAmount())
         }
         tableView.reloadData()
     }
@@ -101,7 +101,7 @@ class WalletDetailVC: UIViewController {
     private func setupTable() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: "walletDetailCell")
+        tableView.register(LeftRightLabelCell.self, forCellReuseIdentifier: Constants.cellID)
     }
     
     func getWalletBalance() -> String {
@@ -113,7 +113,7 @@ class WalletDetailVC: UIViewController {
                 amount += record.amount
             }
         }
-        return amount.toCurrencyString()
+        return amount.toCurrencyString(currency: wallet.currency)
     }
 
     func getTotalAmount() -> String {
@@ -122,7 +122,7 @@ class WalletDetailVC: UIViewController {
         for record in records {
             amount += record.amount
         }
-        return amount.toCurrencyString()
+        return amount.toCurrencyString(currency: wallet.currency)
     }
     
     @objc
@@ -207,7 +207,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "walletDetailCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath)
         cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
         if indexPath.section == 0 {
@@ -225,7 +225,8 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let recordsForDate = [Record](selectedWallet.getRecordsForDate(date: date, filteredBy: filterOption).reversed())
         let recordForDate = recordsForDate[indexPath.row]
         content.text = recordForDate.note
-        content.secondaryText = recordForDate.amount.toCurrencyString()
+        // TODO: Add currency support
+        content.secondaryText = recordForDate.amount.toCurrencyString(currency: .CAD)
         content.secondaryTextProperties.color = recordForDate.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
         return cell
@@ -262,8 +263,9 @@ private extension WalletDetailVC {
             LocalizedKeys.income.localized
         ]
         static let normalSectionFooterHeight: CGFloat = 15.0
-        static let lastSectionFooterHeight: CGFloat = 110.0
+        static let lastSectionFooterHeight: CGFloat = 100.0
         static let infoImage = "info.circle.fill"
+        static let cellID = "walletDetailCell"
     }
 
     enum LocalizedKeys {
@@ -271,5 +273,7 @@ private extension WalletDetailVC {
         static let expenses = "wallet_detail_tab_expenses"
         static let income = "wallet_detail_tab_income"
         static let total = "wallet_detail_total"
+        static let balance = "wallet_detail_balance"
+        static let amount = "wallet_detail_amount"
     }
 }

@@ -36,6 +36,7 @@ enum K {
             static let walletID = "walletID"
             static let id = "id"
             static let type = "type"
+            static let currency = "currency"
         }
     }
 
@@ -86,7 +87,19 @@ enum WalletType: String, CaseIterable {
 }
 
 enum CurrencyType: String, CaseIterable {
-    case usd, euro, cad, jpy, thb
+    case USD, EUR, CAD, JPY, THB
 
     func getName() -> String { self.rawValue.localized }
+    func getCurrencySign() -> String {
+        switch self {
+        case .USD, .CAD:
+            return "$"
+        case .EUR:
+            return "€"
+        case .JPY:
+            return "¥"
+        case .THB:
+            return "฿"
+        }
+    }
 }

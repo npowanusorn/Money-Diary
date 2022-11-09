@@ -16,14 +16,16 @@ class Wallet: Object {
     private var _type: WalletType = .unknown
     private var _dateCreated: Date = Date(timeIntervalSince1970: 0)
     private let _records = List<Record>()
+    private var _currency: CurrencyType = .CAD
     
-    convenience init(name: String, balance: Double, type: WalletType, dateCreated: Date, id: String = generateUID()) {
+    convenience init(name: String, balance: Double, type: WalletType, dateCreated: Date, currency: String, id: String = generateUID()) {
         self.init()
         _name = name
         _balance = balance
         _id = id
         _type = type
         _dateCreated = dateCreated
+        _currency = CurrencyType(rawValue: currency) ?? .CAD
     }
     
     var name: String {
@@ -44,6 +46,9 @@ class Wallet: Object {
     }
     var dateCreated: Date {
         get { _dateCreated }
+    }
+    var currency: CurrencyType {
+        get { _currency }
     }
 
     func modifyBalance(to newBalance: Double) {

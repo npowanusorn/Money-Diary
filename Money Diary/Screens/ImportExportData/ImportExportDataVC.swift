@@ -41,14 +41,49 @@ class ImportExportDataVC: UIViewController {
         present(UIAlertController.showNotImplementedAlert(), animated: true)
     }
 
-    func handleImportData(from url: URL) {
+    func handleParseCSV(from url: URL) {
         do {
             let csv = try NamedCSV(url: url)
-            // TODO: add data from csv
+            handleImportData(from: csv)
         } catch {
             Log.error(error.localizedDescription)
             let alert = UIAlertController.showErrorAlert(message: error.localizedDescription)
             present(alert, animated: true)
+        }
+    }
+
+    func handleImportData(from csv: NamedCSV) {
+        let rows = csv.rows
+        var rowsForWallet: [String: [[String: String]]] = [:]
+        for row in rows {
+            guard let walletForRow = row[Constants.walletCSVID] else { return }
+            if rowsForWallet[walletForRow] == nil {
+                rowsForWallet[walletForRow] = []
+            }
+            rowsForWallet[walletForRow]!.append(row)
+        }
+        for walletKey in rowsForWallet.keys {
+            let walletCurrency = rowsForWallet[walletKey]!.last!["Currency"]!
+            Log.info("CURREN: \(walletCurrency)")
+            let wallet = Wallet(name: walletKey, balance: 0, type: .bank, dateCreated: .now, currency: walletCurrency)
+            Task {
+                WalletManager.shared.addWallet(newWallet: wallet)
+                await FirestoreManager.writeData(forWallet: wallet)
+            }
+            let records = rowsForWallet[walletKey]!
+            for record in records {
+                let amount = Double(record["Amount"]!)!
+                let absAmount = abs(amount)
+                let note = record["Note"]!
+                let date = getDate(from: record["Date"]!, with: "dd/MM/yyyy") ?? .now
+                let walletID = wallet.id
+                let currency = record["Currency"]!
+                let newRecord = Record(amount: absAmount, note: note, date: date, walletID: walletID, isExpense: amount < 0)
+                Task {
+                    WalletManager.shared.addRecordToWallet(record: newRecord)
+                    await FirestoreManager.writeData(forRecord: newRecord)
+                }
+            }
         }
     }
 
@@ -97,7 +132,7 @@ extension ImportExportDataVC: UIDocumentPickerDelegate {
         defer {
             url.stopAccessingSecurityScopedResource()
         }
-        handleImportData(from: url)
+        handleParseCSV(from: url)
     }
 }
 
@@ -119,6 +154,7 @@ private enum Constants {
     static let identifier = "\(ImageCell.self)"
     static let importImage = "square.and.arrow.down.fill"
     static let exportImage = "square.and.arrow.up.fill"
+    static let walletCSVID = "Wallet"
 }
 
 private enum LocalizedKeys {

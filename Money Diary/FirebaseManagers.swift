@@ -97,7 +97,15 @@ class FirestoreManager {
                 let walletTypeString = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? String) ?? "unknown"
                 let walletType = WalletType(rawValue: walletTypeString) ?? .unknown
                 let walletDateCreated = (walletDocument.data()[K.FirestoreKeys.FieldKeys.dateCreated] as? Timestamp)?.dateValue() ?? .distantPast
-                let walletForSnapshot = Wallet(name: walletName, balance: walletBalance, type: walletType, dateCreated: walletDateCreated, id: walletID)
+                let walletCurrency = (walletDocument.data()[K.FirestoreKeys.FieldKeys.currency] as? String) ?? ""
+                let walletForSnapshot = Wallet(
+                    name: walletName,
+                    balance: walletBalance,
+                    type: walletType,
+                    dateCreated: walletDateCreated,
+                    currency: walletCurrency,
+                    id: walletID
+                )
                 let recordCollectionQuery = walletCollection
                     .document(walletDocument.documentID)
                     .collection(K.FirestoreKeys.CollectionKeys.records)
@@ -132,7 +140,8 @@ class FirestoreManager {
             K.FirestoreKeys.FieldKeys.balance: newWallet.balance,
             K.FirestoreKeys.FieldKeys.id : newWallet.id,
             K.FirestoreKeys.FieldKeys.type : newWallet.type.rawValue,
-            K.FirestoreKeys.FieldKeys.dateCreated : newWallet.dateCreated
+            K.FirestoreKeys.FieldKeys.dateCreated : newWallet.dateCreated,
+            K.FirestoreKeys.FieldKeys.currency : newWallet.currency.getName()
         ]) { error in
             if let error = error {
                 Log.error("ERROR WRITING WALLET: \(error)")

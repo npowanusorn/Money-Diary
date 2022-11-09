@@ -94,6 +94,7 @@
 "type" = "Type";
 "balance" = "Balance";
 "id" = "ID";
+"currency" = "Currency";
 "date_created" = "Date Created";
 
 // Wallet Detail
@@ -101,6 +102,8 @@
 "wallet_detail_tab_expenses" = "Expenses";
 "wallet_detail_tab_income" = "Income";
 "wallet_detail_total" = "Total: %@";
+"wallet_detail_balance" = "Balance: %@";
+"wallet_detail_amount" = "Amount: %@";
 
 // Currency
 "usd" = "US Dollar";

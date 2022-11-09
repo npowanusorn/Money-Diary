@@ -71,9 +71,15 @@ func makeDate(day: Int, month: Int, year: Int) -> Date {
     return calendar.date(from: components) ?? .distantPast
 }
 
+func getDate(from string: String, with dateFormat: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = dateFormat
+    return dateFormatter.date(from: string)
+}
+
 // MARK: - String
 extension String {
-    func toCurrencyFormat() -> String {
+    func toCurrencyFormat(currency: CurrencyType) -> String {
         let formattedString = String(format: "$%.2f", self)
         return "\(formattedString)"
     }
@@ -99,11 +105,12 @@ extension String {
 
 // MARK: - Double
 extension Double {
-    func toCurrencyString() -> String {
+    func toCurrencyString(currency: CurrencyType) -> String {
+        let currencySymbol = currency.getCurrencySign()
         if self < 0 {
-            return String(format: "-$%.2f", abs(self))
+            return String(format: "-\(currencySymbol)%.2f", abs(self))
         } else {
-            return String(format: "$%.2f", self)
+            return String(format: "\(currencySymbol)%.2f", self)
         }
     }
 

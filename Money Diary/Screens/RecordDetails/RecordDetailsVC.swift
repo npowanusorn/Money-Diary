@@ -65,17 +65,11 @@ class RecordDetailsVC: UIViewController {
 }
 
 extension RecordDetailsVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        RecordDetailsTableSection.allCases.count
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { RecordDetailsTableSection.allCases.count }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20.0
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 20.0 }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let currentSection = RecordDetailsTableSection(rawValue: section) else { return nil }
@@ -88,7 +82,7 @@ extension RecordDetailsVC: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
         switch currentSection {
         case .amount:
-            content.text = selectedRecord.amount.toCurrencyString()
+            content.text = selectedRecord.amount.toCurrencyString(currency: .CAD)
             content.textProperties.font = UIFont.systemFont(ofSize: 48.0, weight: .bold)
             content.textProperties.color = selectedRecord.isExpense ? .systemRed : .systemBlue
             content.textProperties.alignment = .center

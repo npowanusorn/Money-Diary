@@ -41,7 +41,8 @@ class DashboardVC: UIViewController {
 
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
-        balanceLabel.text = getTotalBalance().toCurrencyString()
+        // TODO: Add currency support
+        balanceLabel.text = getTotalBalance().toCurrencyString(currency: .CAD)
 
         NotificationCenter.default.addObserver(
             self,
@@ -104,7 +105,8 @@ class DashboardVC: UIViewController {
         walletsList = walletManager.getWallets()
         recordList = recordManager.getAllRecords()
         tableView.reloadData()
-        balanceLabel.text = getTotalBalance().toCurrencyString()
+        // TODO: Add currency support
+        balanceLabel.text = getTotalBalance().toCurrencyString(currency: .CAD)
     }
 
     @objc
@@ -185,8 +187,10 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
                 return cell
             }
-            content.text = walletsList[indexPath.row].name
-            content.secondaryText = walletsList[indexPath.row].balance.toCurrencyString()
+            let currentWallet = walletsList[indexPath.row]
+            content.text = currentWallet.name
+            content.secondaryText = walletsList[indexPath.row].balance.toCurrencyString(currency: currentWallet.currency)
+            Log.info("CURRENCY: \(currentWallet.currency)")
             cell.contentConfiguration = content
         } else {
             var content = cell.defaultContentConfiguration()
@@ -202,7 +206,8 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else {
                 content.text = recordList[indexPath.row].note
-                content.secondaryText = recordList[indexPath.row].amount.toCurrencyString()
+                // TODO: Add currency support
+                content.secondaryText = recordList[indexPath.row].amount.toCurrencyString(currency: .CAD)
                 content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
                 cell.contentConfiguration = content
             }

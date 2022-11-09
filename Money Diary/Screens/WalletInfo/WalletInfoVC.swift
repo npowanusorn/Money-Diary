@@ -188,7 +188,9 @@ extension WalletInfoVC: UITableViewDelegate, UITableViewDataSource {
         case .type:
             content.text = selectedWallet.type.getName()
         case .balance:
-            content.text = selectedWallet.balance.toCurrencyString()
+            content.text = selectedWallet.balance.toCurrencyString(currency: selectedWallet.currency)
+        case .currency:
+            content.text = selectedWallet.currency.getName()
         case .dateCreated:
             content.text = selectedWallet.dateCreated.formatted(date: .long, time: .omitted)
         case .id:
@@ -238,7 +240,7 @@ extension WalletInfoVC: UIEditMenuInteractionDelegate {
 }
 
 private enum WalletInfoTableSection: Int, CaseIterable {
-    case type, balance, dateCreated, id
+    case type, balance, currency, dateCreated, id
 
     func getSectionName() -> String? {
         switch self {
@@ -246,6 +248,8 @@ private enum WalletInfoTableSection: Int, CaseIterable {
             return LocalizedKeys.type.localized
         case .balance:
             return LocalizedKeys.balance.localized
+        case .currency:
+            return LocalizedKeys.currency.localized
         case .dateCreated:
             return LocalizedKeys.dateCreated.localized
         case .id:
@@ -262,4 +266,5 @@ private enum LocalizedKeys {
     static let balance = "balance"
     static let id = "id"
     static let dateCreated = "date_created"
+    static let currency = "currency"
 }

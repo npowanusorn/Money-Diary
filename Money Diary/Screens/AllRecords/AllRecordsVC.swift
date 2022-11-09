@@ -78,7 +78,8 @@ class AllRecordsVC: UIViewController {
         } else {
             let record = records[indexPath.row]
             content.text = record.note
-            content.secondaryText = record.amount.toCurrencyString()
+            // TODO: Add currency support
+            content.secondaryText = record.amount.toCurrencyString(currency: .CAD)
             content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
             cell.contentConfiguration = content
             cell.selectionStyle = .default
@@ -93,7 +94,8 @@ class AllRecordsVC: UIViewController {
         let dates = recordManager.getAllDates()
         let record = recordManager.getAllRecords(for: dates[indexPath.section])[indexPath.row]
         content.text = record.note
-        content.secondaryText = record.amount.toCurrencyString()
+        // TODO: Add currency support
+        content.secondaryText = record.amount.toCurrencyString(currency: .CAD)
         content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
         cell.selectionStyle = .default
@@ -129,13 +131,9 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30.0
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 30.0 }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
-    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50.0 }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch walletManager.sortBy {
@@ -166,8 +164,7 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
             return configureCellByDate(tableView, at: indexPath)
         }
     }
-    
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let recordDetailsVC = RecordDetailsVC()
@@ -182,5 +179,18 @@ extension AllRecordsVC: UITableViewDelegate, UITableViewDataSource {
         }
         navigationController?.pushViewController(recordDetailsVC, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == numberOfSections(in: tableView) - 1 {
+            return Constants.lastSectionFooterHeight
+        } else {
+            return Constants.normalSectionFooterHeight
+        }
+    }
     
+}
+
+private enum Constants {
+    static let lastSectionFooterHeight = 100.0
+    static let normalSectionFooterHeight = 15.0
 }

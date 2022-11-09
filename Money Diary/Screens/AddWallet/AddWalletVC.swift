@@ -58,7 +58,8 @@ class AddWalletVC: UIViewController {
             return
         }
         let walletType = AppCache.shared.walletType ?? .unknown
-        let newWallet = Wallet(name: name, balance: amount, type: walletType, dateCreated: .now)
+        // TODO: Add currency support
+        let newWallet = Wallet(name: name, balance: amount, type: walletType, dateCreated: .now, currency: "CAD")
         WalletManager.shared.addWallet(newWallet: newWallet)
         NotificationCenter.default.post(name: K.NotificationName.didAddWallet, object: nil)
 

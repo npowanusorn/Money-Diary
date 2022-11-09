@@ -314,7 +314,7 @@ extension UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addTextField()
         
-        let submitAction = UIAlertAction(title: actionTitle, style: .destructive) { _ in
+        let submitAction = UIAlertAction(title: actionTitle, style: .default) { _ in
             guard let textField = alertController.textFields?[0] else { return }
             completion(textField)
         }
@@ -324,7 +324,7 @@ extension UIAlertController {
     }
 
     static func showNotImplementedAlert() -> UIAlertController {
-        return showDismissAlert(with: "Not Implemented", message: "Not Implemented")
+        return showDismissAlert(with: "Error", message: "Not Implemented")
     }
 }
 

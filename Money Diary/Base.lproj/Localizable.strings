@@ -113,3 +113,8 @@
 "reset_password_title" = "Reset Password";
 "reset_password_alert_title" = "Email sent";
 "reset_password_alert_message" = "Check your email to reset your password";
+
+// Import/Export
+"data_title" = "Data";
+"data_import" = "Import Data";
+"data_export" = "Export Data";

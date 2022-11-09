@@ -18,14 +18,14 @@ class Wallet: Object {
     private let _records = List<Record>()
     private var _currency: CurrencyType = .CAD
     
-    convenience init(name: String, balance: Double, type: WalletType, dateCreated: Date, currency: String, id: String = generateUID()) {
+    convenience init(name: String, balance: Double, type: WalletType, dateCreated: Date, currency: CurrencyType, id: String = generateUID()) {
         self.init()
         _name = name
         _balance = balance
         _id = id
         _type = type
         _dateCreated = dateCreated
-        _currency = CurrencyType(rawValue: currency) ?? .CAD
+        _currency = currency
     }
     
     var name: String {

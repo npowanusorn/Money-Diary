@@ -205,10 +205,10 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
                 cell.contentConfiguration = content
                 return cell
             } else {
-                content.text = recordList[indexPath.row].note
-                // TODO: Add currency support
-                content.secondaryText = recordList[indexPath.row].amount.toCurrencyString(currency: .CAD)
-                content.secondaryTextProperties.color = recordList[indexPath.row].isExpense ? .systemRed : .systemBlue
+                let currentRecordForRow = recordList[indexPath.row]
+                content.text = currentRecordForRow.note
+                content.secondaryText = currentRecordForRow.amount.toCurrencyString(currency: currentRecordForRow.currency)
+                content.secondaryTextProperties.color = currentRecordForRow.isExpense ? .systemRed : .systemBlue
                 cell.contentConfiguration = content
             }
         }

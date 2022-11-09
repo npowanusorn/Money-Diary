@@ -97,7 +97,8 @@ class FirestoreManager {
                 let walletTypeString = (walletDocument.data()[K.FirestoreKeys.FieldKeys.type] as? String) ?? "unknown"
                 let walletType = WalletType(rawValue: walletTypeString) ?? .unknown
                 let walletDateCreated = (walletDocument.data()[K.FirestoreKeys.FieldKeys.dateCreated] as? Timestamp)?.dateValue() ?? .distantPast
-                let walletCurrency = (walletDocument.data()[K.FirestoreKeys.FieldKeys.currency] as? String) ?? ""
+                let walletCurrencyString = (walletDocument.data()[K.FirestoreKeys.FieldKeys.currency] as? String) ?? ""
+                let walletCurrency = CurrencyType(rawValue: walletCurrencyString) ?? .CAD
                 let walletForSnapshot = Wallet(
                     name: walletName,
                     balance: walletBalance,
@@ -119,7 +120,17 @@ class FirestoreManager {
                     let note = (recordDocument.data()[K.FirestoreKeys.FieldKeys.note] as? String) ?? ""
                     let walletID = (recordDocument.data()[K.FirestoreKeys.FieldKeys.walletID] as? String) ?? K.unknownWalletID
                     let id = (recordDocument.data()[K.FirestoreKeys.FieldKeys.id] as? String) ?? generateUID()
-                    let record = Record(amount: amount, note: note, date: date, walletID: walletID, isExpense: isExpense, id: id)
+                    let currencyString = (recordDocument.data()[K.FirestoreKeys.FieldKeys.currency] as? String) ?? ""
+                    let currency = CurrencyType(rawValue: currencyString) ?? .CAD
+                    let record = Record(
+                        amount: amount,
+                        note: note,
+                        date: date,
+                        walletID: walletID,
+                        isExpense: isExpense,
+                        currency: currency,
+                        id: id
+                    )
                     walletForSnapshot.addRecord(newRecord: record)
                 }
                 walletManager.addWallet(newWallet: walletForSnapshot)
@@ -169,7 +180,8 @@ class FirestoreManager {
                             K.FirestoreKeys.FieldKeys.expense : newRecord.isExpense,
                             K.FirestoreKeys.FieldKeys.note : newRecord.note ?? "",
                             K.FirestoreKeys.FieldKeys.walletID : newRecord.walletID,
-                            K.FirestoreKeys.FieldKeys.id : newRecord.id
+                            K.FirestoreKeys.FieldKeys.id : newRecord.id,
+                            K.FirestoreKeys.FieldKeys.currency : newRecord.currency.getName()
                         ]) { error in
                             if let error = error {
                                 Log.error("ERROR: \(error)")

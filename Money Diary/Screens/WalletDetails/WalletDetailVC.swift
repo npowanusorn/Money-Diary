@@ -225,8 +225,7 @@ extension WalletDetailVC: UITableViewDelegate, UITableViewDataSource {
         let recordsForDate = [Record](selectedWallet.getRecordsForDate(date: date, filteredBy: filterOption).reversed())
         let recordForDate = recordsForDate[indexPath.row]
         content.text = recordForDate.note
-        // TODO: Add currency support
-        content.secondaryText = recordForDate.amount.toCurrencyString(currency: .CAD)
+        content.secondaryText = recordForDate.amount.toCurrencyString(currency: recordForDate.currency)
         content.secondaryTextProperties.color = recordForDate.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
         return cell

@@ -63,8 +63,8 @@ class ImportExportDataVC: UIViewController {
             rowsForWallet[walletForRow]!.append(row)
         }
         for walletKey in rowsForWallet.keys {
-            let walletCurrency = rowsForWallet[walletKey]!.last!["Currency"]!
-            Log.info("CURREN: \(walletCurrency)")
+            let walletCurrencyString = rowsForWallet[walletKey]!.last!["Currency"]!
+            let walletCurrency = CurrencyType(rawValue: walletCurrencyString) ?? .CAD
             let wallet = Wallet(name: walletKey, balance: 0, type: .bank, dateCreated: .now, currency: walletCurrency)
             Task {
                 WalletManager.shared.addWallet(newWallet: wallet)
@@ -77,8 +77,15 @@ class ImportExportDataVC: UIViewController {
                 let note = record["Note"]!
                 let date = getDate(from: record["Date"]!, with: "dd/MM/yyyy") ?? .now
                 let walletID = wallet.id
-                let currency = record["Currency"]!
-                let newRecord = Record(amount: absAmount, note: note, date: date, walletID: walletID, isExpense: amount < 0)
+                let currency = CurrencyType(rawValue: record["Currency"]!) ?? .CAD
+                let newRecord = Record(
+                    amount: absAmount,
+                    note: note,
+                    date: date,
+                    walletID: walletID,
+                    isExpense: amount < 0,
+                    currency: currency
+                )
                 Task {
                     WalletManager.shared.addRecordToWallet(record: newRecord)
                     await FirestoreManager.writeData(forRecord: newRecord)

@@ -15,6 +15,7 @@ class Record: Object, Comparable {
     @objc dynamic private var _walletID = ""
     @objc dynamic private var _isExpense: Bool = true
     @objc dynamic private var _id = ""
+    private var _currency: CurrencyType = .CAD
     
     var amount: Double {
         get { _amount }
@@ -39,8 +40,11 @@ class Record: Object, Comparable {
     var id: String {
         get { _id }
     }
+    var currency: CurrencyType {
+        get { _currency }
+    }
 
-    convenience init(amount: Double, note: String?, date: Date, walletID: String, isExpense: Bool, id: String = generateUID()) {
+    convenience init(amount: Double, note: String?, date: Date, walletID: String, isExpense: Bool, currency: CurrencyType, id: String = generateUID()) {
         self.init()
         _amount = amount
         _note = note
@@ -48,6 +52,7 @@ class Record: Object, Comparable {
         _walletID = walletID
         _isExpense = isExpense
         _id = id
+        _currency = currency
     }
 
     static func == (lhs: Record, rhs: Record) -> Bool {

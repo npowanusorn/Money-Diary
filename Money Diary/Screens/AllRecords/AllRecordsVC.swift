@@ -78,8 +78,7 @@ class AllRecordsVC: UIViewController {
         } else {
             let record = records[indexPath.row]
             content.text = record.note
-            // TODO: Add currency support
-            content.secondaryText = record.amount.toCurrencyString(currency: .CAD)
+            content.secondaryText = record.amount.toCurrencyString(currency: record.currency)
             content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
             cell.contentConfiguration = content
             cell.selectionStyle = .default
@@ -94,8 +93,7 @@ class AllRecordsVC: UIViewController {
         let dates = recordManager.getAllDates()
         let record = recordManager.getAllRecords(for: dates[indexPath.section])[indexPath.row]
         content.text = record.note
-        // TODO: Add currency support
-        content.secondaryText = record.amount.toCurrencyString(currency: .CAD)
+        content.secondaryText = record.amount.toCurrencyString(currency: record.currency)
         content.secondaryTextProperties.color = record.isExpense ? .systemRed : .systemBlue
         cell.contentConfiguration = content
         cell.selectionStyle = .default

@@ -67,7 +67,7 @@ class WalletManager {
             let month = Int.random(in: 1...12)
             let day = Int.random(in: 1...28)
             let date = makeDate(day: day, month: month, year: year)
-            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, type: type, dateCreated: date, currency: "CAD")
+            let wallet = Wallet(name: "wallet \(counter)", balance: 1000.0, type: type, dateCreated: date, currency: .CAD)
             addWallet(newWallet: wallet)
         }
     }

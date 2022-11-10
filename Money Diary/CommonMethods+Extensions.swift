@@ -79,11 +79,6 @@ func getDate(from string: String, with dateFormat: String) -> Date? {
 
 // MARK: - String
 extension String {
-    func toCurrencyFormat(currency: CurrencyType) -> String {
-        let formattedString = String(format: "$%.2f", self)
-        return "\(formattedString)"
-    }
-
     var localized: String { NSLocalizedString(self, comment: "") }
 
     func localizeWithFormat(arguments: CVarArg...) -> String {
@@ -106,12 +101,10 @@ extension String {
 // MARK: - Double
 extension Double {
     func toCurrencyString(currency: CurrencyType) -> String {
-        let currencySymbol = currency.getCurrencySign()
-        if self < 0 {
-            return String(format: "-\(currencySymbol)%.2f", abs(self))
-        } else {
-            return String(format: "\(currencySymbol)%.2f", self)
-        }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.currencyCode = currency.getName()
+        numberFormatter.numberStyle = .currency
+        return numberFormatter.string(from: NSNumber(value: self))!
     }
 
     func rounded(toPlaces places: Int) -> Double {

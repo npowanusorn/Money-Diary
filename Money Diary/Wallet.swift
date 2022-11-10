@@ -17,6 +17,7 @@ class Wallet: Object {
     private var _dateCreated: Date = Date(timeIntervalSince1970: 0)
     private let _records = List<Record>()
     private var _currency: CurrencyType = .CAD
+    private var _isArchived: Bool = false
     
     convenience init(name: String, balance: Double, type: WalletType, dateCreated: Date, currency: CurrencyType, id: String = generateUID()) {
         self.init()
@@ -29,14 +30,14 @@ class Wallet: Object {
     }
     
     var name: String {
-        get { return _name }
+        get { _name }
         set { _name = newValue }
     }
     var balance: Double {
-        get { return _balance }
+        get { _balance }
     }
     var records: List<Record> {
-        get { return _records }
+        get { _records }
     }
     var id: String {
         get { _id }
@@ -49,6 +50,10 @@ class Wallet: Object {
     }
     var currency: CurrencyType {
         get { _currency }
+    }
+    var isArchived: Bool {
+        get { _isArchived }
+        set { _isArchived = newValue }
     }
 
     func modifyBalance(to newBalance: Double) {

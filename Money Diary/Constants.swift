@@ -90,6 +90,7 @@ enum CurrencyType: String, CaseIterable {
     case USD, EUR, CAD, JPY, THB
 
     func getName() -> String { self.rawValue.localized }
+
     func getCurrencySign() -> String {
         switch self {
         case .USD, .CAD:

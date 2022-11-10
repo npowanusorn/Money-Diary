@@ -142,13 +142,14 @@ class WalletInfoVC: UIViewController {
     @objc
     private func textFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
-        rightBarButtonItem?.isEnabled = !text.isEmpty
+        rightBarButtonItem?.isEnabled = !text.isEmpty && text != selectedWallet.name
     }
 
     private func handleEditingWalletUI() {
         if isEditingWallet {
             leftBarButtonItem = cancelNavBarButton
             rightBarButtonItem = saveNavBarButton
+            rightBarButtonItem?.isEnabled = false
             walletInfoTableView.fadeOut(withDuration: 0.2)
             deleteButton.fadeOut(withDuration: 0.2)
             walletNameTextField.isUserInteractionEnabled = true

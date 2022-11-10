@@ -76,7 +76,6 @@ class AddWalletVC: UIViewController {
         } else {
             Task { await FirestoreManager.writeData(forWallet: newWallet) }
         }
-
         dismiss(animated: true)
     }
 
